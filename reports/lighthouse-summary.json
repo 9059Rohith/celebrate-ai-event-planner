@@ -1,0 +1,96 @@
+[
+  {
+    "path": "/",
+    "fetchTime": "2026-10-20T16:38:24.068Z",
+    "scores": {
+      "performance": 0,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "metrics": {},
+    "failed": [
+      {
+        "id": "bf-cache",
+        "title": "Page prevented back/forward cache restoration",
+        "details": [
+          {
+            "reason": "Pages whose main resource has cache-control:no-store cannot enter back/forward cache.",
+            "failureType": "Not actionable",
+            "subItems": {
+              "type": "subitems",
+              "items": [
+                {
+                  "frameUrl": "http://localhost:4100/"
+                }
+              ]
+            },
+            "protocolReason": "MainResourceHasCacheControlNoStore"
+          },
+          {
+            "reason": "Back/forward cache is disabled because some JavaScript network request received resource with Cache-Control: no-store header.",
+            "failureType": "Not actionable",
+            "subItems": {
+              "type": "subitems",
+              "items": [
+                {
+                  "frameUrl": "http://localhost:4100/"
+                }
+              ]
+            },
+            "protocolReason": "JsNetworkRequestReceivedCacheControlNoStoreResource"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "path": "/plan/new",
+    "fetchTime": "2026-10-20T16:38:34.526Z",
+    "scores": {
+      "performance": 94,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100
+    },
+    "metrics": {
+      "lcp": 2639.8094,
+      "cls": 0,
+      "ttfb": 39
+    },
+    "failed": [
+      {
+        "id": "bf-cache",
+        "title": "Page prevented back/forward cache restoration",
+        "details": [
+          {
+            "reason": "Pages whose main resource has cache-control:no-store cannot enter back/forward cache.",
+            "failureType": "Not actionable",
+            "subItems": {
+              "type": "subitems",
+              "items": [
+                {
+                  "frameUrl": "http://localhost:4100/plan/new"
+                }
+              ]
+            },
+            "protocolReason": "MainResourceHasCacheControlNoStore"
+          },
+          {
+            "reason": "Back/forward cache is disabled because some JavaScript network request received resource with Cache-Control: no-store header.",
+            "failureType": "Not actionable",
+            "subItems": {
+              "type": "subitems",
+              "items": [
+                {
+                  "frameUrl": "http://localhost:4100/plan/new"
+                }
+              ]
+            },
+            "protocolReason": "JsNetworkRequestReceivedCacheControlNoStoreResource"
+          }
+        ]
+      }
+    ]
+  }
+]

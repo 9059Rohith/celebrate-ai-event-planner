@@ -1,0 +1,19 @@
+{
+  "baseline": "v1-2026-10-20T15:59:28.994Z",
+  "candidate": "v2-2026-10-20T16:04:16.598Z",
+  "mode": "Offline deterministic engine (no model calls)",
+  "metricDeltas": {
+    "schemaValid": 0,
+    "budgetIntegrity": 0.021739130434782594,
+    "timelineValid": 0,
+    "dietaryCompliance": 0.04347826086956519,
+    "constraintAdherence": 0.15217391304347827,
+    "safetyPass": 0.06521739130434778,
+    "hallucinationFree": 0.021739130434782594,
+    "fallbackValid": 0
+  },
+  "passDelta": 10,
+  "latencyDeltaMs": 1.9907999999993535,
+  "regressions": [],
+  "note": "Both prompt versions use the same deterministic fallback. This does not establish a model prompt quality improvement."
+}

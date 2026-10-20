@@ -66,6 +66,11 @@ for (const type of ["wedding", "birthday", "community"])
     expect((await icsDownload).suggestedFilename()).toBe("celebration.ics");
     await context.grantPermissions(["clipboard-read", "clipboard-write"]);
     await page.getByRole("button", { name: "Share plan", exact: true }).click();
+    await expect(
+      page.getByText(
+        "Read-only share link copied. Anyone with the link can view this copy.",
+      ),
+    ).toBeVisible();
     const url = await page.evaluate(() => navigator.clipboard.readText());
     expect(url).toContain("/shared#");
     await page.goto(url);

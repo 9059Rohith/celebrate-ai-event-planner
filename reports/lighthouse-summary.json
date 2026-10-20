@@ -1,14 +1,20 @@
 [
   {
     "path": "/",
-    "fetchTime": "2026-10-20T16:38:24.068Z",
+    "fetchTime": "2026-10-20T16:44:18.209Z",
+    "browserWarmupTraceError": "NO_NAVSTART",
+    "runtimeError": null,
     "scores": {
-      "performance": 0,
+      "performance": 91,
       "accessibility": 100,
       "best-practices": 100,
       "seo": 100
     },
-    "metrics": {},
+    "metrics": {
+      "lcp": 2344.413375,
+      "cls": 0,
+      "ttfb": 15
+    },
     "failed": [
       {
         "id": "bf-cache",
@@ -46,17 +52,19 @@
   },
   {
     "path": "/plan/new",
-    "fetchTime": "2026-10-20T16:38:34.526Z",
+    "fetchTime": "2026-10-20T16:44:31.226Z",
+    "browserWarmupTraceError": "NO_NAVSTART",
+    "runtimeError": null,
     "scores": {
-      "performance": 94,
+      "performance": 95,
       "accessibility": 100,
       "best-practices": 100,
       "seo": 100
     },
     "metrics": {
-      "lcp": 2639.8094,
+      "lcp": 2108.8775,
       "cls": 0,
-      "ttfb": 39
+      "ttfb": 12
     },
     "failed": [
       {

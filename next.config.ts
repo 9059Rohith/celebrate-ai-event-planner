@@ -1,7 +1,6 @@
 import type { NextConfig } from "next";
 import bundleAnalyzer from "@next/bundle-analyzer";
 const config: NextConfig = {
-  htmlLimitedBots: /.*/,
   async headers() {
     return [
       {

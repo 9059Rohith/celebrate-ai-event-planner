@@ -6,96 +6,96 @@
       "device": "desktop",
       "sample": 1,
       "kind": "saved",
-      "loadMs": 936.7000000029802,
-      "readyMs": 1100.3999999985099,
+      "loadMs": 902.8000000044703,
+      "readyMs": 1096,
       "errors": []
     },
     {
       "device": "desktop",
       "sample": 1,
       "kind": "shared",
-      "loadMs": 803.1000000014901,
-      "readyMs": 958.2000000029802,
+      "loadMs": 763,
+      "readyMs": 1036.3999999985099,
       "errors": []
     },
     {
       "device": "desktop",
       "sample": 2,
       "kind": "saved",
-      "loadMs": 830.8000000044703,
-      "readyMs": 1017.8000000044703,
+      "loadMs": 811,
+      "readyMs": 977.5,
       "errors": []
     },
     {
       "device": "desktop",
       "sample": 2,
       "kind": "shared",
-      "loadMs": 1103.8999999985099,
-      "readyMs": 1334.3000000044703,
+      "loadMs": 693.8000000044703,
+      "readyMs": 832.1000000014901,
       "errors": []
     },
     {
       "device": "desktop",
       "sample": 3,
       "kind": "saved",
-      "loadMs": 935.1000000014901,
-      "readyMs": 1100,
+      "loadMs": 847.8000000044703,
+      "readyMs": 967.9000000059605,
       "errors": []
     },
     {
       "device": "desktop",
       "sample": 3,
       "kind": "shared",
-      "loadMs": 1085.0999999940395,
-      "readyMs": 1226.8999999985099,
+      "loadMs": 698.3999999985099,
+      "readyMs": 874.8999999985099,
       "errors": []
     },
     {
       "device": "mobile",
       "sample": 1,
       "kind": "saved",
-      "loadMs": 952.6000000014901,
-      "readyMs": 1146.8999999985099,
+      "loadMs": 741.3999999985099,
+      "readyMs": 947.2000000029802,
       "errors": []
     },
     {
       "device": "mobile",
       "sample": 1,
       "kind": "shared",
-      "loadMs": 748,
-      "readyMs": 960.7999999970198,
+      "loadMs": 510.30000000447035,
+      "readyMs": 628.6000000014901,
       "errors": []
     },
     {
       "device": "mobile",
       "sample": 2,
       "kind": "saved",
-      "loadMs": 786.5,
-      "readyMs": 999.6000000014901,
+      "loadMs": 871.5,
+      "readyMs": 990,
       "errors": []
     },
     {
       "device": "mobile",
       "sample": 2,
       "kind": "shared",
-      "loadMs": 907.1000000014901,
-      "readyMs": 1092.7999999970198,
+      "loadMs": 828.3000000044703,
+      "readyMs": 960.7000000029802,
       "errors": []
     },
     {
       "device": "mobile",
       "sample": 3,
       "kind": "saved",
-      "loadMs": 1186.8000000044703,
-      "readyMs": 1354.6000000014901,
+      "loadMs": 598.1000000014901,
+      "readyMs": 833,
       "errors": []
     },
     {
       "device": "mobile",
       "sample": 3,
       "kind": "shared",
-      "loadMs": 754.1999999955297,
-      "readyMs": 996.1999999955297,
+      "loadMs": 627.6999999955297,
+      "readyMs": 800.1999999955297,
       "errors": []
     }
   ]

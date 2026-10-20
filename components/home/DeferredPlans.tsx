@@ -9,8 +9,8 @@ export function DeferredPlans() {
   useEffect(() => {
     if (!host.current) return;
     if (!("IntersectionObserver" in window)) {
-      const frame=requestAnimationFrame(()=>setVisible(true));
-      return ()=>cancelAnimationFrame(frame);
+      const frame = requestAnimationFrame(() => setVisible(true));
+      return () => cancelAnimationFrame(frame);
     }
     const observer = new IntersectionObserver(
       (entries) => {
@@ -19,7 +19,7 @@ export function DeferredPlans() {
           observer.disconnect();
         }
       },
-      { rootMargin: "600px" },
+      { rootMargin: "160px" },
     );
     observer.observe(host.current);
     return () => observer.disconnect();
@@ -97,4 +97,3 @@ function Placeholder() {
     </section>
   );
 }
-

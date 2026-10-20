@@ -146,27 +146,7 @@ export function EvaluationDashboard({
           rationale.
         </p>
         {run.results.map((r) => (
-          <details key={r.id}>
-            <summary>
-              {r.passed ? "✓" : "✕"} {r.id} · {r.latencyMs.toFixed(1)} ms ·{" "}
-              {r.tokensIn + r.tokensOut} tokens
-            </summary>
-            <ul>
-              {Object.entries(r.checks).map(([key, c]) => (
-                <li key={key}>
-                  {c.passed ? "Pass" : "Fail"} — {key}: {c.rationale}
-                </li>
-              ))}
-            </ul>
-            {r.error && <p>{r.error}</p>}
-            {r.judge && (
-              <p>
-                Judge: {r.judge.first.rationale} · Repeat:{" "}
-                {r.judge.second.rationale}
-              </p>
-            )}
-            <CaseEvidence result={r} />
-          </details>
+          <CaseResultRow key={r.id} r={r} />
         ))}
       </section>
       <section className="panel">
@@ -224,6 +204,37 @@ function CaseEvidence({ result }: { result: Run["results"][number] }) {
         >
           {JSON.stringify(evidence, null, 2)}
         </pre>
+      )}
+    </details>
+  );
+}
+
+function CaseResultRow({ r }: { r: Run["results"][number] }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <details onToggle={(event) => setOpen(event.currentTarget.open)}>
+      <summary>
+        {r.passed ? "✓" : "✕"} {r.id} · {r.latencyMs.toFixed(1)} ms ·{" "}
+        {r.tokensIn + r.tokensOut} tokens
+      </summary>
+      {open && (
+        <>
+          <ul>
+            {Object.entries(r.checks).map(([key, c]) => (
+              <li key={key}>
+                {c.passed ? "Pass" : "Fail"} — {key}: {c.rationale}
+              </li>
+            ))}
+          </ul>
+          {r.error && <p>{r.error}</p>}
+          {r.judge && (
+            <p>
+              Judge: {r.judge.first.rationale} · Repeat:{" "}
+              {r.judge.second.rationale}
+            </p>
+          )}
+          <CaseEvidence result={r} />
+        </>
       )}
     </details>
   );

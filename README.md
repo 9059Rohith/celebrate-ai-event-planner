@@ -102,3 +102,9 @@ Page shells now render on Edge to remove Node startup from their request path wh
 The shared page uses a stable server snapshot inside its Suspense boundary and reads the URL fragment after hydration through `useSyncExternalStore`. It subscribes to hash changes, preserving read-only behavior when switching shared links. Experimental CSS inlining was removed.
 
 Final verification:97 unit/API/integration tests and16 desktop/mobile browser tests passed. Across68 live fresh-context navigations there were no recorded hydration warnings; all32 shared-page loads were under2 seconds (maximum1.227s; populated shared-page heading readiness maximum1.462s). Two broader navigation samples exceeded2 seconds: home2.065s and evaluations5.855s. The evaluation outlier had0.710s DNS,0.334s connection setup,0.066s HTML request wait and up to4.479s static-resource download. The strict all-app2-second criterion was not achieved in this run. No samples were excluded; see `reports/full-load-summary.json`.
+
+## Home and evaluation performance follow-up
+
+Restored default metadata streaming instead of treating every browser as an HTML-limited bot. Evaluation case bodies render on expansion; all case summaries and evidence remain available. The home collection import starts within160px of the viewport instead of600px.
+
+Latest deployment measurement:65/68 full-page loads under2s, no hydration warnings. Median and p95 values are in `reports/full-load-summary.json`. All six evaluation-page loads were under2s (maximum1.278s); five of six home loads were below2s. The5.373s first home load spent2.975s before HTTP request start, then59ms waiting for its HTML response. Two additional shared stress-test loads took3.459s and2.609s, with HTML response waits47ms and84ms. The strict all-loads target was not achieved; no slower samples were discarded.97 unit/API/integration and16 browser tests passed.

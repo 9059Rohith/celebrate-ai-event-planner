@@ -189,7 +189,9 @@ test("evaluation evidence loads only when opened", async ({ page }) => {
     page.getByRole("heading", { name: "A planner you can put to the test." }),
   ).toBeVisible();
   expect(requests).toHaveLength(0);
+  await expect(page.locator("main details li")).toHaveCount(0);
   await page.locator("main details > summary").first().click();
+  await expect(page.locator("main details li").first()).toBeVisible();
   await page.getByText("Input / output JSON", { exact: true }).first().click();
   await expect(page.locator("main pre").first()).toContainText("guestCount");
   expect(requests).toHaveLength(1);

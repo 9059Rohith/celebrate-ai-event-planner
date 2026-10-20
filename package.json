@@ -16,7 +16,8 @@
     "format": "prettier --write app components lib evals tests scripts *.ts *.mjs *.json",
     "format:check": "prettier --check app components lib evals tests scripts *.ts *.mjs *.json",
     "postbuild": "node scripts/precache.mjs",
-    "prebuild": "node scripts/eval-snapshots.mjs"
+    "prebuild": "node scripts/eval-snapshots.mjs",
+    "deploy:production": "vercel deploy --prod --yes --scope rohiths-projects-5e14931b && node scripts/warm-deployment.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "5.2.2",

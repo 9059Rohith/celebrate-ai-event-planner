@@ -4,9 +4,12 @@ import LZString from "lz-string";
 const plan = JSON.parse(
   readFileSync("public/evals/cases/wedding-single-day.json", "utf8"),
 ).output;
+const phase = process.env.PERF_PHASE || "after";
 const base =
   process.env.HYDRATION_URL || "https://celebrate-ai-event-planner.vercel.app";
-const browser = await chromium.launch();
+const browser = await chromium.launch({
+  channel: process.env.BROWSER_CHANNEL || undefined,
+});
 const results = [];
 try {
   for (let i = 0; i < 20; i++) {
@@ -75,6 +78,20 @@ try {
           performance.getEntriesByType("navigation")[0].responseStart -
           performance.getEntriesByType("navigation")[0].requestStart,
         readyMs: performance.now(),
+        requestStartMs:
+          performance.getEntriesByType("navigation")[0].requestStart,
+        responseEndMs:
+          performance.getEntriesByType("navigation")[0].responseEnd,
+        resources: performance
+          .getEntriesByType("resource")
+          .map((r) => ({
+            url: r.name,
+            start: r.startTime,
+            end: r.responseEnd,
+            duration: r.duration,
+          }))
+          .sort((a, b) => b.duration - a.duration)
+          .slice(0, 5),
       }));
       const row = {
         sample: i + 1,
@@ -98,10 +115,12 @@ try {
       await context.close();
     }
     writeFileSync(
-      "reports/shared-hydration-after.json",
+      `reports/shared-hydration-${phase}.json`,
       JSON.stringify(
         {
           url: base,
+          browserChannel: process.env.BROWSER_CHANNEL || "bundled-chromium",
+          browserVersion: await browser.version(),
           method:
             "20 fresh-cache contexts, ten desktop/ten emulated iPhone13, persisted plans/USD/light and dark themes; actual navigation-load and heading-ready events, unthrottled network.",
           results,
@@ -114,4 +133,14 @@ try {
 } finally {
   await browser.close();
 }
-if (results.some((r) => r.error || r.errors.length)) process.exitCode = 1;
+if (
+  results.some(
+    (r) =>
+      r.error ||
+      r.errors.length ||
+      !Number.isFinite(r.loadMs) ||
+      r.loadMs >= 2000 ||
+      r.readyMs >= 2000,
+  )
+)
+  process.exitCode = 1;

@@ -1,0 +1,1879 @@
+{
+  "url": "https://celebrate-ai-event-planner.vercel.app",
+  "timestamp": "2026-10-20T18:46:17.352Z",
+  "method": "36 actual load-event measurements: fresh context/cache for every route, three samples on desktop and emulated iPhone13, default unthrottled network. No warmup or failing-sample exclusion.",
+  "results": [
+    {
+      "device": "desktop",
+      "sample": 1,
+      "path": "/",
+      "status": 200,
+      "server": "bom1::bom1::96tx2-1792521934916-9dba82503501",
+      "loadMs": 12931.60000000149,
+      "domMs": 10654.10000000149,
+      "ttfbMs": 3055.10000000149,
+      "dnsMs": 122.29999999701977,
+      "connectMs": 118.60000000149012,
+      "requestWaitMs": 55.5,
+      "requestStartMs": 2999.60000000149,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/home-icons.svg#ArrowUpRight",
+          "duration": 2272,
+          "start": 10624.39999999851,
+          "end": 12896.39999999851,
+          "transfer": 1072
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/1255-60d8dc7c8c9309a1.js",
+          "duration": 1694.1000000014901,
+          "start": 8988.39999999851,
+          "end": 10682.5,
+          "transfer": 46761
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/4bd1b696-100b9d70ed4e49c1.js",
+          "duration": 1684.1000000014901,
+          "start": 8987.69999999553,
+          "end": 10671.79999999702,
+          "transfer": 55914
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/webpack-b0e48c1ae15c0874.js",
+          "duration": 1528.2000000029802,
+          "start": 8987.39999999851,
+          "end": 10515.60000000149,
+          "transfer": 3339
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/css/7afbfbe1603f176f.css",
+          "duration": 1518.1000000014901,
+          "start": 8983.79999999702,
+          "end": 10501.89999999851,
+          "transfer": 5026
+        }
+      ],
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "sample": 1,
+      "path": "/plan/new",
+      "status": 200,
+      "server": "bom1::bom1::5tvxj-1792521945113-8901db32cbf5",
+      "loadMs": 1193.9000000059605,
+      "domMs": 944.9000000059605,
+      "ttfbMs": 155.70000000298023,
+      "dnsMs": 0.8999999985098839,
+      "connectMs": 104.69999999552965,
+      "requestWaitMs": 45.899999998509884,
+      "requestStartMs": 109.80000000447035,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/plan/new/page-83c3b691d26b8992.js",
+          "duration": 651,
+          "start": 506.1000000014901,
+          "end": 1157.1000000014901,
+          "transfer": 6040
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/1635-1a27284a95e2350c.js",
+          "duration": 531.7000000029802,
+          "start": 506,
+          "end": 1037.7000000029802,
+          "transfer": 4440
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/4721-30e839162cd6c9c4.js",
+          "duration": 496.69999999552965,
+          "start": 505.90000000596046,
+          "end": 1002.6000000014901,
+          "transfer": 10525
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/error-5fe1ad3aec7b7670.js",
+          "duration": 426.69999999552965,
+          "start": 506.40000000596046,
+          "end": 933.1000000014901,
+          "transfer": 884
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/layout-290f38c6256348b8.js",
+          "duration": 423.79999999701977,
+          "start": 506.40000000596046,
+          "end": 930.2000000029802,
+          "transfer": 1934
+        }
+      ],
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "sample": 1,
+      "path": "/evals",
+      "status": 200,
+      "server": "bom1::bom1::k9qkr-1792521946412-9fa687c96faf",
+      "loadMs": 1046,
+      "domMs": 1034.5,
+      "ttfbMs": 135.29999999701977,
+      "dnsMs": 0.7999999970197678,
+      "connectMs": 90.60000000149012,
+      "requestWaitMs": 36.29999999701977,
+      "requestStartMs": 99,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/evals/page-6cde627deafe50c7.js",
+          "duration": 433.30000000447035,
+          "start": 523.2999999970198,
+          "end": 956.6000000014901,
+          "transfer": 3272
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/css/d2663c0638bcb85f.css",
+          "duration": 321.6000000014901,
+          "start": 522.8999999985099,
+          "end": 844.5,
+          "transfer": 2822
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/layout-290f38c6256348b8.js",
+          "duration": 231.39999999850988,
+          "start": 523.5,
+          "end": 754.8999999985099,
+          "transfer": 1934
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/error-5fe1ad3aec7b7670.js",
+          "duration": 231.10000000149012,
+          "start": 523.5,
+          "end": 754.6000000014901,
+          "transfer": 884
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/3545-89e462f936f8ff0c.js",
+          "duration": 188.89999999850988,
+          "start": 523.5,
+          "end": 712.3999999985099,
+          "transfer": 5444
+        }
+      ],
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "sample": 1,
+      "path": "/privacy",
+      "status": 200,
+      "server": "bom1::bom1::hp2rv-1792521947602-c10b080521ab",
+      "loadMs": 848.5,
+      "domMs": 550.4000000059605,
+      "ttfbMs": 151,
+      "dnsMs": 1.1000000014901161,
+      "connectMs": 100.29999999701977,
+      "requestWaitMs": 46.5,
+      "requestStartMs": 104.5,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/privacy/page-4ad02e7cc2b290be.js",
+          "duration": 359.40000000596046,
+          "start": 479.5,
+          "end": 838.9000000059605,
+          "transfer": 496
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/layout-290f38c6256348b8.js",
+          "duration": 162.29999999701977,
+          "start": 479.80000000447035,
+          "end": 642.1000000014901,
+          "transfer": 1934
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/error-5fe1ad3aec7b7670.js",
+          "duration": 161.39999999850988,
+          "start": 479.90000000596046,
+          "end": 641.3000000044703,
+          "transfer": 884
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/3545-89e462f936f8ff0c.js",
+          "duration": 160.20000000298023,
+          "start": 479.6000000014901,
+          "end": 639.8000000044703,
+          "transfer": 5444
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/global-error-eeb8d44fcbd5542a.js",
+          "duration": 156.60000000149012,
+          "start": 479.6000000014901,
+          "end": 636.2000000029802,
+          "transfer": 847
+        }
+      ],
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "sample": 1,
+      "path": "/offline",
+      "status": 200,
+      "server": "bom1::bom1::mjkvs-1792521948608-af7a5f68b582",
+      "loadMs": 915.8000000044703,
+      "domMs": 728.1000000014901,
+      "ttfbMs": 171.80000000447035,
+      "dnsMs": 0.8000000044703484,
+      "connectMs": 132.39999999850988,
+      "requestWaitMs": 35.70000000298023,
+      "requestStartMs": 136.10000000149012,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/offline/page-b8761540a91291d8.js",
+          "duration": 315.29999999701977,
+          "start": 566.3000000044703,
+          "end": 881.6000000014901,
+          "transfer": 2232
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/error-5fe1ad3aec7b7670.js",
+          "duration": 239.30000000447035,
+          "start": 566.5,
+          "end": 805.8000000044703,
+          "transfer": 884
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/1157-4f0394f9de0850e3.js",
+          "duration": 238.89999999850988,
+          "start": 566.1000000014901,
+          "end": 805,
+          "transfer": 28292
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/layout-290f38c6256348b8.js",
+          "duration": 238.70000000298023,
+          "start": 566.5,
+          "end": 805.2000000029802,
+          "transfer": 1934
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/3545-89e462f936f8ff0c.js",
+          "duration": 237.09999999403954,
+          "start": 566.4000000059605,
+          "end": 803.5,
+          "transfer": 5444
+        }
+      ],
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "sample": 1,
+      "path": "/shared",
+      "status": 200,
+      "server": "bom1::bom1::vr9nk-1792521949763-d9fd640dc0c4",
+      "loadMs": 1031.8999999985099,
+      "domMs": 782.2999999970198,
+      "ttfbMs": 345.8999999985099,
+      "dnsMs": 1.2999999970197678,
+      "connectMs": 242.39999999850988,
+      "requestWaitMs": 99,
+      "requestStartMs": 246.89999999850988,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/shared/page-b19449319ed8b92a.js",
+          "duration": 347.6000000014901,
+          "start": 649.1999999955297,
+          "end": 996.7999999970198,
+          "transfer": 1275
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/8970-d76763e89072b45e.js",
+          "duration": 320.59999999403954,
+          "start": 649.1000000014901,
+          "end": 969.6999999955297,
+          "transfer": 2861
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/575-aa6909080de73d84.js",
+          "duration": 319.30000000447035,
+          "start": 649.1999999955297,
+          "end": 968.5,
+          "transfer": 6128
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/global-error-eeb8d44fcbd5542a.js",
+          "duration": 236.60000000149012,
+          "start": 649.2999999970198,
+          "end": 885.8999999985099,
+          "transfer": 847
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/layout-290f38c6256348b8.js",
+          "duration": 236.10000000149012,
+          "start": 649.3999999985099,
+          "end": 885.5,
+          "transfer": 1934
+        }
+      ],
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "sample": 2,
+      "path": "/",
+      "status": 200,
+      "server": "bom1::bom1::f7dhb-1792521950789-a8946e9f419f",
+      "loadMs": 589.0999999940395,
+      "domMs": 481.69999999552965,
+      "ttfbMs": 154.59999999403954,
+      "dnsMs": 1.1000000014901161,
+      "connectMs": 102.30000000447035,
+      "requestWaitMs": 48.899999998509884,
+      "requestStartMs": 105.69999999552965,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/3545-89e462f936f8ff0c.js",
+          "duration": 177.70000000298023,
+          "start": 352.79999999701977,
+          "end": 530.5,
+          "transfer": 5444
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/1255-60d8dc7c8c9309a1.js",
+          "duration": 174,
+          "start": 352.09999999403954,
+          "end": 526.0999999940395,
+          "transfer": 46761
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/4bd1b696-100b9d70ed4e49c1.js",
+          "duration": 137,
+          "start": 352,
+          "end": 489,
+          "transfer": 55914
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/2619-04bc32f026a0d946.js",
+          "duration": 95.20000000298023,
+          "start": 352.59999999403954,
+          "end": 447.79999999701977,
+          "transfer": 3847
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/page-97ee520f1015add3.js",
+          "duration": 78.60000000149012,
+          "start": 352.69999999552965,
+          "end": 431.29999999701977,
+          "transfer": 3583
+        }
+      ],
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "sample": 2,
+      "path": "/plan/new",
+      "status": 200,
+      "server": "bom1::bom1::9p6ws-1792521951494-61369ae889ef",
+      "loadMs": 807.1000000014901,
+      "domMs": 692.7000000029802,
+      "ttfbMs": 115.90000000596046,
+      "dnsMs": 1.3999999985098839,
+      "connectMs": 77.29999999701977,
+      "requestWaitMs": 34.30000000447035,
+      "requestStartMs": 81.60000000149012,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/global-error-eeb8d44fcbd5542a.js",
+          "duration": 336.69999999552965,
+          "start": 396.80000000447035,
+          "end": 733.5,
+          "transfer": 847
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/3545-89e462f936f8ff0c.js",
+          "duration": 336.19999999552965,
+          "start": 396.90000000596046,
+          "end": 733.1000000014901,
+          "transfer": 5444
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/2619-04bc32f026a0d946.js",
+          "duration": 330.3999999985099,
+          "start": 396.90000000596046,
+          "end": 727.3000000044703,
+          "transfer": 3847
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/error-5fe1ad3aec7b7670.js",
+          "duration": 327.1000000014901,
+          "start": 397.1000000014901,
+          "end": 724.2000000029802,
+          "transfer": 884
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/layout-290f38c6256348b8.js",
+          "duration": 326.5,
+          "start": 397,
+          "end": 723.5,
+          "transfer": 1934
+        }
+      ],
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "sample": 2,
+      "path": "/evals",
+      "status": 200,
+      "server": "bom1::bom1::j9p7n-1792521952526-e832e4ce3a0e",
+      "loadMs": 779.7999999970198,
+      "domMs": 713.8999999985099,
+      "ttfbMs": 284.3999999985099,
+      "dnsMs": 0.7999999970197678,
+      "connectMs": 166.40000000596046,
+      "requestWaitMs": 114.20000000298023,
+      "requestStartMs": 170.19999999552965,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/1255-60d8dc7c8c9309a1.js",
+          "duration": 172.19999999552965,
+          "start": 389.1000000014901,
+          "end": 561.2999999970198,
+          "transfer": 46761
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/css/7afbfbe1603f176f.css",
+          "duration": 171.60000000149012,
+          "start": 388.69999999552965,
+          "end": 560.2999999970198,
+          "transfer": 5026
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/global-error-eeb8d44fcbd5542a.js",
+          "duration": 114.89999999850988,
+          "start": 389.29999999701977,
+          "end": 504.19999999552965,
+          "transfer": 847
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/css/d2663c0638bcb85f.css",
+          "duration": 114.60000000149012,
+          "start": 388.8999999985099,
+          "end": 503.5,
+          "transfer": 2822
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/main-app-7cd0e87450e50109.js",
+          "duration": 111.89999999850988,
+          "start": 389.1000000014901,
+          "end": 501,
+          "transfer": 1096
+        }
+      ],
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "sample": 2,
+      "path": "/privacy",
+      "status": 200,
+      "server": "bom1::bom1::qgf6l-1792521953432-e871910f9c8f",
+      "loadMs": 979.6000000014901,
+      "domMs": 602.2000000029802,
+      "ttfbMs": 225.39999999850988,
+      "dnsMs": 1.2000000029802322,
+      "connectMs": 144.20000000298023,
+      "requestWaitMs": 76.5,
+      "requestStartMs": 148.89999999850988,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/main-app-7cd0e87450e50109.js",
+          "duration": 535,
+          "start": 387.3999999985099,
+          "end": 922.3999999985099,
+          "transfer": 1096
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/css/7afbfbe1603f176f.css",
+          "duration": 159.79999999701977,
+          "start": 386.5,
+          "end": 546.2999999970198,
+          "transfer": 5026
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/global-error-eeb8d44fcbd5542a.js",
+          "duration": 154.39999999850988,
+          "start": 387.70000000298023,
+          "end": 542.1000000014901,
+          "transfer": 847
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/error-5fe1ad3aec7b7670.js",
+          "duration": 152.70000000298023,
+          "start": 388,
+          "end": 540.7000000029802,
+          "transfer": 884
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/3545-89e462f936f8ff0c.js",
+          "duration": 149.5,
+          "start": 387.79999999701977,
+          "end": 537.2999999970198,
+          "transfer": 5444
+        }
+      ],
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "sample": 2,
+      "path": "/offline",
+      "status": 200,
+      "server": "bom1::bom1::5tvxj-1792521954516-7ba0c8f849f6",
+      "loadMs": 670.6999999955297,
+      "domMs": 670.5,
+      "ttfbMs": 156,
+      "dnsMs": 1.6999999955296516,
+      "connectMs": 102.60000000149012,
+      "requestWaitMs": 47.600000001490116,
+      "requestStartMs": 108.39999999850988,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/css/7afbfbe1603f176f.css",
+          "duration": 208.79999999701977,
+          "start": 330.6000000014901,
+          "end": 539.3999999985099,
+          "transfer": 5026
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/layout-290f38c6256348b8.js",
+          "duration": 195.89999999850988,
+          "start": 331.6000000014901,
+          "end": 527.5,
+          "transfer": 1934
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/error-5fe1ad3aec7b7670.js",
+          "duration": 195.20000000298023,
+          "start": 331.69999999552965,
+          "end": 526.8999999985099,
+          "transfer": 884
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/main-app-7cd0e87450e50109.js",
+          "duration": 195,
+          "start": 331.19999999552965,
+          "end": 526.1999999955297,
+          "transfer": 1096
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/3545-89e462f936f8ff0c.js",
+          "duration": 189.59999999403954,
+          "start": 331.6000000014901,
+          "end": 521.1999999955297,
+          "transfer": 5444
+        }
+      ],
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "sample": 2,
+      "path": "/shared",
+      "status": 200,
+      "server": "bom1::bom1::s7dlt-1792521955342-b47fe1e70967",
+      "loadMs": 648.7000000029802,
+      "domMs": 399.30000000447035,
+      "ttfbMs": 163,
+      "dnsMs": 0.7000000029802322,
+      "connectMs": 124.5,
+      "requestWaitMs": 34.899999998509884,
+      "requestStartMs": 128.10000000149012,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/layout-290f38c6256348b8.js",
+          "duration": 206.80000000447035,
+          "start": 333.6000000014901,
+          "end": 540.4000000059605,
+          "transfer": 1934
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/3545-89e462f936f8ff0c.js",
+          "duration": 205.29999999701977,
+          "start": 333.40000000596046,
+          "end": 538.7000000029802,
+          "transfer": 5444
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/error-5fe1ad3aec7b7670.js",
+          "duration": 202.09999999403954,
+          "start": 333.90000000596046,
+          "end": 536,
+          "transfer": 884
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/575-aa6909080de73d84.js",
+          "duration": 200.10000000149012,
+          "start": 333,
+          "end": 533.1000000014901,
+          "transfer": 6128
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/shared/page-b19449319ed8b92a.js",
+          "duration": 193.39999999850988,
+          "start": 333.1000000014901,
+          "end": 526.5,
+          "transfer": 1275
+        }
+      ],
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "sample": 3,
+      "path": "/",
+      "status": 200,
+      "server": "bom1::bom1::5slls-1792521956108-f6f0a1220139",
+      "loadMs": 752.7000000029802,
+      "domMs": 644.7999999970198,
+      "ttfbMs": 181.89999999850988,
+      "dnsMs": 0.9000000059604645,
+      "connectMs": 111.79999999701977,
+      "requestWaitMs": 66.69999999552965,
+      "requestStartMs": 115.20000000298023,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/1255-60d8dc7c8c9309a1.js",
+          "duration": 192.09999999403954,
+          "start": 380.20000000298023,
+          "end": 572.2999999970198,
+          "transfer": 46761
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/3545-89e462f936f8ff0c.js",
+          "duration": 188.79999999701977,
+          "start": 380.6000000014901,
+          "end": 569.3999999985099,
+          "transfer": 5444
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/4bd1b696-100b9d70ed4e49c1.js",
+          "duration": 186.5,
+          "start": 380.1000000014901,
+          "end": 566.6000000014901,
+          "transfer": 55914
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/page-97ee520f1015add3.js",
+          "duration": 138.79999999701977,
+          "start": 380.6000000014901,
+          "end": 519.3999999985099,
+          "transfer": 3583
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/layout-290f38c6256348b8.js",
+          "duration": 127.79999999701977,
+          "start": 380.70000000298023,
+          "end": 508.5,
+          "transfer": 1934
+        }
+      ],
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "sample": 3,
+      "path": "/plan/new",
+      "status": 200,
+      "server": "bom1::bom1::vzsrl-1792521957096-d61269637b1a",
+      "loadMs": 644.1000000014901,
+      "domMs": 513.5,
+      "ttfbMs": 150.79999999701977,
+      "dnsMs": 1.8999999985098839,
+      "connectMs": 98.29999999701977,
+      "requestWaitMs": 42.69999999552965,
+      "requestStartMs": 108.10000000149012,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/1635-1a27284a95e2350c.js",
+          "duration": 235.20000000298023,
+          "start": 317.79999999701977,
+          "end": 553,
+          "transfer": 4440
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/global-error-eeb8d44fcbd5542a.js",
+          "duration": 234.39999999850988,
+          "start": 317.8999999985099,
+          "end": 552.2999999970198,
+          "transfer": 847
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/plan/new/page-83c3b691d26b8992.js",
+          "duration": 234.10000000149012,
+          "start": 317.79999999701977,
+          "end": 551.8999999985099,
+          "transfer": 6040
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/3545-89e462f936f8ff0c.js",
+          "duration": 233.20000000298023,
+          "start": 318,
+          "end": 551.2000000029802,
+          "transfer": 5444
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/layout-290f38c6256348b8.js",
+          "duration": 232.60000000149012,
+          "start": 318.1000000014901,
+          "end": 550.7000000029802,
+          "transfer": 1934
+        }
+      ],
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "sample": 3,
+      "path": "/evals",
+      "status": 200,
+      "server": "bom1::bom1::9jbfs-1792521957883-1329a2e6b14d",
+      "loadMs": 754.7000000029802,
+      "domMs": 589,
+      "ttfbMs": 170.20000000298023,
+      "dnsMs": 0.8999999985098839,
+      "connectMs": 94.89999999850988,
+      "requestWaitMs": 71,
+      "requestStartMs": 99.20000000298023,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/1255-60d8dc7c8c9309a1.js",
+          "duration": 360.8999999985099,
+          "start": 323.6000000014901,
+          "end": 684.5,
+          "transfer": 46761
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/2619-04bc32f026a0d946.js",
+          "duration": 299.80000000447035,
+          "start": 324,
+          "end": 623.8000000044703,
+          "transfer": 3847
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/4bd1b696-100b9d70ed4e49c1.js",
+          "duration": 298.79999999701977,
+          "start": 323.6000000014901,
+          "end": 622.3999999985099,
+          "transfer": 55914
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/css/7afbfbe1603f176f.css",
+          "duration": 170.89999999850988,
+          "start": 323,
+          "end": 493.8999999985099,
+          "transfer": 5026
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/error-5fe1ad3aec7b7670.js",
+          "duration": 170.19999999552965,
+          "start": 324.20000000298023,
+          "end": 494.3999999985099,
+          "transfer": 884
+        }
+      ],
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "sample": 3,
+      "path": "/privacy",
+      "status": 200,
+      "server": "bom1::bom1::qgf6l-1792521958877-9e5a4787d09e",
+      "loadMs": 585.8999999985099,
+      "domMs": 467.3999999985099,
+      "ttfbMs": 182.39999999850988,
+      "dnsMs": 0.8999999985098839,
+      "connectMs": 102.89999999850988,
+      "requestWaitMs": 75.89999999850988,
+      "requestStartMs": 106.5,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/2619-04bc32f026a0d946.js",
+          "duration": 209.89999999850988,
+          "start": 306.79999999701977,
+          "end": 516.6999999955297,
+          "transfer": 3847
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/error-5fe1ad3aec7b7670.js",
+          "duration": 209.79999999701977,
+          "start": 307.3999999985099,
+          "end": 517.1999999955297,
+          "transfer": 884
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/3545-89e462f936f8ff0c.js",
+          "duration": 208.89999999850988,
+          "start": 307.19999999552965,
+          "end": 516.0999999940395,
+          "transfer": 5444
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/main-app-7cd0e87450e50109.js",
+          "duration": 208.29999999701977,
+          "start": 306.5,
+          "end": 514.7999999970198,
+          "transfer": 1096
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/layout-290f38c6256348b8.js",
+          "duration": 208,
+          "start": 307.3999999985099,
+          "end": 515.3999999985099,
+          "transfer": 1934
+        }
+      ],
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "sample": 3,
+      "path": "/offline",
+      "status": 200,
+      "server": "bom1::bom1::5wqkc-1792521959676-8a216fbdc7a0",
+      "loadMs": 740.2999999970198,
+      "domMs": 503.1000000014901,
+      "ttfbMs": 215.60000000149012,
+      "dnsMs": 1.1999999955296516,
+      "connectMs": 165.40000000596046,
+      "requestWaitMs": 46.20000000298023,
+      "requestStartMs": 169.39999999850988,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/main-app-7cd0e87450e50109.js",
+          "duration": 257.70000000298023,
+          "start": 376.8999999985099,
+          "end": 634.6000000014901,
+          "transfer": 1096
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/3545-89e462f936f8ff0c.js",
+          "duration": 256.3999999985099,
+          "start": 377.29999999701977,
+          "end": 633.6999999955297,
+          "transfer": 5444
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/error-5fe1ad3aec7b7670.js",
+          "duration": 227.89999999850988,
+          "start": 377.3999999985099,
+          "end": 605.2999999970198,
+          "transfer": 884
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/layout-290f38c6256348b8.js",
+          "duration": 227.5,
+          "start": 377.29999999701977,
+          "end": 604.7999999970198,
+          "transfer": 1934
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/2619-04bc32f026a0d946.js",
+          "duration": 227.10000000149012,
+          "start": 377,
+          "end": 604.1000000014901,
+          "transfer": 3847
+        }
+      ],
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "sample": 3,
+      "path": "/shared",
+      "status": 200,
+      "server": "bom1::bom1::5slls-1792521960521-bebaef68d481",
+      "loadMs": 797.3999999985099,
+      "domMs": 496.19999999552965,
+      "ttfbMs": 141.60000000149012,
+      "dnsMs": 1.1000000014901161,
+      "connectMs": 86.60000000149012,
+      "requestWaitMs": 44,
+      "requestStartMs": 97.60000000149012,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/2561-82c1b4350c06db72.js",
+          "duration": 336.69999999552965,
+          "start": 375.6000000014901,
+          "end": 712.2999999970198,
+          "transfer": 4845
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/shared/page-b19449319ed8b92a.js",
+          "duration": 334.20000000298023,
+          "start": 375.8999999985099,
+          "end": 710.1000000014901,
+          "transfer": 1275
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/575-aa6909080de73d84.js",
+          "duration": 333.3999999985099,
+          "start": 375.79999999701977,
+          "end": 709.1999999955297,
+          "transfer": 6128
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/layout-290f38c6256348b8.js",
+          "duration": 326.8999999985099,
+          "start": 376.1000000014901,
+          "end": 703,
+          "transfer": 1934
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/1635-1a27284a95e2350c.js",
+          "duration": 325.80000000447035,
+          "start": 375.79999999701977,
+          "end": 701.6000000014901,
+          "transfer": 4440
+        }
+      ],
+      "errors": []
+    },
+    {
+      "device": "mobile",
+      "sample": 1,
+      "path": "/",
+      "status": 200,
+      "server": "bom1::bom1::kf4hf-1792521961504-e2e3e016a44d",
+      "loadMs": 1382.4000000059605,
+      "domMs": 1380.1000000014901,
+      "ttfbMs": 319.70000000298023,
+      "dnsMs": 1.1000000014901161,
+      "connectMs": 146.70000000298023,
+      "requestWaitMs": 169.20000000298023,
+      "requestStartMs": 150.5,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/css/7afbfbe1603f176f.css",
+          "duration": 664.2999999970198,
+          "start": 479.90000000596046,
+          "end": 1144.2000000029802,
+          "transfer": 5026
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/error-5fe1ad3aec7b7670.js",
+          "duration": 662.5,
+          "start": 482.6000000014901,
+          "end": 1145.1000000014901,
+          "transfer": 884
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/page-97ee520f1015add3.js",
+          "duration": 639.2999999970198,
+          "start": 481.70000000298023,
+          "end": 1121,
+          "transfer": 3583
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/4bd1b696-100b9d70ed4e49c1.js",
+          "duration": 631.8000000044703,
+          "start": 481,
+          "end": 1112.8000000044703,
+          "transfer": 55914
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/layout-290f38c6256348b8.js",
+          "duration": 489.6000000014901,
+          "start": 482.5,
+          "end": 972.1000000014901,
+          "transfer": 1934
+        }
+      ],
+      "errors": []
+    },
+    {
+      "device": "mobile",
+      "sample": 1,
+      "path": "/plan/new",
+      "status": 200,
+      "server": "bom1::bom1::qxx8r-1792521963072-4e328a509068",
+      "loadMs": 783.7000000029802,
+      "domMs": 641.3000000044703,
+      "ttfbMs": 286.20000000298023,
+      "dnsMs": 1.8999999985098839,
+      "connectMs": 182.90000000596046,
+      "requestWaitMs": 95.60000000149012,
+      "requestStartMs": 190.60000000149012,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/3545-89e462f936f8ff0c.js",
+          "duration": 264.80000000447035,
+          "start": 475.1000000014901,
+          "end": 739.9000000059605,
+          "transfer": 5444
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/2619-04bc32f026a0d946.js",
+          "duration": 262.1000000014901,
+          "start": 475.1000000014901,
+          "end": 737.2000000029802,
+          "transfer": 3847
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/layout-290f38c6256348b8.js",
+          "duration": 261.30000000447035,
+          "start": 475.1000000014901,
+          "end": 736.4000000059605,
+          "transfer": 1934
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/error-5fe1ad3aec7b7670.js",
+          "duration": 260.3999999985099,
+          "start": 475.20000000298023,
+          "end": 735.6000000014901,
+          "transfer": 884
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/plan/new/page-83c3b691d26b8992.js",
+          "duration": 260.09999999403954,
+          "start": 474.90000000596046,
+          "end": 735,
+          "transfer": 6040
+        }
+      ],
+      "errors": []
+    },
+    {
+      "device": "mobile",
+      "sample": 1,
+      "path": "/evals",
+      "status": 200,
+      "server": "bom1::bom1::9p6ws-1792521963930-9878b7404595",
+      "loadMs": 871.6999999955297,
+      "domMs": 871.5,
+      "ttfbMs": 159.5,
+      "dnsMs": 1,
+      "connectMs": 107.89999999850988,
+      "requestWaitMs": 39.899999998509884,
+      "requestStartMs": 119.60000000149012,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/error-5fe1ad3aec7b7670.js",
+          "duration": 391.3999999985099,
+          "start": 318.3999999985099,
+          "end": 709.7999999970198,
+          "transfer": 884
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/css/d2663c0638bcb85f.css",
+          "duration": 391.1000000014901,
+          "start": 317.69999999552965,
+          "end": 708.7999999970198,
+          "transfer": 2822
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/2619-04bc32f026a0d946.js",
+          "duration": 154.20000000298023,
+          "start": 318.29999999701977,
+          "end": 472.5,
+          "transfer": 3847
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/main-app-7cd0e87450e50109.js",
+          "duration": 150.60000000149012,
+          "start": 318,
+          "end": 468.6000000014901,
+          "transfer": 1096
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/evals/page-6cde627deafe50c7.js",
+          "duration": 150.19999999552965,
+          "start": 318.1000000014901,
+          "end": 468.29999999701977,
+          "transfer": 3272
+        }
+      ],
+      "errors": []
+    },
+    {
+      "device": "mobile",
+      "sample": 1,
+      "path": "/privacy",
+      "status": 200,
+      "server": "bom1::bom1::l59fb-1792521964908-e90100c73b78",
+      "loadMs": 579.3000000044703,
+      "domMs": 504.8999999985099,
+      "ttfbMs": 152.70000000298023,
+      "dnsMs": 0.7000000029802322,
+      "connectMs": 101.39999999850988,
+      "requestWaitMs": 47.70000000298023,
+      "requestStartMs": 105,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/1255-60d8dc7c8c9309a1.js",
+          "duration": 212.19999999552965,
+          "start": 298.80000000447035,
+          "end": 511,
+          "transfer": 46761
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/global-error-eeb8d44fcbd5542a.js",
+          "duration": 211.79999999701977,
+          "start": 299.1000000014901,
+          "end": 510.8999999985099,
+          "transfer": 847
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/2619-04bc32f026a0d946.js",
+          "duration": 211.5,
+          "start": 298.8999999985099,
+          "end": 510.3999999985099,
+          "transfer": 3847
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/3545-89e462f936f8ff0c.js",
+          "duration": 210.59999999403954,
+          "start": 299.30000000447035,
+          "end": 509.8999999985099,
+          "transfer": 5444
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/layout-290f38c6256348b8.js",
+          "duration": 138,
+          "start": 299.30000000447035,
+          "end": 437.30000000447035,
+          "transfer": 1934
+        }
+      ],
+      "errors": []
+    },
+    {
+      "device": "mobile",
+      "sample": 1,
+      "path": "/offline",
+      "status": 200,
+      "server": "bom1::bom1::85gj4-1792521965621-7708a0ac98cd",
+      "loadMs": 679.3999999985099,
+      "domMs": 679.1999999955297,
+      "ttfbMs": 151.09999999403954,
+      "dnsMs": 1.5,
+      "connectMs": 111.5,
+      "requestWaitMs": 35.19999999552965,
+      "requestStartMs": 115.89999999850988,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/1255-60d8dc7c8c9309a1.js",
+          "duration": 248.89999999850988,
+          "start": 318.79999999701977,
+          "end": 567.6999999955297,
+          "transfer": 46761
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/offline/page-b8761540a91291d8.js",
+          "duration": 225.10000000149012,
+          "start": 319.09999999403954,
+          "end": 544.1999999955297,
+          "transfer": 2232
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/1157-4f0394f9de0850e3.js",
+          "duration": 223.79999999701977,
+          "start": 318.8999999985099,
+          "end": 542.6999999955297,
+          "transfer": 28292
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/main-app-7cd0e87450e50109.js",
+          "duration": 223.29999999701977,
+          "start": 318.8999999985099,
+          "end": 542.1999999955297,
+          "transfer": 1096
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/1635-1a27284a95e2350c.js",
+          "duration": 213.30000000447035,
+          "start": 319.09999999403954,
+          "end": 532.3999999985099,
+          "transfer": 4440
+        }
+      ],
+      "errors": []
+    },
+    {
+      "device": "mobile",
+      "sample": 1,
+      "path": "/shared",
+      "status": 200,
+      "server": "bom1::bom1::m7z8m-1792521966475-efea4d109176",
+      "loadMs": 599,
+      "domMs": 357.6000000014901,
+      "ttfbMs": 127.10000000149012,
+      "dnsMs": 1.1999999955296516,
+      "connectMs": 82.60000000149012,
+      "requestWaitMs": 38.899999998509884,
+      "requestStartMs": 88.20000000298023,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/4bd1b696-100b9d70ed4e49c1.js",
+          "duration": 206,
+          "start": 289.3999999985099,
+          "end": 495.3999999985099,
+          "transfer": 55914
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/main-app-7cd0e87450e50109.js",
+          "duration": 166.10000000149012,
+          "start": 289.6000000014901,
+          "end": 455.70000000298023,
+          "transfer": 1096
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/error-5fe1ad3aec7b7670.js",
+          "duration": 164.70000000298023,
+          "start": 290.5,
+          "end": 455.20000000298023,
+          "transfer": 884
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/3545-89e462f936f8ff0c.js",
+          "duration": 164.30000000447035,
+          "start": 290.3999999985099,
+          "end": 454.70000000298023,
+          "transfer": 5444
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/layout-290f38c6256348b8.js",
+          "duration": 163.29999999701977,
+          "start": 290.5,
+          "end": 453.79999999701977,
+          "transfer": 1934
+        }
+      ],
+      "errors": []
+    },
+    {
+      "device": "mobile",
+      "sample": 2,
+      "path": "/",
+      "status": 200,
+      "server": "bom1::bom1::5ljsl-1792521967279-375d2598bde5",
+      "loadMs": 748.8999999985099,
+      "domMs": 648.1000000014901,
+      "ttfbMs": 250.79999999701977,
+      "dnsMs": 0.8000000044703484,
+      "connectMs": 154.10000000149012,
+      "requestWaitMs": 92.79999999701977,
+      "requestStartMs": 158,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/error-5fe1ad3aec7b7670.js",
+          "duration": 281.70000000298023,
+          "start": 384.5,
+          "end": 666.2000000029802,
+          "transfer": 884
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/3545-89e462f936f8ff0c.js",
+          "duration": 281.30000000447035,
+          "start": 384.3999999985099,
+          "end": 665.7000000029802,
+          "transfer": 5444
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/1255-60d8dc7c8c9309a1.js",
+          "duration": 280.70000000298023,
+          "start": 384,
+          "end": 664.7000000029802,
+          "transfer": 46761
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/page-97ee520f1015add3.js",
+          "duration": 279.70000000298023,
+          "start": 384.29999999701977,
+          "end": 664,
+          "transfer": 3583
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/4bd1b696-100b9d70ed4e49c1.js",
+          "duration": 279.6000000014901,
+          "start": 383.8999999985099,
+          "end": 663.5,
+          "transfer": 55914
+        }
+      ],
+      "errors": []
+    },
+    {
+      "device": "mobile",
+      "sample": 2,
+      "path": "/plan/new",
+      "status": 200,
+      "server": "bom1::bom1::96tx2-1792521968191-835daa247146",
+      "loadMs": 653.0999999940395,
+      "domMs": 604.8999999985099,
+      "ttfbMs": 192.59999999403954,
+      "dnsMs": 20,
+      "connectMs": 124.09999999403954,
+      "requestWaitMs": 45.29999999701977,
+      "requestStartMs": 147.29999999701977,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/global-error-eeb8d44fcbd5542a.js",
+          "duration": 217.5,
+          "start": 352.09999999403954,
+          "end": 569.5999999940395,
+          "transfer": 847
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/plan/new/page-83c3b691d26b8992.js",
+          "duration": 216.90000000596046,
+          "start": 352.09999999403954,
+          "end": 569,
+          "transfer": 6040
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/layout-290f38c6256348b8.js",
+          "duration": 216.20000000298023,
+          "start": 352.29999999701977,
+          "end": 568.5,
+          "transfer": 1934
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/error-5fe1ad3aec7b7670.js",
+          "duration": 216,
+          "start": 352.29999999701977,
+          "end": 568.2999999970198,
+          "transfer": 884
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/3545-89e462f936f8ff0c.js",
+          "duration": 214.79999999701977,
+          "start": 352.29999999701977,
+          "end": 567.0999999940395,
+          "transfer": 5444
+        }
+      ],
+      "errors": []
+    },
+    {
+      "device": "mobile",
+      "sample": 2,
+      "path": "/evals",
+      "status": 200,
+      "server": "bom1::bom1::wpvj7-1792521968912-dd6e79fd02cf",
+      "loadMs": 731.6000000014901,
+      "domMs": 731.4000000059605,
+      "ttfbMs": 140.30000000447035,
+      "dnsMs": 1,
+      "connectMs": 91.20000000298023,
+      "requestWaitMs": 45.399999998509884,
+      "requestStartMs": 94.90000000596046,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/3545-89e462f936f8ff0c.js",
+          "duration": 210,
+          "start": 409,
+          "end": 619,
+          "transfer": 5444
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/error-5fe1ad3aec7b7670.js",
+          "duration": 205.70000000298023,
+          "start": 409,
+          "end": 614.7000000029802,
+          "transfer": 884
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/4bd1b696-100b9d70ed4e49c1.js",
+          "duration": 205,
+          "start": 408.6000000014901,
+          "end": 613.6000000014901,
+          "transfer": 55914
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/css/7afbfbe1603f176f.css",
+          "duration": 157.10000000149012,
+          "start": 407.80000000447035,
+          "end": 564.9000000059605,
+          "transfer": 5026
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/layout-290f38c6256348b8.js",
+          "duration": 154.80000000447035,
+          "start": 409,
+          "end": 563.8000000044703,
+          "transfer": 1934
+        }
+      ],
+      "errors": []
+    },
+    {
+      "device": "mobile",
+      "sample": 2,
+      "path": "/privacy",
+      "status": 200,
+      "server": "bom1::bom1::mw2vq-1792521969779-7f012a7cf9f4",
+      "loadMs": 524.6000000014901,
+      "domMs": 428,
+      "ttfbMs": 149.29999999701977,
+      "dnsMs": 14.900000005960464,
+      "connectMs": 83.69999999552965,
+      "requestWaitMs": 48.19999999552965,
+      "requestStartMs": 101.10000000149012,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/4bd1b696-100b9d70ed4e49c1.js",
+          "duration": 173,
+          "start": 284.1000000014901,
+          "end": 457.1000000014901,
+          "transfer": 55914
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/error-5fe1ad3aec7b7670.js",
+          "duration": 171.60000000149012,
+          "start": 284.8999999985099,
+          "end": 456.5,
+          "transfer": 884
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/layout-290f38c6256348b8.js",
+          "duration": 165.80000000447035,
+          "start": 284.79999999701977,
+          "end": 450.6000000014901,
+          "transfer": 1934
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/1255-60d8dc7c8c9309a1.js",
+          "duration": 122.80000000447035,
+          "start": 284.29999999701977,
+          "end": 407.1000000014901,
+          "transfer": 46761
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/privacy/page-4ad02e7cc2b290be.js",
+          "duration": 99.69999999552965,
+          "start": 284.6000000014901,
+          "end": 384.29999999701977,
+          "transfer": 496
+        }
+      ],
+      "errors": []
+    },
+    {
+      "device": "mobile",
+      "sample": 2,
+      "path": "/offline",
+      "status": 200,
+      "server": "bom1::bom1::jn6sz-1792521970446-a21bdbf8b416",
+      "loadMs": 861.9000000059605,
+      "domMs": 481.40000000596046,
+      "ttfbMs": 176.10000000149012,
+      "dnsMs": 2.100000001490116,
+      "connectMs": 124.70000000298023,
+      "requestWaitMs": 46.600000001490116,
+      "requestStartMs": 129.5,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/layout-290f38c6256348b8.js",
+          "duration": 419.3999999985099,
+          "start": 357.1000000014901,
+          "end": 776.5,
+          "transfer": 1934
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/error-5fe1ad3aec7b7670.js",
+          "duration": 418.8999999985099,
+          "start": 357.20000000298023,
+          "end": 776.1000000014901,
+          "transfer": 884
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/offline/page-b8761540a91291d8.js",
+          "duration": 418.79999999701977,
+          "start": 356.90000000596046,
+          "end": 775.7000000029802,
+          "transfer": 2232
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/1255-60d8dc7c8c9309a1.js",
+          "duration": 418.6000000014901,
+          "start": 356.30000000447035,
+          "end": 774.9000000059605,
+          "transfer": 46761
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/3545-89e462f936f8ff0c.js",
+          "duration": 164.10000000149012,
+          "start": 357,
+          "end": 521.1000000014901,
+          "transfer": 5444
+        }
+      ],
+      "errors": []
+    },
+    {
+      "device": "mobile",
+      "sample": 2,
+      "path": "/shared",
+      "status": 200,
+      "server": "bom1::bom1::qndfd-1792521971465-0767d9b60390",
+      "loadMs": 666.3999999985099,
+      "domMs": 520.2000000029802,
+      "ttfbMs": 208.70000000298023,
+      "dnsMs": 0.8999999985098839,
+      "connectMs": 164.70000000298023,
+      "requestWaitMs": 40.30000000447035,
+      "requestStartMs": 168.39999999850988,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/error-5fe1ad3aec7b7670.js",
+          "duration": 260.6000000014901,
+          "start": 360.3999999985099,
+          "end": 621,
+          "transfer": 884
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/layout-290f38c6256348b8.js",
+          "duration": 219.30000000447035,
+          "start": 360.29999999701977,
+          "end": 579.6000000014901,
+          "transfer": 1934
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/shared/page-b19449319ed8b92a.js",
+          "duration": 219,
+          "start": 360.20000000298023,
+          "end": 579.2000000029802,
+          "transfer": 1275
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/3545-89e462f936f8ff0c.js",
+          "duration": 218.40000000596046,
+          "start": 360.29999999701977,
+          "end": 578.7000000029802,
+          "transfer": 5444
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/global-error-eeb8d44fcbd5542a.js",
+          "duration": 218,
+          "start": 360.20000000298023,
+          "end": 578.2000000029802,
+          "transfer": 847
+        }
+      ],
+      "errors": []
+    },
+    {
+      "device": "mobile",
+      "sample": 3,
+      "path": "/",
+      "status": 200,
+      "server": "bom1::bom1::wxww9-1792521972182-f14116c3c36a",
+      "loadMs": 562.8999999985099,
+      "domMs": 425.6000000014901,
+      "ttfbMs": 130.89999999850988,
+      "dnsMs": 1.1000000014901161,
+      "connectMs": 78.09999999403954,
+      "requestWaitMs": 41,
+      "requestStartMs": 89.89999999850988,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/layout-290f38c6256348b8.js",
+          "duration": 180.40000000596046,
+          "start": 300.19999999552965,
+          "end": 480.6000000014901,
+          "transfer": 1934
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/error-5fe1ad3aec7b7670.js",
+          "duration": 179.20000000298023,
+          "start": 300.3999999985099,
+          "end": 479.6000000014901,
+          "transfer": 884
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/3545-89e462f936f8ff0c.js",
+          "duration": 178.70000000298023,
+          "start": 300.19999999552965,
+          "end": 478.8999999985099,
+          "transfer": 5444
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/global-error-eeb8d44fcbd5542a.js",
+          "duration": 177.29999999701977,
+          "start": 300,
+          "end": 477.29999999701977,
+          "transfer": 847
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/4bd1b696-100b9d70ed4e49c1.js",
+          "duration": 176.70000000298023,
+          "start": 299.69999999552965,
+          "end": 476.3999999985099,
+          "transfer": 55914
+        }
+      ],
+      "errors": []
+    },
+    {
+      "device": "mobile",
+      "sample": 3,
+      "path": "/plan/new",
+      "status": 200,
+      "server": "bom1::bom1::vr9nk-1792521972866-d76e03ff8c5f",
+      "loadMs": 773.3999999985099,
+      "domMs": 602.2000000029802,
+      "ttfbMs": 125.39999999850988,
+      "dnsMs": 1.3000000044703484,
+      "connectMs": 83,
+      "requestWaitMs": 37.899999998509884,
+      "requestStartMs": 87.5,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/layout-290f38c6256348b8.js",
+          "duration": 310.5,
+          "start": 337.30000000447035,
+          "end": 647.8000000044703,
+          "transfer": 1934
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/3545-89e462f936f8ff0c.js",
+          "duration": 309.8999999985099,
+          "start": 337.20000000298023,
+          "end": 647.1000000014901,
+          "transfer": 5444
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/error-5fe1ad3aec7b7670.js",
+          "duration": 309.19999999552965,
+          "start": 337.30000000447035,
+          "end": 646.5,
+          "transfer": 884
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/global-error-eeb8d44fcbd5542a.js",
+          "duration": 309.1000000014901,
+          "start": 337,
+          "end": 646.1000000014901,
+          "transfer": 847
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/plan/new/page-83c3b691d26b8992.js",
+          "duration": 308.59999999403954,
+          "start": 336.80000000447035,
+          "end": 645.3999999985099,
+          "transfer": 6040
+        }
+      ],
+      "errors": []
+    },
+    {
+      "device": "mobile",
+      "sample": 3,
+      "path": "/evals",
+      "status": 200,
+      "server": "bom1::bom1::bbdff-1792521973855-4e26d2d688d7",
+      "loadMs": 805.7000000029802,
+      "domMs": 795.5,
+      "ttfbMs": 142.30000000447035,
+      "dnsMs": 0.7999999970197678,
+      "connectMs": 96.70000000298023,
+      "requestWaitMs": 39.399999998509884,
+      "requestStartMs": 102.90000000596046,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/2619-04bc32f026a0d946.js",
+          "duration": 397.69999999552965,
+          "start": 323.40000000596046,
+          "end": 721.1000000014901,
+          "transfer": 3847
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/1255-60d8dc7c8c9309a1.js",
+          "duration": 393.3999999985099,
+          "start": 323.1000000014901,
+          "end": 716.5,
+          "transfer": 46761
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/4bd1b696-100b9d70ed4e49c1.js",
+          "duration": 317,
+          "start": 323.1000000014901,
+          "end": 640.1000000014901,
+          "transfer": 55914
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/3545-89e462f936f8ff0c.js",
+          "duration": 316,
+          "start": 323.5,
+          "end": 639.5,
+          "transfer": 5444
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/layout-290f38c6256348b8.js",
+          "duration": 315.30000000447035,
+          "start": 323.5,
+          "end": 638.8000000044703,
+          "transfer": 1934
+        }
+      ],
+      "errors": []
+    },
+    {
+      "device": "mobile",
+      "sample": 3,
+      "path": "/privacy",
+      "status": 200,
+      "server": "bom1::bom1::mkzk7-1792521974850-599a4b6267c2",
+      "loadMs": 1510.3000000044703,
+      "domMs": 1053.6000000014901,
+      "ttfbMs": 381.1000000014901,
+      "dnsMs": 1.4000000059604645,
+      "connectMs": 148.69999999552965,
+      "requestWaitMs": 225.29999999701977,
+      "requestStartMs": 155.80000000447035,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/global-error-eeb8d44fcbd5542a.js",
+          "duration": 980.1000000014901,
+          "start": 469.8999999985099,
+          "end": 1450,
+          "transfer": 847
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/layout-290f38c6256348b8.js",
+          "duration": 979.5,
+          "start": 470.1000000014901,
+          "end": 1449.6000000014901,
+          "transfer": 1934
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/3545-89e462f936f8ff0c.js",
+          "duration": 979.1000000014901,
+          "start": 470,
+          "end": 1449.1000000014901,
+          "transfer": 5444
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/error-5fe1ad3aec7b7670.js",
+          "duration": 978.3999999985099,
+          "start": 470.1000000014901,
+          "end": 1448.5,
+          "transfer": 884
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/1255-60d8dc7c8c9309a1.js",
+          "duration": 978,
+          "start": 469.6000000014901,
+          "end": 1447.6000000014901,
+          "transfer": 46761
+        }
+      ],
+      "errors": []
+    },
+    {
+      "device": "mobile",
+      "sample": 3,
+      "path": "/offline",
+      "status": 200,
+      "server": "bom1::bom1::l95kz-1792521976717-f0ecc5e44198",
+      "loadMs": 1385.8000000044703,
+      "domMs": 964.3999999985099,
+      "ttfbMs": 571.6000000014901,
+      "dnsMs": 1.2000000029802322,
+      "connectMs": 382.3999999985099,
+      "requestWaitMs": 185,
+      "requestStartMs": 386.6000000014901,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/1255-60d8dc7c8c9309a1.js",
+          "duration": 603.1000000014901,
+          "start": 691.5,
+          "end": 1294.6000000014901,
+          "transfer": 46761
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/layout-290f38c6256348b8.js",
+          "duration": 457.3999999985099,
+          "start": 692,
+          "end": 1149.3999999985099,
+          "transfer": 1934
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/3545-89e462f936f8ff0c.js",
+          "duration": 456.80000000447035,
+          "start": 691.8999999985099,
+          "end": 1148.7000000029802,
+          "transfer": 5444
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/1157-4f0394f9de0850e3.js",
+          "duration": 450.69999999552965,
+          "start": 691.8000000044703,
+          "end": 1142.5,
+          "transfer": 28292
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/error-5fe1ad3aec7b7670.js",
+          "duration": 351.8999999985099,
+          "start": 692.1000000014901,
+          "end": 1044,
+          "transfer": 884
+        }
+      ],
+      "errors": []
+    },
+    {
+      "device": "mobile",
+      "sample": 3,
+      "path": "/shared",
+      "status": 200,
+      "server": "bom1::bom1::kkv2w-1792521978023-255a09cfe865",
+      "loadMs": 909.1000000014901,
+      "domMs": 572.6000000014901,
+      "ttfbMs": 338.20000000298023,
+      "dnsMs": 1.3000000044703484,
+      "connectMs": 168.60000000149012,
+      "requestWaitMs": 165.20000000298023,
+      "requestStartMs": 173,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/4bd1b696-100b9d70ed4e49c1.js",
+          "duration": 364.70000000298023,
+          "start": 441.29999999701977,
+          "end": 806,
+          "transfer": 55914
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/1635-1a27284a95e2350c.js",
+          "duration": 364.1000000014901,
+          "start": 441.6000000014901,
+          "end": 805.7000000029802,
+          "transfer": 4440
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/3545-89e462f936f8ff0c.js",
+          "duration": 363.5,
+          "start": 441.79999999701977,
+          "end": 805.2999999970198,
+          "transfer": 5444
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/global-error-eeb8d44fcbd5542a.js",
+          "duration": 362.90000000596046,
+          "start": 441.79999999701977,
+          "end": 804.7000000029802,
+          "transfer": 847
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/shared/page-b19449319ed8b92a.js",
+          "duration": 362.59999999403954,
+          "start": 441.70000000298023,
+          "end": 804.2999999970198,
+          "transfer": 1275
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

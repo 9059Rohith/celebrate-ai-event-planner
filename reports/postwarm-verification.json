@@ -1,0 +1,145 @@
+{
+  "url": "https://celebrate-ai-event-planner.vercel.app",
+  "deploymentId": "dpl_BC5jABwaTog4Nev5r3BH6MyVzaNc",
+  "timestamp": "2026-10-20T18:54:03.462Z",
+  "browser": "Microsoft Edge 155.0.4283.62",
+  "conditions": "Fresh browser contexts/caches, desktop and iPhone13 emulation, unthrottled network, after explicit server/CDN warmup. No failed samples excluded.",
+  "samples": 68,
+  "underTwoSeconds": 67,
+  "maxLoadMs": 2474.10000000149,
+  "medianLoadMs": 684.7999999970198,
+  "p95LoadMs": 1207.5,
+  "maxReadyMs": 2610.3000000044703,
+  "outliers": [
+    {
+      "source": "reports/shared-hydration-edge-postwarm.json",
+      "sample": 4,
+      "mobile": true,
+      "dark": true,
+      "status": 200,
+      "loadMs": 2474.10000000149,
+      "dnsMs": 4.5,
+      "connectMs": 95,
+      "requestWaitMs": 37.099999994039536,
+      "readyMs": 2610.3000000044703,
+      "requestStartMs": 102.90000000596046,
+      "responseEndMs": 207.5,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/575-aa6909080de73d84.js",
+          "start": 241.70000000298023,
+          "end": 2415.60000000149,
+          "duration": 2173.89999999851
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/error-5fe1ad3aec7b7670.js",
+          "start": 242,
+          "end": 2412.60000000149,
+          "duration": 2170.60000000149
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/2561-82c1b4350c06db72.js",
+          "start": 241.5,
+          "end": 2411.3000000044703,
+          "duration": 2169.8000000044703
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/1157-4f0394f9de0850e3.js",
+          "start": 241.40000000596046,
+          "end": 2409.60000000149,
+          "duration": 2168.1999999955297
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/layout-290f38c6256348b8.js",
+          "start": 242,
+          "end": 2381.10000000149,
+          "duration": 2139.10000000149
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "errorSamples": [
+    {
+      "source": "reports/full-load-edge-postwarm.json",
+      "device": "desktop",
+      "sample": 1,
+      "path": "/shared",
+      "status": 200,
+      "server": "bom1::bom1::cd2pf-1792522360557-59e8d1b3fcfc",
+      "loadMs": 755.5,
+      "domMs": 433.79999999701977,
+      "ttfbMs": 153.89999999850988,
+      "dnsMs": 9.899999998509884,
+      "connectMs": 98.89999999850988,
+      "requestWaitMs": 41.399999998509884,
+      "requestStartMs": 112.5,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/error-5fe1ad3aec7b7670.js",
+          "duration": 441.5,
+          "start": 257,
+          "end": 698.5,
+          "transfer": 884
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/1157-4f0394f9de0850e3.js",
+          "duration": 441.20000000298023,
+          "start": 256.19999999552965,
+          "end": 697.3999999985099,
+          "transfer": 28292
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/3545-89e462f936f8ff0c.js",
+          "duration": 309.70000000298023,
+          "start": 256.8999999985099,
+          "end": 566.6000000014901,
+          "transfer": 5444
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/global-error-eeb8d44fcbd5542a.js",
+          "duration": 229.89999999850988,
+          "start": 256.79999999701977,
+          "end": 486.69999999552965,
+          "transfer": 847
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/layout-290f38c6256348b8.js",
+          "duration": 185,
+          "start": 257,
+          "end": 442,
+          "transfer": 1934
+        }
+      ],
+      "errors": [
+        {
+          "pageError": "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+        }
+      ]
+    },
+    {
+      "source": "reports/workspace-load-edge-postwarm.json",
+      "device": "desktop",
+      "sample": 2,
+      "kind": "saved",
+      "loadMs": 1618.6000000014901,
+      "readyMs": 1785.3999999985099,
+      "errors": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ]
+    }
+  ],
+  "passed": false,
+  "sources": [
+    "reports/full-load-edge-postwarm.json",
+    "reports/workspace-load-edge-postwarm.json",
+    "reports/shared-hydration-edge-postwarm.json"
+  ],
+  "historicalReports": [
+    "reports/full-load-outlier-recheck.json",
+    "reports/shared-hydration-outlier-recheck.json",
+    "reports/full-load-edge-verification.json",
+    "reports/browser-client-comparison.json"
+  ],
+  "interpretation": "Strict all-loads-under-two-seconds and error-free criteria remain unmet. Warming is an operational mitigation, not a proven fix for client/transport outliers or hydration."
+}

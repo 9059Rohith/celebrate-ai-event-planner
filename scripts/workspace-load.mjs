@@ -4,8 +4,11 @@ import LZString from "lz-string";
 const fixture = JSON.parse(
   readFileSync("public/evals/cases/wedding-single-day.json", "utf8"),
 ).output;
+const phase = process.env.PERF_PHASE || "after";
 const base = "https://celebrate-ai-event-planner.vercel.app";
-const browser = await chromium.launch();
+const browser = await chromium.launch({
+  channel: process.env.BROWSER_CHANNEL || undefined,
+});
 const results = [];
 try {
   for (const device of ["desktop", "mobile"])
@@ -54,10 +57,12 @@ try {
           await context.close();
         }
         writeFileSync(
-          "reports/workspace-load-after.json",
+          `reports/workspace-load-${phase}.json`,
           JSON.stringify(
             {
               url: base,
+              browserChannel: process.env.BROWSER_CHANNEL || "bundled-chromium",
+              browserVersion: await browser.version(),
               method:
                 "Three fresh contexts per device for saved workspace and valid compressed shared plan; actual load and heading-ready events; default unthrottled network.",
               results,
@@ -70,3 +75,14 @@ try {
 } finally {
   await browser.close();
 }
+if (
+  results.some(
+    (r) =>
+      r.error ||
+      r.errors?.length ||
+      !Number.isFinite(r.loadMs) ||
+      r.loadMs >= 2000 ||
+      r.readyMs >= 2000,
+  )
+)
+  process.exitCode = 1;

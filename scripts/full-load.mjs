@@ -3,7 +3,9 @@ import { writeFileSync } from "node:fs";
 const base =
   process.env.TEST_BASE_URL || "https://celebrate-ai-event-planner.vercel.app";
 const phase = process.env.PERF_PHASE || "after";
-const browser = await chromium.launch();
+const browser = await chromium.launch({
+  channel: process.env.BROWSER_CHANNEL || undefined,
+});
 const results = [];
 try {
   for (const device of ["desktop", "mobile"])
@@ -85,9 +87,11 @@ try {
           JSON.stringify(
             {
               url: base,
+              browserChannel: process.env.BROWSER_CHANNEL || "bundled-chromium",
+              browserVersion: await browser.version(),
               timestamp: new Date().toISOString(),
               method:
-                "36 actual load-event measurements: fresh context/cache for every route, three samples on desktop and emulated iPhone13, default unthrottled network. No warmup or failing-sample exclusion.",
+                "36 actual load-event measurements: fresh context/cache for every route, three samples on desktop and emulated iPhone13, default unthrottled network. No browser warmup or failing-sample exclusion. Server/CDN warmup, if performed, is recorded separately in deployment-warmup.json.",
               results,
             },
             null,
@@ -116,3 +120,14 @@ try {
 } finally {
   await browser.close();
 }
+if (
+  results.some(
+    (r) =>
+      r.error ||
+      r.status !== 200 ||
+      r.errors.length ||
+      !Number.isFinite(r.loadMs) ||
+      r.loadMs >= 2000,
+  )
+)
+  process.exitCode = 1;

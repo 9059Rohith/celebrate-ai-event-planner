@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-10-20T16:34:59.316Z",
+  "timestamp": "2026-10-20T17:02:04.795Z",
   "route": "/",
   "measurement": "Initial external JavaScript for modern browsers; nomodule-only legacy polyfills are excluded. All static JS is scanned for secrets.",
   "scriptCount": 10,
-  "gzipBytes": 117022,
+  "gzipBytes": 117513,
   "budgetBytes": 122880,
   "passed": true,
   "secretScanPassed": true,
@@ -21,32 +21,32 @@
       "gzipBytes": 231
     },
     {
-      "path": "/_next/static/chunks/2619-04bc32f026a0d946.js",
-      "gzipBytes": 3406
-    },
-    {
-      "path": "/_next/static/chunks/app/page-94d4d60a9764638e.js",
-      "gzipBytes": 3138
-    },
-    {
       "path": "/_next/static/chunks/app/global-error-9f8a1d63c5a79375.js",
       "gzipBytes": 375
     },
     {
-      "path": "/_next/static/chunks/3545-515d55415385e163.js",
-      "gzipBytes": 4977
+      "path": "/_next/static/chunks/2619-04bc32f026a0d946.js",
+      "gzipBytes": 3406
     },
     {
-      "path": "/_next/static/chunks/app/layout-cd31feb208955e0e.js",
-      "gzipBytes": 1540
+      "path": "/_next/static/chunks/app/page-5e5e7d2af30e1c61.js",
+      "gzipBytes": 3108
+    },
+    {
+      "path": "/_next/static/chunks/3545-89e462f936f8ff0c.js",
+      "gzipBytes": 4954
+    },
+    {
+      "path": "/_next/static/chunks/app/layout-da5fe7fc3172a93b.js",
+      "gzipBytes": 1551
     },
     {
       "path": "/_next/static/chunks/app/error-31f7d879d4b32dac.js",
       "gzipBytes": 403
     },
     {
-      "path": "/_next/static/chunks/webpack-d03c861423bddf62.js",
-      "gzipBytes": 2179
+      "path": "/_next/static/chunks/webpack-b19e25449f612185.js",
+      "gzipBytes": 2712
     }
   ]
 }

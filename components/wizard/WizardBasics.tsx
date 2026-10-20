@@ -1,7 +1,7 @@
 "use client";
 import type { EventInput } from "@/lib/schemas";
 import { Heart, Cake, Users } from "lucide-react";
-import { exampleInput } from "@/lib/domain/planner";
+import { exampleInput } from "@/lib/domain/examples";
 export function WizardBasics({
   input,
   patch,

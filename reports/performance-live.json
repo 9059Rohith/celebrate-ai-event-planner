@@ -1,0 +1,88 @@
+{
+  "url": "https://celebrate-ai-event-planner.vercel.app",
+  "method": "Three cache-reset Lighthouse mobile simulated Slow 4G runs per route; median reported. No settings relaxed.",
+  "results": [
+    {
+      "path": "/",
+      "sample": 1,
+      "timestamp": "2026-10-20T17:03:45.330Z",
+      "runtimeError": null,
+      "performance": 0.92,
+      "lcpMs": 1464.08,
+      "cls": 0,
+      "observedLcpMs": 626,
+      "observedLoadMs": 966
+    },
+    {
+      "path": "/plan/new",
+      "sample": 1,
+      "timestamp": "2026-10-20T17:04:00.428Z",
+      "runtimeError": null,
+      "performance": 1,
+      "lcpMs": 941.6256999999997,
+      "cls": 0,
+      "observedLcpMs": 542,
+      "observedLoadMs": 25718
+    },
+    {
+      "path": "/",
+      "sample": 2,
+      "timestamp": "2026-10-20T17:04:35.330Z",
+      "runtimeError": null,
+      "performance": 1,
+      "lcpMs": 1019.1041,
+      "cls": 0,
+      "observedLcpMs": 230,
+      "observedLoadMs": 463
+    },
+    {
+      "path": "/plan/new",
+      "sample": 2,
+      "timestamp": "2026-10-20T17:04:43.527Z",
+      "runtimeError": null,
+      "performance": 0.9,
+      "lcpMs": 933.7006,
+      "cls": 0,
+      "observedLcpMs": 319,
+      "observedLoadMs": 769
+    },
+    {
+      "path": "/",
+      "sample": 3,
+      "timestamp": "2026-10-20T17:04:52.877Z",
+      "runtimeError": null,
+      "performance": 0.89,
+      "lcpMs": 1086.1527,
+      "cls": 0,
+      "observedLcpMs": 352,
+      "observedLoadMs": 699
+    },
+    {
+      "path": "/plan/new",
+      "sample": 3,
+      "timestamp": "2026-10-20T17:05:01.799Z",
+      "runtimeError": null,
+      "performance": 0.9,
+      "lcpMs": 924.5859,
+      "cls": 0,
+      "observedLcpMs": 280,
+      "observedLoadMs": 1171
+    }
+  ],
+  "summary": [
+    {
+      "path": "/",
+      "medianLcpMs": 1086.1527,
+      "minLcpMs": 1019.1041,
+      "maxLcpMs": 1464.08,
+      "underTwoSeconds": true
+    },
+    {
+      "path": "/plan/new",
+      "medianLcpMs": 933.7006,
+      "minLcpMs": 924.5859,
+      "maxLcpMs": 941.6256999999997,
+      "underTwoSeconds": true
+    }
+  ]
+}

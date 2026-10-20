@@ -1,3 +1,4 @@
+import "../workspace.css";
 import snapshot from "@/evals/results/latest.json";
 import baseline from "@/evals/results/v1.json";
 import type { Run } from "@/evals/harness";

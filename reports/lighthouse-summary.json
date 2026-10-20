@@ -1,19 +1,19 @@
 [
   {
     "path": "/",
-    "fetchTime": "2026-10-20T16:44:18.209Z",
+    "fetchTime": "2026-10-20T16:59:35.476Z",
     "browserWarmupTraceError": "NO_NAVSTART",
     "runtimeError": null,
     "scores": {
-      "performance": 91,
+      "performance": 93,
       "accessibility": 100,
       "best-practices": 100,
       "seo": 100
     },
     "metrics": {
-      "lcp": 2344.413375,
+      "lcp": 1752.2618,
       "cls": 0,
-      "ttfb": 15
+      "ttfb": 59
     },
     "failed": [
       {
@@ -52,53 +52,20 @@
   },
   {
     "path": "/plan/new",
-    "fetchTime": "2026-10-20T16:44:31.226Z",
+    "fetchTime": "2026-10-20T16:59:50.139Z",
     "browserWarmupTraceError": "NO_NAVSTART",
     "runtimeError": null,
     "scores": {
-      "performance": 95,
+      "performance": 70,
       "accessibility": 100,
       "best-practices": 100,
       "seo": 100
     },
     "metrics": {
-      "lcp": 2108.8775,
+      "lcp": 2325.6026999999995,
       "cls": 0,
-      "ttfb": 12
+      "ttfb": 16
     },
-    "failed": [
-      {
-        "id": "bf-cache",
-        "title": "Page prevented back/forward cache restoration",
-        "details": [
-          {
-            "reason": "Pages whose main resource has cache-control:no-store cannot enter back/forward cache.",
-            "failureType": "Not actionable",
-            "subItems": {
-              "type": "subitems",
-              "items": [
-                {
-                  "frameUrl": "http://localhost:4100/plan/new"
-                }
-              ]
-            },
-            "protocolReason": "MainResourceHasCacheControlNoStore"
-          },
-          {
-            "reason": "Back/forward cache is disabled because some JavaScript network request received resource with Cache-Control: no-store header.",
-            "failureType": "Not actionable",
-            "subItems": {
-              "type": "subitems",
-              "items": [
-                {
-                  "frameUrl": "http://localhost:4100/plan/new"
-                }
-              ]
-            },
-            "protocolReason": "JsNetworkRequestReceivedCacheControlNoStoreResource"
-          }
-        ]
-      }
-    ]
+    "failed": []
   }
 ]

@@ -35,18 +35,20 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <Link className="skip" href="#main-content">
+        <Link prefetch={false} className="skip" href="#main-content">
           Skip to content
         </Link>
         <ClientRuntime />
         <Header />
         <main id="main-content">{children}</main>
         <footer>
-          <Link className="brand" href="/">
+          <Link prefetch={false} className="brand" href="/">
             ✳ celebrate<span>ai</span>
           </Link>
           <p>Made for the moments that bring us together.</p>
-          <Link href="/privacy">Privacy &amp; your data</Link>
+          <Link prefetch={false} href="/privacy">
+            Privacy &amp; your data
+          </Link>
           <span>Private by design. Yours to keep.</span>
         </footer>
         {process.env.NEXT_PUBLIC_ENABLE_ANALYTICS === "true" && (

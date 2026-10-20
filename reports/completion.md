@@ -6,8 +6,12 @@ Production: https://celebrate-ai-event-planner.vercel.app
 - Deterministic evaluation: 46/46 passed. Live AI judge not run without provider key.
 - Local desktop/mobile browser suite: 12/12 passed.
 - TypeScript and ESLint: passed.
-- Modern landing initial JavaScript: 117,022 gzip bytes (legacy nomodule polyfill excluded).
-- Local production Lighthouse: home 91 performance; wizard 95. Both 100 accessibility, best practices and SEO. LCP 2.34s/2.11s; the requested sub-2s target is not yet met.
+- Modern landing initial JavaScript: 117,513 gzip bytes (legacy nomodule polyfill excluded).
+- Final live mobile Lighthouse LCP (three cache-reset runs): home median 1.086s (1.019–1.464s); wizard median 0.934s (0.925–0.942s). All six measurements under 2s, CLS 0. See performance-live.json. Earlier local audit files are historical measurements.
 - Production health: HTTP 200, Mumbai region, fallback planner enabled.
 
 External prerequisites: OPENAI_API_KEY for live generation and model evaluations; GitHub workflow permission to activate the CI template in ci/github-actions.yml. Human judge calibration remains provisional. Runtime dependency audit: zero vulnerabilities; development tooling audit has remaining findings.
+
+Performance changes: route-specific styles delivered with HTML, deferred plan-generation/workspace imports, native home navigation, shared SVG icons, below-fold layout containment, updated offline cache. Wizard initial JavaScript reduced from 183 KB to154 KB. Inline CSS uses the installed Next15 experimental option and is covered by desktop/mobile navigation and offline regression checks.
+
+LCP measures primary content rendering, not completion of every background request. Raw load-event times are retained: one wizard run had a25.7s load-event outlier despite LCP0.942s; the other wizard load events were0.769s and1.171s. This is a laboratory sample, not a guarantee for every network/device.

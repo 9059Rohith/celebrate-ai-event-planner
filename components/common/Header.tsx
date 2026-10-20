@@ -17,12 +17,14 @@ export function Header() {
   const dark = ready && theme === "dark";
   return (
     <header className="header">
-      <Link href="/" className="brand">
+      <Link prefetch={false} href="/" className="brand">
         <span className="brand-icon">✳</span> celebrate<span>ai</span>
       </Link>
       <nav aria-label="Main navigation">
-        <Link href="/#my-plans">My plans</Link>
-        <Link href="/evals">
+        <Link prefetch={false} href="/#my-plans">
+          My plans
+        </Link>
+        <Link prefetch={false} href="/evals">
           Evaluations <ArrowUpRight size={13} />
         </Link>
         <select
@@ -42,7 +44,7 @@ export function Header() {
         >
           {dark ? <Sun size={18} /> : <Moon size={18} />}
         </button>
-        <Link className="button small" href="/plan/new">
+        <Link prefetch={false} className="button small" href="/plan/new">
           <Plus size={16} /> New celebration
         </Link>
       </nav>

@@ -1,4 +1,5 @@
 "use client";
+import "@/app/workspace.css";
 import Link from "next/link";
 import { Suspense, useEffect, useState } from "react";
 import dynamic from "next/dynamic";
@@ -326,14 +327,14 @@ function WorkspaceInner({
           )}{" "}
           {tab === "Chat" && <ChatTab {...sectionProps} onNotice={setNotice} />}
         </SectionBoundary>
-          {!readOnly && ["Timeline", "Vendors", "Ideas"].includes(tab) && (
-            <RegenerateSection
-              plan={p}
-              section={tab.toLowerCase() as "timeline" | "vendors" | "ideas"}
-              onChange={change}
-              onNotice={setNotice}
-            />
-          )}
+        {!readOnly && ["Timeline", "Vendors", "Ideas"].includes(tab) && (
+          <RegenerateSection
+            plan={p}
+            section={tab.toLowerCase() as "timeline" | "vendors" | "ideas"}
+            onChange={change}
+            onNotice={setNotice}
+          />
+        )}
         {!readOnly && <Feedback planId={p.id} section={tab.toLowerCase()} />}
         <div className="plan-footnote">
           Your plan is a starting point for something wonderful. Estimates

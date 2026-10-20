@@ -1,8 +1,10 @@
 "use client";
+import "@/app/wizard.css";
 import { useState, useEffect, Suspense } from "react";
+import dynamic from "next/dynamic";
 import { useSearchParams, useRouter } from "next/navigation";
 import { ArrowLeft, ArrowRight, Sparkles, Check } from "lucide-react";
-import { exampleInput, createPlan } from "@/lib/domain/planner";
+import { exampleInput } from "@/lib/domain/examples";
 import {
   EventInputSchema,
   type EventInput,
@@ -13,7 +15,9 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { z } from "zod";
 import { writeLocal, safeStorage } from "@/lib/client/storage";
-import { Workspace } from "@/components/planner/Workspace";
+const Workspace = dynamic(() =>
+  import("@/components/planner/Workspace").then((m) => m.Workspace),
+);
 import { WizardBasics } from "@/components/wizard/WizardBasics";
 import { WizardPeople } from "@/components/wizard/WizardPeople";
 import { WizardStyle } from "@/components/wizard/WizardStyle";
@@ -103,6 +107,7 @@ function Wizard() {
       return;
     }
     setBusy(true);
+    const { createPlan } = await import("@/lib/domain/planner");
     const initial = createPlan(valid.data);
     add(initial);
     writeLocal(`celebrate-enhance-${initial.id}`, JSON.stringify(valid.data));

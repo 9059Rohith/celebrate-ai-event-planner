@@ -84,3 +84,9 @@ Live AI quality, judge scores, prompt A/B quality gains, paid cost and model lat
 Without Upstash credentials, serverless rate limits/cache/token accounting are best effort per process. Chat provider text is scanned before release to prevent fragmented secret-like output; streamed tool proposals still require acceptance. localStorage depends on available browser quota; export backups. Performance and accessibility claims are limited to the actual recorded audits, not an unconditional100% guarantee. Private source backup: https://github.com/9059Rohith/celebrate-ai-event-planner. The saved GitHub OAuth credential lacks workflow scope, so the CI definition is published as ci/github-actions.yml rather than an active workflow. The complete local .github/workflows/ci.yml is retained; uploading it needs workflow permission.
 
 See ARCHITECTURE.md, SECURITY.md and EVALUATION.md for contracts, threat model and measured results.
+
+## Performance verification
+
+The latest deployed mobile LCP measurements are in `reports/performance-live.json`: three cache-reset Lighthouse runs per route using the default mobile settings. Reproduce with `node scripts/performance.mjs`. Final medians: home1.086s, wizard0.934s; all six LCP samples below2s, CLS0. Navigation load-event timings are also recorded, including an outlier; LCP does not mean every background request has completed.
+
+Styles are split by surface and delivered inline using Next15's experimental `inlineCss` option. The wizard defers generation engines and workspace code; the landing page uses native navigation and SVG symbols to reduce startup work. No security headers were relaxed.

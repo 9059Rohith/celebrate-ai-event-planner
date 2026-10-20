@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+import LZString from "lz-string";
 import { test, expect } from "@playwright/test";
 for (const type of ["wedding", "birthday", "community"])
   test(`${type}: planning, edits, exports and sharing`, async ({
@@ -191,4 +193,60 @@ test("evaluation evidence loads only when opened", async ({ page }) => {
   await page.getByText("Input / output JSON", { exact: true }).first().click();
   await expect(page.locator("main pre").first()).toContainText("guestCount");
   expect(requests).toHaveLength(1);
+});
+
+test("shared plan hydrates with persisted preferences and changing fragments", async ({
+  page,
+  context,
+}) => {
+  const plan = JSON.parse(
+    readFileSync("public/evals/cases/wedding-single-day.json", "utf8"),
+  ).output;
+  const fragment = LZString.compressToEncodedURIComponent(JSON.stringify(plan));
+  const errors: string[] = [];
+  page.on("pageerror", (e) => errors.push(e.message));
+  page.on("console", (message) => {
+    if (
+      ["error", "warning"].includes(message.type()) &&
+      /hydrat|#418|didn.t match/i.test(message.text())
+    )
+      errors.push(message.text());
+  });
+  await page.emulateMedia({ colorScheme: "dark" });
+  await context.addInitScript(() =>
+    localStorage.setItem(
+      "celebrate-ai-ui",
+      JSON.stringify({
+        state: { theme: "dark", currency: "USD", activeTab: "overview" },
+        version: 0,
+      }),
+    ),
+  );
+  for (let i = 0; i < 3; i++) {
+    await page.goto("/shared#" + fragment);
+    await expect(
+      page.getByRole("heading", { name: plan.input.title, exact: true }),
+    ).toBeVisible();
+    await expect(page.locator("html")).toHaveClass(/dark/);
+    await expect(page.getByLabel("Default currency")).toHaveValue("USD");
+    await page.getByRole("button", { name: "Budget", exact: true }).click();
+    await expect(
+      page.getByRole("heading", { name: "Dream big. Spend thoughtfully." }),
+    ).toBeVisible();
+  }
+  await page.evaluate(() => {
+    location.hash = "invalid";
+  });
+  await expect(
+    page.getByText("This shared link is invalid or too large.", {
+      exact: true,
+    }),
+  ).toBeVisible();
+  await page.evaluate((hash) => {
+    location.hash = hash;
+  }, fragment);
+  await expect(
+    page.getByRole("heading", { name: plan.input.title, exact: true }),
+  ).toBeVisible();
+  expect(errors).toEqual([]);
 });

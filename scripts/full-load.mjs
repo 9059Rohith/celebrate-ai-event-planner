@@ -38,6 +38,10 @@ try {
               loadMs: n.loadEventStart,
               domMs: n.domContentLoadedEventEnd,
               ttfbMs: n.responseStart,
+              dnsMs: n.domainLookupEnd - n.domainLookupStart,
+              connectMs: n.connectEnd - n.connectStart,
+              requestWaitMs: n.responseStart - n.requestStart,
+              requestStartMs: n.requestStart,
               resources: performance
                 .getEntriesByType("resource")
                 .map((r) => ({

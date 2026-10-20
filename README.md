@@ -89,10 +89,16 @@ See ARCHITECTURE.md, SECURITY.md and EVALUATION.md for contracts, threat model a
 
 The latest deployed mobile LCP measurements are in `reports/performance-live.json`: three cache-reset Lighthouse runs per route using the default mobile settings. Reproduce with `node scripts/performance.mjs`. Final medians: home1.086s, wizard0.934s; all six LCP samples below2s, CLS0. Navigation load-event timings are also recorded, including an outlier; LCP does not mean every background request has completed.
 
-Styles are split by surface and delivered inline using Next15's experimental `inlineCss` option. The wizard defers generation engines and workspace code; the landing page uses native navigation and SVG symbols to reduce startup work. No security headers were relaxed.
+Styles are split by surface and delivered using standard Next.js stylesheet links. Experimental inline CSS was removed during hydration hardening. The wizard defers generation engines and workspace code; the landing page uses native navigation and SVG symbols to reduce startup work. No security headers were relaxed.
 
 ## Complete page-load verification
 
 Page shells now render on Edge to remove Node startup from their request path while retaining per-response CSP nonces. AI/API routes explicitly retain Node.js in Mumbai. Evaluation snapshots are compact at initial render; individual full case evidence loads when opened. `npm run build` regenerates summaries and evidence files from the source evaluation results.
 
-`node scripts/full-load.mjs` measures six entry routes with a fresh context/cache per visit; `node scripts/workspace-load.mjs` covers saved and populated shared plans. The latest 48 actual navigation-load samples were all under2 seconds (maximum1.921s); workspace heading readiness was at most1.497s. These are unthrottled laboratory observations, not a guarantee across devices/networks or AI completion times. One recoverable React hydration warning in a shared-plan sample is retained in the report; that sample still loaded in0.770s. See `reports/full-load-summary.json`.
+`node scripts/full-load.mjs` measures six entry routes with a fresh context/cache per visit; `node scripts/workspace-load.mjs` covers saved and populated shared plans. The previous 48 actual navigation-load samples were all under2 seconds (maximum1.921s); workspace heading readiness was at most1.497s. These are unthrottled laboratory observations, not a guarantee across devices/networks or AI completion times. One recoverable React hydration warning in a shared-plan sample is retained in the report; that sample still loaded in0.770s. See `reports/full-load-summary.json`.
+
+## Shared-page hydration follow-up
+
+The shared page uses a stable server snapshot inside its Suspense boundary and reads the URL fragment after hydration through `useSyncExternalStore`. It subscribes to hash changes, preserving read-only behavior when switching shared links. Experimental CSS inlining was removed.
+
+Final verification:97 unit/API/integration tests and16 desktop/mobile browser tests passed. Across68 live fresh-context navigations there were no recorded hydration warnings; all32 shared-page loads were under2 seconds (maximum1.227s; populated shared-page heading readiness maximum1.462s). Two broader navigation samples exceeded2 seconds: home2.065s and evaluations5.855s. The evaluation outlier had0.710s DNS,0.334s connection setup,0.066s HTML request wait and up to4.479s static-resource download. The strict all-app2-second criterion was not achieved in this run. No samples were excluded; see `reports/full-load-summary.json`.

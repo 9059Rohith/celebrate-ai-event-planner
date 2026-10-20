@@ -2,8 +2,6 @@ import type { NextConfig } from "next";
 import bundleAnalyzer from "@next/bundle-analyzer";
 const config: NextConfig = {
   htmlLimitedBots: /.*/,
-  // Deliver the small stylesheet with HTML, avoiding a render-blocking round trip.
-  experimental: { inlineCss: true },
   async headers() {
     return [
       {

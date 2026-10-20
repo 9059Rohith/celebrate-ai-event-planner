@@ -1,0 +1,104 @@
+{
+  "url": "https://celebrate-ai-event-planner.vercel.app",
+  "method": "Three fresh contexts per device for saved workspace and valid compressed shared plan; actual load and heading-ready events; default unthrottled network.",
+  "results": [
+    {
+      "device": "desktop",
+      "sample": 1,
+      "kind": "saved",
+      "loadMs": 1049.5,
+      "readyMs": 1184.300000000745,
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "sample": 1,
+      "kind": "shared",
+      "loadMs": 844,
+      "readyMs": 1058.800000000745,
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "sample": 2,
+      "kind": "saved",
+      "loadMs": 744.6000000014901,
+      "readyMs": 852.9000000022352,
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "sample": 2,
+      "kind": "shared",
+      "loadMs": 564,
+      "readyMs": 676.3999999985099,
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "sample": 3,
+      "kind": "saved",
+      "loadMs": 691.3000000007451,
+      "readyMs": 794.3000000007451,
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "sample": 3,
+      "kind": "shared",
+      "loadMs": 775.5,
+      "readyMs": 885.1999999992549,
+      "errors": []
+    },
+    {
+      "device": "mobile",
+      "sample": 1,
+      "kind": "saved",
+      "loadMs": 663.8999999985099,
+      "readyMs": 798.6999999992549,
+      "errors": []
+    },
+    {
+      "device": "mobile",
+      "sample": 1,
+      "kind": "shared",
+      "loadMs": 572.2000000029802,
+      "readyMs": 679.2000000029802,
+      "errors": []
+    },
+    {
+      "device": "mobile",
+      "sample": 2,
+      "kind": "saved",
+      "loadMs": 1378.7000000029802,
+      "readyMs": 1497.300000000745,
+      "errors": []
+    },
+    {
+      "device": "mobile",
+      "sample": 2,
+      "kind": "shared",
+      "loadMs": 769.5,
+      "readyMs": 883.8000000007451,
+      "errors": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ]
+    },
+    {
+      "device": "mobile",
+      "sample": 3,
+      "kind": "saved",
+      "loadMs": 658.1999999992549,
+      "readyMs": 758.7999999970198,
+      "errors": []
+    },
+    {
+      "device": "mobile",
+      "sample": 3,
+      "kind": "shared",
+      "loadMs": 922.8999999985099,
+      "readyMs": 1032.199999999255,
+      "errors": []
+    }
+  ]
+}

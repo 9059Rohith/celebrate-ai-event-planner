@@ -1,3 +1,5 @@
+export const runtime = "nodejs";
+export const preferredRegion = "bom1";
 import { isAiConfigured } from "@/lib/security/env";
 export function GET() {
   return Response.json(

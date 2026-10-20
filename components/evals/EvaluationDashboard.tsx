@@ -165,18 +165,7 @@ export function EvaluationDashboard({
                 {r.judge.second.rationale}
               </p>
             )}
-            <details>
-              <summary>Input / output JSON</summary>
-              <pre
-                style={{
-                  whiteSpace: "pre-wrap",
-                  overflowWrap: "anywhere",
-                  fontSize: 12,
-                }}
-              >
-                {JSON.stringify({ input: r.input, output: r.output }, null, 2)}
-              </pre>
-            </details>
+            <CaseEvidence result={r} />
           </details>
         ))}
       </section>
@@ -195,5 +184,47 @@ export function EvaluationDashboard({
         </button>
       </section>
     </>
+  );
+}
+
+function CaseEvidence({ result }: { result: Run["results"][number] }) {
+  const [evidence, setEvidence] = useState<unknown>(
+    result.output ? { input: result.input, output: result.output } : null,
+  );
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  async function load(open: boolean) {
+    if (!open || evidence || loading) return;
+    setLoading(true);
+    setError("");
+    try {
+      const response = await fetch(
+        `/evals/cases/${encodeURIComponent(result.id)}.json`,
+      );
+      if (!response.ok) throw Error("Evidence unavailable");
+      setEvidence(await response.json());
+    } catch {
+      setError("Could not load this case. Close and reopen to retry.");
+    } finally {
+      setLoading(false);
+    }
+  }
+  return (
+    <details onToggle={(event) => void load(event.currentTarget.open)}>
+      <summary>Input / output JSON</summary>
+      {loading && <p role="status">Loading case evidence…</p>}
+      {error && <p role="alert">{error}</p>}
+      {evidence != null && (
+        <pre
+          style={{
+            whiteSpace: "pre-wrap",
+            overflowWrap: "anywhere",
+            fontSize: 12,
+          }}
+        >
+          {JSON.stringify(evidence, null, 2)}
+        </pre>
+      )}
+    </details>
   );
 }

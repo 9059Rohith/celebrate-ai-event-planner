@@ -176,3 +176,19 @@ test("visual snapshots and nonce security headers", async ({ page }, info) => {
     fullPage: true,
   });
 });
+
+test("evaluation evidence loads only when opened", async ({ page }) => {
+  const requests: string[] = [];
+  page.on("request", (request) => {
+    if (request.url().includes("/evals/cases/")) requests.push(request.url());
+  });
+  await page.goto("/evals");
+  await expect(
+    page.getByRole("heading", { name: "A planner you can put to the test." }),
+  ).toBeVisible();
+  expect(requests).toHaveLength(0);
+  await page.locator("main details > summary").first().click();
+  await page.getByText("Input / output JSON", { exact: true }).first().click();
+  await expect(page.locator("main pre").first()).toContainText("guestCount");
+  expect(requests).toHaveLength(1);
+});

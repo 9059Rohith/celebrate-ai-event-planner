@@ -1,0 +1,20 @@
+{
+  "deployment": "dpl_BwEUhby5efpmGezcsttPiE8St3A8",
+  "url": "https://celebrate-ai-event-planner.vercel.app",
+  "samples": 48,
+  "maxLoadMs": 1920.5999999977648,
+  "maxWorkspaceReadyMs": 1497.300000000745,
+  "allLoadSamplesUnderTwoSeconds": true,
+  "runtime": "Page rendering on Edge globally; AI/API routes remain Node.js in bom1.",
+  "warnings": [
+    {
+      "device": "mobile",
+      "sample": 2,
+      "kind": "shared",
+      "errors": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=HTML&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ]
+    }
+  ],
+  "conditions": "Actual browser navigation load events, fresh context/cache each visit; default unthrottled desktop and emulated iPhone13. Not a universal network/device or AI-completion guarantee."
+}

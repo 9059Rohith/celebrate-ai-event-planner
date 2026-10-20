@@ -5,6 +5,9 @@ import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/common/Header";
 import { ClientRuntime } from "@/components/common/ClientRuntime";
+// Render nonce-protected public page shells without a Node server startup.
+export const runtime = "edge";
+export const preferredRegion = "global";
 export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_APP_URL ||

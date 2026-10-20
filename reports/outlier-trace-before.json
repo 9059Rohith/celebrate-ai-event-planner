@@ -1,0 +1,69 @@
+{
+  "url": "https://celebrate-ai-event-planner.vercel.app/plan/new",
+  "timestamp": "2026-10-20T17:12:00.706Z",
+  "runtimeError": {
+    "code": "NO_NAVSTART",
+    "message": "Something went wrong with recording the trace over your page load. Please run Lighthouse again. (NO_NAVSTART)",
+    "errorStack": "LighthouseError: NO_NAVSTART\n    at LHTraceProcessor.createNoNavstartError (file:///C:/Users/BhaviChasvi/Downloads/promt/node_modules/lighthouse/core/lib/lh-trace-processor.js:17:12)\n    at LHTraceProcessor.computeTimeOrigin (file:///C:/Users/BhaviChasvi/Downloads/promt/node_modules/lighthouse/core/lib/tracehouse/trace-processor.js:1007:33)\n    at LHTraceProcessor.processTrace (file:///C:/Users/BhaviChasvi/Downloads/promt/node_modules/lighthouse/core/lib/tracehouse/trace-processor.js:824:32)\n    at ProcessedTrace.compute_ (file:///C:/Users/BhaviChasvi/Downloads/promt/node_modules/lighthouse/core/computed/processed-trace.js:16:29)\n    at ProcessedTrace.request (file:///C:/Users/BhaviChasvi/Downloads/promt/node_modules/lighthouse/core/computed/computed-artifact.js:72:29)\n    at TraceEngineResult.compute_ (file:///C:/Users/BhaviChasvi/Downloads/promt/node_modules/lighthouse/core/computed/trace-engine-result.js:235:49)\n    at TraceEngineResult.request (file:///C:/Users/BhaviChasvi/Downloads/promt/node_modules/lighthouse/core/computed/computed-artifact.js:72:29)\n    at TraceElements.getArtifact (file:///C:/Users/BhaviChasvi/Downloads/promt/node_modules/lighthouse/core/gather/gatherers/trace-elements.js:330:31)\n    at file:///C:/Users/BhaviChasvi/Downloads/promt/node_modules/lighthouse/core/gather/runner-helpers.js:106:45\n    at async collectPhaseArtifacts (file:///C:/Users/BhaviChasvi/Downloads/promt/node_modules/lighthouse/core/gather/runner-helpers.js:123:5)",
+    "artifactKey": "TraceElements"
+  },
+  "requests": [
+    {
+      "url": "https://celebrate-ai-event-planner.vercel.app/plan/new",
+      "resourceType": "Document",
+      "networkRequestTime": 1.7549999989569187,
+      "networkEndTime": 19447.03200000152,
+      "statusCode": 200
+    },
+    {
+      "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/layout-3da882b1d13f95b0.js",
+      "resourceType": "Script",
+      "networkRequestTime": 19487.98099999875,
+      "networkEndTime": 19684.20600000024,
+      "statusCode": 200
+    },
+    {
+      "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/3545-89e462f936f8ff0c.js",
+      "resourceType": "Script",
+      "networkRequestTime": 19487.778000000864,
+      "networkEndTime": 19683.085999999195,
+      "statusCode": 200
+    },
+    {
+      "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/plan/new/page-83c3b691d26b8992.js",
+      "resourceType": "Script",
+      "networkRequestTime": 19487.35599999875,
+      "networkEndTime": 19674.5009999983,
+      "statusCode": 200
+    },
+    {
+      "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/error-5fe1ad3aec7b7670.js",
+      "resourceType": "Script",
+      "networkRequestTime": 19488.678999997675,
+      "networkEndTime": 19675.664000000805,
+      "statusCode": 200
+    },
+    {
+      "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/2619-04bc32f026a0d946.js",
+      "resourceType": "Script",
+      "networkRequestTime": 19487.585999999195,
+      "networkEndTime": 19669.89600000158,
+      "statusCode": 200
+    },
+    {
+      "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/2561-82c1b4350c06db72.js",
+      "resourceType": "Script",
+      "networkRequestTime": 19485.471999999136,
+      "networkEndTime": 19666.246999997646,
+      "statusCode": 200
+    },
+    {
+      "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/1157-4f0394f9de0850e3.js",
+      "resourceType": "Script",
+      "networkRequestTime": 19484.973999999464,
+      "networkEndTime": 19663.501000002027,
+      "statusCode": 200
+    }
+  ],
+  "note": "Trace processor reported NO_NAVSTART; request timings retained as diagnostics only, not as a valid Lighthouse performance score."
+}

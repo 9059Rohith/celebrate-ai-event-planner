@@ -1,3 +1,5 @@
+export const runtime = "nodejs";
+export const preferredRegion = "bom1";
 import { timingSafeEqual } from "node:crypto";
 import { runEvaluation } from "@/evals/harness";
 import { rateLimit } from "@/lib/security/rateLimit";

@@ -1,6 +1,6 @@
 import "../workspace.css";
-import snapshot from "@/evals/results/latest.json";
-import baseline from "@/evals/results/v1.json";
+import snapshot from "@/evals/results/latest.summary.json";
+import baseline from "@/evals/results/v1.summary.json";
 import type { Run } from "@/evals/harness";
 import { EvaluationDashboard } from "@/components/evals/EvaluationDashboard";
 import { MiniEval } from "@/components/planner/MiniEval";

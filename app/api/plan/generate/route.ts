@@ -1,3 +1,5 @@
+export const runtime = "nodejs";
+export const preferredRegion = "bom1";
 import { EventInputSchema } from "@/lib/schemas";
 import { createPlan } from "@/lib/domain/planner";
 import { generatePlan } from "@/lib/llm/generatePlan";

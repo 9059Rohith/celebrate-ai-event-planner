@@ -75,7 +75,7 @@ flowchart LR
   Acceptance --> Engine
 ```
 
-Money arithmetic never comes from the model. Prices are estimates, not quotations; currency selection chooses a unit and does not perform live FX conversion. Shared plans are copies in a URL fragment, not server records. Nonce CSP requires dynamic rendering per the installed Next.js guide. The final build aligns with the requested Next15 branch using15.5.28. PostCSS is overridden to the patched8.5.31 release. Nonce-based CSP requires dynamic rendering even on the landing page; this security choice prevents static HTML CDN caching. Region is Mumbai (`bom1`).
+Money arithmetic never comes from the model. Prices are estimates, not quotations; currency selection chooses a unit and does not perform live FX conversion. Shared plans are copies in a URL fragment, not server records. Nonce CSP requires dynamic rendering per the installed Next.js guide. The final build aligns with the requested Next15 branch using15.5.28. PostCSS is overridden to the patched8.5.31 release. Nonce-based CSP requires dynamic rendering even on the landing page; this security choice prevents static HTML CDN caching. Page rendering runs on the Edge runtime globally; API functions remain in Mumbai (`bom1`).
 
 ## External prerequisites and measured limits
 
@@ -90,3 +90,9 @@ See ARCHITECTURE.md, SECURITY.md and EVALUATION.md for contracts, threat model a
 The latest deployed mobile LCP measurements are in `reports/performance-live.json`: three cache-reset Lighthouse runs per route using the default mobile settings. Reproduce with `node scripts/performance.mjs`. Final medians: home1.086s, wizard0.934s; all six LCP samples below2s, CLS0. Navigation load-event timings are also recorded, including an outlier; LCP does not mean every background request has completed.
 
 Styles are split by surface and delivered inline using Next15's experimental `inlineCss` option. The wizard defers generation engines and workspace code; the landing page uses native navigation and SVG symbols to reduce startup work. No security headers were relaxed.
+
+## Complete page-load verification
+
+Page shells now render on Edge to remove Node startup from their request path while retaining per-response CSP nonces. AI/API routes explicitly retain Node.js in Mumbai. Evaluation snapshots are compact at initial render; individual full case evidence loads when opened. `npm run build` regenerates summaries and evidence files from the source evaluation results.
+
+`node scripts/full-load.mjs` measures six entry routes with a fresh context/cache per visit; `node scripts/workspace-load.mjs` covers saved and populated shared plans. The latest 48 actual navigation-load samples were all under2 seconds (maximum1.921s); workspace heading readiness was at most1.497s. These are unthrottled laboratory observations, not a guarantee across devices/networks or AI completion times. One recoverable React hydration warning in a shared-plan sample is retained in the report; that sample still loaded in0.770s. See `reports/full-load-summary.json`.

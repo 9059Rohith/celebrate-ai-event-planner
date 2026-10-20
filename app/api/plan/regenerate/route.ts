@@ -1,3 +1,5 @@
+export const runtime = "nodejs";
+export const preferredRegion = "bom1";
 import { z } from "zod";
 import { generatePlan } from "@/lib/llm/generatePlan";
 import { hydratePlan, TransportPlanSchema } from "@/lib/llm/snapshot";

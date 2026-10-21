@@ -1,0 +1,120 @@
+{
+  "url": "https://celebrate-ai-event-planner.vercel.app",
+  "deploymentId": "dpl_5iAVXTKQ8nybyvyvvHSNhzM19oqN",
+  "timestamp": "2026-10-21T06:40:20.102Z",
+  "conditions": "Microsoft Edge 155, unthrottled network, desktop and iPhone13 emulation, fresh browser contexts/caches after explicit server/CDN release warmup. All samples retained.",
+  "samples": 68,
+  "underTwoSeconds": 67,
+  "medianLoadMs": 700.7000000011176,
+  "p95LoadMs": 1003.4000000003725,
+  "maxLoadMs": 4829.699999999255,
+  "maxReadyMs": 4916.300000000745,
+  "errorSamples": [],
+  "outliers": [
+    {
+      "source": "reports/shared-hydration-route-boundary.json",
+      "sample": 2,
+      "mobile": true,
+      "dark": false,
+      "status": 200,
+      "loadMs": 4829.699999999255,
+      "dnsMs": 2.199999999254942,
+      "connectMs": 112.19999999925494,
+      "requestWaitMs": 74.40000000037253,
+      "readyMs": 4916.300000000745,
+      "requestStartMs": 117.90000000037253,
+      "responseEndMs": 268.80000000074506,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/global-error-eeb8d44fcbd5542a.js",
+          "start": 295.30000000074506,
+          "end": 4809.800000000745,
+          "duration": 4514.5
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/1635-1a27284a95e2350c.js",
+          "start": 295.09999999962747,
+          "end": 4809.5,
+          "duration": 4514.4000000003725
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/8970-d76763e89072b45e.js",
+          "start": 295.09999999962747,
+          "end": 4808.9000000003725,
+          "duration": 4513.800000000745
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/575-aa6909080de73d84.js",
+          "start": 295.09999999962747,
+          "end": 4767.9000000003725,
+          "duration": 4472.800000000745
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/1255-60d8dc7c8c9309a1.js",
+          "start": 294.80000000074506,
+          "end": 4765,
+          "duration": 4470.199999999255
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "routes": {
+    "/": {
+      "samples": 6,
+      "maxLoadMs": 722.6999999992549
+    },
+    "/plan/new": {
+      "samples": 6,
+      "maxLoadMs": 1215.5
+    },
+    "/evals": {
+      "samples": 6,
+      "maxLoadMs": 773.5999999996275
+    },
+    "/privacy": {
+      "samples": 6,
+      "maxLoadMs": 570
+    },
+    "/offline": {
+      "samples": 6,
+      "maxLoadMs": 925.4000000003725
+    },
+    "/shared": {
+      "samples": 6,
+      "maxLoadMs": 803.8000000007451
+    },
+    "/plan/[id]": {
+      "samples": 6,
+      "maxLoadMs": 1003.4000000003725
+    },
+    "/shared (populated)": {
+      "samples": 26,
+      "maxLoadMs": 4829.699999999255
+    }
+  },
+  "hydrationPassed": true,
+  "strictPerformancePassed": false,
+  "rootCause": {
+    "expected": "main#main-content",
+    "observed": "Hydration cursor was already inside that same main element when the main host fiber replayed.",
+    "documentReadyState": "interactive",
+    "upstream": "https://github.com/react/react/issues/37584",
+    "fix": "Resolve Flight children on a RouteContent component fiber instead of the already-claimed main host fiber.",
+    "regression": "The vendored Next renderer failed the same-tree hydration test before the fix and preserved the original main/section DOM nodes afterward."
+  },
+  "checks": {
+    "unitIntegration": 98,
+    "browserLocal": 16,
+    "build": "passed",
+    "lint": "no errors; one pre-existing unused-variable warning in scripts/eval-snapshots.mjs",
+    "browserProduction": 4
+  },
+  "interpretation": "Hydration errors resolved in regression and this live batch. The strict two-second load target remains unmet: one static-resource transfer outlier; no slow sample removed or reclassified.",
+  "sources": [
+    "reports/full-load-route-boundary.json",
+    "reports/workspace-load-route-boundary.json",
+    "reports/shared-hydration-route-boundary.json"
+  ],
+  "previousReport": "reports/postwarm-verification.json"
+}

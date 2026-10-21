@@ -5,6 +5,7 @@ import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/common/Header";
 import { ClientRuntime } from "@/components/common/ClientRuntime";
+import { RouteContent } from "@/components/common/RouteContent";
 // Render nonce-protected public page shells without a Node server startup.
 export const runtime = "edge";
 export const preferredRegion = "global";
@@ -43,7 +44,9 @@ export default async function RootLayout({
         </Link>
         <ClientRuntime />
         <Header />
-        <main id="main-content">{children}</main>
+        <main id="main-content">
+          <RouteContent>{children}</RouteContent>
+        </main>
         <footer>
           <Link prefetch={false} className="brand" href="/">
             ✳ celebrate<span>ai</span>

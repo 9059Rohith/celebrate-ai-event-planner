@@ -1,231 +1,231 @@
 {
   "url": "https://celebrate-ai-event-planner.vercel.app",
-  "timestamp": "2026-10-20T18:51:28.921Z",
+  "timestamp": "2026-10-21T06:36:51.175Z",
   "method": "Explicit post-deployment server/CDN warmup only; no browser profile or browser cache is warmed. Every request recorded.",
   "requests": [
     {
       "path": "/",
       "status": 200,
-      "ms": 422.1257,
+      "ms": 979.3627,
       "cache": "MISS",
-      "bytes": 41629
+      "bytes": 41860
     },
     {
       "path": "/plan/new",
       "status": 200,
-      "ms": 127.71259999999995,
+      "ms": 583.2797999999999,
       "cache": "MISS",
-      "bytes": 20084
+      "bytes": 20315
     },
     {
       "path": "/evals",
       "status": 200,
-      "ms": 139.32939999999996,
+      "ms": 620.837,
       "cache": "MISS",
-      "bytes": 111384
+      "bytes": 111615
     },
     {
       "path": "/privacy",
       "status": 200,
-      "ms": 162.8256,
+      "ms": 298.24209999999994,
       "cache": "MISS",
-      "bytes": 16136
+      "bytes": 16367
     },
     {
       "path": "/offline",
       "status": 200,
-      "ms": 392.6064000000001,
+      "ms": 616.6294000000003,
       "cache": "MISS",
-      "bytes": 14892
+      "bytes": 15123
     },
     {
       "path": "/shared",
       "status": 200,
-      "ms": 124.3119999999999,
+      "ms": 306.9177999999997,
       "cache": "MISS",
-      "bytes": 15867
+      "bytes": 16098
     },
     {
       "path": "/_next/static/css/7afbfbe1603f176f.css",
       "status": 200,
-      "ms": 66.91660000000002,
-      "cache": "HIT",
+      "ms": 512.2382000000002,
+      "cache": "MISS",
       "bytes": 14497
-    },
-    {
-      "path": "/_next/static/chunks/1255-60d8dc7c8c9309a1.js",
-      "status": 200,
-      "ms": 165.13850000000002,
-      "cache": "HIT",
-      "bytes": 174644
     },
     {
       "path": "/_next/static/css/6ed493623f25e6ec.css",
       "status": 200,
-      "ms": 272.55399999999986,
-      "cache": "HIT",
+      "ms": 512.2029000000002,
+      "cache": "MISS",
       "bytes": 10780
-    },
-    {
-      "path": "/_next/static/chunks/main-app-7cd0e87450e50109.js",
-      "status": 200,
-      "ms": 54.81840000000011,
-      "cache": "HIT",
-      "bytes": 796
-    },
-    {
-      "path": "/_next/static/chunks/4bd1b696-100b9d70ed4e49c1.js",
-      "status": 200,
-      "ms": 292.2279000000001,
-      "cache": "HIT",
-      "bytes": 173025
-    },
-    {
-      "path": "/_next/static/chunks/app/global-error-eeb8d44fcbd5542a.js",
-      "status": 200,
-      "ms": 65.46150000000011,
-      "cache": "HIT",
-      "bytes": 547
     },
     {
       "path": "/_next/static/chunks/webpack-b0e48c1ae15c0874.js",
       "status": 200,
-      "ms": 336.87530000000015,
-      "cache": "HIT",
+      "ms": 626.4319,
+      "cache": "MISS",
       "bytes": 5882
     },
     {
-      "path": "/_next/static/chunks/app/page-97ee520f1015add3.js",
+      "path": "/_next/static/chunks/4bd1b696-100b9d70ed4e49c1.js",
       "status": 200,
-      "ms": 69.36969999999997,
-      "cache": "HIT",
-      "bytes": 7344
+      "ms": 719.4752000000003,
+      "cache": "MISS",
+      "bytes": 173025
     },
     {
-      "path": "/_next/static/chunks/3545-89e462f936f8ff0c.js",
+      "path": "/_next/static/chunks/main-app-7cd0e87450e50109.js",
       "status": 200,
-      "ms": 62.144399999999905,
-      "cache": "HIT",
-      "bytes": 12765
+      "ms": 304.79179999999997,
+      "cache": "MISS",
+      "bytes": 796
     },
     {
-      "path": "/_next/static/chunks/app/layout-290f38c6256348b8.js",
+      "path": "/_next/static/chunks/app/global-error-eeb8d44fcbd5542a.js",
       "status": 200,
-      "ms": 71.83560000000011,
-      "cache": "HIT",
-      "bytes": 3629
-    },
-    {
-      "path": "/_next/static/chunks/app/error-5fe1ad3aec7b7670.js",
-      "status": 200,
-      "ms": 77.26260000000002,
-      "cache": "HIT",
-      "bytes": 584
-    },
-    {
-      "path": "/_next/static/css/f4100580a012f1bf.css",
-      "status": 200,
-      "ms": 70.8406,
-      "cache": "HIT",
-      "bytes": 3539
+      "ms": 434.06709999999975,
+      "cache": "MISS",
+      "bytes": 547
     },
     {
       "path": "/_next/static/chunks/2619-04bc32f026a0d946.js",
       "status": 200,
-      "ms": 206.26409999999987,
-      "cache": "HIT",
+      "ms": 343.95969999999943,
+      "cache": "MISS",
       "bytes": 8564
     },
     {
-      "path": "/_next/static/chunks/1157-4f0394f9de0850e3.js",
+      "path": "/_next/static/chunks/1255-60d8dc7c8c9309a1.js",
       "status": 200,
-      "ms": 93.29130000000009,
-      "cache": "HIT",
-      "bytes": 95297
+      "ms": 612.3615,
+      "cache": "MISS",
+      "bytes": 174644
+    },
+    {
+      "path": "/_next/static/chunks/app/page-97ee520f1015add3.js",
+      "status": 200,
+      "ms": 507.59940000000006,
+      "cache": "MISS",
+      "bytes": 7344
+    },
+    {
+      "path": "/_next/static/chunks/app/layout-1c3ed69d58b9eb15.js",
+      "status": 200,
+      "ms": 296.71510000000035,
+      "cache": "MISS",
+      "bytes": 3768
+    },
+    {
+      "path": "/_next/static/chunks/app/error-5fe1ad3aec7b7670.js",
+      "status": 200,
+      "ms": 305.6171999999997,
+      "cache": "MISS",
+      "bytes": 584
+    },
+    {
+      "path": "/_next/static/chunks/3545-89e462f936f8ff0c.js",
+      "status": 200,
+      "ms": 370.4337999999998,
+      "cache": "MISS",
+      "bytes": 12765
+    },
+    {
+      "path": "/_next/static/css/f4100580a012f1bf.css",
+      "status": 200,
+      "ms": 283.9960000000001,
+      "cache": "MISS",
+      "bytes": 3539
+    },
+    {
+      "path": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+      "status": 200,
+      "ms": 352.46190000000024,
+      "cache": "MISS",
+      "bytes": 112594
     },
     {
       "path": "/_next/static/chunks/2561-82c1b4350c06db72.js",
       "status": 200,
-      "ms": 70.54849999999988,
-      "cache": "HIT",
+      "ms": 309.0027,
+      "cache": "MISS",
       "bytes": 10967
+    },
+    {
+      "path": "/_next/static/chunks/1157-4f0394f9de0850e3.js",
+      "status": 200,
+      "ms": 317.3630000000003,
+      "cache": "MISS",
+      "bytes": 95297
     },
     {
       "path": "/_next/static/chunks/4721-30e839162cd6c9c4.js",
       "status": 200,
-      "ms": 79.87889999999993,
-      "cache": "HIT",
+      "ms": 310.8267999999998,
+      "cache": "MISS",
       "bytes": 27070
     },
     {
       "path": "/_next/static/chunks/1635-1a27284a95e2350c.js",
       "status": 200,
-      "ms": 73.13740000000007,
-      "cache": "HIT",
+      "ms": 316.4895999999999,
+      "cache": "MISS",
       "bytes": 11305
     },
     {
       "path": "/_next/static/css/d2663c0638bcb85f.css",
       "status": 200,
-      "ms": 99.0782999999999,
-      "cache": "HIT",
+      "ms": 300.9185000000007,
+      "cache": "MISS",
       "bytes": 8692
     },
     {
       "path": "/_next/static/chunks/app/plan/new/page-83c3b691d26b8992.js",
       "status": 200,
-      "ms": 119.90170000000012,
-      "cache": "HIT",
+      "ms": 307.9462999999996,
+      "cache": "MISS",
       "bytes": 18356
     },
     {
       "path": "/_next/static/chunks/app/evals/page-6cde627deafe50c7.js",
       "status": 200,
-      "ms": 69.38850000000025,
-      "cache": "HIT",
+      "ms": 293.10819999999967,
+      "cache": "MISS",
       "bytes": 7173
     },
     {
       "path": "/_next/static/chunks/app/privacy/page-4ad02e7cc2b290be.js",
       "status": 200,
-      "ms": 102.24459999999999,
-      "cache": "HIT",
+      "ms": 361.5710000000008,
+      "cache": "MISS",
       "bytes": 196
     },
     {
       "path": "/_next/static/chunks/8970-d76763e89072b45e.js",
       "status": 200,
-      "ms": 166.68139999999994,
-      "cache": "HIT",
+      "ms": 306.4993000000004,
+      "cache": "MISS",
       "bytes": 8373
+    },
+    {
+      "path": "/_next/static/chunks/app/offline/page-b8761540a91291d8.js",
+      "status": 200,
+      "ms": 308.21030000000064,
+      "cache": "MISS",
+      "bytes": 3871
     },
     {
       "path": "/_next/static/chunks/575-aa6909080de73d84.js",
       "status": 200,
-      "ms": 76.08739999999989,
-      "cache": "HIT",
+      "ms": 311.5118000000002,
+      "cache": "MISS",
       "bytes": 17021
     },
     {
       "path": "/_next/static/chunks/app/shared/page-b19449319ed8b92a.js",
       "status": 200,
-      "ms": 61.30650000000014,
-      "cache": "HIT",
-      "bytes": 1847
-    },
-    {
-      "path": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
-      "status": 200,
-      "ms": 828.3875000000003,
+      "ms": 309.39879999999994,
       "cache": "MISS",
-      "bytes": 112594
-    },
-    {
-      "path": "/_next/static/chunks/app/offline/page-b8761540a91291d8.js",
-      "status": 200,
-      "ms": 738.5938000000001,
-      "cache": "HIT",
-      "bytes": 3871
+      "bytes": 1847
     }
   ]
 }

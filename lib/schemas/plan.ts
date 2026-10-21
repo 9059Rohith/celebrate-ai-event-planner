@@ -145,6 +145,12 @@ export const PlanSummarySchema = z.strictObject({
 export type PlanSummary = z.infer<typeof PlanSummarySchema>;
 
 // ─── Plan Meta ────────────────────────────────────────────────────
+export const StructuredValidationSchema = z.strictObject({
+  firstAttemptValid: z.boolean(),
+  repairAttempted: z.boolean(),
+  repairValid: z.boolean().nullable(),
+});
+export type StructuredValidation = z.infer<typeof StructuredValidationSchema>;
 export const PlanMetaSchema = z.strictObject({
   source: z.enum(["ai", "fallback", "hybrid"]),
   model: z.string().optional(),
@@ -157,6 +163,7 @@ export const PlanMetaSchema = z.strictObject({
     .optional(),
   latencyMs: z.number().optional(),
   cached: z.boolean().optional(),
+  structuredValidation: StructuredValidationSchema.optional(),
 });
 export type PlanMeta = z.infer<typeof PlanMetaSchema>;
 

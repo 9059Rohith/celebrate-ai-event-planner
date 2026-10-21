@@ -1,0 +1,9 @@
+{
+  "timestamp": "2026-10-21T19:18:29.216Z",
+  "trackedAndProposedFiles": 243,
+  "trackedAndProposedBytes": 7999399,
+  "commits": 19,
+  "findings": [],
+  "passed": true,
+  "fixtureException": "Intentional fake API-key canary in tests/backend.test.ts"
+}

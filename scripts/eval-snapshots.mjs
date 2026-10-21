@@ -15,7 +15,13 @@ for (const name of ["latest", "v1"]) {
     JSON.stringify({
       ...run,
       results:
-        name === "v1" ? [] : run.results.map(({ output, ...item }) => item),
+        name === "v1"
+          ? []
+          : run.results.map((result) => {
+              const item = { ...result };
+              delete item.output;
+              return item;
+            }),
     }),
   );
 }

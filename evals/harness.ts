@@ -49,6 +49,13 @@ export type Run = {
   costUsd: number | null;
   judgeStatus: string;
   metricRates: Record<string, number>;
+  structuredValidation?: {
+    observedCases: number;
+    firstAttemptValidRate: number | null;
+    validAfterRepairRate: number | null;
+    repairAttempts: number;
+    repairSuccesses: number;
+  };
   thresholds: Record<string, boolean>;
   results: CaseResult[];
 };
@@ -71,6 +78,25 @@ export function summarize(
     ]),
   );
   const judged = results.flatMap((r) => (r.judge ? [r.judge] : []));
+  const observations = results.flatMap((r) =>
+    r.output?.meta.structuredValidation && !r.output.meta.cached
+      ? [r.output.meta.structuredValidation]
+      : [],
+  );
+  const structuredValidation = {
+    observedCases: observations.length,
+    firstAttemptValidRate: observations.length
+      ? observations.filter((v) => v.firstAttemptValid).length /
+        observations.length
+      : null,
+    validAfterRepairRate: observations.length
+      ? observations.filter(
+          (v) => v.firstAttemptValid || v.repairValid === true,
+        ).length / observations.length
+      : null,
+    repairAttempts: observations.filter((v) => v.repairAttempted).length,
+    repairSuccesses: observations.filter((v) => v.repairValid === true).length,
+  };
   const judgeMeans = Object.fromEntries(
     rubricKeys.map((k) => [
       k,
@@ -135,6 +161,7 @@ export function summarize(
       ? `${judged.length} outputs judged twice; agreement ±1: ${((judged.reduce((s, j) => s + j.agreement, 0) / judged.length) * 100).toFixed(1)}%; means ${JSON.stringify(judgeMeans)}`
       : "Not run. No live judge scores or calibration agreement available.",
     metricRates: rates,
+    structuredValidation,
     thresholds,
     results,
   };

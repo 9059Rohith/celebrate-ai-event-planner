@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { goldenCases } from "../evals/dataset";
 import { evaluate, fuzzyIncludes } from "../evals/metrics";
-import { runEvaluation, type Options } from "../evals/harness";
+import { runEvaluation, summarize, type Options } from "../evals/harness";
 import { createPlan } from "../lib/domain/planner";
 import { EvalCaseSchema } from "../lib/schemas";
 const options: Options = {
@@ -14,6 +14,40 @@ const options: Options = {
   promptVersion: "v2",
 };
 describe("golden evaluation coverage", () => {
+  it("counts observed provider validation outcomes without counting caches or fallback-only cases", async () => {
+    const run = await runEvaluation(options);
+    const base = run.results[0];
+    const cases = [
+      { firstAttemptValid: true, repairAttempted: false, repairValid: null },
+      { firstAttemptValid: false, repairAttempted: true, repairValid: true },
+      { firstAttemptValid: false, repairAttempted: true, repairValid: false },
+      { firstAttemptValid: false, repairAttempted: true, repairValid: null },
+    ].map((observation, i) => ({
+      ...base,
+      id: `observed-${i}`,
+      output: {
+        ...base.output!,
+        meta: { ...base.output!.meta, structuredValidation: observation },
+      },
+    }));
+    const cached = {
+      ...cases[0],
+      output: {
+        ...cases[0].output,
+        meta: { ...cases[0].output.meta, cached: true },
+      },
+    };
+    expect(
+      summarize([...cases, cached, base], options, Date.now(), true)
+        .structuredValidation,
+    ).toEqual({
+      observedCases: 4,
+      firstAttemptValidRate: 0.25,
+      validAfterRepairRate: 0.5,
+      repairAttempts: 3,
+      repairSuccesses: 1,
+    });
+  });
   it("has distinct valid cases and stated required distribution", () => {
     const cases = goldenCases();
     expect(cases).toHaveLength(46);
@@ -62,6 +96,13 @@ describe("golden evaluation coverage", () => {
     const run = await runEvaluation(options);
     expect(run.totalCases).toBe(2);
     expect(run.tokens).toBe(0);
+    expect(run).toHaveProperty("structuredValidation", {
+      observedCases: 0,
+      firstAttemptValidRate: null,
+      validAfterRepairRate: null,
+      repairAttempts: 0,
+      repairSuccesses: 0,
+    });
     expect(run.costUsd).toBe(0);
     expect(run.judgeStatus).toContain("Not run");
     expect(run.results.every((r) => r.ttfbMs === null)).toBe(true);

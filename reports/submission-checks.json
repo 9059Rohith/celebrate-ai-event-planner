@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-10-21T19:19:13.6896848Z",
+  "unitTests": 112,
+  "unitFiles": 17,
+  "browserTests": 20,
+  "browserFailures": 0,
+  "browserSkipped": 0,
+  "browserProjects": [
+    "desktop Edge",
+    "iPhone 13 emulation in Edge"
+  ],
+  "typecheck": "passed",
+  "lint": "passed",
+  "build": "passed",
+  "runtimeDependencyVulnerabilities": 0,
+  "developmentDependencyFindings": 5,
+  "coverageScope": "lib/**/*.ts",
+  "offlineEvaluation": "46/46",
+  "liveAI": "not run; awaiting production key"
+}

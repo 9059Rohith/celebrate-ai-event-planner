@@ -32,6 +32,7 @@ export function WizardStyle({
           <button
             type="button"
             key={v}
+            aria-pressed={input.vibe.includes(v as EventInput["vibe"][number])}
             className={
               input.vibe.includes(v as EventInput["vibe"][number])
                 ? "selected"
@@ -65,6 +66,9 @@ export function WizardStyle({
           <button
             type="button"
             key={d}
+            aria-pressed={input.dietary.includes(
+              d as EventInput["dietary"][number],
+            )}
             className={
               input.dietary.includes(d as EventInput["dietary"][number])
                 ? "selected"
@@ -101,6 +105,7 @@ export function WizardStyle({
           <button
             type="button"
             key={c}
+            aria-pressed={input.priorities.includes(c)}
             className={input.priorities.includes(c) ? "selected" : ""}
             onClick={() =>
               patch({

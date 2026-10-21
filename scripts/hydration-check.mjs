@@ -89,6 +89,10 @@ try {
             start: r.startTime,
             end: r.responseEnd,
             duration: r.duration,
+            requestStart: r.requestStart,
+            responseStart: r.responseStart,
+            transfer: r.transferSize,
+            protocol: r.nextHopProtocol,
           }))
           .sort((a, b) => b.duration - a.duration)
           .slice(0, 5),

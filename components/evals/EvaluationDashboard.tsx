@@ -105,6 +105,13 @@ export function EvaluationDashboard({
       <section className="panel">
         <h2>Metric pass rates and run comparison</h2>
         <p>
+          Provider structured enhancement validity:{" "}
+          {run.structuredValidation?.observedCases
+            ? `${run.structuredValidation.observedCases} observed cases; first attempt ${((run.structuredValidation.firstAttemptValidRate ?? 0) * 100).toFixed(1)}%; valid after repair ${((run.structuredValidation.validAfterRepairRate ?? 0) * 100).toFixed(1)}%; ${run.structuredValidation.repairSuccesses} successful repairs / ${run.structuredValidation.repairAttempts} attempts.`
+            : "Not measured — no provider validation observations in this run."}{" "}
+          Cached responses and fallback-only cases are excluded.
+        </p>
+        <p>
           Pre-fix fallback baseline (label {baseline.promptVersion}):{" "}
           {baseline.passed}/{baseline.totalCases} · Current run (label{" "}
           {run.promptVersion}): {run.passed}/{run.totalCases}. Offline runs

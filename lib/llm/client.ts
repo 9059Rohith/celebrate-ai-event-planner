@@ -8,6 +8,7 @@ import { reserveTokens } from "./cost";
 import { outputSafe } from "./guardrails";
 import { dedupeCall } from "./dedupe";
 import { cacheKey } from "./cache";
+import type { StructuredValidation } from "@/lib/schemas/plan";
 let singleton: OpenAI | undefined;
 export function getClient(): OpenAI | undefined {
   const env = getServerEnv();
@@ -18,7 +19,14 @@ export function getClient(): OpenAI | undefined {
     maxRetries: env.OPENAI_MAX_RETRIES,
   }));
 }
-export class LlmValidationError extends Error {}
+export class LlmValidationError extends Error {
+  constructor(
+    message: string,
+    public validation?: StructuredValidation,
+  ) {
+    super(message);
+  }
+}
 export async function moderate(
   text: string,
   signal?: AbortSignal,
@@ -54,37 +62,45 @@ async function structuredRequest<T>({
   data: T;
   tokens: { in: number; out: number };
   repaired: boolean;
+  validation: StructuredValidation;
 }> {
   const client = getClient();
-  if (
-    !client ||
-    !(await reserveTokens(
-      maxTokens + Math.ceil(JSON.stringify(messages).length / 3),
-    ))
-  )
-    throw new Error("AI unavailable");
+  if (!client) throw new Error("AI unavailable");
   let errors = "";
+  let validation: StructuredValidation | undefined;
   const start = Date.now();
   for (let attempt = 0; attempt < 2; attempt++) {
     signal?.throwIfAborted();
-    const response = await client.chat.completions.create(
-      {
-        model: getServerEnv().OPENAI_MODEL,
-        messages: attempt
-          ? [
-              ...messages,
-              {
-                role: "developer",
-                content: `Repair the response once. Validation errors: ${errors.slice(0, 1000)}. Return valid schema only.`,
-              },
-            ]
-          : messages,
-        response_format: zodResponseFormat(schema, name),
-        max_completion_tokens: maxTokens,
-        temperature: attempt ? 0 : temperature,
-      },
-      { signal },
-    );
+    const attemptMessages: ChatCompletionMessageParam[] = attempt
+      ? [
+          ...messages,
+          {
+            role: "developer",
+            content: `Repair the response once. Validation errors: ${errors.slice(0, 1000)}. Return valid schema only.`,
+          },
+        ]
+      : messages;
+    if (
+      !(await reserveTokens(
+        maxTokens + Math.ceil(JSON.stringify(attemptMessages).length / 3),
+      ))
+    )
+      throw new LlmValidationError("AI unavailable", validation);
+    if (validation) validation.repairAttempted = true;
+    const response = await client.chat.completions
+      .create(
+        {
+          model: getServerEnv().OPENAI_MODEL,
+          messages: attemptMessages,
+          response_format: zodResponseFormat(schema, name),
+          max_completion_tokens: maxTokens,
+          temperature: attempt ? 0 : temperature,
+        },
+        { signal },
+      )
+      .catch(() => {
+        throw new LlmValidationError("AI unavailable", validation);
+      });
     const content = response.choices[0]?.message.content || "";
     try {
       if (!outputSafe(content)) throw new Error("Unsafe output");
@@ -109,8 +125,18 @@ async function structuredRequest<T>({
           out: response.usage?.completion_tokens || 0,
         },
         repaired: !!attempt,
+        validation: {
+          firstAttemptValid: !attempt,
+          repairAttempted: !!attempt,
+          repairValid: attempt ? true : null,
+        },
       };
     } catch (error) {
+      validation = {
+        firstAttemptValid: false,
+        repairAttempted: !!attempt,
+        repairValid: attempt ? false : null,
+      };
       errors =
         error instanceof z.ZodError
           ? JSON.stringify(
@@ -119,7 +145,7 @@ async function structuredRequest<T>({
           : "Invalid JSON or unsafe content";
     }
   }
-  throw new LlmValidationError("Model response failed validation");
+  throw new LlmValidationError("Model response failed validation", validation);
 }
 
 export function callStructured<T>(

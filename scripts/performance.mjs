@@ -26,7 +26,12 @@ try {
       const { lhr } = await lighthouse(base + path, {
         port: browser.port,
         logLevel: "error",
-        onlyCategories: ["performance"],
+        onlyCategories: [
+          "performance",
+          "accessibility",
+          "best-practices",
+          "seo",
+        ],
         disableStorageReset: false,
       });
       const row = {
@@ -35,6 +40,9 @@ try {
         timestamp: lhr.fetchTime,
         runtimeError: lhr.runtimeError || null,
         performance: lhr.categories.performance.score,
+        accessibility: lhr.categories.accessibility.score,
+        bestPractices: lhr.categories["best-practices"].score,
+        seo: lhr.categories.seo.score,
         lcpMs: lhr.audits["largest-contentful-paint"].numericValue,
         cls: lhr.audits["cumulative-layout-shift"].numericValue,
         observedLcpMs:

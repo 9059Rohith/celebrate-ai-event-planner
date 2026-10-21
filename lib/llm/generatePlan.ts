@@ -1,7 +1,12 @@
 import { z } from "zod";
 import { createPlan } from "@/lib/domain/planner";
 import { PlanSchema, type EventInput, type Plan } from "@/lib/schemas";
-import { callStructured, getClient, moderate } from "./client";
+import {
+  callStructured,
+  getClient,
+  moderate,
+  LlmValidationError,
+} from "./client";
 import { cleanOutput, ideasSafe, sanitizeData } from "./guardrails";
 import { promptMessages, type PromptVersion } from "./prompts";
 import { cacheGet, cacheKey, cacheSet } from "./cache";
@@ -47,6 +52,7 @@ export async function generatePlan(
     ? structuredClone(options.currentPlan)
     : createPlan(safe);
   const version = options.promptVersion || "v2";
+  delete plan.meta.structuredValidation;
   plan.meta.promptVersion = `2026-10-${version.endsWith("v1") ? "v1" : "v2"}`;
   if (!getClient()) return plan;
   const key = cacheKey({
@@ -63,7 +69,7 @@ export async function generatePlan(
     if (!cached && !(await moderate(JSON.stringify(safe), options.signal)))
       return plan;
     const result = cached
-      ? { data: cached, tokens: { in: 0, out: 0 } }
+      ? { data: cached, tokens: { in: 0, out: 0 }, validation: undefined }
       : await callStructured({
           schema: Enhancement,
           name: "event_enhancement",
@@ -139,10 +145,11 @@ export async function generatePlan(
       latencyMs: Date.now() - start,
       tokens: result.tokens,
       cached: !!cached,
+      structuredValidation: result.validation,
     };
     if (!cached) await cacheSet(key, data);
     return PlanSchema.parse(plan);
-  } catch {
+  } catch (error) {
     if (options.signal?.aborted) throw options.signal.reason;
     const fallback = options.currentPlan
       ? structuredClone(options.currentPlan)
@@ -151,6 +158,8 @@ export async function generatePlan(
       source: "fallback",
       promptVersion: plan.meta.promptVersion,
       latencyMs: Date.now() - start,
+      structuredValidation:
+        error instanceof LlmValidationError ? error.validation : undefined,
     };
     return fallback;
   }

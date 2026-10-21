@@ -30,7 +30,7 @@ test("route hydration preserves the host when a Flight lazy node resolves during
   const errors: unknown[] = [];
   const chunk: FlightChunk = {
     status: "pending",
-    then(resolve: (value: unknown) => void) {
+    then(resolve) {
       queueMicrotask(() => {
         chunk.status = "fulfilled";
         chunk.value = {

@@ -21,17 +21,19 @@ export async function redis(command: (string | number)[]): Promise<unknown> {
 }
 export async function rateLimit(request: Request): Promise<boolean> {
   const route = new URL(request.url).pathname;
-  const limit = route.includes("generate")
+  const routeLimit = route.includes("generate")
     ? 5
     : route.includes("chat")
       ? 20
       : route.includes("eval")
         ? 2
         : 10;
+  const env = getServerEnv();
+  const limit = Math.min(routeLimit, env.RATE_LIMIT_PER_MIN);
   const now = Date.now();
   const hash = createHash("sha256")
     .update(
-      `${getServerEnv().UPSTASH_REDIS_REST_TOKEN || localSalt}:${new Date().toISOString().slice(0, 10)}:${request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "local"}`,
+      `${env.UPSTASH_REDIS_REST_TOKEN || localSalt}:${new Date().toISOString().slice(0, 10)}:${request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "local"}`,
     )
     .digest("hex");
   const key = `rate:${route}:${hash}`;
@@ -50,9 +52,15 @@ export async function rateLimit(request: Request): Promise<boolean> {
     if (typeof allowed === "number") return allowed === 1;
   } catch {}
   const hits = (windows.get(key) || []).filter((t) => now - t < 60000);
-  windows.set(key, [...hits, now]);
-  if (windows.size > 10000)
+  // Only accepted requests consume a slot, matching the Redis implementation.
+  // Retrying a rejected request must not grow memory or renew its lockout.
+  if (hits.length >= limit) return false;
+  if (!windows.has(key) && windows.size >= 10000) {
     for (const [k, v] of windows)
-      if (now - v[v.length - 1] > 60000) windows.delete(k);
-  return hits.length < limit;
+      if (now - v[v.length - 1] >= 60000) windows.delete(k);
+    // Preserve active windows rather than evicting clients and resetting limits.
+    if (windows.size >= 10000) return false;
+  }
+  windows.set(key, [...hits, now]);
+  return true;
 }

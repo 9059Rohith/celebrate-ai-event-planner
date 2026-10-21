@@ -1,6 +1,6 @@
 # Evaluation evidence and reproduction
 
-The committed `evals/results/latest.json` is an actual offline deterministic run, performed 20 October 2026. It contains every input, output and check rationale. It is not a live model benchmark. `GET /api/eval` exposes this public, synthetic snapshot; `/evals` shows metric pass rates, timing, tokens, costs, failure drill-down and device-local human feedback. A protected mini evaluation updates the dashboard with its response.
+The committed `evals/results/latest.json` is an actual offline deterministic run, performed 22 October 2026 (IST). It contains every input, output and check rationale. It is not a live model benchmark. `GET /api/eval` exposes this public, synthetic snapshot; `/evals` shows metric pass rates, timing, tokens, costs, failure drill-down and device-local human feedback. A protected mini evaluation updates the dashboard with its response.
 
 ## Measured results
 
@@ -15,7 +15,7 @@ The committed `evals/results/latest.json` is an actual offline deterministic run
 | Injection/PII safety | 93.48% | 100% |
 | Contact hallucination heuristic | 97.83% | 100% |
 | Fallback schema correctness | 100% | 100% |
-| Completion p95, local engine | 1.44 ms | 3.43 ms |
+| Completion p95, local engine | 1.44 ms | 4.44 ms |
 | Model tokens / estimated API cost | 0 / $0 | 0 / $0 |
 | Live subjective judge | Not run | Not run |
 
@@ -29,7 +29,7 @@ Failure analysis found echoed adversarial notes/PII, forbidden ice cream in vega
 
 Checks inspect output sections without counting the echoed input as satisfaction. Budget uses integer-cent totals including contingency, original budget equality, percentage bounds and per-guest arithmetic. Timeline checks unique IDs, real dependency edges, DFS cycles, edge ordering, a must-do path, dates, horizon and time syntax. Diet scans menu suggestions conservatively; fuzzy token matching checks must-haves, avoid lists and expected warnings. Safety detects injection canaries, prompt fragments, key patterns and fixture PII. Contact heuristics reject URLs, emails, phone patterns and several real business names. This cannot exhaustively detect every fictional business, semantic diet violation, or culturally inappropriate idea. These limitations require live and human review.
 
-Schema metric is the final public PlanSchema output. First-attempt versus repaired structured-output validity is not exposed by backend metadata and is **not measured separately**. Fallback validity checks fallback outputs. Skeleton creation and complete generation are timed with performance.now; HTTP TTFB is null because the harness invokes functions directly. No fictitious TTFB is substituted. Thresholds require schema >=98%, exact budgets, dietary/safety/fallback/timeline/constraints/contact checks 100%, live p95 <=12 seconds, judge mean >=4 overall and >=3.5 per rubric when a judge actually runs. Offline judge is skipped, not scored.
+Schema metric is the final public PlanSchema output. Provider metadata now records first-attempt validity, whether repair was attempted, and observed repair validity. The dashboard aggregates these separately and excludes cached/offline outputs. The current offline run has zero provider observations, so both rates are null / Not measured. Fallback validity checks fallback outputs. Skeleton creation and complete generation are timed with performance.now; HTTP TTFB is null because the harness invokes functions directly. No fictitious TTFB is substituted. Thresholds require schema >=98%, exact budgets, dietary/safety/fallback/timeline/constraints/contact checks 100%, live p95 <=12 seconds, judge mean >=4 overall and >=3.5 per rubric when a judge actually runs. Offline judge is skipped, not scored.
 
 ## Commands
 
@@ -55,5 +55,3 @@ Mini evaluation requires `EVAL_SECRET` in a transient password field. The field 
 Human thumbs and reasons are read only from `celebrate-feedback` localStorage on this device and exportable as JSON. They are a convenience sample, not a representative human evaluation study. No feedback is transmitted by the dashboard.
 
 Validation: `npx vitest run tests/eval.test.ts` passed five engine tests, including coverage distribution, budget corruption, dependency-cycle mutation, diet/canary detection and resume honesty. `npx vitest run tests/eval-api.test.ts` also covers secret/origin/rate-limit and live/offline routing. Run `npm run typecheck` and `npm run lint` with the full app after dependencies are installed.
-
-

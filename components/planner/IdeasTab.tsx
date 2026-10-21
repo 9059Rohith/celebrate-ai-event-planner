@@ -38,8 +38,15 @@ export function IdeasTab({
       const data = await response.json();
       if (!response.ok) throw Error(data.error);
       const ideas = IdeaSchema.array().parse(data.ideas);
-      const titles = new Set(p.ideas.map((i) => i.title.toLowerCase()));
-      const unique = ideas.filter((i) => !titles.has(i.title.toLowerCase()));
+      const titles = new Set(p.ideas.map((i) => i.title.trim().toLowerCase()));
+      const ids = new Set(p.ideas.map((i) => i.id));
+      const unique = ideas.filter((idea) => {
+        const title = idea.title.trim().toLowerCase();
+        if (titles.has(title) || ids.has(idea.id)) return false;
+        titles.add(title);
+        ids.add(idea.id);
+        return true;
+      });
       if (unique.length) {
         change({ ideas: [...p.ideas, ...unique] });
         onNotice(
@@ -93,6 +100,7 @@ export function IdeasTab({
           <button
             key={f}
             className={filter === f ? "selected" : ""}
+            aria-pressed={filter === f}
             onClick={() => setFilter(f)}
           >
             {f}

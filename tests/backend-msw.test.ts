@@ -41,6 +41,26 @@ const completion = (content: string) =>
     ],
     usage: { prompt_tokens: 20, completion_tokens: 10, total_tokens: 30 },
   });
+it("reserves repair tokens before a second provider call can exceed the daily budget", async () => {
+  vi.stubEnv("DAILY_TOKEN_BUDGET", "1500");
+  let calls = 0;
+  server.use(
+    http.post("https://api.openai.com/v1/chat/completions", () => {
+      calls++;
+      return completion(calls === 1 ? "invalid JSON" : '{"count":2}');
+    }),
+  );
+  const { callStructured } = await import("@/lib/llm/client");
+  await expect(
+    callStructured({
+      schema: z.object({ count: z.number() }),
+      name: "limited_repair",
+      messages: [],
+      maxTokens: 1000,
+    }),
+  ).rejects.toThrow("AI unavailable");
+  expect(calls).toBe(1);
+});
 describe("MSW provider transport", () => {
   it("sends strict structured format and validates provider response", async () => {
     let received: Record<string, unknown> | undefined;
@@ -61,6 +81,11 @@ describe("MSW provider transport", () => {
     });
     expect(result.data).toEqual({ count: 4 });
     expect(result.tokens).toEqual({ in: 20, out: 10 });
+    expect(result).toHaveProperty("validation", {
+      firstAttemptValid: true,
+      repairAttempted: false,
+      repairValid: null,
+    });
     expect(received?.response_format).toMatchObject({
       type: "json_schema",
       json_schema: { strict: true, name: "counter" },
@@ -107,6 +132,11 @@ describe("MSW provider transport", () => {
     expect(PlanSchema.safeParse(plan).success).toBe(true);
     expect(plan.meta.source).toBe("fallback");
     expect(plan.meta.promptVersion).toBe("2026-10-v1");
+    expect(plan.meta).toHaveProperty("structuredValidation", {
+      firstAttemptValid: false,
+      repairAttempted: true,
+      repairValid: false,
+    });
     expect(calls).toBe(2);
   });
   it("fails closed when provider moderation flags unsafe input", async () => {
@@ -269,7 +299,13 @@ it("enhances deterministic sections through provider HTTP and caches the validat
   const second = await generatePlan(exampleInput());
   expect(first.summary.oneParagraphVision).toBe(data.vision);
   expect(first.meta.source).toBe("hybrid");
+  expect(first.meta.structuredValidation).toEqual({
+    firstAttemptValid: true,
+    repairAttempted: false,
+    repairValid: null,
+  });
   expect(second.meta.cached).toBe(true);
+  expect(second.meta.structuredValidation).toBeUndefined();
   expect(calls).toBe(1);
   expect(first.budget.total).toBe(second.budget.total);
 });

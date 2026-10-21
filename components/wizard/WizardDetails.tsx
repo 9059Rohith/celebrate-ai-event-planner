@@ -30,6 +30,10 @@ export function WizardDetails({
               <button
                 type="button"
                 key={f}
+                aria-pressed={
+                  input.eventSpecific.type === "wedding" &&
+                  input.eventSpecific.functions.includes(f)
+                }
                 className={
                   input.eventSpecific.type === "wedding" &&
                   input.eventSpecific.functions.includes(f)

@@ -44,7 +44,7 @@
     "openai": "7.39.0",
     "react": "19.3.0",
     "react-dom": "19.3.0",
-    "react-hook-form": "7.65.0",
+    "react-hook-form": "7.90.0",
     "react-markdown": "10.1.0",
     "recharts": "3.10.1",
     "rehype-sanitize": "6.0.0",

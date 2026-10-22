@@ -1,0 +1,54 @@
+{
+  "timestamp": "2026-10-22T04:42:36.273Z",
+  "url": "https://celebrate-ai-event-planner.vercel.app",
+  "deploymentId": "dpl_FGzNzWac1tSXgRiUHaTw1GTd2kPb",
+  "method": "Three cache-reset Lighthouse mobile simulated Slow 4G runs per route; median reported. No settings relaxed.",
+  "routes": [
+    {
+      "path": "/",
+      "runs": 3,
+      "medianPerformance": 90,
+      "medianLcpMs": 1147.3789,
+      "maxLcpMs": 2016.4359,
+      "maxCls": 0,
+      "accessibility": [
+        100,
+        100,
+        100
+      ],
+      "bestPractices": [
+        100,
+        100,
+        100
+      ],
+      "seo": [
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "path": "/plan/new",
+      "runs": 3,
+      "medianPerformance": 85,
+      "medianLcpMs": 1090.4461999999999,
+      "maxLcpMs": 1262.5851,
+      "maxCls": 0,
+      "accessibility": [
+        100,
+        100,
+        100
+      ],
+      "bestPractices": [
+        100,
+        100,
+        100
+      ],
+      "seo": [
+        100,
+        100,
+        100
+      ]
+    }
+  ]
+}

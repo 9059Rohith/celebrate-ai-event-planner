@@ -49,3 +49,12 @@ Production health still reports aiConfigured=false. GitHub has no active workflo
 Final measurements are published on the codex/submission-evidence branch so publishing evidence does not replace the production build under test. The branch contains the same application source as production plus reports and documentation.
 
 Loading UI follow-up: a separate Lighthouse filmstrip reproduced the home page replacing the global loading screen, with CLS 0.913. The loading file is now scoped to saved-plan routes. Build, all 113 unit/integration tests, all 20 browser tests, and the bundle/secret audit passed after this change. The next release is measured separately; earlier deployment reports remain historical evidence.
+
+
+## Final verified release
+
+Deployment dpl_FGzNzWac1tSXgRiUHaTw1GTd2kPb is live on the original production alias and corresponds to source commit ec16026c81cdced36536db008743904789c05961. The final asset fingerprint stayed unchanged before/after the batch, and the alias deployment identity was checked afterward. All 68 fresh-context Edge visits passed: median 0.822 s, p95 1.490 s, maximum load 1.555 s, maximum heading readiness 1.731 s, zero hydration/runtime errors. The strict navigation gate passed. Earlier failed batches remain in reports/.
+
+Three default mobile Lighthouse runs per route recorded median LCP 1.147 s (home) and 1.090 s (intake), median performance 90/85, and accessibility/best practices/SEO 100 in every sample. CLS was zero in all six runs after the loading-boundary fix. One home simulated LCP sample was 2.016 s; the navigation gate does not imply every throttled Lighthouse metric is below two seconds.
+
+The README follows the ScreenOps section order and includes the demo, deployment, architecture, walkthrough, problem/solution, features, stack, status, setup, validation, AI usage, submission links, security notes and eight real screenshots. The public repository remains under 10 MB. Production AI credentials, an active hosted CI workflow and public demo viewing permission still require owner setup. No rank or 100% universal compliance claim is made.

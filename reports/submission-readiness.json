@@ -1,10 +1,13 @@
 {
-  "timestamp": "2026-10-22T04:28:53.51Z",
+  "timestamp": "2026-10-22T04:43:24.748Z",
   "repository": {
     "url": "https://github.com/9059Rohith/celebrate-ai-event-planner",
-    "anonymousStatus": 200,
+    "authenticatedMetadataStatus": 200,
+    "anonymousReadmeStatus": 200,
     "private": false,
-    "sizeKB": 1438
+    "sizeKB": 1438,
+    "anonymousApiStatus": 403,
+    "note": "Anonymous GitHub API rate limit exhausted; public raw README access and authenticated repository visibility checked separately."
   },
   "health": {
     "ok": true,
@@ -13,17 +16,20 @@
     "rateLimiting": "best-effort-memory-or-upstash"
   },
   "workflowStatus": 404,
-  "descriptionInInitialHead": true,
-  "commit": "04a917d7b0a20b43042b525394fac76bfef23f1a",
-  "deploymentState": "success",
-  "deploymentLinks": [
-    "https://vercel.com/rohiths-projects-5e14931b/celebrate-ai-event-planner/83GHqesgrXcorSTCd9GJEDeQevZA"
-  ],
   "demo": {
     "url": "https://drive.google.com/file/d/1hz0frq_4JTFciHmpEchGQP3gOSxKw8S4/view",
     "public": false,
     "observedPermissions": [
       "user:owner"
     ]
-  }
+  },
+  "sourceCommit": "ec16026c81cdced36536db008743904789c05961",
+  "deploymentId": "dpl_FGzNzWac1tSXgRiUHaTw1GTd2kPb",
+  "deploymentState": "success",
+  "productionNavigation": "68/68 under two seconds; zero hydration/runtime errors",
+  "remaining": [
+    "Configure production OpenAI key and run live generations/judges",
+    "Activate GitHub Actions workflow",
+    "Enable public demo viewing"
+  ]
 }

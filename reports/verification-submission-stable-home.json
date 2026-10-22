@@ -1,0 +1,39 @@
+{
+  "url": "https://celebrate-ai-event-planner.vercel.app",
+  "deploymentId": "dpl_FGzNzWac1tSXgRiUHaTw1GTd2kPb",
+  "timestamp": "2026-10-22T04:42:06.146Z",
+  "conditions": "Fresh browser contexts and browser caches, unthrottled network, desktop and iPhone13 emulation. Server/CDN assets verified warm before audit; release fingerprint checked before and after. Every sample retained, no retries.",
+  "browserChannel": "msedge",
+  "browserVersion": "155.0.4283.62",
+  "fingerprint": "988fae3770231490590cf5ffed93e0ffee4df6d42d7cfbe470d302e0a1a7e914",
+  "stableRelease": true,
+  "verifiedAssets": 27,
+  "samples": 68,
+  "underTwoSeconds": 68,
+  "medianLoadMs": 821.5,
+  "p95LoadMs": 1490.1000000089407,
+  "maxLoadMs": 1554.5,
+  "maxReadyMs": 1730.800000011921,
+  "errors": [],
+  "outliers": [],
+  "commands": [
+    {
+      "script": "full-load",
+      "exitCode": 0
+    },
+    {
+      "script": "workspace-load",
+      "exitCode": 0
+    },
+    {
+      "script": "hydration-check",
+      "exitCode": 0
+    }
+  ],
+  "sources": [
+    "reports/full-load-submission-stable-home.json",
+    "reports/workspace-load-submission-stable-home.json",
+    "reports/shared-hydration-submission-stable-home.json"
+  ],
+  "passed": true
+}

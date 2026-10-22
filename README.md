@@ -171,6 +171,21 @@ Latest verified library coverage: statements **89.51%**, branches **83.31%**, fu
 
 The offline evaluation passes all 46 schema, budget, timeline, diet, constraint, safety, contact-heuristic and fallback checks. The v1 engine baseline passed 36/46. This compares engine revisions, not isolated LLM prompt quality.
 
+Final production verification (22 October 2026):
+
+| Check | Result |
+| --- | --- |
+| Fresh-browser navigation loads | **68/68 below 2 seconds** |
+| Median / p95 / maximum load | **0.822 s / 1.490 s / 1.555 s** |
+| Maximum workspace heading readiness | **1.731 s** |
+| Hydration / runtime errors | **0** |
+| Mobile Lighthouse median LCP, home / intake | **1.147 s / 1.090 s** |
+| Lighthouse median performance, home / intake | **90 / 85** |
+| Accessibility / best practices / SEO | **100 / 100 / 100** on both audited routes |
+| Lighthouse CLS | **0 in all six runs** |
+
+Navigation used fresh Edge 155 contexts, desktop and iPhone 13 emulation, an unthrottled network and verified warm CDN assets. Lighthouse used three cache-reset default mobile Slow 4G simulations per route; one home LCP sample was 2.016 seconds. Navigation load and simulated LCP are separate measures. Earlier failures remain recorded; no all-network, all-device guarantee is claimed. See [the final audit](reports/verification-submission-stable-home.json) and [Lighthouse evidence](reports/lighthouse-submission-summary.json).
+
 Release checks:
 
 ```powershell

@@ -1,0 +1,106 @@
+{
+  "url": "https://celebrate-ai-event-planner.vercel.app",
+  "method": "Three cache-reset Lighthouse mobile simulated Slow 4G runs per route; median reported. No settings relaxed.",
+  "results": [
+    {
+      "path": "/",
+      "sample": 1,
+      "timestamp": "2026-10-22T04:29:42.227Z",
+      "runtimeError": null,
+      "performance": 0.8,
+      "accessibility": 1,
+      "bestPractices": 1,
+      "seo": 1,
+      "lcpMs": 1469.8839,
+      "cls": 0,
+      "observedLcpMs": 3176,
+      "observedLoadMs": 3333
+    },
+    {
+      "path": "/plan/new",
+      "sample": 1,
+      "timestamp": "2026-10-22T04:29:57.113Z",
+      "runtimeError": null,
+      "performance": 0.87,
+      "accessibility": 1,
+      "bestPractices": 1,
+      "seo": 1,
+      "lcpMs": 1936.476,
+      "cls": 0,
+      "observedLcpMs": 1157,
+      "observedLoadMs": 1358
+    },
+    {
+      "path": "/",
+      "sample": 2,
+      "timestamp": "2026-10-22T04:30:08.660Z",
+      "runtimeError": null,
+      "performance": 0.7,
+      "accessibility": 1,
+      "bestPractices": 1,
+      "seo": 1,
+      "lcpMs": 990.411,
+      "cls": 0.9125151883353585,
+      "observedLcpMs": 807,
+      "observedLoadMs": 1076
+    },
+    {
+      "path": "/plan/new",
+      "sample": 2,
+      "timestamp": "2026-10-22T04:30:20.015Z",
+      "runtimeError": null,
+      "performance": 0.86,
+      "accessibility": 1,
+      "bestPractices": 1,
+      "seo": 1,
+      "lcpMs": 1094.1282,
+      "cls": 0,
+      "observedLcpMs": 684,
+      "observedLoadMs": 1042
+    },
+    {
+      "path": "/",
+      "sample": 3,
+      "timestamp": "2026-10-22T04:30:30.812Z",
+      "runtimeError": null,
+      "performance": 0.95,
+      "accessibility": 1,
+      "bestPractices": 1,
+      "seo": 1,
+      "lcpMs": 1944.5759,
+      "cls": 0,
+      "observedLcpMs": 1443,
+      "observedLoadMs": 1271
+    },
+    {
+      "path": "/plan/new",
+      "sample": 3,
+      "timestamp": "2026-10-22T04:30:41.704Z",
+      "runtimeError": null,
+      "performance": 0.87,
+      "accessibility": 1,
+      "bestPractices": 1,
+      "seo": 1,
+      "lcpMs": 914.5146,
+      "cls": 0,
+      "observedLcpMs": 948,
+      "observedLoadMs": 1354
+    }
+  ],
+  "summary": [
+    {
+      "path": "/",
+      "medianLcpMs": 1469.8839,
+      "minLcpMs": 990.411,
+      "maxLcpMs": 1944.5759,
+      "underTwoSeconds": true
+    },
+    {
+      "path": "/plan/new",
+      "medianLcpMs": 1094.1282,
+      "minLcpMs": 914.5146,
+      "maxLcpMs": 1936.476,
+      "underTwoSeconds": true
+    }
+  ]
+}

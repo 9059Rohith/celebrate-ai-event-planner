@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-21T19:24:39.821Z",
+  "timestamp": "2026-10-22T04:36:41.091Z",
   "route": "/",
   "measurement": "Initial external JavaScript for modern browsers; nomodule-only legacy polyfills are excluded. All static JS is scanned for secrets.",
   "scriptCount": 10,
@@ -45,7 +45,7 @@
       "gzipBytes": 403
     },
     {
-      "path": "/_next/static/chunks/webpack-ce3f17856e1302f9.js",
+      "path": "/_next/static/chunks/webpack-22b4f8b0a156931a.js",
       "gzipBytes": 2711
     }
   ]

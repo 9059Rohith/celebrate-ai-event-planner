@@ -37,3 +37,15 @@ Publish source before the final production deployment, then run npm run deploy:p
 README presentation follows the owner's ScreenOps reference: demo/deployment links, architecture illustration, walkthrough, problem/solution, features, stack, implementation status, setup, validation, AI usage, submission materials, security notes and eight actual app screenshots. The source checkout totals approximately 8.33 MB including screenshots.
 
 The first final release audit retained 67/68 loads under two seconds, zero hydration/runtime errors, and an 8.160-second first saved-plan visit. Inspection found its distinct route script was omitted from warmup. The release helper now includes the saved-plan shell, with a failing-then-passing regression and saved-workspace request diagnostics. The next audit uses a separate report phase; the failed sample remains recorded.
+
+## Final release evidence (22 October 2026)
+
+The ScreenOps-style README and eight screenshots are public. Production deployment dpl_83GHqesgrXcorSTCd9GJEDeQevZA is associated with source commit 04a917d7b0a20b43042b525394fac76bfef23f1a; the alias stayed unchanged during the audit. All 27 critical scripts/styles passed a second-request CDN HIT check, including the saved-plan route script.
+
+The fresh-context Edge 155 desktop/mobile-emulation batch recorded 67/68 navigation loads below two seconds: median 0.847 seconds, p95 1.380 seconds, maximum 17.782 seconds. All saved/shared loads passed, with maximum workspace load 1.612 seconds and maximum heading readiness 1.949 seconds. All 68 visits had zero hydration/runtime errors. The strict all-pages gate FAILED because one evaluation-page visit waited approximately 17.2 seconds for multiple HTTP/2 script responses after a 244 ms HTML response. This remains unresolved; no sample was excluded or retried. See reports/verification-submission-saved-cache.json and the raw source reports.
+
+Production health still reports aiConfigured=false. GitHub has no active workflow at .github/workflows/ci.yml, and Drive metadata shows owner-only demo permissions. Therefore live GenAI verification, hosted CI and public demo access remain incomplete. The owner's intentions to configure these are not treated as completed setup.
+
+Final measurements are published on the codex/submission-evidence branch so publishing evidence does not replace the production build under test. The branch contains the same application source as production plus reports and documentation.
+
+Loading UI follow-up: a separate Lighthouse filmstrip reproduced the home page replacing the global loading screen, with CLS 0.913. The loading file is now scoped to saved-plan routes. Build, all 113 unit/integration tests, all 20 browser tests, and the bundle/secret audit passed after this change. The next release is measured separately; earlier deployment reports remain historical evidence.

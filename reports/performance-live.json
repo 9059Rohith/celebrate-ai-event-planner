@@ -5,83 +5,101 @@
     {
       "path": "/",
       "sample": 1,
-      "timestamp": "2026-10-20T17:03:45.330Z",
+      "timestamp": "2026-10-22T04:29:42.227Z",
       "runtimeError": null,
-      "performance": 0.92,
-      "lcpMs": 1464.08,
+      "performance": 0.8,
+      "accessibility": 1,
+      "bestPractices": 1,
+      "seo": 1,
+      "lcpMs": 1469.8839,
       "cls": 0,
-      "observedLcpMs": 626,
-      "observedLoadMs": 966
+      "observedLcpMs": 3176,
+      "observedLoadMs": 3333
     },
     {
       "path": "/plan/new",
       "sample": 1,
-      "timestamp": "2026-10-20T17:04:00.428Z",
+      "timestamp": "2026-10-22T04:29:57.113Z",
       "runtimeError": null,
-      "performance": 1,
-      "lcpMs": 941.6256999999997,
+      "performance": 0.87,
+      "accessibility": 1,
+      "bestPractices": 1,
+      "seo": 1,
+      "lcpMs": 1936.476,
       "cls": 0,
-      "observedLcpMs": 542,
-      "observedLoadMs": 25718
+      "observedLcpMs": 1157,
+      "observedLoadMs": 1358
     },
     {
       "path": "/",
       "sample": 2,
-      "timestamp": "2026-10-20T17:04:35.330Z",
+      "timestamp": "2026-10-22T04:30:08.660Z",
       "runtimeError": null,
-      "performance": 1,
-      "lcpMs": 1019.1041,
-      "cls": 0,
-      "observedLcpMs": 230,
-      "observedLoadMs": 463
+      "performance": 0.7,
+      "accessibility": 1,
+      "bestPractices": 1,
+      "seo": 1,
+      "lcpMs": 990.411,
+      "cls": 0.9125151883353585,
+      "observedLcpMs": 807,
+      "observedLoadMs": 1076
     },
     {
       "path": "/plan/new",
       "sample": 2,
-      "timestamp": "2026-10-20T17:04:43.527Z",
+      "timestamp": "2026-10-22T04:30:20.015Z",
       "runtimeError": null,
-      "performance": 0.9,
-      "lcpMs": 933.7006,
+      "performance": 0.86,
+      "accessibility": 1,
+      "bestPractices": 1,
+      "seo": 1,
+      "lcpMs": 1094.1282,
       "cls": 0,
-      "observedLcpMs": 319,
-      "observedLoadMs": 769
+      "observedLcpMs": 684,
+      "observedLoadMs": 1042
     },
     {
       "path": "/",
       "sample": 3,
-      "timestamp": "2026-10-20T17:04:52.877Z",
+      "timestamp": "2026-10-22T04:30:30.812Z",
       "runtimeError": null,
-      "performance": 0.89,
-      "lcpMs": 1086.1527,
+      "performance": 0.95,
+      "accessibility": 1,
+      "bestPractices": 1,
+      "seo": 1,
+      "lcpMs": 1944.5759,
       "cls": 0,
-      "observedLcpMs": 352,
-      "observedLoadMs": 699
+      "observedLcpMs": 1443,
+      "observedLoadMs": 1271
     },
     {
       "path": "/plan/new",
       "sample": 3,
-      "timestamp": "2026-10-20T17:05:01.799Z",
+      "timestamp": "2026-10-22T04:30:41.704Z",
       "runtimeError": null,
-      "performance": 0.9,
-      "lcpMs": 924.5859,
+      "performance": 0.87,
+      "accessibility": 1,
+      "bestPractices": 1,
+      "seo": 1,
+      "lcpMs": 914.5146,
       "cls": 0,
-      "observedLcpMs": 280,
-      "observedLoadMs": 1171
+      "observedLcpMs": 948,
+      "observedLoadMs": 1354
     }
   ],
   "summary": [
     {
       "path": "/",
-      "medianLcpMs": 1086.1527,
-      "minLcpMs": 1019.1041,
-      "maxLcpMs": 1464.08,
+      "medianLcpMs": 1469.8839,
+      "minLcpMs": 990.411,
+      "maxLcpMs": 1944.5759,
       "underTwoSeconds": true
     },
     {
       "path": "/plan/new",
-      "medianLcpMs": 933.7006,
-      "minLcpMs": 924.5859,
-      "maxLcpMs": 941.6256999999997,
+      "medianLcpMs": 1094.1282,
+      "minLcpMs": 914.5146,
+      "maxLcpMs": 1936.476,
       "underTwoSeconds": true
     }
   ]

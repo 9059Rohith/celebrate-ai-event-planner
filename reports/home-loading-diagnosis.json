@@ -1,0 +1,34 @@
+{
+  "timestamp": "2026-10-22T04:34:11.402Z",
+  "sourceDeployment": "dpl_83GHqesgrXcorSTCd9GJEDeQevZA",
+  "reproduction": "Fresh Lighthouse mobile sequence home, intake, home; same settings as scripts/performance.mjs",
+  "observations": [
+    {
+      "path": "/",
+      "cls": 0
+    },
+    {
+      "path": "/plan/new",
+      "cls": 0
+    },
+    {
+      "path": "/",
+      "cls": 0.9125151883353585
+    }
+  ],
+  "shiftedSelector": "body > main#main-content",
+  "filmstrip": [
+    {
+      "ms": 750,
+      "visible": "Generic Getting the little details ready fallback, header and footer"
+    },
+    {
+      "ms": 1125,
+      "visible": "Complete home content replaces fallback"
+    }
+  ],
+  "rawHomeResponseContainedGlobalFallback": true,
+  "regressionBeforeFix": "failed on live deployment",
+  "change": "Scope app/loading.tsx to app/plan/[id]/loading.tsx; preserve server content on public routes",
+  "afterFix": "Production build, 113 unit/integration tests and all 20 desktop/mobile browser tests passed. Home raw HTML no longer contains the generic loading fallback; live Lighthouse validation pending."
+}

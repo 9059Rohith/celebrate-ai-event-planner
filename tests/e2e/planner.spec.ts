@@ -170,6 +170,7 @@ test("visual snapshots and nonce security headers", async ({ page }, info) => {
   const descriptionPosition = html.indexOf('name="description"');
   expect(descriptionPosition).toBeGreaterThan(0);
   expect(descriptionPosition).toBeLessThan(html.indexOf("</head>"));
+  expect(html.includes("Getting the little details ready")).toBe(false);
   expect(second.headers()["content-security-policy"]).not.toContain(
     `nonce-${nonce}`,
   );

@@ -1,5 +1,9 @@
 # Challenge 5 submission
 
+**Offline evaluation complete:** the fresh `--mock` run passed **46/46 cases (100% case pass rate)**. Reproduce without an API key using `npm run eval -- --suite=all --mock --out=test-results/submission-mock.json`. This runs the real deterministic engine; it does not simulate measured live model quality. [Recorded evidence](reports/mock-submission-check.json).
+
+**Readiness scope:** implementation and offline evaluation evidence are available. Live AI verification, hosted CI activation, and externally accessible demo permissions are separate, unverified prerequisites; mock results do not establish those requirements.
+
 Live app: https://celebrate-ai-event-planner.vercel.app/
 Public source: https://github.com/9059Rohith/celebrate-ai-event-planner
 

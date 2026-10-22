@@ -144,6 +144,8 @@ For deployment, set server-only variables in Vercel Production. See [.env.exampl
 
 ## Validation
 
+**Offline evaluation complete:** the fresh `--mock` run passed **46/46 cases (100% case pass rate)**. Reproduce without an API key using `npm run eval -- --suite=all --mock --out=test-results/submission-mock.json`. This runs the real deterministic engine; it does not simulate measured live model quality. [Recorded evidence](reports/mock-submission-check.json).
+
 Type checking, lint and coverage:
 
 ```powershell

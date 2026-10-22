@@ -1,5 +1,9 @@
 # Evaluation evidence and reproduction
 
+**Offline evaluation complete:** the fresh `--mock` run passed **46/46 cases (100% case pass rate)**. Reproduce without an API key using `npm run eval -- --suite=all --mock --out=test-results/submission-mock.json`. This executes the real deterministic engine. [Recorded evidence](reports/mock-submission-check.json).
+
+This percentage measures the recorded deterministic cases only. Live model quality, live judge scores, overall submission compliance and competition placement are not established by mocked/offline results.
+
 The committed `evals/results/latest.json` is an actual offline deterministic run, performed 22 October 2026 (IST). It contains every input, output and check rationale. It is not a live model benchmark. `GET /api/eval` exposes this public, synthetic snapshot; `/evals` shows metric pass rates, timing, tokens, costs, failure drill-down and device-local human feedback. A protected mini evaluation updates the dashboard with its response.
 
 ## Measured results

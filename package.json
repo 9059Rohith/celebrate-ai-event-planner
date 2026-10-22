@@ -42,7 +42,7 @@
     "nanoid": "6.0.2",
     "next": "15.5.28",
     "openai": "7.39.0",
-    "react": "19.3.0",
+    "react": "19.3.1",
     "react-dom": "19.3.0",
     "react-hook-form": "7.65.0",
     "react-markdown": "10.1.0",

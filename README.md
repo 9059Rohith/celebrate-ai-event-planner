@@ -94,7 +94,7 @@ Implemented and verified locally:
 - Per-attempt token reservations, bounded rate-limit histories and environment ceilings.
 - Route hydration replay regression and stable shared-fragment hydration.
 - Automated WCAG checks in light/dark themes and narrow/wide layouts.
-- Unit/component/API suite: **112/112 passing**.
+- Unit/component/API suite: **113/113 passing**.
 - Offline deterministic evaluation: **46/46 passing**.
 - Library line coverage: **91.53%**; domain line coverage: **98.17%**.
 - Typecheck, lint, production build, bundle budget and browser-JavaScript secret scan.

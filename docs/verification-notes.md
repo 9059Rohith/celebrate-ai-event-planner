@@ -87,7 +87,7 @@ See ARCHITECTURE.md, SECURITY.md and EVALUATION.md for contracts, threat model a
 
 ## Verified submission evidence
 
-The 22 October 2026 offline evaluation passed 46/46 cases. The current unit/component/API suite passed 112/112 tests. Library coverage is 91.53% lines, 89.51% statements, 83.31% branches and 88.73% functions; domain line coverage is 98.17%. The coverage gate requires 80% overall and 90% for domain modules across all four measures. These figures do not represent whole-application coverage.
+The 22 October 2026 offline evaluation passed 46/46 cases. The current unit/component/API suite passed 113/113 tests. Library coverage is 91.53% lines, 89.51% statements, 83.31% branches and 88.73% functions; domain line coverage is 98.17%. The coverage gate requires 80% overall and 90% for domain modules across all four measures. These figures do not represent whole-application coverage.
 
 Browser checks include wedding, birthday and community planning, edits, persistence, JSON/calendar export, fragment sharing, offline editing, theme, evaluation drill-down, hydration and automated WCAG checks. Current release results are recorded in SUBMISSION.md after verification. Automated accessibility checks supplement manual keyboard testing; they do not certify every assistive-technology combination.
 

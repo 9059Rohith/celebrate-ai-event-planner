@@ -43,11 +43,30 @@ try {
           await page
             .getByRole("heading", { name: fixture.input.title, exact: true })
             .waitFor();
-          const metrics = await page.evaluate(() => ({
-            loadMs:
-              performance.getEntriesByType("navigation")[0].loadEventStart,
-            readyMs: performance.now(),
-          }));
+          const metrics = await page.evaluate(() => {
+            const navigation = performance.getEntriesByType("navigation")[0];
+            return {
+              loadMs: navigation.loadEventStart,
+              readyMs: performance.now(),
+              requestStartMs: navigation.requestStart,
+              responseStartMs: navigation.responseStart,
+              responseEndMs: navigation.responseEnd,
+              resources: performance
+                .getEntriesByType("resource")
+                .filter((resource) => resource.name.includes("/_next/static/"))
+                .sort((a, b) => b.duration - a.duration)
+                .slice(0, 5)
+                .map((resource) => ({
+                  url: resource.name,
+                  start: resource.startTime,
+                  duration: resource.duration,
+                  requestStart: resource.requestStart,
+                  responseStart: resource.responseStart,
+                  responseEnd: resource.responseEnd,
+                  protocol: resource.nextHopProtocol,
+                })),
+            };
+          });
           const row = { device, sample, kind, ...metrics, errors };
           results.push(row);
           console.log(JSON.stringify(row));

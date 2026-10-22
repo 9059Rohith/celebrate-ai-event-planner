@@ -1,6 +1,20 @@
 import { expect, test, vi } from "vitest";
 import { inspectRelease, warmRelease } from "../scripts/lib/release-cache.mjs";
 
+test("default warmup covers the saved-plan route's distinct script", async () => {
+  const fetcher = vi.fn(async (url: RequestInfo | URL) => {
+    const path = new URL(String(url)).pathname;
+    if (path.startsWith("/_next/static/"))
+      return new Response("ready", { headers: { "x-vercel-cache": "HIT" } });
+    const saved = path.startsWith("/plan/") && path !== "/plan/new";
+    return new Response(
+      `<script src="/_next/static/${saved ? "saved" : "public"}.js"></script>`,
+    );
+  });
+  const report = await warmRelease({ base: "https://example.test", fetcher });
+  expect(report.assets).toContain("/_next/static/saved.js");
+});
+
 function server({ change = false, staysCold = false } = {}) {
   let pages = 0;
   const hits = new Map<string, number>();

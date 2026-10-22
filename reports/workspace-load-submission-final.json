@@ -1,0 +1,104 @@
+{
+  "url": "https://celebrate-ai-event-planner.vercel.app",
+  "browserChannel": "msedge",
+  "browserVersion": "155.0.4283.62",
+  "method": "Three fresh contexts per device for saved workspace and valid compressed shared plan; actual load and heading-ready events; default unthrottled network.",
+  "results": [
+    {
+      "device": "desktop",
+      "sample": 1,
+      "kind": "saved",
+      "loadMs": 8160.20000000298,
+      "readyMs": 8403.79999999702,
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "sample": 1,
+      "kind": "shared",
+      "loadMs": 861.5999999940395,
+      "readyMs": 1024,
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "sample": 2,
+      "kind": "saved",
+      "loadMs": 785.1000000089407,
+      "readyMs": 1108.7000000029802,
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "sample": 2,
+      "kind": "shared",
+      "loadMs": 959.5,
+      "readyMs": 1129,
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "sample": 3,
+      "kind": "saved",
+      "loadMs": 794.8999999910593,
+      "readyMs": 900.5999999940395,
+      "errors": []
+    },
+    {
+      "device": "desktop",
+      "sample": 3,
+      "kind": "shared",
+      "loadMs": 942.3999999910593,
+      "readyMs": 1100.2999999970198,
+      "errors": []
+    },
+    {
+      "device": "mobile",
+      "sample": 1,
+      "kind": "saved",
+      "loadMs": 726.8999999910593,
+      "readyMs": 1037.2999999970198,
+      "errors": []
+    },
+    {
+      "device": "mobile",
+      "sample": 1,
+      "kind": "shared",
+      "loadMs": 901,
+      "readyMs": 1063.5,
+      "errors": []
+    },
+    {
+      "device": "mobile",
+      "sample": 2,
+      "kind": "saved",
+      "loadMs": 703.7000000029802,
+      "readyMs": 817.8000000119209,
+      "errors": []
+    },
+    {
+      "device": "mobile",
+      "sample": 2,
+      "kind": "shared",
+      "loadMs": 856.0999999940395,
+      "readyMs": 1045.8999999910593,
+      "errors": []
+    },
+    {
+      "device": "mobile",
+      "sample": 3,
+      "kind": "saved",
+      "loadMs": 702.1999999880791,
+      "readyMs": 899.0999999940395,
+      "errors": []
+    },
+    {
+      "device": "mobile",
+      "sample": 3,
+      "kind": "shared",
+      "loadMs": 1349.7999999970198,
+      "readyMs": 1479.7000000029802,
+      "errors": []
+    }
+  ]
+}

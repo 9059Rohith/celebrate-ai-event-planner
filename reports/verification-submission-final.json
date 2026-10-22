@@ -1,0 +1,49 @@
+{
+  "url": "https://celebrate-ai-event-planner.vercel.app",
+  "deploymentId": "dpl_CLAaeKpaTCCqRe4pNCAf2tfzjavP",
+  "timestamp": "2026-10-22T04:22:33.113Z",
+  "conditions": "Fresh browser contexts and browser caches, unthrottled network, desktop and iPhone13 emulation. Server/CDN assets verified warm before audit; release fingerprint checked before and after. Every sample retained, no retries.",
+  "browserChannel": "msedge",
+  "browserVersion": "155.0.4283.62",
+  "fingerprint": "d258b658cd08f934612193e520345cfa5b278f66904ab7fcdc7471fd5bb3bedc",
+  "stableRelease": true,
+  "verifiedAssets": 26,
+  "samples": 68,
+  "underTwoSeconds": 67,
+  "medianLoadMs": 795.5999999940395,
+  "p95LoadMs": 1349.7999999970198,
+  "maxLoadMs": 8160.20000000298,
+  "maxReadyMs": 8403.79999999702,
+  "errors": [],
+  "outliers": [
+    {
+      "source": "reports/workspace-load-submission-final.json",
+      "device": "desktop",
+      "sample": 1,
+      "kind": "saved",
+      "loadMs": 8160.20000000298,
+      "readyMs": 8403.79999999702,
+      "errors": []
+    }
+  ],
+  "commands": [
+    {
+      "script": "full-load",
+      "exitCode": 0
+    },
+    {
+      "script": "workspace-load",
+      "exitCode": 1
+    },
+    {
+      "script": "hydration-check",
+      "exitCode": 0
+    }
+  ],
+  "sources": [
+    "reports/full-load-submission-final.json",
+    "reports/workspace-load-submission-final.json",
+    "reports/shared-hydration-submission-final.json"
+  ],
+  "passed": false
+}

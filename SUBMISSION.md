@@ -11,7 +11,7 @@ The app supports weddings, birthdays and community events through a validated fi
 | --- | --- |
 | Problem alignment | All three occasion flows pass desktop/mobile browser tests; budget, timeline, vendor, idea and sharing controls work |
 | Code quality | Strict TypeScript, ESLint and production build pass; domain engines separate from UI/provider transport |
-| Testing | 112 unit/component/API tests; 20 browser tests; 46/46 deterministic evaluation cases |
+| Testing | 113 unit/component/API tests; 20 browser tests; 46/46 deterministic evaluation cases |
 | Coverage | Library lines 91.53%, statements 89.51%, branches 83.31%, functions 88.73%; domain lines 98.17% |
 | Accessibility | Automated WCAG A/AA checks on six entry routes in light/dark themes, saved/shared plans at 360/1920px, desktop/mobile; keyboard flows covered |
 | Security | Runtime audit zero findings; nonce CSP, input/output validation, moderation path, confirmation before mutations, bounded rate/token limits; source and built-JS secret scans pass |
@@ -36,3 +36,4 @@ Publish source before the final production deployment, then run npm run deploy:p
 
 README presentation follows the owner's ScreenOps reference: demo/deployment links, architecture illustration, walkthrough, problem/solution, features, stack, implementation status, setup, validation, AI usage, submission materials, security notes and eight actual app screenshots. The source checkout totals approximately 8.33 MB including screenshots.
 
+The first final release audit retained 67/68 loads under two seconds, zero hydration/runtime errors, and an 8.160-second first saved-plan visit. Inspection found its distinct route script was omitted from warmup. The release helper now includes the saved-plan shell, with a failing-then-passing regression and saved-workspace request diagnostics. The next audit uses a separate report phase; the failed sample remains recorded.

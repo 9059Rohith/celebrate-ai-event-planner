@@ -4,6 +4,7 @@ export const productionUrl = "https://celebrate-ai-event-planner.vercel.app";
 export const pagePaths = [
   "/",
   "/plan/new",
+  "/plan/release-audit",
   "/evals",
   "/privacy",
   "/offline",

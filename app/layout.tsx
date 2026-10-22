@@ -18,8 +18,6 @@ export const metadata: Metadata = {
     default: "Celebrate AI — Make room for the memories",
     template: "%s | Celebrate AI",
   },
-  description:
-    "Your thoughtful event planning companion. Create personalized budgets, timelines and ideas for weddings, birthdays and community events.",
   manifest: "/manifest.webmanifest",
   icons: { icon: "/icon.svg" },
   openGraph: {
@@ -38,6 +36,12 @@ export default async function RootLayout({
   await connection();
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <meta
+          name="description"
+          content="Your thoughtful event planning companion. Create personalized budgets, timelines and ideas for weddings, birthdays and community events."
+        />
+      </head>
       <body>
         <Link prefetch={false} className="skip" href="#main-content">
           Skip to content

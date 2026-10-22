@@ -166,6 +166,10 @@ test("visual snapshots and nonce security headers", async ({ page }, info) => {
     ["content-security-policy"].match(/nonce-([^']+)/)?.[1];
   expect(nonce).toBeTruthy();
   const second = await page.request.get("/");
+  const html = await second.text();
+  const descriptionPosition = html.indexOf('name="description"');
+  expect(descriptionPosition).toBeGreaterThan(0);
+  expect(descriptionPosition).toBeLessThan(html.indexOf("</head>"));
   expect(second.headers()["content-security-policy"]).not.toContain(
     `nonce-${nonce}`,
   );

@@ -1,0 +1,106 @@
+{
+  "url": "http://localhost:4100",
+  "method": "Three cache-reset Lighthouse mobile simulated Slow 4G runs per route; median reported. No settings relaxed.",
+  "results": [
+    {
+      "path": "/",
+      "sample": 1,
+      "timestamp": "2026-10-21T19:20:39.402Z",
+      "runtimeError": null,
+      "performance": 0.8,
+      "accessibility": 1,
+      "bestPractices": 1,
+      "seo": 0.9,
+      "lcpMs": 2686.8185,
+      "cls": 0,
+      "observedLcpMs": 676,
+      "observedLoadMs": 376
+    },
+    {
+      "path": "/plan/new",
+      "sample": 1,
+      "timestamp": "2026-10-21T19:20:55.658Z",
+      "runtimeError": null,
+      "performance": 0.84,
+      "accessibility": 1,
+      "bestPractices": 1,
+      "seo": 0.9,
+      "lcpMs": 1294.7711,
+      "cls": 0,
+      "observedLcpMs": 982,
+      "observedLoadMs": 1376
+    },
+    {
+      "path": "/",
+      "sample": 2,
+      "timestamp": "2026-10-21T19:21:07.300Z",
+      "runtimeError": null,
+      "performance": 0.92,
+      "accessibility": 1,
+      "bestPractices": 1,
+      "seo": 0.9,
+      "lcpMs": 1746.5892,
+      "cls": 0,
+      "observedLcpMs": 582,
+      "observedLoadMs": 719
+    },
+    {
+      "path": "/plan/new",
+      "sample": 2,
+      "timestamp": "2026-10-21T19:21:18.077Z",
+      "runtimeError": null,
+      "performance": 0.86,
+      "accessibility": 1,
+      "bestPractices": 1,
+      "seo": 0.9,
+      "lcpMs": 1951.2923,
+      "cls": 0,
+      "observedLcpMs": 647,
+      "observedLoadMs": 853
+    },
+    {
+      "path": "/",
+      "sample": 3,
+      "timestamp": "2026-10-21T19:21:28.315Z",
+      "runtimeError": null,
+      "performance": 0.45,
+      "accessibility": 1,
+      "bestPractices": 1,
+      "seo": 0.9,
+      "lcpMs": 2511.2241,
+      "cls": 0.9125151883353585,
+      "observedLcpMs": 899,
+      "observedLoadMs": 734
+    },
+    {
+      "path": "/plan/new",
+      "sample": 3,
+      "timestamp": "2026-10-21T19:21:38.979Z",
+      "runtimeError": null,
+      "performance": 0.81,
+      "accessibility": 1,
+      "bestPractices": 1,
+      "seo": 0.9,
+      "lcpMs": 2044.408,
+      "cls": 0,
+      "observedLcpMs": 631,
+      "observedLoadMs": 1016
+    }
+  ],
+  "summary": [
+    {
+      "path": "/",
+      "medianLcpMs": 2511.2241,
+      "minLcpMs": 1746.5892,
+      "maxLcpMs": 2686.8185,
+      "underTwoSeconds": false
+    },
+    {
+      "path": "/plan/new",
+      "medianLcpMs": 1951.2923,
+      "minLcpMs": 1294.7711,
+      "maxLcpMs": 2044.408,
+      "underTwoSeconds": true
+    }
+  ]
+}

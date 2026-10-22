@@ -1,231 +1,677 @@
 {
   "url": "https://celebrate-ai-event-planner.vercel.app",
-  "timestamp": "2026-10-21T06:36:51.175Z",
-  "method": "Explicit post-deployment server/CDN warmup only; no browser profile or browser cache is warmed. Every request recorded.",
+  "timestamp": "2026-10-21T19:23:41.288Z",
+  "method": "Explicit server/CDN release warmup, verified critical-asset cache hits, stable asset fingerprint. No browser profile or browser cache is warmed; no failed requests retried or excluded.",
+  "assets": [
+    "/_next/static/chunks/1157-4f0394f9de0850e3.js",
+    "/_next/static/chunks/1255-60d8dc7c8c9309a1.js",
+    "/_next/static/chunks/1635-f656db5139de2e2b.js",
+    "/_next/static/chunks/2561-82c1b4350c06db72.js",
+    "/_next/static/chunks/2619-04bc32f026a0d946.js",
+    "/_next/static/chunks/3545-89e462f936f8ff0c.js",
+    "/_next/static/chunks/4721-30e839162cd6c9c4.js",
+    "/_next/static/chunks/4bd1b696-100b9d70ed4e49c1.js",
+    "/_next/static/chunks/575-aa6909080de73d84.js",
+    "/_next/static/chunks/8970-d76763e89072b45e.js",
+    "/_next/static/chunks/app/error-5fe1ad3aec7b7670.js",
+    "/_next/static/chunks/app/evals/page-7f5cb580bd4bf873.js",
+    "/_next/static/chunks/app/global-error-eeb8d44fcbd5542a.js",
+    "/_next/static/chunks/app/layout-1c3ed69d58b9eb15.js",
+    "/_next/static/chunks/app/offline/page-b8761540a91291d8.js",
+    "/_next/static/chunks/app/page-97ee520f1015add3.js",
+    "/_next/static/chunks/app/plan/new/page-b67673f828c991a4.js",
+    "/_next/static/chunks/app/privacy/page-4ad02e7cc2b290be.js",
+    "/_next/static/chunks/app/shared/page-b19449319ed8b92a.js",
+    "/_next/static/chunks/main-app-7cd0e87450e50109.js",
+    "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+    "/_next/static/chunks/webpack-cf931236dcb0a36a.js",
+    "/_next/static/css/48ebb148f5a5aed8.css",
+    "/_next/static/css/6ed493623f25e6ec.css",
+    "/_next/static/css/d2663c0638bcb85f.css",
+    "/_next/static/css/f4100580a012f1bf.css"
+  ],
+  "fingerprint": "8d7a49f789a8102ce487609fa2e514d8e71d4594a759c0e64f1f5f5854bfedff",
+  "verifiedAssets": 26,
   "requests": [
     {
       "path": "/",
+      "phase": "shell",
       "status": 200,
-      "ms": 979.3627,
+      "ms": 1193.5565,
       "cache": "MISS",
+      "edge": "bom1::bom1::q55m2-1792610618304-a5aca51a3f21",
+      "encoding": "br",
       "bytes": 41860
     },
     {
       "path": "/plan/new",
+      "phase": "shell",
       "status": 200,
-      "ms": 583.2797999999999,
+      "ms": 303.6690000000001,
       "cache": "MISS",
+      "edge": "bom1::bom1::q55m2-1792610619012-ccccce7faf08",
+      "encoding": "br",
       "bytes": 20315
     },
     {
       "path": "/evals",
+      "phase": "shell",
       "status": 200,
-      "ms": 620.837,
+      "ms": 583.7283,
       "cache": "MISS",
-      "bytes": 111615
+      "edge": "bom1::bom1::sgkbw-1792610619316-8d6ed4f453b5",
+      "encoding": "br",
+      "bytes": 111951
     },
     {
       "path": "/privacy",
+      "phase": "shell",
       "status": 200,
-      "ms": 298.24209999999994,
+      "ms": 272.5030999999999,
       "cache": "MISS",
+      "edge": "bom1::bom1::sgkbw-1792610619900-6a43cce606d7",
+      "encoding": "br",
       "bytes": 16367
     },
     {
       "path": "/offline",
+      "phase": "shell",
       "status": 200,
-      "ms": 616.6294000000003,
+      "ms": 294.1143000000002,
       "cache": "MISS",
+      "edge": "bom1::bom1::sgkbw-1792610620173-b8aa9131906e",
+      "encoding": "br",
       "bytes": 15123
     },
     {
       "path": "/shared",
+      "phase": "shell",
       "status": 200,
-      "ms": 306.9177999999997,
+      "ms": 273.3159999999998,
       "cache": "MISS",
+      "edge": "bom1::bom1::sgkbw-1792610620466-e287e89fc2fc",
+      "encoding": "br",
       "bytes": 16098
     },
     {
-      "path": "/_next/static/css/7afbfbe1603f176f.css",
-      "status": 200,
-      "ms": 512.2382000000002,
-      "cache": "MISS",
-      "bytes": 14497
-    },
-    {
-      "path": "/_next/static/css/6ed493623f25e6ec.css",
-      "status": 200,
-      "ms": 512.2029000000002,
-      "cache": "MISS",
-      "bytes": 10780
-    },
-    {
-      "path": "/_next/static/chunks/webpack-b0e48c1ae15c0874.js",
-      "status": 200,
-      "ms": 626.4319,
-      "cache": "MISS",
-      "bytes": 5882
-    },
-    {
-      "path": "/_next/static/chunks/4bd1b696-100b9d70ed4e49c1.js",
-      "status": 200,
-      "ms": 719.4752000000003,
-      "cache": "MISS",
-      "bytes": 173025
-    },
-    {
-      "path": "/_next/static/chunks/main-app-7cd0e87450e50109.js",
-      "status": 200,
-      "ms": 304.79179999999997,
-      "cache": "MISS",
-      "bytes": 796
-    },
-    {
-      "path": "/_next/static/chunks/app/global-error-eeb8d44fcbd5542a.js",
-      "status": 200,
-      "ms": 434.06709999999975,
-      "cache": "MISS",
-      "bytes": 547
-    },
-    {
-      "path": "/_next/static/chunks/2619-04bc32f026a0d946.js",
-      "status": 200,
-      "ms": 343.95969999999943,
-      "cache": "MISS",
-      "bytes": 8564
-    },
-    {
-      "path": "/_next/static/chunks/1255-60d8dc7c8c9309a1.js",
-      "status": 200,
-      "ms": 612.3615,
-      "cache": "MISS",
-      "bytes": 174644
-    },
-    {
-      "path": "/_next/static/chunks/app/page-97ee520f1015add3.js",
-      "status": 200,
-      "ms": 507.59940000000006,
-      "cache": "MISS",
-      "bytes": 7344
-    },
-    {
-      "path": "/_next/static/chunks/app/layout-1c3ed69d58b9eb15.js",
-      "status": 200,
-      "ms": 296.71510000000035,
-      "cache": "MISS",
-      "bytes": 3768
-    },
-    {
-      "path": "/_next/static/chunks/app/error-5fe1ad3aec7b7670.js",
-      "status": 200,
-      "ms": 305.6171999999997,
-      "cache": "MISS",
-      "bytes": 584
-    },
-    {
-      "path": "/_next/static/chunks/3545-89e462f936f8ff0c.js",
-      "status": 200,
-      "ms": 370.4337999999998,
-      "cache": "MISS",
-      "bytes": 12765
-    },
-    {
-      "path": "/_next/static/css/f4100580a012f1bf.css",
-      "status": 200,
-      "ms": 283.9960000000001,
-      "cache": "MISS",
-      "bytes": 3539
-    },
-    {
-      "path": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
-      "status": 200,
-      "ms": 352.46190000000024,
-      "cache": "MISS",
-      "bytes": 112594
-    },
-    {
-      "path": "/_next/static/chunks/2561-82c1b4350c06db72.js",
-      "status": 200,
-      "ms": 309.0027,
-      "cache": "MISS",
-      "bytes": 10967
-    },
-    {
       "path": "/_next/static/chunks/1157-4f0394f9de0850e3.js",
+      "phase": "warm",
       "status": 200,
-      "ms": 317.3630000000003,
+      "ms": 296.38509999999997,
       "cache": "MISS",
+      "edge": "bom1::sgkbw-1792610620743-5d32bcea192e",
+      "encoding": "br",
       "bytes": 95297
     },
     {
-      "path": "/_next/static/chunks/4721-30e839162cd6c9c4.js",
+      "path": "/_next/static/chunks/2619-04bc32f026a0d946.js",
+      "phase": "warm",
       "status": 200,
-      "ms": 310.8267999999998,
+      "ms": 262.99289999999974,
       "cache": "MISS",
+      "edge": "bom1::sgkbw-1792610621037-a31805ad4780",
+      "encoding": "br",
+      "bytes": 8564
+    },
+    {
+      "path": "/_next/static/chunks/2561-82c1b4350c06db72.js",
+      "phase": "warm",
+      "status": 200,
+      "ms": 613.8347000000003,
+      "cache": "MISS",
+      "edge": "bom1::lvzk7-1792610620845-7223992b2ca2",
+      "encoding": "br",
+      "bytes": 10967
+    },
+    {
+      "path": "/_next/static/chunks/1635-f656db5139de2e2b.js",
+      "phase": "warm",
+      "status": 200,
+      "ms": 616.3850000000002,
+      "cache": "MISS",
+      "edge": "bom1::4xhlq-1792610620830-9ba160d5b24d",
+      "encoding": "br",
+      "bytes": 11431
+    },
+    {
+      "path": "/_next/static/chunks/1255-60d8dc7c8c9309a1.js",
+      "phase": "warm",
+      "status": 200,
+      "ms": 660.0648000000001,
+      "cache": "MISS",
+      "edge": "bom1::rsdf4-1792610620837-6d71f313fb38",
+      "encoding": "br",
+      "bytes": 174644
+    },
+    {
+      "path": "/_next/static/chunks/3545-89e462f936f8ff0c.js",
+      "phase": "warm",
+      "status": 200,
+      "ms": 290.6734999999999,
+      "cache": "MISS",
+      "edge": "bom1::4nkwq-1792610621300-31cd80f980ae",
+      "encoding": "br",
+      "bytes": 12765
+    },
+    {
+      "path": "/_next/static/chunks/4721-30e839162cd6c9c4.js",
+      "phase": "warm",
+      "status": 200,
+      "ms": 296.64620000000014,
+      "cache": "MISS",
+      "edge": "bom1::lvzk7-1792610621362-44e906f06082",
+      "encoding": "br",
       "bytes": 27070
     },
     {
-      "path": "/_next/static/chunks/1635-1a27284a95e2350c.js",
-      "status": 200,
-      "ms": 316.4895999999999,
-      "cache": "MISS",
-      "bytes": 11305
-    },
-    {
-      "path": "/_next/static/css/d2663c0638bcb85f.css",
-      "status": 200,
-      "ms": 300.9185000000007,
-      "cache": "MISS",
-      "bytes": 8692
-    },
-    {
-      "path": "/_next/static/chunks/app/plan/new/page-83c3b691d26b8992.js",
-      "status": 200,
-      "ms": 307.9462999999996,
-      "cache": "MISS",
-      "bytes": 18356
-    },
-    {
-      "path": "/_next/static/chunks/app/evals/page-6cde627deafe50c7.js",
-      "status": 200,
-      "ms": 293.10819999999967,
-      "cache": "MISS",
-      "bytes": 7173
-    },
-    {
-      "path": "/_next/static/chunks/app/privacy/page-4ad02e7cc2b290be.js",
-      "status": 200,
-      "ms": 361.5710000000008,
-      "cache": "MISS",
-      "bytes": 196
-    },
-    {
-      "path": "/_next/static/chunks/8970-d76763e89072b45e.js",
-      "status": 200,
-      "ms": 306.4993000000004,
-      "cache": "MISS",
-      "bytes": 8373
-    },
-    {
-      "path": "/_next/static/chunks/app/offline/page-b8761540a91291d8.js",
-      "status": 200,
-      "ms": 308.21030000000064,
-      "cache": "MISS",
-      "bytes": 3871
-    },
-    {
       "path": "/_next/static/chunks/575-aa6909080de73d84.js",
+      "phase": "warm",
       "status": 200,
-      "ms": 311.5118000000002,
+      "ms": 269.55300000000034,
       "cache": "MISS",
+      "edge": "bom1::glmp7-1792610621402-91dd386ef162",
+      "encoding": "br",
       "bytes": 17021
     },
     {
-      "path": "/_next/static/chunks/app/shared/page-b19449319ed8b92a.js",
+      "path": "/_next/static/chunks/8970-d76763e89072b45e.js",
+      "phase": "warm",
       "status": 200,
-      "ms": 309.39879999999994,
+      "ms": 258.2642000000001,
       "cache": "MISS",
+      "edge": "bom1::4nkwq-1792610621591-a135669acac8",
+      "encoding": "br",
+      "bytes": 8373
+    },
+    {
+      "path": "/_next/static/chunks/app/error-5fe1ad3aec7b7670.js",
+      "phase": "warm",
+      "status": 200,
+      "ms": 272.4572000000003,
+      "cache": "MISS",
+      "edge": "bom1::gsjh2-1792610621659-802bd68eb140",
+      "encoding": null,
+      "bytes": 584
+    },
+    {
+      "path": "/_next/static/chunks/4bd1b696-100b9d70ed4e49c1.js",
+      "phase": "warm",
+      "status": 200,
+      "ms": 569.5011,
+      "cache": "MISS",
+      "edge": "bom1::m4qfz-1792610621359-e4fbb779e469",
+      "encoding": "br",
+      "bytes": 173025
+    },
+    {
+      "path": "/_next/static/chunks/app/evals/page-7f5cb580bd4bf873.js",
+      "phase": "warm",
+      "status": 200,
+      "ms": 298.40530000000035,
+      "cache": "MISS",
+      "edge": "bom1::m4qfz-1792610621674-fd58a4283e4d",
+      "encoding": "br",
+      "bytes": 7862
+    },
+    {
+      "path": "/_next/static/chunks/app/global-error-eeb8d44fcbd5542a.js",
+      "phase": "warm",
+      "status": 200,
+      "ms": 296.1093999999998,
+      "cache": "MISS",
+      "edge": "bom1::4nkwq-1792610621850-a2b15503a8d5",
+      "encoding": null,
+      "bytes": 547
+    },
+    {
+      "path": "/_next/static/chunks/app/offline/page-b8761540a91291d8.js",
+      "phase": "warm",
+      "status": 200,
+      "ms": 273.7419,
+      "cache": "MISS",
+      "edge": "bom1::gsjh2-1792610621934-c860c969c44c",
+      "encoding": "br",
+      "bytes": 3871
+    },
+    {
+      "path": "/_next/static/chunks/app/layout-1c3ed69d58b9eb15.js",
+      "phase": "warm",
+      "status": 200,
+      "ms": 315.1767,
+      "cache": "MISS",
+      "edge": "bom1::7877s-1792610621928-e9e225abeff0",
+      "encoding": "br",
+      "bytes": 3768
+    },
+    {
+      "path": "/_next/static/chunks/app/page-97ee520f1015add3.js",
+      "phase": "warm",
+      "status": 200,
+      "ms": 285.4519999999993,
+      "cache": "MISS",
+      "edge": "bom1::gt644-1792610621973-96425c222739",
+      "encoding": "br",
+      "bytes": 7344
+    },
+    {
+      "path": "/_next/static/chunks/app/privacy/page-4ad02e7cc2b290be.js",
+      "phase": "warm",
+      "status": 200,
+      "ms": 326.3665000000001,
+      "cache": "MISS",
+      "edge": "bom1::7kxkl-1792610622207-cc08b979b5c7",
+      "encoding": null,
+      "bytes": 196
+    },
+    {
+      "path": "/_next/static/chunks/app/shared/page-b19449319ed8b92a.js",
+      "phase": "warm",
+      "status": 200,
+      "ms": 289.14840000000004,
+      "cache": "MISS",
+      "edge": "bom1::dhzk6-1792610622243-440929b24604",
+      "encoding": "br",
       "bytes": 1847
+    },
+    {
+      "path": "/_next/static/chunks/app/plan/new/page-b67673f828c991a4.js",
+      "phase": "warm",
+      "status": 200,
+      "ms": 390.89010000000053,
+      "cache": "MISS",
+      "edge": "bom1::q55m2-1792610622227-11fc49b4a955",
+      "encoding": "br",
+      "bytes": 18554
+    },
+    {
+      "path": "/_next/static/chunks/main-app-7cd0e87450e50109.js",
+      "phase": "warm",
+      "status": 200,
+      "ms": 315.97379999999976,
+      "cache": "MISS",
+      "edge": "bom1::gt2xb-1792610622277-4de298e72242",
+      "encoding": null,
+      "bytes": 796
+    },
+    {
+      "path": "/_next/static/chunks/webpack-cf931236dcb0a36a.js",
+      "phase": "warm",
+      "status": 200,
+      "ms": 284.91269999999986,
+      "cache": "MISS",
+      "edge": "bom1::q55m2-1792610622533-4b3f6e8801ae",
+      "encoding": "br",
+      "bytes": 5882
+    },
+    {
+      "path": "/_next/static/css/48ebb148f5a5aed8.css",
+      "phase": "warm",
+      "status": 200,
+      "ms": 302.9464000000007,
+      "cache": "MISS",
+      "edge": "bom1::dhzk6-1792610622537-f0090bb8131d",
+      "encoding": "br",
+      "bytes": 14677
+    },
+    {
+      "path": "/_next/static/css/6ed493623f25e6ec.css",
+      "phase": "warm",
+      "status": 200,
+      "ms": 279.1291999999994,
+      "cache": "MISS",
+      "edge": "bom1::q6llp-1792610622570-ba4b1e193f1c",
+      "encoding": "br",
+      "bytes": 10780
+    },
+    {
+      "path": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+      "phase": "warm",
+      "status": 200,
+      "ms": 390.59220000000005,
+      "cache": "MISS",
+      "edge": "bom1::szmjg-1792610622535-c64d53a54fea",
+      "encoding": "br",
+      "bytes": 112594
+    },
+    {
+      "path": "/_next/static/css/f4100580a012f1bf.css",
+      "phase": "warm",
+      "status": 200,
+      "ms": 293.6379999999999,
+      "cache": "MISS",
+      "edge": "bom1::xgq4l-1792610622863-15933afa9e23",
+      "encoding": "br",
+      "bytes": 3539
+    },
+    {
+      "path": "/_next/static/css/d2663c0638bcb85f.css",
+      "phase": "warm",
+      "status": 200,
+      "ms": 327.6945000000005,
+      "cache": "MISS",
+      "edge": "bom1::7kxkl-1792610622862-5c02e8f3e2df",
+      "encoding": "br",
+      "bytes": 8692
+    },
+    {
+      "path": "/_next/static/chunks/1635-f656db5139de2e2b.js",
+      "phase": "verify",
+      "status": 200,
+      "ms": 66.32700000000023,
+      "cache": "HIT",
+      "edge": "bom1::cv4jr-1792610623162-369df19531d0",
+      "encoding": "br",
+      "bytes": 11431
+    },
+    {
+      "path": "/_next/static/chunks/1157-4f0394f9de0850e3.js",
+      "phase": "verify",
+      "status": 200,
+      "ms": 146.6333999999997,
+      "cache": "HIT",
+      "edge": "bom1::q55m2-1792610623162-7b3751298c73",
+      "encoding": "br",
+      "bytes": 95297
+    },
+    {
+      "path": "/_next/static/chunks/2619-04bc32f026a0d946.js",
+      "phase": "verify",
+      "status": 200,
+      "ms": 164.3051000000005,
+      "cache": "HIT",
+      "edge": "bom1::7kxkl-1792610623275-bc00a9821f21",
+      "encoding": "br",
+      "bytes": 8564
+    },
+    {
+      "path": "/_next/static/chunks/3545-89e462f936f8ff0c.js",
+      "phase": "verify",
+      "status": 200,
+      "ms": 85.54269999999997,
+      "cache": "HIT",
+      "edge": "bom1::7kxkl-1792610623297-9ffc6edb482c",
+      "encoding": "br",
+      "bytes": 12765
+    },
+    {
+      "path": "/_next/static/chunks/4721-30e839162cd6c9c4.js",
+      "phase": "verify",
+      "status": 200,
+      "ms": 96.38220000000001,
+      "cache": "HIT",
+      "edge": "bom1::q55m2-1792610623376-eec8ac6e263c",
+      "encoding": "br",
+      "bytes": 27070
+    },
+    {
+      "path": "/_next/static/chunks/2561-82c1b4350c06db72.js",
+      "phase": "verify",
+      "status": 200,
+      "ms": 331.23409999999967,
+      "cache": "HIT",
+      "edge": "bom1::pzlmg-1792610623166-17bca70ab36d",
+      "encoding": "br",
+      "bytes": 10967
+    },
+    {
+      "path": "/_next/static/chunks/1255-60d8dc7c8c9309a1.js",
+      "phase": "verify",
+      "status": 200,
+      "ms": 334.4511999999995,
+      "cache": "HIT",
+      "edge": "bom1::xgq4l-1792610623166-371ac65094a5",
+      "encoding": "br",
+      "bytes": 174644
+    },
+    {
+      "path": "/_next/static/chunks/4bd1b696-100b9d70ed4e49c1.js",
+      "phase": "verify",
+      "status": 200,
+      "ms": 140.8077000000003,
+      "cache": "HIT",
+      "edge": "bom1::cv4jr-1792610623377-f100d3a09c48",
+      "encoding": "br",
+      "bytes": 173025
+    },
+    {
+      "path": "/_next/static/chunks/575-aa6909080de73d84.js",
+      "phase": "verify",
+      "status": 200,
+      "ms": 53.071500000000015,
+      "cache": "HIT",
+      "edge": "bom1::q55m2-1792610623473-0c8cf9eea1b0",
+      "encoding": "br",
+      "bytes": 17021
+    },
+    {
+      "path": "/_next/static/chunks/8970-d76763e89072b45e.js",
+      "phase": "verify",
+      "status": 200,
+      "ms": 53.573199999999815,
+      "cache": "HIT",
+      "edge": "bom1::xgq4l-1792610623483-d3c639513598",
+      "encoding": "br",
+      "bytes": 8373
+    },
+    {
+      "path": "/_next/static/chunks/app/error-5fe1ad3aec7b7670.js",
+      "phase": "verify",
+      "status": 200,
+      "ms": 53.856700000000274,
+      "cache": "HIT",
+      "edge": "bom1::gsjh2-1792610623487-37367c594c28",
+      "encoding": null,
+      "bytes": 584
+    },
+    {
+      "path": "/_next/static/chunks/app/evals/page-7f5cb580bd4bf873.js",
+      "phase": "verify",
+      "status": 200,
+      "ms": 47.86959999999999,
+      "cache": "HIT",
+      "edge": "bom1::f27rd-1792610623522-2f26c0b9990c",
+      "encoding": "br",
+      "bytes": 7862
+    },
+    {
+      "path": "/_next/static/chunks/app/global-error-eeb8d44fcbd5542a.js",
+      "phase": "verify",
+      "status": 200,
+      "ms": 41.487700000000586,
+      "cache": "HIT",
+      "edge": "bom1::q55m2-1792610623525-edb129b796af",
+      "encoding": null,
+      "bytes": 547
+    },
+    {
+      "path": "/_next/static/chunks/app/offline/page-b8761540a91291d8.js",
+      "phase": "verify",
+      "status": 200,
+      "ms": 44.13060000000041,
+      "cache": "HIT",
+      "edge": "bom1::rgnlk-1792610623533-db41835bdcd7",
+      "encoding": "br",
+      "bytes": 3871
+    },
+    {
+      "path": "/_next/static/chunks/app/layout-1c3ed69d58b9eb15.js",
+      "phase": "verify",
+      "status": 200,
+      "ms": 68.49189999999999,
+      "cache": "HIT",
+      "edge": "bom1::4xhlq-1792610623534-fad539af8bb4",
+      "encoding": "br",
+      "bytes": 3768
+    },
+    {
+      "path": "/_next/static/chunks/app/page-97ee520f1015add3.js",
+      "phase": "verify",
+      "status": 200,
+      "ms": 44.035000000000764,
+      "cache": "HIT",
+      "edge": "bom1::f27rd-1792610623566-749cd1c9de46",
+      "encoding": "br",
+      "bytes": 7344
+    },
+    {
+      "path": "/_next/static/chunks/app/privacy/page-4ad02e7cc2b290be.js",
+      "phase": "verify",
+      "status": 200,
+      "ms": 47.8724000000002,
+      "cache": "HIT",
+      "edge": "bom1::q55m2-1792610623577-1e4f06f12afc",
+      "encoding": null,
+      "bytes": 196
+    },
+    {
+      "path": "/_next/static/chunks/app/plan/new/page-b67673f828c991a4.js",
+      "phase": "verify",
+      "status": 200,
+      "ms": 59.428100000000086,
+      "cache": "HIT",
+      "edge": "bom1::szmjg-1792610623571-63d91a9321ba",
+      "encoding": "br",
+      "bytes": 18554
+    },
+    {
+      "path": "/_next/static/chunks/app/shared/page-b19449319ed8b92a.js",
+      "phase": "verify",
+      "status": 200,
+      "ms": 47.41619999999966,
+      "cache": "HIT",
+      "edge": "bom1::4xhlq-1792610623599-accd58db35d1",
+      "encoding": "br",
+      "bytes": 1847
+    },
+    {
+      "path": "/_next/static/chunks/main-app-7cd0e87450e50109.js",
+      "phase": "verify",
+      "status": 200,
+      "ms": 41.02050000000054,
+      "cache": "HIT",
+      "edge": "bom1::f27rd-1792610623610-d7fc23caabc6",
+      "encoding": null,
+      "bytes": 796
+    },
+    {
+      "path": "/_next/static/chunks/webpack-cf931236dcb0a36a.js",
+      "phase": "verify",
+      "status": 200,
+      "ms": 49.445299999999406,
+      "cache": "HIT",
+      "edge": "bom1::gt2xb-1792610623626-8b95a3d40a06",
+      "encoding": "br",
+      "bytes": 5882
+    },
+    {
+      "path": "/_next/static/css/48ebb148f5a5aed8.css",
+      "phase": "verify",
+      "status": 200,
+      "ms": 55.67439999999988,
+      "cache": "HIT",
+      "edge": "bom1::xgq4l-1792610623646-e49241538e9e",
+      "encoding": "br",
+      "bytes": 14677
+    },
+    {
+      "path": "/_next/static/css/6ed493623f25e6ec.css",
+      "phase": "verify",
+      "status": 200,
+      "ms": 56.07170000000042,
+      "cache": "HIT",
+      "edge": "bom1::9r6j9-1792610623650-196afa050454",
+      "encoding": "br",
+      "bytes": 10780
+    },
+    {
+      "path": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
+      "phase": "verify",
+      "status": 200,
+      "ms": 120.8792999999996,
+      "cache": "HIT",
+      "edge": "bom1::gsjh2-1792610623629-2d94d50fcad4",
+      "encoding": "br",
+      "bytes": 112594
+    },
+    {
+      "path": "/_next/static/css/d2663c0638bcb85f.css",
+      "phase": "verify",
+      "status": 200,
+      "ms": 70.6176000000005,
+      "cache": "HIT",
+      "edge": "bom1::gt2xb-1792610623676-f64bdfd433d9",
+      "encoding": "br",
+      "bytes": 8692
+    },
+    {
+      "path": "/_next/static/css/f4100580a012f1bf.css",
+      "phase": "verify",
+      "status": 200,
+      "ms": 47.455800000000636,
+      "cache": "HIT",
+      "edge": "bom1::4xhlq-1792610623702-a1a390430d47",
+      "encoding": "br",
+      "bytes": 3539
+    },
+    {
+      "path": "/",
+      "phase": "confirm",
+      "status": 200,
+      "ms": 114.24029999999948,
+      "cache": "MISS",
+      "edge": "bom1::bom1::gt2xb-1792610623749-42e626878aae",
+      "encoding": "br",
+      "bytes": 41860
+    },
+    {
+      "path": "/plan/new",
+      "phase": "confirm",
+      "status": 200,
+      "ms": 102.9364000000005,
+      "cache": "MISS",
+      "edge": "bom1::bom1::7kxkl-1792610623864-7851a13593cf",
+      "encoding": "br",
+      "bytes": 20315
+    },
+    {
+      "path": "/evals",
+      "phase": "confirm",
+      "status": 200,
+      "ms": 124.21619999999984,
+      "cache": "MISS",
+      "edge": "bom1::bom1::7kxkl-1792610623967-7a53578833bd",
+      "encoding": "br",
+      "bytes": 111951
+    },
+    {
+      "path": "/privacy",
+      "phase": "confirm",
+      "status": 200,
+      "ms": 119.59769999999935,
+      "cache": "MISS",
+      "edge": "bom1::bom1::7kxkl-1792610624091-7669aab35daf",
+      "encoding": "br",
+      "bytes": 16367
+    },
+    {
+      "path": "/offline",
+      "phase": "confirm",
+      "status": 200,
+      "ms": 123.04889999999978,
+      "cache": "MISS",
+      "edge": "bom1::bom1::7kxkl-1792610624216-92734b531e1f",
+      "encoding": "br",
+      "bytes": 15123
+    },
+    {
+      "path": "/shared",
+      "phase": "confirm",
+      "status": 200,
+      "ms": 101.04849999999988,
+      "cache": "MISS",
+      "edge": "bom1::bom1::pzlmg-1792610624335-148a835f9cf7",
+      "encoding": "br",
+      "bytes": 16098
     }
   ]
 }

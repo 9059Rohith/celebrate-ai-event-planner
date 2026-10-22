@@ -15,7 +15,7 @@ The app supports weddings, birthdays and community events through a validated fi
 | Coverage | Library lines 91.53%, statements 89.51%, branches 83.31%, functions 88.73%; domain lines 98.17% |
 | Accessibility | Automated WCAG A/AA checks on six entry routes in light/dark themes, saved/shared plans at 360/1920px, desktop/mobile; keyboard flows covered |
 | Security | Runtime audit zero findings; nonce CSP, input/output validation, moderation path, confirmation before mutations, bounded rate/token limits; source and built-JS secret scans pass |
-| Efficiency | Initial modern-browser JS 117,582 gzip bytes against a 122,880-byte budget; final production timings are recorded separately |
+| Efficiency | Initial modern-browser JS 117,583 gzip bytes against a 122,880-byte budget; final production timings are recorded separately |
 | Repository requirement | Public repository verified through GitHub API; source checkout approximately 8 MB, repository storage 1,266 KB before this release |
 
 ## Honest completion boundaries
@@ -33,3 +33,6 @@ Demo recording: https://drive.google.com/file/d/1hz0frq_4JTFciHmpEchGQP3gOSxKw8S
 Use Node 20.19+ and npm ci. Copy .env.example to .env.local; optional OPENAI_API_KEY enables server-side generation. Run npm run dev. Verification commands: npm run typecheck, npm run lint, npm run test:coverage, npm run eval -- --suite=all --mock, npm run build, npm run audit:bundle, npm run test:e2e.
 
 Publish source before the final production deployment, then run npm run deploy:production and npm run verify:production. The latter requires a verified warmup and preserves every failed timing sample. See README.md, EVALUATION.md, SECURITY.md and reports/ for actual measurements and their limits.
+
+README presentation follows the owner's ScreenOps reference: demo/deployment links, architecture illustration, walkthrough, problem/solution, features, stack, implementation status, setup, validation, AI usage, submission materials, security notes and eight actual app screenshots. The source checkout totals approximately 8.33 MB including screenshots.
+

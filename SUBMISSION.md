@@ -16,7 +16,7 @@ Celebrate AI helps users organize weddings, birthdays and community events with 
 
 | Item | Verified status |
 | --- | --- |
-| Public source | Public GitHub repository; approximately 8.81 MB source checkout, below the 10 MB submission limit |
+| Public source | Public GitHub repository; approximately 9.17 MB source checkout, below the 10 MB submission limit |
 | Demo | Anyone with the link → Viewer; Drive permission metadata confirms anonymous reader access |
 | CI activation | Workflow committed on main as .github/workflows/ci.yml, triggered by pushes and pull requests |
 | Hosted CI result | First run blocked before any steps: GitHub reports the owner account is locked due to a billing issue. Owner action is required before rerunning |

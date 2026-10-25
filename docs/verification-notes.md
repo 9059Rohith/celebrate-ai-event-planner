@@ -113,3 +113,8 @@ Final deployment reports are published on the codex/submission-evidence branch a
 - Test execution is capped at two workers to reduce resource contention on constrained hosts.
 - Final production build and bundle audit pass: initial modern-browser home JavaScript is 117,623 gzipped bytes against a 122,880-byte budget; browser bundle secret scan passed.
 - Final desktop/mobile browser suite: 20/20 passed, covering all occasions, editing, exports, shared-fragment hydration, offline editing, theme/currency, CSP headers and automated accessibility. Final TypeScript, ESLint and formatting checks passed.
+- Push f40fd79 triggered GitHub Actions run 40193415888. The verify job executed zero steps because GitHub reported the owner account is locked due to a billing issue. Local results are reported separately from this hosted CI blocker.
+- Production deployment dpl_HUyMGmZFQUVZaQqG8S1LvUFKgCAM is READY at the original alias; health returns HTTP 200 with aiConfigured true.
+- Production timing verification retained every sample and confirmed a stable release fingerprint. Bundled Chromium 156: 68 samples, 63 loads under two seconds, median 991.5 ms, p95 3741.8 ms, maximum 26135.9 ms, zero runtime/hydration errors. The largest stall occurred before static requests were sent.
+- Comparison in Edge 156: 68 samples, 66 loads under two seconds, median 998.8 ms, p95 1442.7 ms, maximum 2342.2 ms, zero runtime/hydration errors. Two samples exceeded two seconds.
+- The strict performance gate did not pass in either browser; these observations do not support a claim that every page always loads under two seconds. Both raw report sets and summaries are committed. No additional model calls were made for this revision.

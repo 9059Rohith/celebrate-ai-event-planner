@@ -109,7 +109,7 @@ Production verification and remaining external limits:
 - Without Upstash, rate/cache/token counters are per server process.
 - Five development-only lint dependency advisories remain unpatched upstream; runtime dependencies have zero findings.
 
-Timing evidence includes retained outliers. Finite measurements do not guarantee every device/network loads within two seconds. No competition rank is claimed. See [SUBMISSION.md](SUBMISSION.md) for current evidence and limitations.
+The [code quality revision report](reports/code-quality-revision.json) records the 135 tests, 20 browser checks, increased coverage and production verification. Latest live timing: Edge 66/68 loads under two seconds (p95 1.44 s, max 2.34 s); bundled Chromium 63/68 with a maximum 26.14 s pre-request stall. Both runs had zero runtime/hydration errors. The strict all-samples performance gate did not pass. Timing evidence includes retained outliers. Finite measurements do not guarantee every device/network loads within two seconds. The first-attempt standing is recorded above; no future score or final rank is guaranteed. See [SUBMISSION.md](SUBMISSION.md) for current evidence and limitations.
 
 ## Setup Instructions
 

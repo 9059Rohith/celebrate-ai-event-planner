@@ -1,0 +1,174 @@
+{
+  "url": "https://celebrate-ai-event-planner.vercel.app",
+  "timestamp": "2026-10-25T12:38:49.061Z",
+  "conditions": "Fresh browser contexts and browser caches, unthrottled network, desktop and iPhone13 emulation. Server/CDN assets verified warm before audit; release fingerprint checked before and after. Every sample retained, no retries.",
+  "browserChannel": "msedge",
+  "browserVersion": "156.0.4314.42",
+  "fingerprint": "61f3f0398d69e93727e1e78045ea40b50f71f688d9527230be510f6b89d61300",
+  "stableRelease": true,
+  "verifiedAssets": 27,
+  "samples": 68,
+  "underTwoSeconds": 66,
+  "medianLoadMs": 998.7999999821186,
+  "p95LoadMs": 1442.7000000178814,
+  "maxLoadMs": 2342.199999988079,
+  "maxReadyMs": 2453.0999999940395,
+  "errors": [],
+  "outliers": [
+    {
+      "source": "reports/full-load-quality-resubmission-edge.json",
+      "device": "desktop",
+      "sample": 1,
+      "path": "/plan/new",
+      "status": 200,
+      "server": "bom1::bom1::kzhpw-1792931790752-f84e99a84b28",
+      "loadMs": 2302.600000023842,
+      "domMs": 2227,
+      "ttfbMs": 341,
+      "dnsMs": 21.099999994039536,
+      "connectMs": 225.40000000596046,
+      "requestWaitMs": 88.09999999403954,
+      "requestStartMs": 252.90000000596046,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/layout-eeb39676b897ce2d.js",
+          "duration": 807.9000000059605,
+          "start": 780.7000000178814,
+          "end": 1588.6000000238419,
+          "transfer": 1991,
+          "requestStart": 802.4000000059605,
+          "responseStart": 1587.9000000059605,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/error-5fe1ad3aec7b7670.js",
+          "duration": 806.9000000059605,
+          "start": 780.8000000119209,
+          "end": 1587.7000000178814,
+          "transfer": 884,
+          "requestStart": 803.2000000178814,
+          "responseStart": 1587.1000000238419,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/3545-89e462f936f8ff0c.js",
+          "duration": 806,
+          "start": 780.7000000178814,
+          "end": 1586.7000000178814,
+          "transfer": 5444,
+          "requestStart": 801.4000000059605,
+          "responseStart": 1585.7000000178814,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/css/f4100580a012f1bf.css",
+          "duration": 805.5,
+          "start": 779.9000000059605,
+          "end": 1585.4000000059605,
+          "transfer": 1460,
+          "requestStart": 792.4000000059605,
+          "responseStart": 1567,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/webpack-c152256fed37900b.js",
+          "duration": 786.8000000119209,
+          "start": 780,
+          "end": 1566.800000011921,
+          "transfer": 3343,
+          "requestStart": 792.5,
+          "responseStart": 1554.1000000238419,
+          "protocol": "h2"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "source": "reports/shared-hydration-quality-resubmission-edge.json",
+      "sample": 17,
+      "mobile": false,
+      "dark": false,
+      "status": 200,
+      "loadMs": 2342.199999988079,
+      "dnsMs": 32.5,
+      "connectMs": 154.5,
+      "requestWaitMs": 85,
+      "readyMs": 2453.0999999940395,
+      "requestStartMs": 196.19999998807907,
+      "responseEndMs": 382.40000000596046,
+      "resources": [
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/global-error-eeb8d44fcbd5542a.js",
+          "start": 413.59999999403954,
+          "end": 2242.699999988079,
+          "duration": 1829.0999999940395,
+          "requestStart": 459,
+          "responseStart": 2242.199999988079,
+          "transfer": 847,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/error-5fe1ad3aec7b7670.js",
+          "start": 413.7999999821186,
+          "end": 2242,
+          "duration": 1828.2000000178814,
+          "requestStart": 463.90000000596046,
+          "responseStart": 2241.5999999940395,
+          "transfer": 884,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/1914-df337b57c5851f22.js",
+          "start": 413.59999999403954,
+          "end": 2241.5,
+          "duration": 1827.9000000059605,
+          "requestStart": 455.19999998807907,
+          "responseStart": 2240.2999999821186,
+          "transfer": 6305,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/layout-eeb39676b897ce2d.js",
+          "start": 413.7999999821186,
+          "end": 2241.0999999940395,
+          "duration": 1827.300000011921,
+          "requestStart": 461.5,
+          "responseStart": 2240.699999988079,
+          "transfer": 1991,
+          "protocol": "h2"
+        },
+        {
+          "url": "https://celebrate-ai-event-planner.vercel.app/_next/static/chunks/app/shared/page-186879c36ec3ac81.js",
+          "start": 413.59999999403954,
+          "end": 2240.0999999940395,
+          "duration": 1826.5,
+          "requestStart": 456.90000000596046,
+          "responseStart": 2238,
+          "transfer": 1276,
+          "protocol": "h2"
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "commands": [
+    {
+      "script": "full-load",
+      "exitCode": 1
+    },
+    {
+      "script": "workspace-load",
+      "exitCode": 0
+    },
+    {
+      "script": "hydration-check",
+      "exitCode": 1
+    }
+  ],
+  "sources": [
+    "reports/full-load-quality-resubmission-edge.json",
+    "reports/workspace-load-quality-resubmission-edge.json",
+    "reports/shared-hydration-quality-resubmission-edge.json"
+  ],
+  "passed": false
+}

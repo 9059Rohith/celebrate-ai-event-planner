@@ -59,3 +59,8 @@ Mini evaluation requires `EVAL_SECRET` in a transient password field. The field 
 Human thumbs and reasons are read only from `celebrate-feedback` localStorage on this device and exportable as JSON. They are a convenience sample, not a representative human evaluation study. No feedback is transmitted by the dashboard.
 
 Validation: `npx vitest run tests/eval.test.ts` passed five engine tests, including coverage distribution, budget corruption, dependency-cycle mutation, diet/canary detection and resume honesty. `npx vitest run tests/eval-api.test.ts` also covers secret/origin/rate-limit and live/offline routing. Run `npm run typecheck` and `npm run lint` with the full app after dependencies are installed.
+
+
+## Production smoke verification — 25 October 2026
+
+One uncached production generation using gpt-4o-mini returned a schema-valid hybrid plan on its first structured attempt, with no repair: 1,158 input tokens, 880 output tokens, 10.658 s provider orchestration latency and 11.562 s full SSE response time. Estimated model cost: $0.000702. See reports/live-submission-smoke.json. This demonstrates live integration, not a statistically measured model-quality score; judge and A/B measurements remain separate. The app shell and deterministic plan render before enhancement finishes.

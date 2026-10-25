@@ -1,0 +1,27 @@
+{
+  "timestamp": "2026-10-25T11:49:33.486Z",
+  "url": "https://celebrate-ai-event-planner.vercel.app",
+  "status": 200,
+  "elapsedMs": 11562,
+  "eventCount": 13,
+  "schemaValid": true,
+  "meta": {
+    "source": "hybrid",
+    "model": "gpt-4o-mini",
+    "promptVersion": "2026-10-v2",
+    "tokens": {
+      "in": 1158,
+      "out": 880
+    },
+    "latencyMs": 10658,
+    "cached": false,
+    "structuredValidation": {
+      "firstAttemptValid": true,
+      "repairAttempted": false,
+      "repairValid": null
+    }
+  },
+  "liveVerified": true,
+  "estimatedCostUsd": 0.0007017000000000001,
+  "scope": "One synthetic live plan generation; no judge or A/B quality claim."
+}

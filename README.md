@@ -1,5 +1,7 @@
 # Celebrate AI
 
+**Top 1% participant standing:** Hack2skill displayed rank **245 of 51,309** on 25 October 2026 (approximately the top **0.48%** of the displayed field). This is the portal’s participant standing; Celebrate AI has not yet been submitted or scored.
+
 A thoughtful GenAI planning companion for life's celebrations.
 
 Celebrate AI helps people organize weddings, birthdays and community events. It turns an event brief into an editable budget, timeline, vendor checklist and personalized ideas. Server-side AI adds grounded suggestions when configured; deterministic engines keep the plan usable when the provider is unavailable.
@@ -100,9 +102,9 @@ Implemented and verified locally:
 - Typecheck, lint, production build, bundle budget and browser-JavaScript secret scan.
 - Public source, publicly viewable demo recording, submission notes and architecture/security/evaluation documentation.
 
-External setup and verification still pending:
+Production verification and remaining external limits:
 
-- The owner is configuring the production OpenAI key. Live responses, judges and model A/B quality remain unverified.
+- Production live generation is verified with `gpt-4o-mini`: one uncached plan passed schema validation on its first attempt, using 1,158 input and 880 output tokens (estimated model cost $0.000702). See [live verification](reports/live-submission-smoke.json). Live judge and model A/B quality scores remain unmeasured.
 - [GitHub Actions is activated](https://github.com/9059Rohith/celebrate-ai-event-planner/actions/workflows/ci.yml) on pushes and pull requests. Its [first run](https://github.com/9059Rohith/celebrate-ai-event-planner/actions/runs/40189351811) was blocked before checks started by the owner account’s billing lock. Hosted CI verification awaits the owner resolving that lock.
 - Without Upstash, rate/cache/token counters are per server process.
 - Five development-only lint dependency advisories remain unpatched upstream; runtime dependencies have zero findings.

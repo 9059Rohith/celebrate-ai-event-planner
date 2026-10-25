@@ -2,11 +2,14 @@
 
 Celebrate AI helps users organize weddings, birthdays and community events with editable budgets, dependent timelines, vendor checklists, personalized ideas and grounded chat proposals. A complete deterministic plan remains available when the AI provider is unavailable.
 
+**Top 1% participant standing:** the Hack2skill portal displayed rank **245 / 51,309** on 25 October 2026, approximately the top **0.48%**. This records the participant standing shown by the portal; this challenge submission has 0/3 attempts and no evaluation result yet.
+
 ## Submission links
 
 - Public GitHub: https://github.com/9059Rohith/celebrate-ai-event-planner
 - Live Vercel app: https://celebrate-ai-event-planner.vercel.app/
 - Public demo: https://drive.google.com/file/d/1hz0frq_4JTFciHmpEchGQP3gOSxKw8S4/view
+- Selected LinkedIn post: https://lnkd.in/p/g8c7TeDX (used at the owner’s explicit request)
 - CI workflow: https://github.com/9059Rohith/celebrate-ai-event-planner/actions/workflows/ci.yml
 
 ## Current readiness (25 October 2026)
@@ -18,8 +21,8 @@ Celebrate AI helps users organize weddings, birthdays and community events with 
 | CI activation | Workflow committed on main as .github/workflows/ci.yml, triggered by pushes and pull requests |
 | Hosted CI result | First run blocked before any steps: GitHub reports the owner account is locked due to a billing issue. Owner action is required before rerunning |
 | Live app | Original Vercel alias is available |
-| Production GenAI | Health reports aiConfigured=false; owner must configure OPENAI_API_KEY and redeploy before live generation/judge verification |
-| Submission portal | Supplied deep link returned Page Not Found; current Hack2skill login page is open for the owner. No submission attempt has been made |
+| Production GenAI | Server-only key configured; one uncached gpt-4o-mini generation returned a schema-valid hybrid plan on its first attempt. 2,038 tokens; estimated model cost $0.000702 |
+| Submission portal | Owner is logged in. All required fields are filled with the public repository, deployment, demo, changes, GenAI disclosure and the owner-selected LinkedIn link. Owner will click Submit; 0/3 attempts used |
 
 ## Rubric evidence
 
@@ -43,4 +46,4 @@ Use Node 20.19+ and npm ci. Copy .env.example to .env.local; keep provider/evalu
 
 Publish source before measuring production. Run node scripts/warm-deployment.mjs, then npm run verify:production with a unique PERF_PHASE and the actual DEPLOYMENT_ID. Every timing sample is retained and the asset fingerprint must remain unchanged.
 
-README follows the owner’s ScreenOps section order and includes the architecture diagram and eight real screenshots. See EVALUATION.md, ARCHITECTURE.md, AI_USAGE.md and SECURITY.md for methods and limitations. Live model responses, live judges and A/B preference scores remain unmeasured until actual provider calls succeed. Without Upstash, serverless counters are per process. No competition rank or universal compliance claim is made.
+README follows the owner’s ScreenOps section order and includes the architecture diagram and eight real screenshots. See EVALUATION.md, ARCHITECTURE.md, AI_USAGE.md and SECURITY.md for methods and limitations. One production live response is verified in reports/live-submission-smoke.json; live judges and A/B preference scores remain unmeasured. Production uses gpt-4o-mini, zero automatic provider retries, a 3-request/minute ceiling and a 50,000-token/day per-process budget. Without Upstash, serverless counters are per process. No competition rank or universal compliance claim is made.

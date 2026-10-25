@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-25T11:42:58.546Z",
+  "timestamp": "2026-10-25T11:50:15.571Z",
   "repository": {
     "url": "https://github.com/9059Rohith/celebrate-ai-event-planner",
     "private": false,
@@ -8,7 +8,7 @@
   },
   "health": {
     "ok": true,
-    "aiConfigured": false,
+    "aiConfigured": true,
     "storage": "local-device",
     "rateLimiting": "best-effort-memory-or-upstash"
   },
@@ -31,21 +31,55 @@
     ]
   },
   "portal": {
-    "suppliedUrlStatus": "Page Not Found",
-    "loginUrl": "https://hack2skill.com/login?utm_source=hack2skill&utm_medium=homepage",
-    "status": "Awaiting owner login",
-    "submitted": false
+    "url": "https://hack2skill.com/event/pwvirtual1/dashboard/submissions/6ad5b2c0fefbe7855bad16fb",
+    "status": "All required fields filled for owner review and submission",
+    "submitted": false,
+    "attemptsUsed": 0,
+    "attemptLimit": 3,
+    "selectedLinkedIn": "https://lnkd.in/p/g8c7TeDX",
+    "participantRank": {
+      "rank": 245,
+      "total": 51309,
+      "topPercent": 0.47749907423648874,
+      "scope": "Participant standing displayed by portal; this challenge submission has no evaluation result"
+    }
   },
   "production": {
     "url": "https://celebrate-ai-event-planner.vercel.app/",
-    "deploymentId": "dpl_3aLoq9jjBHpRvfBUxLywJs5FcMJG",
+    "deploymentId": "dpl_BBdBWvZgFy788UG6tx8P9raWippp",
     "state": "READY",
-    "sourceCommit": "de8bedbadf0aaae737cb20ba00ec39664ade2616",
-    "note": "CI activation triggered a fresh production deployment. Historical timing evidence applies to the identified October 22 deployment, not automatically to this deployment."
+    "note": "Redeployed with production AI credentials and cost controls; a later docs publication may create another deployment."
   },
   "remaining": [
-    "Configure production OpenAI key and verify live generation/judges",
-    "Resolve GitHub account billing lock and rerun hosted CI",
-    "Log in to Hack2skill and review the actual submission form"
-  ]
+    "Owner submits the prepared Hack2skill form",
+    "Resolve GitHub account billing lock before hosted CI can execute",
+    "Live judge and A/B quality evaluation are not measured"
+  ],
+  "liveGeneration": {
+    "timestamp": "2026-10-25T11:49:33.486Z",
+    "url": "https://celebrate-ai-event-planner.vercel.app",
+    "status": 200,
+    "elapsedMs": 11562,
+    "eventCount": 13,
+    "schemaValid": true,
+    "meta": {
+      "source": "hybrid",
+      "model": "gpt-4o-mini",
+      "promptVersion": "2026-10-v2",
+      "tokens": {
+        "in": 1158,
+        "out": 880
+      },
+      "latencyMs": 10658,
+      "cached": false,
+      "structuredValidation": {
+        "firstAttemptValid": true,
+        "repairAttempted": false,
+        "repairValid": null
+      }
+    },
+    "liveVerified": true,
+    "estimatedCostUsd": 0.0007017000000000001,
+    "scope": "One synthetic live plan generation; no judge or A/B quality claim."
+  }
 }

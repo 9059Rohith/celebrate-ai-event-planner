@@ -1,10 +1,10 @@
 {
-  "timestamp": "2026-10-22T04:28:53.51Z",
+  "timestamp": "2026-10-25T11:42:58.546Z",
   "repository": {
     "url": "https://github.com/9059Rohith/celebrate-ai-event-planner",
-    "anonymousStatus": 200,
     "private": false,
-    "sizeKB": 1438
+    "sizeKB": 2494,
+    "sourceCheckoutApproxMB": 8.33
   },
   "health": {
     "ok": true,
@@ -12,18 +12,40 @@
     "storage": "local-device",
     "rateLimiting": "best-effort-memory-or-upstash"
   },
-  "workflowStatus": 404,
-  "descriptionInInitialHead": true,
-  "commit": "04a917d7b0a20b43042b525394fac76bfef23f1a",
-  "deploymentState": "success",
-  "deploymentLinks": [
-    "https://vercel.com/rohiths-projects-5e14931b/celebrate-ai-event-planner/83GHqesgrXcorSTCd9GJEDeQevZA"
-  ],
+  "ci": {
+    "active": true,
+    "path": ".github/workflows/ci.yml",
+    "sourceCommit": "de8bedbadf0aaae737cb20ba00ec39664ade2616",
+    "runUrl": "https://github.com/9059Rohith/celebrate-ai-event-planner/actions/runs/40189351811",
+    "conclusion": "failure",
+    "stepsStarted": 0,
+    "reason": "The job was not started because your account is locked due to a billing issue."
+  },
   "demo": {
     "url": "https://drive.google.com/file/d/1hz0frq_4JTFciHmpEchGQP3gOSxKw8S4/view",
-    "public": false,
+    "public": true,
     "observedPermissions": [
-      "user:owner"
+      "anyone:reader:allowFileDiscovery=false",
+      "user:owner",
+      "user:writer"
     ]
-  }
+  },
+  "portal": {
+    "suppliedUrlStatus": "Page Not Found",
+    "loginUrl": "https://hack2skill.com/login?utm_source=hack2skill&utm_medium=homepage",
+    "status": "Awaiting owner login",
+    "submitted": false
+  },
+  "production": {
+    "url": "https://celebrate-ai-event-planner.vercel.app/",
+    "deploymentId": "dpl_3aLoq9jjBHpRvfBUxLywJs5FcMJG",
+    "state": "READY",
+    "sourceCommit": "de8bedbadf0aaae737cb20ba00ec39664ade2616",
+    "note": "CI activation triggered a fresh production deployment. Historical timing evidence applies to the identified October 22 deployment, not automatically to this deployment."
+  },
+  "remaining": [
+    "Configure production OpenAI key and verify live generation/judges",
+    "Resolve GitHub account billing lock and rerun hosted CI",
+    "Log in to Hack2skill and review the actual submission form"
+  ]
 }

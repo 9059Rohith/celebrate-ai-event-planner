@@ -10,7 +10,7 @@ Repository: https://github.com/9059Rohith/celebrate-ai-event-planner
 
 Demo video: [Link](https://drive.google.com/file/d/1hz0frq_4JTFciHmpEchGQP3gOSxKw8S4/view)
 
-The recording is uploaded. Public viewing permission is awaiting the owner's sharing change; judge access is not yet verified.
+The recorded walkthrough is publicly viewable with the link (Anyone with the link → Viewer), verified on 25 October 2026.
 
 ## Deploy
 
@@ -98,13 +98,12 @@ Implemented and verified locally:
 - Offline deterministic evaluation: **46/46 passing**.
 - Library line coverage: **91.53%**; domain line coverage: **98.17%**.
 - Typecheck, lint, production build, bundle budget and browser-JavaScript secret scan.
-- Public source, demo recording, submission notes and architecture/security/evaluation documentation.
+- Public source, publicly viewable demo recording, submission notes and architecture/security/evaluation documentation.
 
 External setup and verification still pending:
 
 - The owner is configuring the production OpenAI key. Live responses, judges and model A/B quality remain unverified.
-- The owner must enable **Anyone with the link → Viewer** on the demo.
-- The saved GitHub credential lacks workflow scope. The owner is activating `ci/github-actions.yml` as `.github/workflows/ci.yml`; equivalent checks have passed locally.
+- [GitHub Actions is activated](https://github.com/9059Rohith/celebrate-ai-event-planner/actions/workflows/ci.yml) on pushes and pull requests. Its [first run](https://github.com/9059Rohith/celebrate-ai-event-planner/actions/runs/40189351811) was blocked before checks started by the owner account’s billing lock. Hosted CI verification awaits the owner resolving that lock.
 - Without Upstash, rate/cache/token counters are per server process.
 - Five development-only lint dependency advisories remain unpatched upstream; runtime dependencies have zero findings.
 
@@ -144,6 +143,8 @@ For deployment, set server-only variables in Vercel Production. See [.env.exampl
 
 ## Validation
 
+**Offline evaluation complete:** the fresh `--mock` run passed **46/46 cases (100% case pass rate)**. Reproduce without an API key using `npm run eval -- --suite=all --mock --out=test-results/submission-mock.json`. This runs the real deterministic engine; it does not simulate measured live model quality. [Recorded evidence](reports/mock-submission-check.json).
+
 Type checking, lint and coverage:
 
 ```powershell
@@ -171,6 +172,21 @@ Latest verified library coverage: statements **89.51%**, branches **83.31%**, fu
 
 The offline evaluation passes all 46 schema, budget, timeline, diet, constraint, safety, contact-heuristic and fallback checks. The v1 engine baseline passed 36/46. This compares engine revisions, not isolated LLM prompt quality.
 
+Final production verification (22 October 2026):
+
+| Check | Result |
+| --- | --- |
+| Fresh-browser navigation loads | **68/68 below 2 seconds** |
+| Median / p95 / maximum load | **0.822 s / 1.490 s / 1.555 s** |
+| Maximum workspace heading readiness | **1.731 s** |
+| Hydration / runtime errors | **0** |
+| Mobile Lighthouse median LCP, home / intake | **1.147 s / 1.090 s** |
+| Lighthouse median performance, home / intake | **90 / 85** |
+| Accessibility / best practices / SEO | **100 / 100 / 100** on both audited routes |
+| Lighthouse CLS | **0 in all six runs** |
+
+Navigation used fresh Edge 155 contexts, desktop and iPhone 13 emulation, an unthrottled network and verified warm CDN assets. Lighthouse used three cache-reset default mobile Slow 4G simulations per route; one home LCP sample was 2.016 seconds. Navigation load and simulated LCP are separate measures. Earlier failures remain recorded; no all-network, all-device guarantee is claimed. See [the final audit](reports/verification-submission-stable-home.json) and [Lighthouse evidence](reports/lighthouse-submission-summary.json).
+
 Release checks:
 
 ```powershell
@@ -194,7 +210,7 @@ Full AI usage documentation is in [AI_USAGE.md](AI_USAGE.md).
 
 - Source code: this public repository
 - Live app: [Celebrate AI](https://celebrate-ai-event-planner.vercel.app/)
-- Demo: [Drive recording](https://drive.google.com/file/d/1hz0frq_4JTFciHmpEchGQP3gOSxKw8S4/view), public access pending
+- Demo: [Drive recording](https://drive.google.com/file/d/1hz0frq_4JTFciHmpEchGQP3gOSxKw8S4/view), public viewing verified
 - Submission summary: [SUBMISSION.md](SUBMISSION.md)
 - AI usage: [AI_USAGE.md](AI_USAGE.md)
 - Architecture: [ARCHITECTURE.md](ARCHITECTURE.md)

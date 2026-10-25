@@ -1,0 +1,31 @@
+{
+  "id": "v2-2026-10-22T11:17:33.460Z",
+  "timestamp": "2026-10-22T11:17:34.025Z",
+  "gitSha": "a95c6859f9bb8cb52e99cb0ca4223e8bdd97d0d9",
+  "mode": "Offline deterministic engine (no model calls)",
+  "command": "npm run eval -- --suite=all --mock --out=test-results/submission-mock.json",
+  "completed": true,
+  "totalCases": 46,
+  "passed": 46,
+  "failed": 0,
+  "casePassRatePercent": 100,
+  "metricRates": {
+    "schemaValid": 1,
+    "budgetIntegrity": 1,
+    "timelineValid": 1,
+    "dietaryCompliance": 1,
+    "constraintAdherence": 1,
+    "safetyPass": 1,
+    "hallucinationFree": 1,
+    "fallbackValid": 1
+  },
+  "durationMs": 565,
+  "p95LocalEngineLatencyMs": 1.8037999999996828,
+  "tokens": 0,
+  "costUsd": 0,
+  "liveJudge": {
+    "status": "not_run",
+    "scores": null
+  },
+  "scope": "Real deterministic-engine evaluation. No provider calls, live LLM quality scores, or competition rank inferred."
+}

@@ -30,5 +30,17 @@
   "rawHomeResponseContainedGlobalFallback": true,
   "regressionBeforeFix": "failed on live deployment",
   "change": "Scope app/loading.tsx to app/plan/[id]/loading.tsx; preserve server content on public routes",
-  "afterFix": "Production build, 113 unit/integration tests and all 20 desktop/mobile browser tests passed. Home raw HTML no longer contains the generic loading fallback; live Lighthouse validation pending."
+  "afterFix": {
+    "deploymentId": "dpl_FGzNzWac1tSXgRiUHaTw1GTd2kPb",
+    "build": "passed",
+    "unitTests": "113/113",
+    "browserTests": "20/20",
+    "homeGenericFallback": false,
+    "lighthouseHomeCls": [
+      0,
+      0,
+      0
+    ],
+    "navigationAudit": "68/68 below two seconds, zero hydration/runtime errors"
+  }
 }

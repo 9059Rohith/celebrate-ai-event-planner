@@ -45,26 +45,18 @@ describe("accessible product controls", () => {
       screen.getByLabelText("Give your celebration a name"),
     ).toBeInTheDocument();
     expect(screen.queryByLabelText("Number of guests")).not.toBeInTheDocument();
-    fireEvent.click(
-      screen.getByRole("button", { name: "Continue" }),
-    );
+    fireEvent.click(screen.getByRole("button", { name: "Continue" }));
     await screen.findByLabelText("Number of guests");
     expect(
       screen.queryByLabelText("Give your celebration a name"),
     ).not.toBeInTheDocument();
-    fireEvent.click(
-      screen.getByRole("button", { name: "Continue" }),
-    );
+    fireEvent.click(screen.getByRole("button", { name: "Continue" }));
     await screen.findByText("Dietary needs");
     expect(screen.queryByLabelText("Number of guests")).not.toBeInTheDocument();
-    fireEvent.click(
-      screen.getByRole("button", { name: "Continue" }),
-    );
+    fireEvent.click(screen.getByRole("button", { name: "Continue" }));
     await screen.findByText("Wedding functions");
     expect(screen.queryByText("Dietary needs")).not.toBeInTheDocument();
-    fireEvent.click(
-      screen.getByRole("button", { name: "Continue" }),
-    );
+    fireEvent.click(screen.getByRole("button", { name: "Continue" }));
     await screen.findByRole("button", { name: "Create my celebration" });
     expect(screen.queryByText("Wedding functions")).not.toBeInTheDocument();
   });
@@ -215,4 +207,3 @@ describe("accessible product controls", () => {
     expect(usePlanStore.getState().plans[0].input.guestCount).toBe(250);
   });
 });
-

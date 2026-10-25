@@ -35,7 +35,7 @@ try {
     ...new Set(
       [...html.matchAll(/<script\b([^>]*)>/g)]
         .filter((m) => !/\bnomodule(?:[\s=>]|$)/i.test(m[1]))
-        .map((m) => m[1].match(/src="([^"?]+)(?:\?[^"\s]*)?"/)?.[1]||'')
+        .map((m) => m[1].match(/src="([^"?]+)(?:\?[^"\s]*)?"/)?.[1] || "")
         .filter((s) => s.startsWith("/_next/static/") && s.endsWith(".js")),
     ),
   ];
@@ -49,7 +49,8 @@ try {
   const result = {
     timestamp: new Date().toISOString(),
     route: "/",
-    measurement: "Initial external JavaScript for modern browsers; nomodule-only legacy polyfills are excluded. All static JS is scanned for secrets.",
+    measurement:
+      "Initial external JavaScript for modern browsers; nomodule-only legacy polyfills are excluded. All static JS is scanned for secrets.",
     scriptCount: sizes.length,
     gzipBytes: total,
     budgetBytes: 120 * 1024,

@@ -134,20 +134,16 @@ describe("integration review regressions", () => {
   });
   it("new plan undo/redo stays isolated from the previously edited plan", () => {
     usePlanStore.getState().pushHistory(plan);
-    usePlanStore
-      .getState()
-      .updatePlan(plan.id, {
-        summary: { ...plan.summary, headline: "Original edit" },
-      });
+    usePlanStore.getState().updatePlan(plan.id, {
+      summary: { ...plan.summary, headline: "Original edit" },
+    });
     const original = usePlanStore.getState().plans[0];
     const second = createPlan(exampleInput("community"));
     usePlanStore.getState().addPlan(second);
     usePlanStore.getState().pushHistory(second);
-    usePlanStore
-      .getState()
-      .updatePlan(second.id, {
-        summary: { ...second.summary, headline: "Second edit" },
-      });
+    usePlanStore.getState().updatePlan(second.id, {
+      summary: { ...second.summary, headline: "Second edit" },
+    });
     usePlanStore.getState().undo();
     expect(usePlanStore.getState().getCurrentPlan()?.summary.headline).toBe(
       second.summary.headline,

@@ -1,5 +1,6 @@
+import { migratePlans } from "@/lib/client/planStorage";
 import { describe, it, expect, vi, afterEach } from "vitest";
-import { migratePlans, safeStorage } from "@/lib/client/storage";
+import { safeStorage } from "@/lib/client/storage";
 import { createPlan, exampleInput } from "@/lib/domain/planner";
 import { consumeSSE } from "@/lib/client/network";
 import { compactPlanSnapshot, hydratePlan } from "@/lib/llm/snapshot";

@@ -838,4 +838,11 @@
 }
 
 /* Skip layout and paint of below-the-fold sections until they approach the viewport. */
-.occasions, .how-strip, .example-section, .my-plans, .closing { content-visibility: auto; contain-intrinsic-size: auto 500px; }
+.occasions,
+.how-strip,
+.example-section,
+.my-plans,
+.closing {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 500px;
+}

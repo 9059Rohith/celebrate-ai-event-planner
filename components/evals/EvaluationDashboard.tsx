@@ -11,13 +11,16 @@ const getFeedback = () => {
     return "[]";
   }
 };
-import type { Run } from "@/evals/harness";
+import {
+  EvaluationSummarySchema,
+  type EvaluationSummary,
+} from "@/lib/schemas/evaluation";
 export function EvaluationDashboard({
   initial,
   baseline,
 }: {
-  initial: Run;
-  baseline: Run;
+  initial: EvaluationSummary;
+  baseline: EvaluationSummary;
 }) {
   const [run, setRun] = useState(initial);
   const [label, setLabel] = useState("Static snapshot");
@@ -43,9 +46,11 @@ export function EvaluationDashboard({
   }, [stored]);
   useEffect(() => {
     const onRun = (event: Event) => {
-      const detail = (event as CustomEvent<Run>).detail;
-      if (detail?.results) {
-        setRun(detail);
+      const parsed = EvaluationSummarySchema.safeParse(
+        (event as CustomEvent<unknown>).detail,
+      );
+      if (parsed.success) {
+        setRun(parsed.data);
         setLabel("Live mini evaluation response");
       }
     };
@@ -53,10 +58,7 @@ export function EvaluationDashboard({
     return () => window.removeEventListener("celebrate-eval", onRun);
   }, []);
   const download = () => {
-    const blob = new Blob(
-      [localStorage.getItem("celebrate-feedback") || "[]"],
-      { type: "application/json" },
-    );
+    const blob = new Blob([getFeedback()], { type: "application/json" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
@@ -174,7 +176,11 @@ export function EvaluationDashboard({
   );
 }
 
-function CaseEvidence({ result }: { result: Run["results"][number] }) {
+function CaseEvidence({
+  result,
+}: {
+  result: EvaluationSummary["results"][number];
+}) {
   const [evidence, setEvidence] = useState<unknown>(
     result.output ? { input: result.input, output: result.output } : null,
   );
@@ -216,7 +222,7 @@ function CaseEvidence({ result }: { result: Run["results"][number] }) {
   );
 }
 
-function CaseResultRow({ r }: { r: Run["results"][number] }) {
+function CaseResultRow({ r }: { r: EvaluationSummary["results"][number] }) {
   const [open, setOpen] = useState(false);
   return (
     <details onToggle={(event) => setOpen(event.currentTarget.open)}>

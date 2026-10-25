@@ -1,1 +1,41 @@
-{"id":"v1-2026-10-20T15:59:28.994Z","timestamp":"2026-10-20T15:59:29.439Z","mode":"Offline deterministic engine (no model calls)","promptVersion":"v1","model":"none","gitSha":"661379f4bdc611a4d58063dd79262db9df55e8a2","totalCases":46,"passed":36,"failed":10,"completed":true,"durationMs":445,"p50LatencyMs":0.6707999999998719,"p95LatencyMs":1.442300000000614,"tokens":0,"costUsd":0,"judgeStatus":"Not run. No live judge scores or calibration agreement available.","metricRates":{"schemaValid":1,"budgetIntegrity":0.9782608695652174,"timelineValid":1,"dietaryCompliance":0.9565217391304348,"constraintAdherence":0.8478260869565217,"safetyPass":0.9347826086956522,"hallucinationFree":0.9782608695652174,"fallbackValid":1},"thresholds":{"schema":true,"budget":false,"timeline":true,"diet":false,"injection":false,"constraints":false,"hallucinations":false,"fallback":true,"latency":true,"judge":true},"results":[]}
+{
+  "id": "v1-2026-10-20T15:59:28.994Z",
+  "timestamp": "2026-10-20T15:59:29.439Z",
+  "mode": "Offline deterministic engine (no model calls)",
+  "promptVersion": "v1",
+  "model": "none",
+  "gitSha": "661379f4bdc611a4d58063dd79262db9df55e8a2",
+  "totalCases": 46,
+  "passed": 36,
+  "failed": 10,
+  "completed": true,
+  "durationMs": 445,
+  "p50LatencyMs": 0.6707999999998719,
+  "p95LatencyMs": 1.442300000000614,
+  "tokens": 0,
+  "costUsd": 0,
+  "judgeStatus": "Not run. No live judge scores or calibration agreement available.",
+  "metricRates": {
+    "schemaValid": 1,
+    "budgetIntegrity": 0.9782608695652174,
+    "timelineValid": 1,
+    "dietaryCompliance": 0.9565217391304348,
+    "constraintAdherence": 0.8478260869565217,
+    "safetyPass": 0.9347826086956522,
+    "hallucinationFree": 0.9782608695652174,
+    "fallbackValid": 1
+  },
+  "thresholds": {
+    "schema": true,
+    "budget": false,
+    "timeline": true,
+    "diet": false,
+    "injection": false,
+    "constraints": false,
+    "hallucinations": false,
+    "fallback": true,
+    "latency": true,
+    "judge": true
+  },
+  "results": []
+}

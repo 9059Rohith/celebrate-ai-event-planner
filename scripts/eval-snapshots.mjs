@@ -1,3 +1,4 @@
+import { format } from "prettier";
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 mkdirSync("public/evals/cases", { recursive: true });
 for (const name of ["latest", "v1"]) {
@@ -12,16 +13,19 @@ for (const name of ["latest", "v1"]) {
     }
   writeFileSync(
     `evals/results/${name}.summary.json`,
-    JSON.stringify({
-      ...run,
-      results:
-        name === "v1"
-          ? []
-          : run.results.map((result) => {
-              const item = { ...result };
-              delete item.output;
-              return item;
-            }),
-    }),
+    await format(
+      JSON.stringify({
+        ...run,
+        results:
+          name === "v1"
+            ? []
+            : run.results.map((result) => {
+                const item = { ...result };
+                delete item.output;
+                return item;
+              }),
+      }),
+      { parser: "json" },
+    ),
   );
 }

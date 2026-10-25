@@ -1,10 +1,7 @@
 "use client";
 import { create } from "zustand";
-import {
-  persist,
-  createJSONStorage,
-  type StateStorage,
-} from "zustand/middleware";
+import { persist, createJSONStorage } from "zustand/middleware";
+import { safeStorage } from "@/lib/client/storage";
 interface UIState {
   currency: "INR" | "USD" | "EUR" | "GBP";
   theme: "light" | "dark" | "system";
@@ -13,28 +10,6 @@ interface UIState {
   setTheme: (theme: UIState["theme"]) => void;
   setActiveTab: (tab: string) => void;
 }
-const storage: StateStorage = {
-  getItem(key) {
-    if (typeof window === "undefined") return null;
-    try {
-      return localStorage.getItem(key);
-    } catch {
-      return null;
-    }
-  },
-  setItem(key, value) {
-    try {
-      localStorage.setItem(key, value);
-    } catch {
-      if (typeof window !== "undefined") window.dispatchEvent(new Event("celebrate-storage-error"));
-    }
-  },
-  removeItem(key) {
-    try {
-      localStorage.removeItem(key);
-    } catch {}
-  },
-};
 export const useUIStore = create<UIState>()(
   persist(
     (set) => ({
@@ -45,7 +20,6 @@ export const useUIStore = create<UIState>()(
       setTheme: (theme) => set({ theme }),
       setActiveTab: (activeTab) => set({ activeTab }),
     }),
-    { name: "celebrate-ai-ui", storage: createJSONStorage(() => storage) },
+    { name: "celebrate-ai-ui", storage: createJSONStorage(() => safeStorage) },
   ),
 );
-

@@ -100,3 +100,16 @@ Previous audits, including failures, remain in reports/ and docs/performance-his
 The route hydration boundary has a regression using Next's vendored React renderer. It preserves the original server DOM and avoids the host-fiber replay failure documented in React issue 37584. Shared fragments use a stable server snapshot and are decoded after hydration; errors are not suppressed.
 
 Final deployment reports are published on the codex/submission-evidence branch after measurements, so publishing evidence does not replace the measured production alias.
+
+
+## Code quality revision — 25 October 2026
+
+- First portal attempt: 96.64/100, rank 67/51,309 (top 0.13% at observation). Code Quality was 88; this revision addresses source-level findings rather than asserting an unmeasured new score.
+- Replaced evaluation double assertions with a validated dashboard summary contract. Invalid custom evaluation events are ignored.
+- Extracted plan actions and chat lifecycle into focused hooks; centralized UI persistence on the existing safe storage adapter. Chat resets when changing plans, cancels abandoned requests, and saves completed responses without writing storage for every token.
+- Formatting is enforced through npm run lint, already invoked by GitHub Actions. Generated summaries retain formatting after builds.
+- 135/135 unit, component and API tests pass, including 22 additional sharing, storage, evaluation-contract and hook regressions. Library coverage: statements 91.16%, branches 83.75%, functions 92.87%, lines 92.99%. The new hooks are included in this scope; domain lines remain 98.17%.
+- Offline evaluation: 46/46, no model calls. Production dependency audit: zero reported vulnerabilities.
+- Test execution is capped at two workers to reduce resource contention on constrained hosts.
+- Final production build and bundle audit pass: initial modern-browser home JavaScript is 117,623 gzipped bytes against a 122,880-byte budget; browser bundle secret scan passed.
+- Final desktop/mobile browser suite: 20/20 passed, covering all occasions, editing, exports, shared-fragment hydration, offline editing, theme/currency, CSP headers and automated accessibility. Final TypeScript, ESLint and formatting checks passed.

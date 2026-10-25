@@ -4,6 +4,7 @@ export default defineConfig({
   oxc: { jsx: { runtime: "automatic" } },
   resolve: { alias: { "@": fileURLToPath(new URL(".", import.meta.url)) } },
   test: {
+    maxWorkers: 2,
     include: ["tests/**/*.test.{ts,tsx}"],
     environment: "node",
     coverage: {

@@ -1,0 +1,125 @@
+{
+  "timestamp": "2026-10-25T12:29:09.815Z",
+  "tests": {
+    "passed": 135,
+    "failed": 0,
+    "files": 19
+  },
+  "coverageScope": "lib/**/*.ts (including new hooks)",
+  "coverage": {
+    "lines": {
+      "total": 1371,
+      "covered": 1275,
+      "skipped": 0,
+      "pct": 92.99
+    },
+    "statements": {
+      "total": 1550,
+      "covered": 1413,
+      "skipped": 0,
+      "pct": 91.16
+    },
+    "functions": {
+      "total": 323,
+      "covered": 300,
+      "skipped": 0,
+      "pct": 92.87
+    },
+    "branches": {
+      "total": 948,
+      "covered": 794,
+      "skipped": 0,
+      "pct": 83.75
+    },
+    "branchesTrue": {
+      "total": 0,
+      "covered": 0,
+      "skipped": 0,
+      "pct": 100
+    }
+  },
+  "offlineEvaluation": {
+    "id": "v2-2026-10-25T12:22:27.317Z",
+    "passed": 46,
+    "total": 46,
+    "modelCalls": 0
+  },
+  "productionDependencyAudit": {
+    "vulnerabilities": 0
+  },
+  "bundle": {
+    "timestamp": "2026-10-25T12:28:38.664Z",
+    "route": "/",
+    "measurement": "Initial external JavaScript for modern browsers; nomodule-only legacy polyfills are excluded. All static JS is scanned for secrets.",
+    "scriptCount": 10,
+    "gzipBytes": 117623,
+    "budgetBytes": 122880,
+    "passed": true,
+    "secretScanPassed": true,
+    "scripts": [
+      {
+        "path": "/_next/static/chunks/4bd1b696-100b9d70ed4e49c1.js",
+        "gzipBytes": 54364
+      },
+      {
+        "path": "/_next/static/chunks/1255-60d8dc7c8c9309a1.js",
+        "gzipBytes": 46409
+      },
+      {
+        "path": "/_next/static/chunks/main-app-e1bf8f03f3449d90.js",
+        "gzipBytes": 261
+      },
+      {
+        "path": "/_next/static/chunks/app/global-error-9f8a1d63c5a79375.js",
+        "gzipBytes": 375
+      },
+      {
+        "path": "/_next/static/chunks/2619-04bc32f026a0d946.js",
+        "gzipBytes": 3406
+      },
+      {
+        "path": "/_next/static/chunks/app/page-8b9c0dafb5473659.js",
+        "gzipBytes": 3106
+      },
+      {
+        "path": "/_next/static/chunks/3545-89e462f936f8ff0c.js",
+        "gzipBytes": 4954
+      },
+      {
+        "path": "/_next/static/chunks/app/layout-3b3468f0dc1a9c2c.js",
+        "gzipBytes": 1633
+      },
+      {
+        "path": "/_next/static/chunks/app/error-31f7d879d4b32dac.js",
+        "gzipBytes": 403
+      },
+      {
+        "path": "/_next/static/chunks/webpack-8a573b42e9f810dc.js",
+        "gzipBytes": 2712
+      }
+    ]
+  },
+  "previousPortalResult": {
+    "score": 96.64,
+    "rank": 67,
+    "totalParticipants": 51309,
+    "attempt": 1
+  },
+  "note": "No claim is made about the score of the revised submission.",
+  "browserTests": {
+    "passed": 20,
+    "failed": 0,
+    "projects": [
+      "desktop",
+      "mobile"
+    ]
+  },
+  "checks": {
+    "typescript": true,
+    "eslint": true,
+    "formatting": true,
+    "productionBuild": true,
+    "bundleBudget": true,
+    "browserBundleSecretScan": true
+  }
+}

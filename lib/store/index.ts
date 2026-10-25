@@ -2,12 +2,13 @@
  * Plan Store — Zustand with localStorage persistence
  */
 "use client";
+import { migratePlans } from "@/lib/client/planStorage";
 
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 import type { Plan } from "@/lib/schemas";
 
-import { safeStorage, migratePlans } from "@/lib/client/storage";
+import { safeStorage } from "@/lib/client/storage";
 
 interface PlanHistory {
   past: Plan[];

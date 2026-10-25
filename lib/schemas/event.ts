@@ -1,6 +1,6 @@
 import { z } from "zod";
 // Disable runtime code generation so validation respects nonce-only script CSP.
-z.config({jitless:true});
+z.config({ jitless: true });
 
 // ─── Enums & Literals ─────────────────────────────────────────────
 export const EventTypeEnum = z.enum(["wedding", "birthday", "community"]);

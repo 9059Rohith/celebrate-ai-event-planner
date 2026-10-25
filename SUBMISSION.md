@@ -2,7 +2,7 @@
 
 Celebrate AI helps users organize weddings, birthdays and community events with editable budgets, dependent timelines, vendor checklists, personalized ideas and grounded chat proposals. A complete deterministic plan remains available when the AI provider is unavailable.
 
-**Top 1% participant standing:** the Hack2skill portal displayed rank **245 / 51,309** on 25 October 2026, approximately the top **0.48%**. This records the participant standing shown by the portal; this challenge submission has 0/3 attempts and no evaluation result yet.
+**First submission result:** 96.64/100, with displayed rank **67 / 51,309** on 25 October 2026 (approximately the top **0.13%**). Code Quality 88; Security 99; Efficiency 100; Testing 98; Accessibility 99; Problem Statement Alignment 100. Future scores and final ranking depend on the evaluator.
 
 ## Submission links
 
@@ -16,20 +16,20 @@ Celebrate AI helps users organize weddings, birthdays and community events with 
 
 | Item | Verified status |
 | --- | --- |
-| Public source | Public GitHub repository; approximately 8.33 MB source checkout, below the 10 MB submission limit |
+| Public source | Public GitHub repository; approximately 8.81 MB source checkout, below the 10 MB submission limit |
 | Demo | Anyone with the link → Viewer; Drive permission metadata confirms anonymous reader access |
 | CI activation | Workflow committed on main as .github/workflows/ci.yml, triggered by pushes and pull requests |
 | Hosted CI result | First run blocked before any steps: GitHub reports the owner account is locked due to a billing issue. Owner action is required before rerunning |
 | Live app | Original Vercel alias is available |
 | Production GenAI | Server-only key configured; one uncached gpt-4o-mini generation returned a schema-valid hybrid plan on its first attempt. 2,038 tokens; estimated model cost $0.000702 |
-| Submission portal | Owner is logged in. All required fields are filled with the public repository, deployment, demo, changes, GenAI disclosure and the owner-selected LinkedIn link. Owner will click Submit; 0/3 attempts used |
+| Submission portal | Owner submitted attempt 1 of 3. Improvements in this revision are available for the owner to review before choosing whether to resubmit |
 
 ## Rubric evidence
 
 - All three occasion flows, budget editing, timeline dependencies, vendor tasks, idea filters, chat proposal acceptance, persistence, exports, read-only sharing and offline editing are implemented.
-- Recorded local evidence: 113 unit/component/API tests, 20 desktop/mobile browser tests and 46/46 deterministic evaluation cases. TypeScript, ESLint, production build and bundle/secret checks passed in the recorded release.
+- Recorded local evidence: 135 unit/component/API tests, 20 desktop/mobile browser tests and 46/46 deterministic evaluation cases. TypeScript, ESLint, production build and bundle/secret checks passed in the recorded release.
 - Offline case pass rate is **100% (46/46)**. Reproduce with npm run eval -- --suite=all --mock. This executes the deterministic engine and does not represent measured live model quality.
-- Library coverage: lines 91.53%, statements 89.51%, branches 83.31%, functions 88.73%; domain lines 98.17%. Coverage scope is lib/**/*.ts.
+- Library coverage: lines 92.99%, statements 91.16%, branches 83.75%, functions 92.87%; domain lines 98.17%. Coverage scope is lib/**/*.ts.
 - Runtime dependency audit recorded zero findings. Source and built browser code secret scans passed. Five development-only lint dependency advisories remain in the unpatched braces chain.
 - Initial modern-browser JavaScript: 117,583 gzip bytes against a 122,880-byte budget.
 - Automated accessibility checks cover entry routes, saved/shared plans, themes, keyboard flows and narrow/wide layouts. These checks are evidence, not a universal accessibility guarantee.

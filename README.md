@@ -1,6 +1,6 @@
 # Celebrate AI
 
-**Top 1% participant standing:** Hack2skill displayed rank **245 of 51,309** on 25 October 2026 (approximately the top **0.48%** of the displayed field). This is the portal’s participant standing; Celebrate AI has not yet been submitted or scored.
+**First submission evaluation: 96.64/100.** Hack2skill displayed rank **67 of 51,309** on 25 October 2026 (approximately the top **0.13%**). Category scores: Code Quality 88, Security 99, Efficiency 100, Testing 98, Accessibility 99, Problem Statement Alignment 100. This is the observed first-attempt result, not a prediction for a resubmission or final ranking.
 
 A thoughtful GenAI planning companion for life's celebrations.
 
@@ -96,9 +96,9 @@ Implemented and verified locally:
 - Per-attempt token reservations, bounded rate-limit histories and environment ceilings.
 - Route hydration replay regression and stable shared-fragment hydration.
 - Automated WCAG checks in light/dark themes and narrow/wide layouts.
-- Unit/component/API suite: **113/113 passing**.
+- Unit/component/API suite: **135/135 passing**.
 - Offline deterministic evaluation: **46/46 passing**.
-- Library line coverage: **91.53%**; domain line coverage: **98.17%**.
+- Library line coverage: **92.99%**; domain line coverage: **98.17%**.
 - Typecheck, lint, production build, bundle budget and browser-JavaScript secret scan.
 - Public source, publicly viewable demo recording, submission notes and architecture/security/evaluation documentation.
 
@@ -170,7 +170,7 @@ Live evaluation, after configuring a key:
 npm run eval -- --suite=judge --limit=5 --max-usd=2
 ```
 
-Latest verified library coverage: statements **89.51%**, branches **83.31%**, functions **88.73%**, lines **91.53%**. Gates require 80% overall and 90% for domain modules across all four metrics. Scope is `lib/**/*.ts`, not the whole application.
+Latest verified library coverage: statements **91.16%**, branches **83.75%**, functions **92.87%**, lines **92.99%**. Gates require 80% overall and 90% for domain modules across all four metrics. Scope is `lib/**/*.ts`, not the whole application.
 
 The offline evaluation passes all 46 schema, budget, timeline, diet, constraint, safety, contact-heuristic and fallback checks. The v1 engine baseline passed 36/46. This compares engine revisions, not isolated LLM prompt quality.
 

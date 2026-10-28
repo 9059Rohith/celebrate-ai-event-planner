@@ -60,9 +60,9 @@ Files: scripts/verify-production.mjs, new scripts/lib/production-verification.mj
 
 - [x] Independent review of each implementation track; resolve actionable findings.
 - [x] Typecheck, lint/format, coverage, offline eval, production build, bundle/secret and dependency audits, desktop/mobile flows.
-- [ ] Update current portal result and submission narrative with measured facts; retain historical scores and evidence.
-- [ ] Publish source, deploy existing Vercel project, capture all production navigation/hydration results with unique phase.
-- [ ] Publish final evidence and preserve the tested deployment; leave the last Submit click to the owner.
+- [x] Update current portal result and submission narrative with measured facts; retain historical scores and evidence.
+- [x] Publish source, deploy existing Vercel project, capture all production navigation/hydration results with unique phase.
+- [x] Publish final evidence and preserve the tested deployment; leave the last Submit click to the owner.
 
 ## Review focus
 
@@ -75,3 +75,6 @@ Files: scripts/verify-production.mjs, new scripts/lib/production-verification.mj
 ## Research references
 
 The current portal exposes six score categories but no detailed Code Quality deductions. Implementation guidance: [Next15 client/server boundaries](https://nextjs.org/docs/15/app/getting-started/server-and-client-components), [React state structure](https://react.dev/learn/choosing-the-state-structure), [TypeScript narrowing](https://www.typescriptlang.org/docs/handbook/2/narrowing.html). Local Next docs directory is absent in the installed package; the versioned official guide is the fallback. No hidden judging weights or future score are assumed.
+
+
+Final release: local code `8e6d966`, published code `b807645`, deployment `dpl_2tYnHteVz9NApNqUBuiXtdVJdUcj`. All 245 tests, 22 browser checks, 46 offline cases and configured coverage gates pass. The production audit retained 68 samples, zero runtime/hydration errors, two load outliers and one additional heading-readiness outlier; its strict timing gate failed. No resampling or paid runtime model calls. Hosted CI remains blocked before execution by owner-account billing.

@@ -1,6 +1,6 @@
 # Requirements and evidence map
 
-Research and latest local verification date: **28 October 2026**. **245/245 tests across 33 files**, **22/22 desktop/mobile browser checks**, strict TypeScript, lint/formatting, production build and bundle/secret checks passed. The full dependency audit reports zero findings. Whole-application line coverage is **75.94%**, library line coverage **94.63%**, and domain line coverage **98.33%**. The strengthened offline evaluation passes **46/46 cases with zero model calls**. See [the final-attempt quality report](../reports/submission-quality-final-2026-10-28.json). Production verification for this revision is pending. This document maps evidence and does not predict a score.
+Research and latest local verification date: **28 October 2026**. **245/245 tests across 33 files**, **22/22 desktop/mobile browser checks**, strict TypeScript, lint/formatting, production build and bundle/secret checks passed. The full dependency audit reports zero findings. Whole-application line coverage is **75.94%**, library line coverage **94.63%**, and domain line coverage **98.33%**. The strengthened offline evaluation passes **46/46 cases with zero model calls**. See [the final-attempt quality report](../reports/submission-quality-final-2026-10-28.json). Production verification recorded 66/68 loads below two seconds and zero runtime/hydration errors; the strict timing gate failed. This document maps evidence and does not predict a score.
 
 ## Official guidance and unresolved wording
 
@@ -20,7 +20,7 @@ The owner-provided brief names weddings, birthdays and community events, with bu
 | GenAI integration and safe fallback | [Live smoke](../reports/live-submission-smoke.json), [AI usage](../AI_USAGE.md), [evaluation methods](../EVALUATION.md) | One live generation; no measured live quality distribution |
 | Public code and live preview | [Repository](https://github.com/9059Rohith/celebrate-ai-event-planner), [app](https://celebrate-ai-event-planner.vercel.app/) | A moving deployment alias needs fresh verification after changes |
 | Narrative and demo | [Submission links](../SUBMISSION.md) include the selected LinkedIn post and Drive recording | Drive access was verified 25 October; current narrative-content compliance is not established by the presence of a link |
-| Size and portal status | Approximately 9.17 MB tracked source; dated first-attempt result in [release report](../reports/code-quality-revision.json) | [Earlier readiness snapshot](../reports/submission-readiness.json) predates submission and is historical |
+| Size and portal status | Public repository; approximately 9.5 MB current source; observed 96.98/100 and rank 53/51,556 on attempt 2 | The owner controls the final remaining attempt; no new score is claimed |
 
 ## Additional master-prompt requirements
 

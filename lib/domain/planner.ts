@@ -8,6 +8,7 @@ import { allocate } from "@/lib/domain/budgetEngine";
 import { generateTimeline } from "@/lib/domain/timelineEngine";
 import { generateVendorCategories } from "@/lib/domain/vendorTemplates";
 import { generateIdeas } from "@/lib/domain/ideaSeeds";
+import { planningDate } from "@/lib/domain/calendar";
 
 export function createPlan(raw: EventInput): Plan {
   const input = EventInputSchema.parse(raw);
@@ -17,8 +18,7 @@ export function createPlan(raw: EventInput): Plan {
   if (!result.ok) throw new Error(result.error);
   const now = new Date().toISOString();
   const timeline = generateTimeline(input);
-  const local = new Date();
-  const today = `${local.getFullYear()}-${String(local.getMonth() + 1).padStart(2, "0")}-${String(local.getDate()).padStart(2, "0")}`;
+  const today = planningDate();
   const safeText = (text: string) =>
     /ignore|instruction|system|prompt|sk-|@|\d{7}|https?:|print|reveal|canary|stupid|idiot|hate|kill/i.test(
       text,

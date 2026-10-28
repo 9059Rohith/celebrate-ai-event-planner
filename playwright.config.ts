@@ -22,6 +22,9 @@ export default defineConfig({
     ? undefined
     : {
         command: "npx next start -p 4100",
+        // Browser regressions exercise offline plans and intercepted provider
+        // responses; never inherit a developer's paid provider credential.
+        env: { OPENAI_API_KEY: "" },
         url: "http://localhost:4100/api/health",
         reuseExistingServer: !process.env.CI,
         timeout: 90000,

@@ -1,8 +1,8 @@
 # Architecture
 
-**Final-attempt local verification — 28 October 2026:** **245/245 tests across 33 files**, **22/22 desktop/mobile browser checks**, strict TypeScript, lint/formatting, production build and bundle/secret checks passed. The full dependency audit reports zero findings. Whole-application line coverage is **75.94%**, library line coverage **94.63%**, and domain line coverage **98.33%**. The strengthened offline evaluation passes **46/46 cases with zero model calls**. See [the quality report](reports/submission-quality-final-2026-10-28.json). Production verification is recorded separately below; its strict timing gate failed.
+**Follow-up local verification — 28 October 2026:** **277/277 tests across 39 files**, **24/24 desktop/mobile browser checks**, strict TypeScript, lint/formatting, production build and bundle/secret checks passed. The full dependency audit reports zero findings. Whole-application line coverage is **82.17%**, library line coverage **94.78%**, and domain line coverage **98.35%**. The strengthened offline evaluation passes **46/46 cases with zero model calls**. See [the quality report](reports/submission-followup-2026-10-28.json). Production verification for this follow-up is pending.
 
-Production verification retained all **68 visits**: **66/68 loads below two seconds**, median **0.925 s**, p95 **1.434 s**, maximum **3.008 s**, maximum heading readiness **2.046 s**, and **zero runtime/hydration errors**. Two page loads and one additional heading-readiness sample exceeded the strict threshold, so **the two-second gate failed**. Edge 156, fresh desktop/iPhone 13 contexts, unthrottled network and verified CDN warmup; the release fingerprint stayed unchanged. No sample was retried or discarded. [Production audit](reports/verification-quality-final-2026-10-28.json).
+Production verification for this follow-up is pending. The [previous release audit](reports/verification-quality-final-2026-10-28.json) retained all 68 visits, 66 loads below two seconds and zero runtime/hydration errors; its strict timing gate failed.
 
 The recorded 25 October release uses Next.js 15.5.28 App Router and React 19.3, TypeScript strict mode, Tailwind 4/PostCSS, Radix dialog, Zustand persistence, Zod schemas, lazy Recharts and the official OpenAI SDK. Release measurements below are dated evidence, not verification of later local changes.
 
@@ -49,3 +49,11 @@ The generic loading.tsx boundary is scoped to saved-plan routes. A production Li
 - `lib/hooks/usePlannerChat.ts` owns chat persistence, cancellation, streaming and proposal decisions. `ChatTab` renders messages and review controls.
 - `lib/client/storage.ts` is the lightweight browser-storage adapter used by UI preferences. Plan schema migration lives in `lib/client/planStorage.ts` so the global header does not load the planning validation graph.
 - `lib/schemas/evaluation.ts` defines the dashboard summary contract. Server snapshots and client evaluation events are validated at their boundaries; detailed evidence remains lazy-loaded.
+
+## Follow-up consistency boundaries
+
+`usePlanGeneration` separates initial streaming from saved-plan retry. A saved retry transports compact context but returns only allowed deltas. The full client plan is retained, then validated and accepted only at the originating revision through one history entry. Fallback responses do not create a preview or overwrite metadata.
+
+Budget warnings use the actual retained allocation in UI and chat. Calendar-only planning deadlines use Asia/Kolkata on every host; event clock times remain venue-local. `calendar.ts` owns date-only arithmetic and deadline clamping.
+
+Evaluation case details are bound to run identity. Only the initial recorded run can fetch static case evidence; missing live output stays explicitly unavailable.

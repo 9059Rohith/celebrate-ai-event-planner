@@ -21,7 +21,7 @@ export default defineConfig({
         "public/**/*.js",
       ],
       thresholds: {
-        lines: 75,
+        lines: 80,
         "lib/**/*.ts": libraryCoverageThresholds,
         "lib/domain/**/*.ts": domainCoverageThresholds,
       },

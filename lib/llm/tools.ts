@@ -1,11 +1,12 @@
 import { z } from "zod";
 import { IdeaKindEnum, EffortEnum, PlanSchema, type Plan } from "@/lib/schemas";
 import {
-  allocate,
   rebalance,
   setContingency,
+  summarizeBudget,
   validateBudget,
 } from "@/lib/domain/budgetEngine";
+import { milestoneDueDate } from "@/lib/domain/calendar";
 import { ideasSafe, cleanOutput } from "./guardrails";
 const text = z.string().min(1).max(500);
 export const toolArguments = {
@@ -161,25 +162,16 @@ export function executeToolProposal(current: Plan, raw: ToolProposal): Plan {
           ? { totalBudget: value }
           : { guestCount: value }),
       };
-      const result = allocate(plan.input);
-      if (!result.ok) throw new Error(result.error);
-      if (proposal.name === "set_guest_count") {
-        plan.budget = {
-          ...plan.budget,
-          perGuestCost: plan.budget.total / plan.input.guestCount,
-          warnings: result.budget.warnings,
-        };
-      } else {
+      if (proposal.name === "set_total_budget") {
         const adjusted = setContingency(
           {
             ...plan.budget,
             total: value,
-            perGuestCost: value / plan.input.guestCount,
           },
           plan.budget.contingencyPct,
         );
         if (!adjusted.ok) throw new Error(adjusted.error);
-        plan.budget = { ...adjusted.budget, warnings: result.budget.warnings };
+        plan.budget = adjusted.budget;
       }
       break;
     }
@@ -192,7 +184,7 @@ export function executeToolProposal(current: Plan, raw: ToolProposal): Plan {
         id,
         status: "todo",
         dependsOn: [],
-        dueDate: dueDate(plan, args.dueOffsetDays),
+        dueDate: milestoneDueDate(plan.timeline.eventDate, args.dueOffsetDays),
       });
       break;
     }
@@ -204,7 +196,10 @@ export function executeToolProposal(current: Plan, raw: ToolProposal): Plan {
       if (args.notes != null) milestone.notes = cleanOutput(args.notes);
       if (args.dueOffsetDays != null) {
         milestone.dueOffsetDays = args.dueOffsetDays;
-        milestone.dueDate = dueDate(plan, args.dueOffsetDays);
+        milestone.dueDate = milestoneDueDate(
+          plan.timeline.eventDate,
+          args.dueOffsetDays,
+        );
       }
       break;
     }
@@ -264,18 +259,10 @@ export function executeToolProposal(current: Plan, raw: ToolProposal): Plan {
     case "compare_options":
       return current;
   }
+  plan.budget = { ...plan.budget, ...summarizeBudget(plan.input, plan.budget) };
   if (validateBudget(plan.budget).length)
     throw new Error("Budget invariants failed");
   plan.updatedAt = new Date().toISOString();
   plan.version++;
   return PlanSchema.parse(plan);
-}
-function dueDate(plan: Plan, offset: number): string | null {
-  if (!plan.timeline.eventDate) return null;
-  const date = new Date(`${plan.timeline.eventDate.slice(0, 10)}T12:00:00Z`);
-  date.setUTCDate(date.getUTCDate() + offset);
-  const today = new Date().toISOString().slice(0, 10);
-  return date.toISOString().slice(0, 10) < today
-    ? today
-    : date.toISOString().slice(0, 10);
 }

@@ -1,0 +1,162 @@
+{
+  "date": "2026-10-28",
+  "status": "Local verification complete; publication and production verification pending",
+  "localCodeCommit": "08b46512258a84f5fa5a3db1081a6b619b929dcd",
+  "review": "Astra architecture and assurance implementation with independent Astra evaluation review; reproduced regressions before fixes",
+  "portalStatus": {
+    "ownerReportedScore": 96.99,
+    "ownerReportedAdditionalAttempts": 2,
+    "independentlyVerified": false,
+    "ownerWillProvidePortalUpdates": true,
+    "submittedByAgent": false
+  },
+  "changes": [
+    "Saved-plan AI retry uses typed deltas, revision-bound preview and one undoable acceptance; retains custom tasks, status, multiline notes, locks and saved ideas",
+    "Budget feasibility warnings derive from retained allocations after user and chat edits",
+    "Templates, chat, UI and evaluation share an explicit Asia/Kolkata planning-day policy",
+    "Evaluation evidence belongs to its run and does not substitute static output for missing live evidence",
+    "Request-body reads cancel on abort, release readers on every path and preserve HTTP 413 when cleanup fails",
+    "Inclusive overall line-coverage gate raised from 75% to 80%; local browser server clears paid provider credentials"
+  ],
+  "tests": {
+    "passed": 277,
+    "failed": 0,
+    "files": 39,
+    "addedSincePreviousRelease": 32
+  },
+  "coverageScope": "app, components, lib, evals, middleware.ts and public runtime JavaScript; 80% overall line gate, library 80% and domain 90% across all four metrics",
+  "coverage": {
+    "overall": {
+      "lines": {
+        "total": 2984,
+        "covered": 2452,
+        "skipped": 0,
+        "pct": 82.17
+      },
+      "statements": {
+        "total": 3381,
+        "covered": 2702,
+        "skipped": 0,
+        "pct": 79.91
+      },
+      "functions": {
+        "total": 930,
+        "covered": 694,
+        "skipped": 0,
+        "pct": 74.62
+      },
+      "branches": {
+        "total": 2314,
+        "covered": 1756,
+        "skipped": 0,
+        "pct": 75.88
+      },
+      "branchesTrue": {
+        "total": 0,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 100
+      }
+    },
+    "library": {
+      "lines": {
+        "total": 1686,
+        "covered": 1598,
+        "pct": 94.78
+      },
+      "statements": {
+        "total": 1914,
+        "covered": 1770,
+        "pct": 92.47
+      },
+      "functions": {
+        "total": 384,
+        "covered": 361,
+        "pct": 94.01
+      },
+      "branches": {
+        "total": 1198,
+        "covered": 1036,
+        "pct": 86.47
+      }
+    },
+    "domain": {
+      "lines": {
+        "total": 667,
+        "covered": 656,
+        "pct": 98.35
+      },
+      "statements": {
+        "total": 741,
+        "covered": 726,
+        "pct": 97.97
+      },
+      "functions": {
+        "total": 152,
+        "covered": 152,
+        "pct": 100
+      },
+      "branches": {
+        "total": 502,
+        "covered": 465,
+        "pct": 92.62
+      }
+    }
+  },
+  "browserTests": {
+    "passed": 24,
+    "failed": 0,
+    "projects": [
+      "desktop",
+      "mobile"
+    ],
+    "stats": {
+      "startTime": "2026-10-28T16:00:38.443Z",
+      "duration": 77988,
+      "expected": 24,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  },
+  "offlineEvaluation": {
+    "passed": 46,
+    "total": 46,
+    "tokens": 0,
+    "costUsd": 0,
+    "report": "reports/mock-followup-2026-10-28.json",
+    "fullOriginalRun": "reports/mock-followup-2026-10-28.json.gz"
+  },
+  "checks": {
+    "typecheck": true,
+    "eslint": true,
+    "formatting": true,
+    "productionBuild": true,
+    "bundleBudget": true,
+    "browserBundleSecretPatterns": true
+  },
+  "bundle": {
+    "gzipBytes": 117648,
+    "budgetBytes": 122880,
+    "report": "reports/bundle.json"
+  },
+  "dependencyAudit": {
+    "runtimeAndDevelopmentVulnerabilities": 0
+  },
+  "hostedCI": {
+    "status": "Previously blocked before steps by owner-account billing lock; latest run will be checked after publication"
+  },
+  "evidenceArchive": "reports/archived-evidence.json",
+  "limitations": [
+    "No evaluator score or rank is predicted",
+    "No additional paid runtime model calls, live judge or prompt A/B evaluation",
+    "Owner controls competition resubmission"
+  ],
+  "sourceAudit": {
+    "files": 349,
+    "bytes": 9594973,
+    "limitBytes": 10000000,
+    "secretPatternMatches": [],
+    "passed": true
+  }
+}

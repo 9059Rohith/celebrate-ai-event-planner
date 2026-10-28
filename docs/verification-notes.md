@@ -4,15 +4,15 @@ An anonymous event planner for weddings, birthdays and community gatherings, wit
 
 Production: https://celebrate-ai-event-planner.vercel.app
 
-The latest local checks are recorded in [the final-attempt quality report](../reports/submission-quality-final-2026-10-28.json). Production verification recorded 66/68 loads below two seconds and zero runtime/hydration errors; the strict timing gate failed. Earlier reports remain dated evidence.
+The latest local checks are recorded in [the follow-up quality report](../reports/submission-followup-2026-10-28.json). The previous release recorded 66/68 loads below two seconds with zero runtime/hydration errors; this follow-up requires fresh production verification. Earlier reports remain dated evidence.
 
-## Final-attempt local verification — 28 October 2026
+## Follow-up local verification — 28 October 2026
 
-**245/245 tests across 33 files**, **22/22 desktop/mobile browser checks**, strict TypeScript, lint/formatting, production build and bundle/secret checks passed. The full dependency audit reports zero findings. Whole-application line coverage is **75.94%**, library line coverage **94.63%**, and domain line coverage **98.33%**. The strengthened offline evaluation passes **46/46 cases with zero model calls**.
+**277/277 tests across 39 files**, **24/24 desktop/mobile browser checks**, strict TypeScript, lint/formatting, production build and bundle/secret checks passed. The full dependency audit reports zero findings. Whole-application line coverage is **82.17%**, library line coverage **94.78%**, and domain line coverage **98.35%**. The strengthened offline evaluation passes **46/46 cases with zero model calls**.
 
-The inclusive coverage scope is app/components/lib/evals/middleware/public runtime JavaScript. Overall statements/branches/functions are 73.76%/69.50%/67.03%; only overall lines have a 75% gate. Library and domain gates still cover all four metrics.
+The inclusive coverage scope is app/components/lib/evals/middleware/public runtime JavaScript. Overall statements/branches/functions are 79.91%/75.88%/74.62%; only overall lines have an 80% gate. Library and domain gates still cover all four metrics.
 
-Production verification retained all **68 visits**: **66/68 loads below two seconds**, median **0.925 s**, p95 **1.434 s**, maximum **3.008 s**, maximum heading readiness **2.046 s**, and **zero runtime/hydration errors**. Two page loads and one additional heading-readiness sample exceeded the strict threshold, so **the two-second gate failed**. Edge 156, fresh desktop/iPhone 13 contexts, unthrottled network and verified CDN warmup; the release fingerprint stayed unchanged. No sample was retried or discarded. [Production audit](../reports/verification-quality-final-2026-10-28.json).
+Production verification for this follow-up is pending. The [previous release audit](../reports/verification-quality-final-2026-10-28.json) retained all 68 visits, 66 loads below two seconds and zero runtime/hydration errors; its strict timing gate failed.
 
 ## Run locally
 

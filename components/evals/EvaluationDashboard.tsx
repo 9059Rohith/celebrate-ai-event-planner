@@ -1,5 +1,11 @@
 "use client";
-import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
 const subscribe = (callback: () => void) => {
   window.addEventListener("storage", callback);
   return () => window.removeEventListener("storage", callback);
@@ -23,7 +29,7 @@ export function EvaluationDashboard({
   baseline: EvaluationSummary;
 }) {
   const [run, setRun] = useState(initial);
-  const [label, setLabel] = useState("Static snapshot");
+  const [isSnapshot, setIsSnapshot] = useState(true);
   const stored = useSyncExternalStore(subscribe, getFeedback, () => "[]");
   const feedback = useMemo(() => {
     try {
@@ -51,7 +57,7 @@ export function EvaluationDashboard({
       );
       if (parsed.success) {
         setRun(parsed.data);
-        setLabel("Live mini evaluation response");
+        setIsSnapshot(false);
       }
     };
     window.addEventListener("celebrate-eval", onRun);
@@ -69,7 +75,7 @@ export function EvaluationDashboard({
   return (
     <>
       <div className="notice">
-        {label} ·{" "}
+        {isSnapshot ? "Static snapshot" : "Live mini evaluation response"} ·{" "}
         {new Date(run.timestamp).toLocaleString("en-IN", {
           timeZone: "Asia/Kolkata",
         })}{" "}
@@ -155,7 +161,11 @@ export function EvaluationDashboard({
           rationale.
         </p>
         {run.results.map((r) => (
-          <CaseResultRow key={r.id} r={r} />
+          <CaseResultRow
+            key={`${run.id}:${r.id}`}
+            r={r}
+            isSnapshot={isSnapshot}
+          />
         ))}
       </section>
       <section className="panel">
@@ -178,28 +188,37 @@ export function EvaluationDashboard({
 
 function CaseEvidence({
   result,
+  isSnapshot,
 }: {
   result: EvaluationSummary["results"][number];
+  isSnapshot: boolean;
 }) {
   const [evidence, setEvidence] = useState<unknown>(
     result.output ? { input: result.input, output: result.output } : null,
   );
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const pending = useRef<AbortController | null>(null);
+  useEffect(() => () => pending.current?.abort(), []);
   async function load(open: boolean) {
-    if (!open || evidence || loading) return;
+    if (!isSnapshot || !open || evidence || loading) return;
+    const controller = new AbortController();
+    pending.current = controller;
     setLoading(true);
     setError("");
     try {
       const response = await fetch(
         `/evals/cases/${encodeURIComponent(result.id)}.json`,
+        { signal: controller.signal },
       );
       if (!response.ok) throw Error("Evidence unavailable");
-      setEvidence(await response.json());
+      const data: unknown = await response.json();
+      if (!controller.signal.aborted) setEvidence(data);
     } catch {
-      setError("Could not load this case. Close and reopen to retry.");
+      if (!controller.signal.aborted)
+        setError("Could not load this case. Close and reopen to retry.");
     } finally {
-      setLoading(false);
+      if (!controller.signal.aborted) setLoading(false);
     }
   }
   return (
@@ -207,6 +226,9 @@ function CaseEvidence({
       <summary>Input / output JSON</summary>
       {loading && <p role="status">Loading case evidence…</p>}
       {error && <p role="alert">{error}</p>}
+      {!isSnapshot && evidence == null && (
+        <p>This run did not produce output for this case.</p>
+      )}
       {evidence != null && (
         <pre
           style={{
@@ -222,7 +244,13 @@ function CaseEvidence({
   );
 }
 
-function CaseResultRow({ r }: { r: EvaluationSummary["results"][number] }) {
+function CaseResultRow({
+  r,
+  isSnapshot,
+}: {
+  r: EvaluationSummary["results"][number];
+  isSnapshot: boolean;
+}) {
   const [open, setOpen] = useState(false);
   return (
     <details onToggle={(event) => setOpen(event.currentTarget.open)}>
@@ -246,7 +274,7 @@ function CaseResultRow({ r }: { r: EvaluationSummary["results"][number] }) {
               {r.judge.second.rationale}
             </p>
           )}
-          <CaseEvidence result={r} />
+          <CaseEvidence result={r} isSnapshot={isSnapshot} />
         </>
       )}
     </details>

@@ -1,6 +1,6 @@
 # Requirements and evidence map
 
-Research and latest local verification date: **28 October 2026**. **245/245 tests across 33 files**, **22/22 desktop/mobile browser checks**, strict TypeScript, lint/formatting, production build and bundle/secret checks passed. The full dependency audit reports zero findings. Whole-application line coverage is **75.94%**, library line coverage **94.63%**, and domain line coverage **98.33%**. The strengthened offline evaluation passes **46/46 cases with zero model calls**. See [the final-attempt quality report](../reports/submission-quality-final-2026-10-28.json). Production verification recorded 66/68 loads below two seconds and zero runtime/hydration errors; the strict timing gate failed. This document maps evidence and does not predict a score.
+Research and latest local verification date: **28 October 2026**. **277/277 tests across 39 files**, **24/24 desktop/mobile browser checks**, strict TypeScript, lint/formatting, production build and bundle/secret checks passed. The full dependency audit reports zero findings. Whole-application line coverage is **82.17%**, library line coverage **94.78%**, and domain line coverage **98.35%**. The strengthened offline evaluation passes **46/46 cases with zero model calls**. See [the follow-up quality report](../reports/submission-followup-2026-10-28.json). The previous release recorded 66/68 loads below two seconds with zero runtime/hydration errors; this follow-up requires fresh production verification. This document maps evidence and does not predict a score.
 
 ## Official guidance and unresolved wording
 
@@ -20,7 +20,7 @@ The owner-provided brief names weddings, birthdays and community events, with bu
 | GenAI integration and safe fallback | [Live smoke](../reports/live-submission-smoke.json), [AI usage](../AI_USAGE.md), [evaluation methods](../EVALUATION.md) | One live generation; no measured live quality distribution |
 | Public code and live preview | [Repository](https://github.com/9059Rohith/celebrate-ai-event-planner), [app](https://celebrate-ai-event-planner.vercel.app/) | A moving deployment alias needs fresh verification after changes |
 | Narrative and demo | [Submission links](../SUBMISSION.md) include the selected LinkedIn post and Drive recording | Drive access was verified 25 October; current narrative-content compliance is not established by the presence of a link |
-| Size and portal status | Public repository; approximately 9.5 MB current source; observed 96.98/100 and rank 53/51,556 on attempt 2 | The owner controls the final remaining attempt; no new score is claimed |
+| Size and portal status | Public repository; source size checked before publication; owner reports 96.99 and two additional attempts | New category scores and rank are unverified; owner controls resubmission |
 
 ## Additional master-prompt requirements
 
@@ -28,10 +28,10 @@ The owner-provided brief names weddings, birthdays and community events, with bu
 | --- | --- | --- |
 | Reproducible dataset and deterministic checks | [28 October offline run](../reports/mock-hardening-2026-10-28.json): 46/46 passed, zero model calls; [historical dashboard snapshot](../evals/results/latest.json) remains dated separately | Offline checks do not establish live model quality |
 | Live judges, two prompt versions and calibration | Tooling exists; [evaluation documentation](../EVALUATION.md) labels live results unmeasured | Actual live prompt comparison, repeated judgments and independently human-labeled anchors; the historical engine comparison is not a prompt experiment |
-| Domain ≥90%, library ≥80%, overall ≥75% coverage | Overall lines 75.94%, library lines 94.63%, domain lines 98.33%; all configured gates pass | Overall 75% gate is lines only; library/domain gates cover all four metrics |
+| Domain ≥90%, library ≥80%, overall ≥75% coverage | Overall lines 82.17%, library lines 94.78%, domain lines 98.35%; all configured gates pass | Overall 80% gate is lines only; library/domain gates cover all four metrics |
 | Mobile Lighthouse ≥90 on both entry routes | Historical 22 October home/intake medians 90/85 | Intake missed the target; new deployment needs its own audit |
 | Latency and responsiveness targets | October 25 navigation timing retained all samples; strict gate failed in both browsers | Representative live p95, chat first-token, skeleton and interaction timing evidence; one SSE result cannot establish p95 |
-| Passing checks and CI | 245 tests, 22 desktop/mobile flows, build, lint, typecheck, offline evaluation and bundle checks pass locally | Hosted CI was blocked before execution by owner-account billing; no hosted green result claimed |
+| Passing checks and CI | 277 tests, 24 desktop/mobile flows, build, lint, typecheck, offline evaluation and bundle checks pass locally | Hosted CI was blocked before execution by owner-account billing; no hosted green result claimed |
 | Security and accessibility | 28 October full dependency audit: zero findings; [threat model](../SECURITY.md), boundary tests and adversarial cases; earlier automated browser checks are historical | All 20 fresh desktop/mobile browser checks passed; no universal accessibility or security certification |
 
 The 28 October regression work addresses late AI updates after edits, undo revisions, dismissed proposals, bounded LZ decompression, SSE cleanup and feedback storage/hydration. It responds to concrete reliability risks without assuming unpublished evaluator weights. Keep historical reports intact, publish one dated release summary, and tie future measurements to their code commit and deployment. Code Quality (88) remains the weakest category in the historical first-attempt result; no revised competition score is established.

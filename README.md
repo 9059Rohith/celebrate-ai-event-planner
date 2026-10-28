@@ -1,6 +1,6 @@
 # Celebrate AI
 
-**Latest submission evaluation: 96.98/100.** Hack2skill displayed rank **53 of 51,556** on 28 October 2026 (approximately the top **0.103%**). Category scores: Code Quality 89, Security 99, Efficiency 100, Testing 99, Accessibility 99, Problem Statement Alignment 100. This is the observed second-attempt result, not a prediction for the final attempt or final ranking. The first attempt scored 96.64/100.
+**Owner-reported latest submission score: 96.99/100.** The new category breakdown and rank have not been independently verified. The last directly observed result on 28 October was 96.98/100, rank 53 of 51,556 (approximately top 0.103%), with Code Quality 89, Security 99, Efficiency 100, Testing 99, Accessibility 99 and Alignment 100. These are historical results, not predictions for this revision.
 
 A thoughtful GenAI planning companion for life's celebrations.
 
@@ -69,7 +69,7 @@ Domain code owns money arithmetic and timeline dependencies. AI never silently a
 - Vendor checklists, booking status, custom tasks, dietary safeguards, questions and contract red flags.
 - Personalized ideas with dietary filters, saved cards, style variants and deduplication.
 - Grounded chat with typed proposals, explicit acceptance, persisted decisions and undo.
-- Progressive SSE generation, cancellation, retry and edit-preserving updates.
+- Progressive SSE creation; saved retries show a revision-bound preview, preserve edits and accept as one undoable change.
 - Validated local persistence, JSON import/export, read-only fragment sharing, printing and offline editing.
 - Persistent theme/currency, keyboard controls, storage notices and device-local human feedback.
 - A 46-case evaluation dataset, adversarial checks and evidence drill-down; tooling for live judges and blinded position-swapped comparisons, whose live quality scores remain unmeasured.
@@ -96,10 +96,10 @@ Implemented and verified locally:
 - Per-attempt token reservations, bounded rate-limit histories and environment ceilings.
 - Route hydration replay regression and stable shared-fragment hydration.
 - Automated WCAG checks in light/dark themes and narrow/wide layouts.
-- Unit/component/API suite: **245/245 passing** across 33 files (28 October 2026).
-- Desktop/mobile browser suite: **22/22 passing**.
+- Unit/component/API suite: **277/277 passing** across 39 files (28 October 2026).
+- Desktop/mobile browser suite: **24/24 passing**.
 - Offline deterministic evaluation: **46/46 passing**.
-- Whole-application line coverage: **75.94%**; library: **94.63%**; domain: **98.33%**.
+- Whole-application line coverage: **82.17%**; library: **94.78%**; domain: **98.35%**.
 - Typecheck, lint, production build, bundle budget and browser-JavaScript secret scan.
 - Public source, publicly viewable demo recording, submission notes and architecture/security/evaluation documentation.
 
@@ -110,9 +110,9 @@ Production verification and remaining external limits:
 - Without Upstash, rate/cache/token counters are per server process.
 - The 28 October full dependency audit reports zero vulnerabilities after updating Vitest and its coverage package to 4.1.12.
 
-The [final-attempt quality report](reports/submission-quality-final-2026-10-28.json) records the latest local checks. AI refinement preserves full user state and rejects stale previews; evaluations bind dataset/model/code identity and reject incomplete judging. Wizard transitions expose selected states and move keyboard focus. Production verification recorded 66/68 loads below two seconds and zero runtime/hydration errors; the strict timing gate failed.
+The [follow-up quality report](reports/submission-followup-2026-10-28.json) records the latest local checks. AI refinement preserves full user state and rejects stale previews; evaluations bind dataset/model/code identity and reject incomplete judging. Wizard transitions expose selected states and move keyboard focus. The previous release recorded 66/68 loads below two seconds with zero runtime/hydration errors; this follow-up requires fresh production verification.
 
-Production verification retained all **68 visits**: **66/68 loads below two seconds**, median **0.925 s**, p95 **1.434 s**, maximum **3.008 s**, maximum heading readiness **2.046 s**, and **zero runtime/hydration errors**. Two page loads and one additional heading-readiness sample exceeded the strict threshold, so **the two-second gate failed**. Edge 156, fresh desktop/iPhone 13 contexts, unthrottled network and verified CDN warmup; the release fingerprint stayed unchanged. No sample was retried or discarded. [Raw production evidence](reports/verification-quality-final-2026-10-28.json). The [earlier 28 October audit](reports/verification-hardening-2026-10-28.json) remains historical evidence for its own deployment.
+Production verification for this follow-up is pending. The [previous release audit](reports/verification-quality-final-2026-10-28.json) retained all 68 visits, 66 loads below two seconds and zero runtime/hydration errors; its strict timing gate failed.
 
 Historical 25 October timing: Edge 66/68 loads under two seconds (p95 1.44 s, max 2.34 s); bundled Chromium 63/68 with a maximum 26.14 s pre-request stall. Both runs had zero runtime/hydration errors. Those strict all-samples performance gates did not pass. [Retained evidence](reports/code-quality-revision.json) includes all outliers. Finite measurements do not guarantee every device/network loads within two seconds. The first-attempt standing is recorded above; no future score or final rank is guaranteed. See [SUBMISSION.md](SUBMISSION.md) for current evidence and limitations.
 
@@ -150,7 +150,7 @@ For deployment, set server-only variables in Vercel Production. See [.env.exampl
 
 ## Validation
 
-**Offline evaluation complete:** the 28 October `--mock` run passed **46/46 cases (100% case pass rate)**. Reproduce without an API key using `npm run eval -- --suite=all --mock --out=test-results/submission-mock.json`. This runs the real deterministic engine; it does not simulate measured live model quality. [Recorded evidence](reports/mock-quality-final-2026-10-28.json).
+**Offline evaluation complete:** the 28 October `--mock` run passed **46/46 cases (100% case pass rate)**. Reproduce without an API key using `npm run eval -- --suite=all --mock --out=test-results/submission-mock.json`. This runs the real deterministic engine; it does not simulate measured live model quality. [Recorded evidence](reports/mock-followup-2026-10-28.json).
 
 Type checking, lint and coverage:
 
@@ -175,7 +175,7 @@ Live evaluation, after configuring a key:
 npm run eval -- --suite=judge --limit=5 --max-usd=2
 ```
 
-Latest whole-application coverage: statements **73.76%**, branches **69.50%**, functions **67.03%**, lines **75.94%**. The default `npm run test:coverage` includes app, components, lib, evals, middleware and public runtime JavaScript, with a 75% overall line gate. Library coverage is 92.40% statements, 85.71% branches, 94.10% functions and 94.63% lines; domain lines are 98.33%. The library 80% and domain 90% gates remain enforced across all four metrics.
+Latest whole-application coverage: statements **79.91%**, branches **75.88%**, functions **74.62%**, lines **82.17%**. The default `npm run test:coverage` includes app, components, lib, evals, middleware and public runtime JavaScript, with a 80% overall line gate. Library coverage is 92.47% statements, 86.47% branches, 94.01% functions and 94.78% lines; domain lines are 98.35%. The library 80% and domain 90% gates remain enforced across all four metrics.
 
 The offline evaluation passes all 46 schema, budget, timeline, diet, constraint, safety, contact-heuristic and fallback checks. The v1 engine baseline passed 36/46. This compares engine revisions, not isolated LLM prompt quality.
 
@@ -286,3 +286,5 @@ Ideas can be filtered, saved and adapted to the celebration.
 ![Evaluation dashboard](docs/screenshots/08-evaluations.webp)
 
 The dashboard distinguishes engine checks from unmeasured live AI quality.
+
+Historical large JSON reports are losslessly archived with SHA-256 hashes in [the evidence archive index](reports/archived-evidence.json). The current offline report also links its complete original gzip archive.

@@ -1,5 +1,5 @@
 {
-  "reason": "Lossless compression of historical raw Lighthouse evidence to preserve the submission source-size limit. No measurements removed or changed.",
+  "reason": "Lossless compression of historical raw browser/Lighthouse evidence to preserve the source-size limit. Original paths in dated summaries resolve through this index; no measurements removed or changed.",
   "format": "gzip; decompress to recover byte-identical original JSON",
   "entries": [
     {
@@ -15,6 +15,48 @@
       "originalBytes": 520200,
       "archiveBytes": 102240,
       "sha256": "288e59396325a4095741f0e9e0b5fad3ad686be9cfdd26c35c303c2e84023820"
+    },
+    {
+      "original": "reports/full-load-submission-stable-home.json",
+      "archive": "reports/full-load-submission-stable-home.json.gz",
+      "originalBytes": 86616,
+      "archiveBytes": 7873,
+      "sha256": "30bb29c043afdc3412695b46b9b2422748d73004378c4e6ed5c7452e7fab70e4"
+    },
+    {
+      "original": "reports/full-load-submission-final.json",
+      "archive": "reports/full-load-submission-final.json.gz",
+      "originalBytes": 86370,
+      "archiveBytes": 7865,
+      "sha256": "c26acea7c121eec5599e5f10b144262ab5612805fddb88b8cc286da60aa36846"
+    },
+    {
+      "original": "reports/full-load-quality-resubmission.json",
+      "archive": "reports/full-load-quality-resubmission.json.gz",
+      "originalBytes": 86156,
+      "archiveBytes": 8017,
+      "sha256": "975d31dca8f797b2c60ee2026bd6ca0c390c96789b101b4897fc566fb597c302"
+    },
+    {
+      "original": "reports/full-load-quality-resubmission-edge.json",
+      "archive": "reports/full-load-quality-resubmission-edge.json.gz",
+      "originalBytes": 86136,
+      "archiveBytes": 7970,
+      "sha256": "5e5a117520ee13e48c9afe4fee7dc322831d4c7b8b4b90b0e87e80e8773b86c1"
+    },
+    {
+      "original": "reports/full-load-submission-saved-cache.json",
+      "archive": "reports/full-load-submission-saved-cache.json.gz",
+      "originalBytes": 86097,
+      "archiveBytes": 7897,
+      "sha256": "bba62bd63d710113c84d083872bf72a6a8006f969cc9e44f8547857a084b2cc0"
+    },
+    {
+      "original": "reports/full-load-outlier-recheck.json",
+      "archive": "reports/full-load-outlier-recheck.json.gz",
+      "originalBytes": 65952,
+      "archiveBytes": 6191,
+      "sha256": "1132ad4faf5e6b9807947503dc1afe60232836c61b2ff157399ee5cd79871bcf"
     }
   ]
 }

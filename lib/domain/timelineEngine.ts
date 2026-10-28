@@ -12,6 +12,13 @@ import type {
 } from "@/lib/schemas";
 import { generateDayOfSchedule } from "./dayOfSchedule";
 import { getMilestoneTemplates } from "./timelineTemplates";
+import {
+  addDays,
+  formatDate,
+  parseDate,
+  planningDate,
+  milestoneDueDate,
+} from "./calendar";
 function slugify(title: string): string {
   return title
     .toLowerCase()
@@ -29,18 +36,6 @@ function scheduleItemId(): string {
   siCounter += 1;
   return `si_${siCounter}`;
 }
-function addDays(date: Date, days: number): Date {
-  const result = new Date(date);
-  result.setUTCDate(result.getUTCDate() + days);
-  return result;
-}
-function formatDate(date: Date): string {
-  return date.toISOString().split("T")[0];
-}
-function parseDate(isoDate: string): Date {
-  const [year, month, day] = isoDate.split("-").map(Number);
-  return new Date(Date.UTC(year, month - 1, day));
-}
 function validDate(value: string): boolean {
   const parsed = parseDate(value);
   return (
@@ -49,18 +44,16 @@ function validDate(value: string): boolean {
     formatDate(parsed) === value
   );
 }
-function today(): Date {
-  const now = new Date();
-  return new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
-}
 export function generateTimeline(input: EventInput): Timeline {
+  const todayStr = planningDate();
+  const today = parseDate(todayStr);
   const templates = getMilestoneTemplates(input.eventType);
   let eventDate: Date | null = null;
   if (input.date) {
     if (!validDate(input.date)) throw new Error("Invalid event date");
     eventDate = parseDate(input.date);
   } else if (input.planningWeeks) {
-    eventDate = addDays(today(), input.planningWeeks * 7);
+    eventDate = addDays(today, input.planningWeeks * 7);
   }
   let filteredTemplates = [...templates];
   if (input.eventSpecific.type === "wedding") {
@@ -79,7 +72,7 @@ export function generateTimeline(input: EventInput): Timeline {
   const availableWeeks = eventDate
     ? Math.max(
         0,
-        (eventDate.getTime() - today().getTime()) / (7 * 24 * 60 * 60 * 1000),
+        (eventDate.getTime() - today.getTime()) / (7 * 24 * 60 * 60 * 1000),
       )
     : (input.planningWeeks ?? 16);
   const maxLead = Math.max(...filteredTemplates.map((t) => t.leadWeeks));
@@ -90,12 +83,7 @@ export function generateTimeline(input: EventInput): Timeline {
     const offsetDays = -Math.round(compressedWeeks * 7);
     let dueDate: string | null = null;
     if (eventDate) {
-      const due = addDays(eventDate, offsetDays);
-      if (due < today()) {
-        dueDate = formatDate(today());
-      } else {
-        dueDate = formatDate(due);
-      }
+      dueDate = milestoneDueDate(formatDate(eventDate), offsetDays, todayStr);
     }
     const id = milestoneId(template.title);
     return {
@@ -111,7 +99,7 @@ export function generateTimeline(input: EventInput): Timeline {
       status: "todo" as const,
       dependsOn: [],
       notes:
-        input.date && input.date < formatDate(today())
+        input.date && input.date < todayStr
           ? "Past event date — action needed ASAP; confirm a new event date."
           : "",
     };
@@ -125,7 +113,7 @@ export function generateTimeline(input: EventInput): Timeline {
   milestones.sort((a, b) => a.dueOffsetDays - b.dueOffsetDays);
   if (compressionRatio < 0.8) {
     const criticalMs = milestones.filter(
-      (m) => m.priority === "must" && m.dueDate === formatDate(today()),
+      (m) => m.priority === "must" && m.dueDate === todayStr,
     );
     for (const m of criticalMs) {
       m.notes = "⚠️ Tight timeline — action needed ASAP!";
@@ -207,7 +195,7 @@ export function validateTimeline(timeline: Timeline): string[] {
     )
       errors.push(`Invalid schedule day: ${item.title}`);
   }
-  const todayStr = formatDate(today());
+  const todayStr = planningDate();
   const pastDue = timeline.milestones.filter(
     (m) => m.dueDate && m.dueDate < todayStr && m.status !== "done",
   );

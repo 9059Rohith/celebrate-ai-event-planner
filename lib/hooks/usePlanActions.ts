@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { PlanSchema, type Plan } from "@/lib/schemas";
 import { usePlanStore } from "@/lib/store";
+import { summarizeBudget } from "@/lib/domain/budgetEngine";
 
 export type PlanChange = (
   updates: Partial<Plan>,
@@ -43,6 +44,11 @@ export function usePlanActions(
         return false;
       }
       const next = PlanSchema.parse({ ...latest, ...updates });
+      if (updates.budget || updates.input)
+        next.budget = {
+          ...next.budget,
+          ...summarizeBudget(next.input, next.budget),
+        };
       pushHistory(latest);
       update(plan.id, next);
       return true;

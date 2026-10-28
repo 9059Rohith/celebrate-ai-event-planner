@@ -95,7 +95,6 @@ export function allocate(input: EventInput): AllocateResult {
       totalBudget,
       currency,
       budgetFlexibility,
-      guestCount,
       dietary,
       vibe,
       priorities,
@@ -158,12 +157,6 @@ export function allocate(input: EventInput): AllocateResult {
         estimateConfidence: "low",
       });
     } else lines.splice(0, lines.length, ...bounded.lines);
-    const perGuestCost = totalBudget / guestCount;
-    const warnings = generateWarnings(input, lines, perGuestCost);
-    if (lines.some((l) => l.category === "essentials"))
-      warnings.unshift(
-        "Budget infeasible for separate category minimums in whole currency units: essential costs are consolidated; reduce scope or increase the budget.",
-      );
     return {
       ok: true,
       budget: {
@@ -172,8 +165,7 @@ export function allocate(input: EventInput): AllocateResult {
         contingencyPct,
         contingencyAmount,
         lines,
-        perGuestCost,
-        warnings,
+        ...summarizeBudget(input, { total: totalBudget, lines }),
       },
     };
   } catch (err) {
@@ -182,6 +174,19 @@ export function allocate(input: EventInput): AllocateResult {
       error: `Budget allocation failed: ${err instanceof Error ? err.message : "Unknown error"}`,
     };
   }
+}
+/** Derive guidance from the retained allocations, including user edits and locks. */
+export function summarizeBudget(
+  input: EventInput,
+  budget: Pick<Budget, "total" | "lines">,
+): Pick<Budget, "perGuestCost" | "warnings"> {
+  const perGuestCost = budget.total / input.guestCount;
+  const warnings = generateWarnings(input, budget.lines, perGuestCost);
+  if (budget.lines.some((line) => line.category === "essentials"))
+    warnings.unshift(
+      "Budget infeasible for separate category minimums in whole currency units: essential costs are consolidated; reduce scope or increase the budget.",
+    );
+  return { perGuestCost, warnings };
 }
 function generateWarnings(
   input: EventInput,

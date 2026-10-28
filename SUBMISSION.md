@@ -2,9 +2,9 @@
 
 Celebrate AI helps users organize weddings, birthdays and community events with editable budgets, dependent timelines, vendor checklists, personalized ideas and grounded chat proposals. A complete deterministic plan remains available when the AI provider is unavailable.
 
-Production verification retained all **68 visits**: **66/68 loads below two seconds**, median **0.925 s**, p95 **1.434 s**, maximum **3.008 s**, maximum heading readiness **2.046 s**, and **zero runtime/hydration errors**. Two page loads and one additional heading-readiness sample exceeded the strict threshold, so **the two-second gate failed**. Edge 156, fresh desktop/iPhone 13 contexts, unthrottled network and verified CDN warmup; the release fingerprint stayed unchanged. No sample was retried or discarded. [Production audit](reports/verification-quality-final-2026-10-28.json).
+Production verification for this follow-up is pending. The [previous release audit](reports/verification-quality-final-2026-10-28.json) retained all 68 visits, 66 loads below two seconds and zero runtime/hydration errors; its strict timing gate failed.
 
-**Latest observed submission result:** 96.98/100, with displayed rank **53 / 51,556** on 28 October 2026 (approximately the top **0.103%**). Code Quality 89; Security 99; Efficiency 100; Testing 99; Accessibility 99; Problem Statement Alignment 100. Two of three attempts have been used. The first attempt scored 96.64/100. Future scores and final ranking depend on the evaluator.
+**Owner-reported current score:** 96.99/100, with two additional attempts available. The current categories, rank and attempt counter were not independently verified. Last directly observed result: 96.98/100, rank 53/51,556 on 28 October. The owner controls resubmission; no future score is guaranteed.
 
 ## Submission links
 
@@ -14,11 +14,11 @@ Production verification retained all **68 visits**: **66/68 loads below two seco
 - Selected LinkedIn post: https://lnkd.in/p/g8c7TeDX (used at the owner’s explicit request)
 - CI workflow: https://github.com/9059Rohith/celebrate-ai-event-planner/actions/workflows/ci.yml
 
-## Final-attempt verification — 28 October 2026
+## Follow-up verification — 28 October 2026
 
-**Final-attempt local verification — 28 October 2026:** **245/245 tests across 33 files**, **22/22 desktop/mobile browser checks**, strict TypeScript, lint/formatting, production build and bundle/secret checks passed. The full dependency audit reports zero findings. Whole-application line coverage is **75.94%**, library line coverage **94.63%**, and domain line coverage **98.33%**. The strengthened offline evaluation passes **46/46 cases with zero model calls**. See [the quality report](reports/submission-quality-final-2026-10-28.json). Production verification is recorded separately below; its strict timing gate failed.
+**Follow-up local verification — 28 October 2026:** **277/277 tests across 39 files**, **24/24 desktop/mobile browser checks**, strict TypeScript, lint/formatting, production build and bundle/secret checks passed. The full dependency audit reports zero findings. Whole-application line coverage is **82.17%**, library line coverage **94.78%**, and domain line coverage **98.35%**. The strengthened offline evaluation passes **46/46 cases with zero model calls**. See [the quality report](reports/submission-followup-2026-10-28.json). Production verification for this follow-up is pending.
 
-The revision preserves user data during AI refinement, fixes stale preview ownership and cache context, strengthens evaluation integrity, and adds accessible wizard transitions. Historical reports remain available; no score for this revision has been measured.
+This follow-up fixes saved-plan retry data loss, stale evaluation evidence, budget warning consistency, calendar-boundary mismatches and aborted request-body cleanup. Historical reports remain available; no score for this revision has been measured.
 
 ## Historical release readiness — 25 October 2026
 

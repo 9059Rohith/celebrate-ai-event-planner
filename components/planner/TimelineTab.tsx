@@ -7,6 +7,7 @@ import {
   validateTimeline,
   getCriticalPath,
 } from "@/lib/domain/timelineEngine";
+import { planningDate } from "@/lib/domain/calendar";
 
 /** Editable accessible timeline with same-phase pointer and keyboard ordering. */
 export function TimelineTab({
@@ -63,8 +64,7 @@ export function TimelineTab({
     a.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
-  const now = new Date(),
-    today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
+  const today = planningDate();
   const warnings = validateTimeline(timeline),
     critical = new Set(getCriticalPath(timeline.milestones).map((m) => m.id));
   const maxOffset = Math.max(

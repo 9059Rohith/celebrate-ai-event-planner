@@ -5,6 +5,7 @@ import {
   type Plan,
 } from "@/lib/schemas";
 import { dietaryViolations } from "./dietary";
+import { planningDate } from "@/lib/domain/calendar";
 export type Check = { passed: boolean; rationale: string };
 const check = (passed: boolean, rationale: string): Check => ({
   passed,
@@ -78,7 +79,7 @@ export function evaluate(
         l.pct <= l.maxPct + 0.02 &&
         Math.abs(l.pct - (l.allocatedAmount / distributable) * 100) < 0.02,
     );
-  const today = now.toISOString().slice(0, 10);
+  const today = planningDate(now);
   const horizon = (caseData.input.planningWeeks ?? 156) * 7;
   const timeline =
     TimelineSchema.safeParse(plan.timeline).success &&

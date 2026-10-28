@@ -4,6 +4,17 @@ An anonymous event planner for weddings, birthdays and community gatherings, wit
 
 Production: https://celebrate-ai-event-planner.vercel.app
 
+Current local hardening evidence is dated 28 October 2026; the latest recorded production timing is historical evidence from 25 October. The [hardening summary](../reports/submission-hardening-2026-10-28.json) records new local checks, while the [earlier release report](../reports/code-quality-revision.json) identifies its measured code, deployment and retained failures. The [requirements map](rubric-evidence.md) distinguishes official guidance from the owner's build specification.
+
+## Local hardening verification — 28 October 2026
+
+- Vitest and coverage 4.1.12: 157/157 tests across 24 files passed; strict TypeScript passed.
+- Library coverage: statements 92.06%, branches 85.33%, functions 93.00%, lines 94.08%; domain lines 98.17%. Scope remains `lib/**/*.ts`; whole-application coverage is not established.
+- [Offline evaluation](../reports/mock-hardening-2026-10-28.json): 46/46 cases passed, zero model calls.
+- Full dependency audit: zero findings, including development dependencies; this supersedes the historical five development-only advisories.
+- Regression categories: late AI updates after edits, undo revisions, dismissed proposals, bounded LZ decompression, SSE cleanup and feedback storage/hydration.
+- Lint, production build, bundle/secret checks and all 20 desktop/mobile browser checks passed. Production deployment verification is pending. October 25 production timing does not verify this local revision.
+
 ## Run locally
 
 ```sh
@@ -22,7 +33,7 @@ Copy `.env.example` to `.env.local`, then run `npm run dev` and visit http://loc
 - Diverse dietary-filtered ideas, saved/faceted filters, similar/cheaper/traditional/modern/surprise requests and regeneration previews.
 - Grounded chat with structured tools for budgets, contingency, milestones, vendors, checklists and ideas. Every mutation requires acceptance; decisions persist and support undo. Text renders through sanitized Markdown.
 - Local persistence with migration/validation, quota notices, JSON import/export, read-only compressed fragment sharing, full-plan print/PDF, persistent theme/currency and offline shell for saved plans.
-- Local human feedback with reason tags and export. Reproducible46-case evaluation dataset, adversarial cases, deterministic checks, live judges, repeated/blind position-swapped comparisons, resume/concurrency/cost caps and dashboard.
+- Local human feedback with reason tags and export. Reproducible 46-case evaluation dataset, adversarial cases, deterministic checks and dashboard. Live judging and repeated, blinded, position-swapped comparison tooling is implemented with resume/concurrency/cost caps; live quality results remain unmeasured.
 
 ## Environment
 
@@ -34,12 +45,12 @@ Copy `.env.example` to `.env.local`, then run `npm run dev` and visit http://loc
 | OPENAI_TIMEOUT_MS / OPENAI_MAX_RETRIES | Provider timeout and bounded SDK retries |
 | EVAL_SECRET | Protects live mini-evaluations; never persisted by browser |
 | UPSTASH_REDIS_REST_URL / UPSTASH_REDIS_REST_TOKEN | Optional shared rate/cache/token counters |
-| DAILY_TOKEN_BUDGET | Global daily reservation limit; default2000000 |
+| DAILY_TOKEN_BUDGET | Daily token reservation limit; per-process without Upstash; default 2,000,000 |
 | RATE_LIMIT_PER_MIN | Additional ceiling over per-route limits |
 | NEXT_PUBLIC_APP_URL | Metadata origin |
 | NEXT_PUBLIC_ENABLE_ANALYTICS | Optional analytics, false by default |
 
-Production and Preview have a generated evaluation secret. Its local copy is in ignored `.env.local`; never commit or paste it into an issue. The OpenAI key has not been supplied, so the published app uses its complete deterministic fallback. No key is fabricated or reused from another project.
+EVAL_SECRET protects mini evaluations and is configured separately from OPENAI_API_KEY; keep both server-only and out of committed files and issues. The 25 October production smoke verified a configured OpenAI key and one uncached schema-valid hybrid plan. The recorded production settings used gpt-4o-mini, zero automatic SDK retries, a 3-request/minute ceiling and a 50,000-token/day per-process budget. Provider failure or absent credentials still use the complete deterministic fallback. These records do not establish the current configuration of every deployment environment.
 
 ## Verification commands
 
@@ -57,7 +68,7 @@ Production and Preview have a generated evaluation secret. Its local copy is in 
 | npm run format:check | Prettier |
 | vercel deploy --prod --yes --scope rohiths-projects-5e14931b | Redeploy existing project/alias |
 
-The CI template includes typecheck, lint, coverage, offline evaluation, build, bundle audit and browser checks; see the activation limitation below. `reports/` records actual performance/bundle evidence; `evals/results/latest.json` records actual offline results. Runtime dependency audit has no vulnerabilities.
+The active `.github/workflows/ci.yml` includes typecheck, lint, coverage, offline evaluation, build, bundle audit and browser checks. Release run 40193415888 executed zero steps because GitHub reported an owner-account billing lock; hosted CI verification was not established. `reports/` records actual performance/bundle evidence; `evals/results/latest.json` is the historical 22 October (IST) offline snapshot. The 25 October runtime dependency audit recorded zero findings.
 
 ## Architecture and decisions
 
@@ -79,15 +90,15 @@ Money arithmetic never comes from the model. Prices are estimates, not quotation
 
 ## External prerequisites and measured limits
 
-Live AI quality, judge scores, prompt A/B quality gains, paid cost and model latency cannot be certified without a supplied OpenAI key. The rubric anchors are provisional author-labelled examples, not independent human ratings. The offline historical baseline comparison measures actual domain fixes, not an isolated model prompt experiment.
+One live production generation was verified on 25 October, including observed tokens and latency and an estimated model cost. It does not establish live quality scores or a latency distribution. Live judges and prompt A/B quality comparisons remain unrun. The rubric anchors are provisional author-labelled examples, not independent human ratings. The offline historical baseline comparison measures actual domain fixes, not an isolated model prompt experiment.
 
-Without Upstash credentials, serverless rate limits/cache/token accounting are best effort per process. Chat provider text is scanned before release to prevent fragmented secret-like output; streamed tool proposals still require acceptance. localStorage depends on available browser quota; export backups. Performance and accessibility claims are limited to the actual recorded audits, not an unconditional100% guarantee. Public repository: https://github.com/9059Rohith/celebrate-ai-event-planner. The saved GitHub OAuth credential lacks workflow scope, so the CI definition is published as ci/github-actions.yml rather than an active workflow. The complete local .github/workflows/ci.yml is retained; uploading it needs workflow permission.
+Without Upstash credentials, serverless rate limits/cache/token accounting are best effort per process. Chat provider text is scanned before release to prevent fragmented secret-like output; streamed tool proposals still require acceptance. localStorage depends on available browser quota; export backups. Performance and accessibility claims are limited to the actual recorded audits, not an unconditional guarantee. Public repository: https://github.com/9059Rohith/celebrate-ai-event-planner. The earlier workflow-permission limitation was superseded by workflow activation; the recorded remaining CI blocker was the GitHub account billing lock.
 
 See ARCHITECTURE.md, SECURITY.md and EVALUATION.md for contracts, threat model and measured results.
 
-## Verified submission evidence
+## Historical submission evidence — 22 October 2026
 
-The 22 October 2026 offline evaluation passed 46/46 cases. The current unit/component/API suite passed 113/113 tests. Library coverage is 91.53% lines, 89.51% statements, 83.31% branches and 88.73% functions; domain line coverage is 98.17%. The coverage gate requires 80% overall and 90% for domain modules across all four measures. These figures do not represent whole-application coverage.
+The 22 October 2026 offline evaluation passed 46/46 cases. That release's unit/component/API suite passed 113/113 tests. Library coverage was 91.53% lines, 89.51% statements, 83.31% branches and 88.73% functions; domain line coverage was 98.17%. The later 25 October results below supersede those counts. Coverage gates apply to `lib/**/*.ts`: 80% across all four measures and 90% for domain modules. Whole-application coverage and the master's 75% overall target are not established by these figures.
 
 Browser checks include wedding, birthday and community planning, edits, persistence, JSON/calendar export, fragment sharing, offline editing, theme, evaluation drill-down, hydration and automated WCAG checks. Current release results are recorded in SUBMISSION.md after verification. Automated accessibility checks supplement manual keyboard testing; they do not certify every assistive-technology combination.
 
@@ -99,10 +110,12 @@ Previous audits, including failures, remain in reports/ and docs/performance-his
 
 The route hydration boundary has a regression using Next's vendored React renderer. It preserves the original server DOM and avoids the host-fiber replay failure documented in React issue 37584. Shared fragments use a stable server snapshot and are decoded after hydration; errors are not suppressed.
 
-Final deployment reports are published on the codex/submission-evidence branch after measurements, so publishing evidence does not replace the measured production alias.
+The release procedure uses the codex/submission-evidence branch for measurement reports to avoid replacing the measured production alias when publishing evidence. Identify the source commit, deployment and fingerprint in each report rather than assuming a moving alias still serves the measured release.
 
 
 ## Code quality revision — 25 October 2026
+
+These are recorded release results, not a fresh 28 October verification. The saved Challenge 5 submission URL returned PageNotFound during a signed-in browser check on 28 October; current eligibility, score and submission availability remain unverified.
 
 - First portal attempt: 96.64/100, rank 67/51,309 (top 0.13% at observation). Code Quality was 88; this revision addresses source-level findings rather than asserting an unmeasured new score.
 - Replaced evaluation double assertions with a validated dashboard summary contract. Invalid custom evaluation events are ignored.

@@ -39,9 +39,19 @@ export function usePlannerChat({
   const [text, setText] = useState("");
   const [busy, setBusy] = useState(false);
   const [decisions, setDecisions] = useState<Record<string, Decision>>({});
+  const latestDecisions = useRef<Record<string, Decision>>({});
   const abort = useRef<AbortController | null>(null);
+  const proposals = useRef(new Set<AbortController>());
   const key = `celebrate-chat-${plan.id}`;
+  useEffect(() => {
+    const pending = proposals.current;
+    return () => {
+      for (const controller of pending) controller.abort();
+      pending.clear();
+    };
+  }, [key, readOnly]);
   const decide = (value: Record<string, Decision>) => {
+    latestDecisions.current = value;
     setDecisions(value);
     writeLocal(`${key}-decisions`, JSON.stringify(value));
   };
@@ -68,6 +78,7 @@ export function usePlannerChat({
     queueMicrotask(() => {
       if (!active) return;
       setMessages(savedMessages);
+      latestDecisions.current = savedDecisions;
       setDecisions(savedDecisions);
       setText("");
       setBusy(false);
@@ -158,9 +169,12 @@ export function usePlannerChat({
     }
   }
   async function accept(tool: ToolProposal) {
-    if (readOnly || decisions[tool.id]) return;
-    const current =
-      usePlanStore.getState().plans.find((p) => p.id === plan.id) || plan;
+    if (readOnly || latestDecisions.current[tool.id]) return;
+    const state = usePlanStore.getState();
+    const current = state.plans.find((p) => p.id === plan.id);
+    if (!current || state.currentPlanId !== plan.id) return;
+    const controller = new AbortController();
+    proposals.current.add(controller);
     try {
       let next: Plan;
       if (tool.name === "regenerate_section") {
@@ -168,6 +182,7 @@ export function usePlannerChat({
         const response = await fetch("/api/plan/regenerate", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
+          signal: controller.signal,
           body: JSON.stringify({
             plan: compactPlanSnapshot(current),
             section,
@@ -175,11 +190,13 @@ export function usePlannerChat({
           }),
         });
         const data = await response.json();
+        if (controller.signal.aborted || latestDecisions.current[tool.id])
+          return;
         if (!response.ok) throw Error(data.error);
-        const latest = usePlanStore
-          .getState()
-          .plans.find((p) => p.id === plan.id);
-        if (latest && latest.version !== current.version)
+        const latestState = usePlanStore.getState();
+        const latest = latestState.plans.find((p) => p.id === plan.id);
+        if (!latest || latestState.currentPlanId !== plan.id) return;
+        if (latest.version !== current.version)
           throw Error(
             "Your plan changed during regeneration. Review and request a fresh proposal.",
           );
@@ -187,19 +204,22 @@ export function usePlannerChat({
       } else next = executeToolProposal(current, tool);
       onChange(next);
       decide({
-        ...decisions,
+        ...latestDecisions.current,
         [tool.id]: { status: "accepted", appliedVersion: current.version + 1 },
       });
       onNotice("Change accepted and saved.");
     } catch (error) {
+      if (controller.signal.aborted) return;
       onNotice(
         error instanceof Error ? error.message : "Unable to apply proposal.",
       );
+    } finally {
+      proposals.current.delete(controller);
     }
   }
   const undo = (tool: ToolProposal) => {
     if (readOnly) return;
-    const decision = decisions[tool.id];
+    const decision = latestDecisions.current[tool.id];
     const current = usePlanStore.getState().plans.find((p) => p.id === plan.id);
     if (!decision || !current) return;
     if (current.version !== decision.appliedVersion) {
@@ -215,7 +235,10 @@ export function usePlannerChat({
       );
       return;
     }
-    decide({ ...decisions, [tool.id]: { ...decision, status: "undone" } });
+    decide({
+      ...latestDecisions.current,
+      [tool.id]: { ...decision, status: "undone" },
+    });
   };
   const stop = () => {
     abort.current?.abort();

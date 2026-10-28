@@ -1,26 +1,71 @@
 "use client";
-import { useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { ThumbsUp, ThumbsDown, Download } from "lucide-react";
-import { writeLocal } from "@/lib/client/storage";
+import { safeStorage, writeLocal } from "@/lib/client/storage";
 import { download } from "@/lib/client/network";
-export function Feedback({
-  planId,
-  section,
-}: {
-  planId: string;
-  section: string;
-}) {
-  const [rating, setRating] = useState<"up" | "down" | null>(null);
-  const [reason, setReason] = useState("");
+type FeedbackProps = { planId: string; section: string };
+const subscribe = (notify: () => void) => {
+  window.addEventListener("celebrate-feedback", notify);
+  window.addEventListener("storage", notify);
+  return () => {
+    window.removeEventListener("celebrate-feedback", notify);
+    window.removeEventListener("storage", notify);
+  };
+};
+const getSnapshot = () =>
+  String(safeStorage.getItem("celebrate-feedback") || "[]");
+const getServerSnapshot = () => "[]";
+function readFeedback(raw = getSnapshot()): unknown[] {
+  try {
+    const items = JSON.parse(raw);
+    return Array.isArray(items) ? items : [];
+  } catch {
+    return [];
+  }
+}
+function savedFeedback(raw: string, planId: string, section: string) {
+  return readFeedback(raw).findLast(
+    (
+      entry,
+    ): entry is {
+      planId: string;
+      section: string;
+      rating: "up" | "down";
+      reason: string;
+    } =>
+      !!entry &&
+      typeof entry === "object" &&
+      "planId" in entry &&
+      entry.planId === planId &&
+      "section" in entry &&
+      entry.section === section &&
+      "rating" in entry &&
+      (entry.rating === "up" || entry.rating === "down") &&
+      "reason" in entry &&
+      typeof entry.reason === "string",
+  );
+}
+export function Feedback(props: FeedbackProps) {
+  return (
+    <SectionFeedback
+      key={JSON.stringify([props.planId, props.section])}
+      {...props}
+    />
+  );
+}
+function SectionFeedback({ planId, section }: FeedbackProps) {
+  const raw = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const initial = savedFeedback(raw, planId, section);
+  const [draft, setDraft] = useState<{
+    rating: "up" | "down";
+    reason: string;
+    saved: boolean;
+  } | null>(null);
+  const rating = draft?.rating || initial?.rating || null;
+  const reason = draft?.reason ?? initial?.reason ?? "";
+  const saved = draft?.saved ?? !!initial;
   const save = (value: "up" | "down", text = reason) => {
-    setRating(value);
-    let items: unknown[] = [];
-    try {
-      const raw = JSON.parse(
-        localStorage.getItem("celebrate-feedback") || "[]",
-      );
-      if (Array.isArray(raw)) items = raw;
-    } catch {}
+    let items = readFeedback();
     items = items.filter(
       (x) =>
         !(
@@ -40,11 +85,12 @@ export function Feedback({
       reason: text,
       createdAt: new Date().toISOString(),
     };
-    writeLocal(
+    const persisted = writeLocal(
       "celebrate-feedback",
       JSON.stringify([...items, entry].slice(-1000)),
     );
-    window.dispatchEvent(new Event("celebrate-feedback"));
+    setDraft({ rating: value, reason: text, saved: persisted });
+    if (persisted) window.dispatchEvent(new Event("celebrate-feedback"));
   };
   return (
     <section className="feedback no-print" aria-label={`${section} feedback`}>
@@ -78,8 +124,8 @@ export function Feedback({
               <button
                 key={r}
                 className={reason === r ? "selected" : ""}
+                aria-pressed={reason === r}
                 onClick={() => {
-                  setReason(r);
                   save(rating, r);
                 }}
               >
@@ -91,7 +137,7 @@ export function Feedback({
             className="text-link"
             onClick={() =>
               download(
-                localStorage.getItem("celebrate-feedback") || "[]",
+                JSON.stringify(readFeedback()),
                 "celebrate-feedback.json",
                 "application/json",
               )
@@ -99,7 +145,11 @@ export function Feedback({
           >
             <Download size={13} /> Export feedback
           </button>
-          <span role="status">Thank you — saved on this device.</span>
+          <span role="status">
+            {saved
+              ? "Thank you — saved on this device."
+              : "Feedback could not be saved on this device. Please try again when storage is available."}
+          </span>
         </>
       )}
     </section>

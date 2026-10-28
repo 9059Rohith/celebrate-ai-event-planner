@@ -252,7 +252,7 @@ function WorkspaceInner({
             </div>
           )}
         </div>
-        <SectionBoundary key={tab} name={tab}>
+        <SectionBoundary key={`${plan.id}:${tab}`} name={tab}>
           {tab === "Overview" && (
             <OverviewTab {...sectionProps} onTab={onTab} />
           )}{" "}

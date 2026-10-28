@@ -25,8 +25,9 @@ export function usePlanActions(
   const change = (updates: Partial<Plan>) => {
     if (readOnly) return;
     try {
-      const latest =
-        usePlanStore.getState().plans.find((x) => x.id === plan.id) || plan;
+      const state = usePlanStore.getState();
+      const latest = state.plans.find((x) => x.id === plan.id);
+      if (!latest || state.currentPlanId !== plan.id) return;
       const next = PlanSchema.parse({ ...latest, ...updates });
       pushHistory(latest);
       update(plan.id, next);

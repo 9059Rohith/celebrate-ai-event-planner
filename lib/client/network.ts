@@ -13,13 +13,24 @@ export async function consumeSSE(
   if (!reader) throw new Error("Streaming is unavailable. Please retry.");
   const decoder = new TextDecoder();
   let buffer = "";
+  let complete = false;
+  let cancellation: Promise<void> | undefined;
+  const cancel = () => {
+    cancellation ??= reader.cancel().catch(() => {});
+    return cancellation;
+  };
+  const onAbort = () => {
+    void cancel();
+  };
+  signal?.addEventListener("abort", onAbort, { once: true });
   try {
     while (true) {
       if (signal?.aborted) {
-        await reader.cancel();
+        await cancel();
         return;
       }
       const { done, value } = await reader.read();
+      if (signal?.aborted) return;
       buffer += decoder.decode(value, { stream: !done });
       const chunks = buffer.split(/\r?\n\r?\n/);
       buffer = chunks.pop() || "";
@@ -32,9 +43,14 @@ export async function consumeSSE(
           .join("\n");
         if (data) onEvent(event, JSON.parse(data));
       }
-      if (done) break;
+      if (done) {
+        complete = true;
+        break;
+      }
     }
   } finally {
+    signal?.removeEventListener("abort", onAbort);
+    if (!complete) await cancel();
     reader.releaseLock();
   }
 }

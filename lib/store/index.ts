@@ -132,8 +132,14 @@ export const usePlanStore = create<PlanState>()(
         if (!currentPlan) return null;
 
         const previous = state.history.past[state.history.past.length - 1];
+        const restored = {
+          ...previous,
+          version: currentPlan.version + 1,
+          updatedAt: new Date().toISOString(),
+        };
 
         set({
+          plans: state.plans.map((p) => (p.id === previous.id ? restored : p)),
           history: {
             past: state.history.past.slice(0, -1),
             future: [
@@ -143,12 +149,7 @@ export const usePlanStore = create<PlanState>()(
           },
         });
 
-        // Apply the previous state
-        set((s) => ({
-          plans: s.plans.map((p) => (p.id === previous.id ? previous : p)),
-        }));
-
-        return previous;
+        return restored;
       },
 
       redo: () => {
@@ -159,8 +160,14 @@ export const usePlanStore = create<PlanState>()(
         if (!currentPlan) return null;
 
         const next = state.history.future[0];
+        const restored = {
+          ...next,
+          version: currentPlan.version + 1,
+          updatedAt: new Date().toISOString(),
+        };
 
         set({
+          plans: state.plans.map((p) => (p.id === next.id ? restored : p)),
           history: {
             past: [
               ...state.history.past,
@@ -170,11 +177,7 @@ export const usePlanStore = create<PlanState>()(
           },
         });
 
-        set((s) => ({
-          plans: s.plans.map((p) => (p.id === next.id ? next : p)),
-        }));
-
-        return next;
+        return restored;
       },
 
       canUndo: () => get().history.past.length > 0,

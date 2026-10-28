@@ -6,6 +6,7 @@
 
 import LZString from "lz-string";
 import { PlanSchema, type Plan } from "@/lib/schemas";
+import { decompressBounded } from "./boundedDecompress";
 
 const MAX_COMPRESSED_SIZE = 64 * 1024; // 64KB max
 const MAX_DECOMPRESSED_SIZE = 256 * 1024; // 256KB decompression bomb guard
@@ -41,7 +42,7 @@ export function decodePlan(encoded: string): Plan | null {
       return null;
     }
 
-    const json = LZString.decompressFromEncodedURIComponent(encoded);
+    const json = decompressBounded(encoded, MAX_DECOMPRESSED_SIZE);
     if (!json) return null;
 
     if (json.length > MAX_DECOMPRESSED_SIZE) {

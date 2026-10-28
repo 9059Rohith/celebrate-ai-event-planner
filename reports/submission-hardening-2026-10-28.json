@@ -1,0 +1,92 @@
+{
+  "date": "2026-10-28",
+  "status": "Local verification; production verification pending",
+  "review": "Astra quality, security/accessibility and official-guidance research; Superpowers red-green regression workflow and independent integrated review",
+  "changes": [
+    "Abort and invalidate pending AI work when its plan or section loses ownership",
+    "Preserve saved ideas and edits made while suggestions are pending",
+    "Keep undo/redo revisions monotonic so stale proposals cannot replace unrelated edits",
+    "Respect proposal dismissals made during regeneration and preserve concurrent decisions",
+    "Bound LZ shared-link expansion before assembling oversized output; preserve existing encoding",
+    "Cancel malformed or aborted SSE streams, including blocked reads",
+    "Scope feedback to plan and section, expose selection state, and report storage failures without hydration mismatches",
+    "Patch Vitest and coverage to 4.1.12; reconcile dated evidence and official guidance"
+  ],
+  "tests": {
+    "passed": 157,
+    "failed": 0,
+    "files": 24,
+    "addedRegressions": 22
+  },
+  "coverageScope": "lib/**/*.ts; not whole-application coverage",
+  "coverage": {
+    "statements": 92.06,
+    "branches": 85.33,
+    "functions": 93,
+    "lines": 94.08,
+    "domainLines": 98.17
+  },
+  "offlineEvaluation": {
+    "passed": 46,
+    "total": 46,
+    "modelCalls": 0,
+    "report": "reports/mock-hardening-2026-10-28.json",
+    "fullOriginalRun": "reports/mock-hardening-2026-10-28.json.gz"
+  },
+  "dependencyAudit": {
+    "runtimeAndDevelopmentVulnerabilities": 0,
+    "command": "npm audit --json"
+  },
+  "checks": {
+    "typecheck": true,
+    "eslint": true,
+    "formatting": true,
+    "productionBuild": true,
+    "bundleBudget": true,
+    "browserBundleSecretPatterns": true
+  },
+  "bundle": {
+    "gzipBytes": 117624,
+    "budgetBytes": 122880,
+    "report": "reports/bundle.json"
+  },
+  "browserTests": {
+    "passed": 20,
+    "failed": 0,
+    "projects": [
+      "desktop",
+      "mobile"
+    ],
+    "resultStats": {
+      "startTime": "2026-10-28T12:59:53.972Z",
+      "duration": 77697.342,
+      "expected": 20,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  },
+  "publishedCodeCommit": null,
+  "deployment": null,
+  "productionTiming": null,
+  "hostedCI": {
+    "lastCheckedRun": "https://github.com/9059Rohith/celebrate-ai-event-planner/actions/runs/40194067749",
+    "stepsExecuted": 0,
+    "blockedReason": "The job was not started because your account is locked due to a billing issue."
+  },
+  "competition": {
+    "lastObservedDate": "2026-10-25",
+    "score": 96.64,
+    "rank": 67,
+    "participants": 51309,
+    "currentPortal": "Saved submission URL returned PageNotFound on 2026-10-28; no new score verified",
+    "newSubmissionMade": false
+  },
+  "limitations": [
+    "No future score or final rank is guaranteed",
+    "No additional paid model calls in this revision; live judge, prompt A/B and human calibration remain unmeasured",
+    "Hosted CI requires the repository owner to resolve the GitHub billing lock",
+    "Production timing must be checked after deployment; historical outliers are retained",
+    "Official public event guidance conflicts on required AI tools and narrative deliverables; no detailed scoring weights were verified"
+  ]
+}

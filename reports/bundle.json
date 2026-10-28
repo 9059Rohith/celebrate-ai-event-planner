@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-10-25T12:28:38.664Z",
+  "timestamp": "2026-10-28T12:59:53.020Z",
   "route": "/",
   "measurement": "Initial external JavaScript for modern browsers; nomodule-only legacy polyfills are excluded. All static JS is scanned for secrets.",
   "scriptCount": 10,
-  "gzipBytes": 117623,
+  "gzipBytes": 117624,
   "budgetBytes": 122880,
   "passed": true,
   "secretScanPassed": true,
@@ -45,8 +45,8 @@
       "gzipBytes": 403
     },
     {
-      "path": "/_next/static/chunks/webpack-8a573b42e9f810dc.js",
-      "gzipBytes": 2712
+      "path": "/_next/static/chunks/webpack-e207b0c9dfc86d5a.js",
+      "gzipBytes": 2713
     }
   ]
 }

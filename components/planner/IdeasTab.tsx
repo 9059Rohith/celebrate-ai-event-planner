@@ -1,23 +1,40 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Heart, Sparkles } from "lucide-react";
 import { IdeaSchema, type Plan } from "@/lib/schemas";
 import { compactPlanSnapshot } from "@/lib/llm/snapshot";
-export function IdeasTab({
-  plan: p,
-  readOnly,
-  onChange: change,
-  onNotice,
-}: {
+import { usePlanStore } from "@/lib/store";
+type IdeasTabProps = {
   plan: Plan;
   readOnly: boolean;
   onChange: (v: Partial<Plan>) => void;
   onNotice: (v: string) => void;
-}) {
+};
+export function IdeasTab(props: IdeasTabProps) {
+  return <IdeasSection key={`${props.plan.id}:${props.readOnly}`} {...props} />;
+}
+function IdeasSection({
+  plan: p,
+  readOnly,
+  onChange: change,
+  onNotice,
+}: IdeasTabProps) {
   const [filter, setFilter] = useState("all");
   const [effort, setEffort] = useState("all");
   const [ceiling, setCeiling] = useState(p.budget.total);
   const [busy, setBusy] = useState(false);
+  const pending = useRef<AbortController | null>(null);
+  const latestPlan = useRef(p);
+  useEffect(() => {
+    latestPlan.current = p;
+  }, [p]);
+  useEffect(
+    () => () => {
+      pending.current?.abort();
+      pending.current = null;
+    },
+    [],
+  );
   const money = (n: number) =>
     new Intl.NumberFormat("en-IN", {
       style: "currency",
@@ -28,18 +45,35 @@ export function IdeasTab({
     action: "surprise" | "similar" | "cheaper" | "traditional" | "modern",
     ideaId?: string,
   ) {
+    if (readOnly || pending.current) return;
+    const controller = new AbortController();
+    pending.current = controller;
+    const stored = usePlanStore
+      .getState()
+      .plans.find((plan) => plan.id === p.id);
     setBusy(true);
     try {
       const response = await fetch("/api/ideas", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ plan: compactPlanSnapshot(p), action, ideaId }),
+        signal: controller.signal,
+        body: JSON.stringify({
+          plan: compactPlanSnapshot(stored ?? p),
+          action,
+          ideaId,
+        }),
       });
       const data = await response.json();
+      if (controller.signal.aborted || pending.current !== controller) return;
       if (!response.ok) throw Error(data.error);
       const ideas = IdeaSchema.array().parse(data.ideas);
-      const titles = new Set(p.ideas.map((i) => i.title.trim().toLowerCase()));
-      const ids = new Set(p.ideas.map((i) => i.id));
+      const current = usePlanStore
+        .getState()
+        .plans.find((plan) => plan.id === p.id);
+      if (stored && !current) return;
+      const existing = (current ?? latestPlan.current).ideas;
+      const titles = new Set(existing.map((i) => i.title.trim().toLowerCase()));
+      const ids = new Set(existing.map((i) => i.id));
       const unique = ideas.filter((idea) => {
         const title = idea.title.trim().toLowerCase();
         if (titles.has(title) || ids.has(idea.id)) return false;
@@ -48,7 +82,7 @@ export function IdeasTab({
         return true;
       });
       if (unique.length) {
-        change({ ideas: [...p.ideas, ...unique] });
+        change({ ideas: [...existing, ...unique] });
         onNotice(
           `${unique.length} new ${data.source === "ai" ? "AI" : "smart-template"} ideas added.`,
         );
@@ -57,13 +91,17 @@ export function IdeasTab({
           "No more matching ideas at the moment. Try a different style, kind or budget.",
         );
     } catch (error) {
+      if (controller.signal.aborted || pending.current !== controller) return;
       onNotice(
         error instanceof Error
           ? error.message
           : "Unable to load ideas. Please retry.",
       );
     } finally {
-      setBusy(false);
+      if (pending.current === controller) {
+        pending.current = null;
+        setBusy(false);
+      }
     }
   }
   const shown = p.ideas.filter(

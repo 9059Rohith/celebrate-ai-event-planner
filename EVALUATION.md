@@ -1,12 +1,14 @@
 # Evaluation evidence and reproduction
 
-**Offline evaluation complete:** the fresh `--mock` run passed **46/46 cases (100% case pass rate)**. Reproduce without an API key using `npm run eval -- --suite=all --mock --out=test-results/submission-mock.json`. This executes the real deterministic engine. [Recorded evidence](reports/mock-submission-check.json).
+**28 October local verification:** [the fresh offline run](reports/mock-hardening-2026-10-28.json) passed **46/46 cases with zero model calls**. Vitest and coverage 4.1.12 passed 157 tests across 24 files; strict TypeScript passed. Library coverage is statements 92.06%, branches 85.33%, functions 93.00% and lines 94.08%; domain lines are 98.17%. The full dependency audit reported zero findings. See the [hardening summary](reports/submission-hardening-2026-10-28.json). Lint, production build, bundle/secret checks and all 20 desktop/mobile browser checks passed. Production deployment verification is pending; no new live AI quality result is claimed.
+
+**Recorded offline evaluations:** the 22 October `--mock` run passed **46/46 cases (100% case pass rate)** in [this report](reports/mock-submission-check.json). The 25 October release rerun also passed 46/46, as recorded in [the revision report](reports/code-quality-revision.json). Reproduce without an API key using `npm run eval -- --suite=all --mock --out=test-results/submission-mock.json`. This executes the real deterministic engine. These dated results do not verify later local changes.
 
 This percentage measures the recorded deterministic cases only. Live model quality, live judge scores, overall submission compliance and competition placement are not established by mocked/offline results.
 
 The committed `evals/results/latest.json` is an actual offline deterministic run, performed 22 October 2026 (IST). It contains every input, output and check rationale. It is not a live model benchmark. `GET /api/eval` exposes this public, synthetic snapshot; `/evals` shows metric pass rates, timing, tokens, costs, failure drill-down and device-local human feedback. A protected mini evaluation updates the dashboard with its response.
 
-## Measured results
+## Historical engine comparison — 22 October 2026 (IST)
 
 | Check | Pre-fix engine baseline (v1 label) | Hardened engine candidate (v2 label) |
 |---|---:|---:|
@@ -52,15 +54,19 @@ Live mode requires server `OPENAI_API_KEY`; absent credentials fail clearly. `--
 
 ## Live judging and pairwise bias controls
 
-`judge.ts` and `rubrics/v2.md` define seven 1–5 rubrics: personalization, actionability, budget realism, cultural sensitivity, completeness, creativity and safety. Temperature is zero, JSON is validated, model/prompt identity is removed, length is explicitly not rewarded. Six **provisional author-labelled rubric anchors** are included. They have not been independently annotated or empirically calibrated. Every live output is judged twice; agreement within one score point is reported. Pairwise first position is randomized and then swapped; disagreements and both rationales are retained. Offline `pairwise.json` explicitly records not-run, with no fabricated winners. Credentials were unavailable for this delivery: no live quality scores, human/judge agreement or A/B model preference is claimed.
+`judge.ts` and `rubrics/v2.md` define seven 1–5 rubrics: personalization, actionability, budget realism, cultural sensitivity, completeness, creativity and safety. Temperature is zero, JSON is validated, model/prompt identity is removed, length is explicitly not rewarded. Six **provisional author-labelled rubric anchors** are included. They have not been independently annotated or empirically calibrated. The live judging implementation judges each output twice and reports agreement within one score point. Pairwise first position is randomized and then swapped; disagreements and both rationales are retained. Offline `pairwise.json` explicitly records not-run, with no fabricated winners. Production generation was verified separately on 25 October; live judging and pairwise quality evaluation have not been run, so no live quality scores, human/judge agreement or A/B model preference is claimed.
 
 Mini evaluation requires `EVAL_SECRET` in a transient password field. The field is cleared and never stored. Constant-time secret comparison, same-origin checking and two requests/minute rate limiting protect the route. Five generation cases run with up to three workers; with no AI key it explicitly returns offline output. It performs deterministic checks on live outputs without additional judge cost, and retains each output's source (`hybrid` or fallback). Failed upstream calls can still return fallback and are never described as successfully measured AI quality.
 
 Human thumbs and reasons are read only from `celebrate-feedback` localStorage on this device and exportable as JSON. They are a convenience sample, not a representative human evaluation study. No feedback is transmitted by the dashboard.
 
-Validation: `npx vitest run tests/eval.test.ts` passed five engine tests, including coverage distribution, budget corruption, dependency-cycle mutation, diet/canary detection and resume honesty. `npx vitest run tests/eval-api.test.ts` also covers secret/origin/rate-limit and live/offline routing. Run `npm run typecheck` and `npm run lint` with the full app after dependencies are installed.
+Historical validation recorded five engine tests in `tests/eval.test.ts`, including coverage distribution, budget corruption, dependency-cycle mutation, diet/canary detection and resume honesty. `tests/eval-api.test.ts` also covers secret/origin/rate-limit and live/offline routing. The 25 October release report records 135 tests; the 28 October local suite passed 157 tests across 24 files, adding coverage for late AI updates, undo revisions, dismissed proposals, bounded LZ decompression, SSE cleanup and feedback storage/hydration. Run `npm run typecheck`, `npm run lint` and the current tests after dependencies are installed.
 
 
 ## Production smoke verification — 25 October 2026
 
 One uncached production generation using gpt-4o-mini returned a schema-valid hybrid plan on its first structured attempt, with no repair: 1,158 input tokens, 880 output tokens, 10.658 s provider orchestration latency and 11.562 s full SSE response time. Estimated model cost: $0.000702. See reports/live-submission-smoke.json. This demonstrates live integration, not a statistically measured model-quality score; judge and A/B measurements remain separate. The app shell and deterministic plan render before enhancement finishes.
+
+## Requirement boundaries
+
+The detailed judge, calibration, prompt-comparison and performance targets come from the owner's master build specification; they are not verified official scoring weights. A single smoke response cannot establish live p95 latency. The stored offline snapshots and MSW transport fixtures do not replace the requested live prompt comparison or independently human-labeled calibration. See [the evidence map](docs/rubric-evidence.md) for the official guidance, its ambiguities and remaining evidence gaps.

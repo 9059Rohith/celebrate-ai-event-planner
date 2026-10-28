@@ -72,7 +72,7 @@ Domain code owns money arithmetic and timeline dependencies. AI never silently a
 - Progressive SSE generation, cancellation, retry and edit-preserving updates.
 - Validated local persistence, JSON import/export, read-only fragment sharing, printing and offline editing.
 - Persistent theme/currency, keyboard controls, storage notices and device-local human feedback.
-- A 46-case evaluation dataset, adversarial checks, live judges, blinded position-swapped comparisons and evidence drill-down.
+- A 46-case evaluation dataset, adversarial checks and evidence drill-down; tooling for live judges and blinded position-swapped comparisons, whose live quality scores remain unmeasured.
 
 ## Tech Stack
 
@@ -96,9 +96,9 @@ Implemented and verified locally:
 - Per-attempt token reservations, bounded rate-limit histories and environment ceilings.
 - Route hydration replay regression and stable shared-fragment hydration.
 - Automated WCAG checks in light/dark themes and narrow/wide layouts.
-- Unit/component/API suite: **135/135 passing**.
+- Unit/component/API suite: **157/157 passing** across 24 files (28 October 2026).
 - Offline deterministic evaluation: **46/46 passing**.
-- Library line coverage: **92.99%**; domain line coverage: **98.17%**.
+- Library line coverage: **94.08%**; domain line coverage: **98.17%**.
 - Typecheck, lint, production build, bundle budget and browser-JavaScript secret scan.
 - Public source, publicly viewable demo recording, submission notes and architecture/security/evaluation documentation.
 
@@ -107,9 +107,11 @@ Production verification and remaining external limits:
 - Production live generation is verified with `gpt-4o-mini`: one uncached plan passed schema validation on its first attempt, using 1,158 input and 880 output tokens (estimated model cost $0.000702). See [live verification](reports/live-submission-smoke.json). Live judge and model A/B quality scores remain unmeasured.
 - [GitHub Actions is activated](https://github.com/9059Rohith/celebrate-ai-event-planner/actions/workflows/ci.yml) on pushes and pull requests. Its [first run](https://github.com/9059Rohith/celebrate-ai-event-planner/actions/runs/40189351811) was blocked before checks started by the owner account’s billing lock. Hosted CI verification awaits the owner resolving that lock.
 - Without Upstash, rate/cache/token counters are per server process.
-- Five development-only lint dependency advisories remain unpatched upstream; runtime dependencies have zero findings.
+- The 28 October full dependency audit reports zero vulnerabilities after updating Vitest and its coverage package to 4.1.12.
 
-The [code quality revision report](reports/code-quality-revision.json) records the 135 tests, 20 browser checks, increased coverage and production verification. Latest live timing: Edge 66/68 loads under two seconds (p95 1.44 s, max 2.34 s); bundled Chromium 63/68 with a maximum 26.14 s pre-request stall. Both runs had zero runtime/hydration errors. The strict all-samples performance gate did not pass. Timing evidence includes retained outliers. Finite measurements do not guarantee every device/network loads within two seconds. The first-attempt standing is recorded above; no future score or final rank is guaranteed. See [SUBMISSION.md](SUBMISSION.md) for current evidence and limitations.
+The [28 October hardening report](reports/submission-hardening-2026-10-28.json) records the latest checks. New regressions cover stale AI responses, dismissed proposals, monotonic undo revisions, section preview ownership, stream cancellation, bounded shared-link decoding and feedback persistence/hydration. The [requirements map](docs/rubric-evidence.md) distinguishes verified functionality from unmeasured targets and conflicting public event guidance.
+
+Historical 25 October timing: Edge 66/68 loads under two seconds (p95 1.44 s, max 2.34 s); bundled Chromium 63/68 with a maximum 26.14 s pre-request stall. Both runs had zero runtime/hydration errors. Those strict all-samples performance gates did not pass. [Retained evidence](reports/code-quality-revision.json) includes all outliers. Finite measurements do not guarantee every device/network loads within two seconds. The first-attempt standing is recorded above; no future score or final rank is guaranteed. See [SUBMISSION.md](SUBMISSION.md) for current evidence and limitations.
 
 ## Setup Instructions
 
@@ -145,7 +147,7 @@ For deployment, set server-only variables in Vercel Production. See [.env.exampl
 
 ## Validation
 
-**Offline evaluation complete:** the fresh `--mock` run passed **46/46 cases (100% case pass rate)**. Reproduce without an API key using `npm run eval -- --suite=all --mock --out=test-results/submission-mock.json`. This runs the real deterministic engine; it does not simulate measured live model quality. [Recorded evidence](reports/mock-submission-check.json).
+**Offline evaluation complete:** the 28 October `--mock` run passed **46/46 cases (100% case pass rate)**. Reproduce without an API key using `npm run eval -- --suite=all --mock --out=test-results/submission-mock.json`. This runs the real deterministic engine; it does not simulate measured live model quality. [Recorded evidence](reports/mock-hardening-2026-10-28.json).
 
 Type checking, lint and coverage:
 
@@ -170,11 +172,11 @@ Live evaluation, after configuring a key:
 npm run eval -- --suite=judge --limit=5 --max-usd=2
 ```
 
-Latest verified library coverage: statements **91.16%**, branches **83.75%**, functions **92.87%**, lines **92.99%**. Gates require 80% overall and 90% for domain modules across all four metrics. Scope is `lib/**/*.ts`, not the whole application.
+Latest verified library coverage: statements **92.06%**, branches **85.33%**, functions **93%**, lines **94.08%**. Gates require 80% across the measured library scope and 90% for domain modules across all four metrics. Scope is `lib/**/*.ts`, not the whole application.
 
 The offline evaluation passes all 46 schema, budget, timeline, diet, constraint, safety, contact-heuristic and fallback checks. The v1 engine baseline passed 36/46. This compares engine revisions, not isolated LLM prompt quality.
 
-Final production verification (22 October 2026):
+Historical production verification (22 October 2026; an earlier release):
 
 | Check | Result |
 | --- | --- |
@@ -198,7 +200,7 @@ $env:PERF_PHASE = "submission-final"
 npm run verify:production
 ```
 
-Publish source before deployment. Warmup verifies CDN hits and an unchanged asset fingerprint. Production verification records 68 fresh-browser visits and fails for errors, load or heading readiness at/above two seconds. Final reports go on the `codex/submission-evidence` branch so publishing evidence does not replace the measured production alias. Previous failures remain in [performance history](docs/performance-history.md).
+Publish source before deployment. Warmup verifies CDN hits and an unchanged asset fingerprint. Production verification records 68 fresh-browser visits and fails for errors, load or heading readiness at/above two seconds. Publish the final reports to the public source repository after identifying the measured deployment. Previous failures remain in [performance history](docs/performance-history.md).
 
 ## Codex / AI Usage
 

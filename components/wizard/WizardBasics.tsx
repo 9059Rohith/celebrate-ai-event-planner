@@ -22,6 +22,7 @@ export function WizardBasics({
             <button
               key={type}
               type="button"
+              aria-pressed={input.eventType === type}
               className={input.eventType === type ? "selected" : ""}
               onClick={() =>
                 patch({

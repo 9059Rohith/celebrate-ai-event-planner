@@ -10,6 +10,7 @@ import {
 import { cleanOutput, ideasSafe, sanitizeData } from "./guardrails";
 import { promptMessages, type PromptVersion } from "./prompts";
 import { cacheGet, cacheKey, cacheSet } from "./cache";
+import { getServerEnv } from "@/lib/security/env";
 const Enhancement = z.object({
   vision: z.string().max(2000),
   risks: z.array(z.string().max(300)).max(5),
@@ -55,14 +56,28 @@ export async function generatePlan(
   delete plan.meta.structuredValidation;
   plan.meta.promptVersion = `2026-10-${version.endsWith("v1") ? "v1" : "v2"}`;
   if (!getClient()) return plan;
-  const key = cacheKey({
-    input: safe,
+  const model = getServerEnv().OPENAI_MODEL;
+  // Prompt-local IDs survive cache reuse without replacing each plan's real IDs.
+  const milestones = plan.timeline.milestones.map((milestone, index) => ({
+    id: `milestone_${index}`,
+    title: milestone.title,
+  }));
+  const messages = promptMessages(
+    {
+      input: safe,
+      instructions: options.instructions,
+      budget: plan.budget.lines.map((line) => ({
+        category: line.category,
+        amount: line.allocatedAmount,
+      })),
+      milestones,
+      vendors: plan.vendors.map((vendor) => vendor.category),
+      ideas: plan.ideas.map((idea) => ({ title: idea.title, kind: idea.kind })),
+    },
+    "Personalize vision, risks, assumptions, budget rationale, milestone notes, vendor questions and ideas. Keep supplied identifiers and idea kinds. Do not calculate or alter amounts.",
     version,
-    instructions: options.instructions,
-    current: options.currentPlan
-      ? { budget: plan.budget, ideas: plan.ideas.map((i) => i.title) }
-      : undefined,
-  });
+  );
+  const key = cacheKey({ model, messages });
   const cached = await cacheGet<z.infer<typeof Enhancement>>(key);
   try {
     options.signal?.throwIfAborted();
@@ -73,24 +88,7 @@ export async function generatePlan(
       : await callStructured({
           schema: Enhancement,
           name: "event_enhancement",
-          messages: promptMessages(
-            {
-              input: safe,
-              instructions: options.instructions,
-              budget: plan.budget.lines.map((l) => ({
-                category: l.category,
-                amount: l.allocatedAmount,
-              })),
-              milestones: plan.timeline.milestones.map((m) => ({
-                id: m.id,
-                title: m.title,
-              })),
-              vendors: plan.vendors.map((v) => v.category),
-              ideas: plan.ideas.map((i) => ({ title: i.title, kind: i.kind })),
-            },
-            "Personalize vision, risks, assumptions, budget rationale, milestone notes, vendor questions and ideas. Keep supplied identifiers and idea kinds. Do not calculate or alter amounts.",
-            version,
-          ),
+          messages,
           maxTokens: 3000,
           signal: options.signal,
         });
@@ -101,19 +99,20 @@ export async function generatePlan(
       ...data.risks.map(cleanOutput),
     ].slice(0, 5);
     plan.summary.assumptions.push(...data.assumptions.map(cleanOutput));
-    plan.budget.lines = plan.budget.lines.map((l) => ({
-      ...l,
-      notes: cleanOutput(
-        data.budgetNotes.find((n) => n.category === l.category)?.notes ||
-          l.notes,
-      ),
-    }));
-    plan.timeline.milestones = plan.timeline.milestones.map((m) => ({
-      ...m,
-      notes: cleanOutput(
-        data.timelineNotes.find((n) => n.id === m.id)?.notes || m.notes,
-      ),
-    }));
+    plan.budget.lines = plan.budget.lines.map((line) => {
+      const note = data.budgetNotes.find((n) => n.category === line.category);
+      return note ? { ...line, notes: cleanOutput(note.notes) } : line;
+    });
+    plan.timeline.milestones = plan.timeline.milestones.map(
+      (milestone, index) => {
+        const note = data.timelineNotes.find(
+          (n) => n.id === milestones[index].id,
+        );
+        return note
+          ? { ...milestone, notes: cleanOutput(note.notes) }
+          : milestone;
+      },
+    );
     plan.vendors = plan.vendors.map((v) => {
       const n = data.vendorNotes.find((n) => n.category === v.category);
       return n
@@ -140,7 +139,7 @@ export async function generatePlan(
     });
     plan.meta = {
       source: "hybrid",
-      model: process.env.OPENAI_MODEL || "gpt-4o-mini",
+      model,
       promptVersion: plan.meta.promptVersion,
       latencyMs: Date.now() - start,
       tokens: result.tokens,

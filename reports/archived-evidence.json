@@ -1,0 +1,20 @@
+{
+  "reason": "Lossless compression of historical raw Lighthouse evidence to preserve the submission source-size limit. No measurements removed or changed.",
+  "format": "gzip; decompress to recover byte-identical original JSON",
+  "entries": [
+    {
+      "original": "reports/lighthouse-home.json",
+      "archive": "reports/lighthouse-home.json.gz",
+      "originalBytes": 613373,
+      "archiveBytes": 132139,
+      "sha256": "5f0fc7e8bbeb0f1dd9a936c11d2cf70c548a7069afff9b85e22643e07f44b6ae"
+    },
+    {
+      "original": "reports/lighthouse-wizard.json",
+      "archive": "reports/lighthouse-wizard.json.gz",
+      "originalBytes": 520200,
+      "archiveBytes": 102240,
+      "sha256": "288e59396325a4095741f0e9e0b5fad3ad686be9cfdd26c35c303c2e84023820"
+    }
+  ]
+}

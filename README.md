@@ -1,6 +1,6 @@
 # Celebrate AI
 
-**First submission evaluation: 96.64/100.** Hack2skill displayed rank **67 of 51,309** on 25 October 2026 (approximately the top **0.13%**). Category scores: Code Quality 88, Security 99, Efficiency 100, Testing 98, Accessibility 99, Problem Statement Alignment 100. This is the observed first-attempt result, not a prediction for a resubmission or final ranking.
+**Latest submission evaluation: 96.98/100.** Hack2skill displayed rank **53 of 51,556** on 28 October 2026 (approximately the top **0.103%**). Category scores: Code Quality 89, Security 99, Efficiency 100, Testing 99, Accessibility 99, Problem Statement Alignment 100. This is the observed second-attempt result, not a prediction for the final attempt or final ranking. The first attempt scored 96.64/100.
 
 A thoughtful GenAI planning companion for life's celebrations.
 
@@ -96,9 +96,9 @@ Implemented and verified locally:
 - Per-attempt token reservations, bounded rate-limit histories and environment ceilings.
 - Route hydration replay regression and stable shared-fragment hydration.
 - Automated WCAG checks in light/dark themes and narrow/wide layouts.
-- Unit/component/API suite: **157/157 passing** across 24 files (28 October 2026).
+- Unit/component/API suite: **245/245 passing** across 33 files (28 October 2026).
 - Offline deterministic evaluation: **46/46 passing**.
-- Library line coverage: **94.08%**; domain line coverage: **98.17%**.
+- Whole-application line coverage: **75.94%**; library: **94.63%**; domain: **98.33%**.
 - Typecheck, lint, production build, bundle budget and browser-JavaScript secret scan.
 - Public source, publicly viewable demo recording, submission notes and architecture/security/evaluation documentation.
 
@@ -109,7 +109,7 @@ Production verification and remaining external limits:
 - Without Upstash, rate/cache/token counters are per server process.
 - The 28 October full dependency audit reports zero vulnerabilities after updating Vitest and its coverage package to 4.1.12.
 
-The [28 October hardening report](reports/submission-hardening-2026-10-28.json) records the latest checks. New regressions cover stale AI responses, dismissed proposals, monotonic undo revisions, section preview ownership, stream cancellation, bounded shared-link decoding and feedback persistence/hydration. The [requirements map](docs/rubric-evidence.md) distinguishes verified functionality from unmeasured targets and conflicting public event guidance.
+The [final-attempt quality report](reports/submission-quality-final-2026-10-28.json) records the latest local checks. AI refinement preserves full user state and rejects stale previews; evaluations bind dataset/model/code identity and reject incomplete judging. Wizard transitions expose selected states and move keyboard focus. Production verification for this revision is pending.
 
 **28 October production verification:** all **68/68** retained fresh-browser loads were below two seconds (median **0.663 s**, p95 **1.134 s**, maximum **1.530 s**; maximum workspace heading readiness **1.674 s**), with **zero runtime/hydration errors**. Edge 156.0.4314.50, desktop and iPhone 13 emulation, unthrottled network and warmed CDN. The wrapper exited 1 because its final release-identity request hit ECONNRESET; separate checks confirmed the same release fingerprint and 27 assets. No browser sample was retried or discarded. [Raw reports and recovery record](reports/verification-hardening-2026-10-28.json). This finite run does not guarantee every network/device loads within two seconds.
 
@@ -149,7 +149,7 @@ For deployment, set server-only variables in Vercel Production. See [.env.exampl
 
 ## Validation
 
-**Offline evaluation complete:** the 28 October `--mock` run passed **46/46 cases (100% case pass rate)**. Reproduce without an API key using `npm run eval -- --suite=all --mock --out=test-results/submission-mock.json`. This runs the real deterministic engine; it does not simulate measured live model quality. [Recorded evidence](reports/mock-hardening-2026-10-28.json).
+**Offline evaluation complete:** the 28 October `--mock` run passed **46/46 cases (100% case pass rate)**. Reproduce without an API key using `npm run eval -- --suite=all --mock --out=test-results/submission-mock.json`. This runs the real deterministic engine; it does not simulate measured live model quality. [Recorded evidence](reports/mock-quality-final-2026-10-28.json).
 
 Type checking, lint and coverage:
 
@@ -174,7 +174,7 @@ Live evaluation, after configuring a key:
 npm run eval -- --suite=judge --limit=5 --max-usd=2
 ```
 
-Latest verified library coverage: statements **92.06%**, branches **85.33%**, functions **93%**, lines **94.08%**. Gates require 80% across the measured library scope and 90% for domain modules across all four metrics. Scope is `lib/**/*.ts`, not the whole application.
+Latest whole-application coverage: statements **73.76%**, branches **69.50%**, functions **67.03%**, lines **75.94%**. The default `npm run test:coverage` includes app, components, lib, evals, middleware and public runtime JavaScript, with a 75% overall line gate. Library coverage is 92.40% statements, 85.71% branches, 94.10% functions and 94.63% lines; domain lines are 98.33%. The library 80% and domain 90% gates remain enforced across all four metrics.
 
 The offline evaluation passes all 46 schema, budget, timeline, diet, constraint, safety, contact-heuristic and fallback checks. The v1 engine baseline passed 36/46. This compares engine revisions, not isolated LLM prompt quality.
 

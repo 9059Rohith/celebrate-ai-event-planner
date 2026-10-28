@@ -1,16 +1,19 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import { z } from "zod";
-import { PlanSchema, type Plan } from "@/lib/schemas";
+import type { Plan } from "@/lib/schemas";
 import {
   ToolProposalSchema,
   executeToolProposal,
+  toolArguments,
   type ToolProposal,
 } from "@/lib/llm/tools";
 import { compactPlanSnapshot } from "@/lib/llm/snapshot";
 import { consumeSSE } from "@/lib/client/network";
 import { safeStorage, writeLocal } from "@/lib/client/storage";
 import { usePlanStore } from "@/lib/store";
+import { applySectionRefinement } from "@/lib/llm/refinement";
+import type { PlanChange } from "./usePlanActions";
 const MessageSchema = z.object({
   id: z.string(),
   role: z.enum(["You", "Planner"]),
@@ -32,7 +35,7 @@ export function usePlannerChat({
 }: {
   plan: Plan;
   readOnly: boolean;
-  onChange: (v: Partial<Plan>) => void;
+  onChange: PlanChange;
   onNotice: (v: string) => void;
 }) {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -178,7 +181,8 @@ export function usePlannerChat({
     try {
       let next: Plan;
       if (tool.name === "regenerate_section") {
-        const { section, instructions } = tool.arguments;
+        const { section, instructions } =
+          toolArguments.regenerate_section.parse(tool.arguments);
         const response = await fetch("/api/plan/regenerate", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -200,9 +204,9 @@ export function usePlannerChat({
           throw Error(
             "Your plan changed during regeneration. Review and request a fresh proposal.",
           );
-        next = PlanSchema.parse({ ...current, [String(section)]: data.value });
+        next = applySectionRefinement(current, data.refinement, section);
       } else next = executeToolProposal(current, tool);
-      onChange(next);
+      if (onChange(next, current.version) === false) return;
       decide({
         ...latestDecisions.current,
         [tool.id]: { status: "accepted", appliedVersion: current.version + 1 },

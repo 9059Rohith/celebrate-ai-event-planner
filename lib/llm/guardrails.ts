@@ -46,33 +46,38 @@ export function cleanOutput(text: string): string {
   );
 }
 export function ideasSafe(text: string, input: EventInput): boolean {
-  const lower = text.toLowerCase();
+  const normalized = text.normalize("NFKC");
+  const lower = normalized.toLowerCase();
   if (input.avoid?.some((term) => term && lower.includes(term.toLowerCase())))
     return false;
   if (
     input.dietary.some((d) => ["vegetarian", "vegan", "jain"].includes(d)) &&
-    /\b(chicken|beef|pork|ribs|fish|meat|mutton|seafood|gelatin)\b/i.test(text)
+    /\b(chicken|beef|pork|ribs|fish|meat|mutton|seafood|gelatin)\b/i.test(
+      normalized,
+    )
   )
     return false;
   if (
     input.dietary.includes("vegan") &&
-    /\b(milk|cheese|butter|yogurt|paneer|ghee|honey|cream)\b/i.test(text)
+    /\b(milk|cheese|butter|yogurt|paneer|ghee|honey|cream)\b|\beggs?\b(?![-\s]+free\b)/i.test(
+      normalized,
+    )
   )
     return false;
   if (
     input.dietary.includes("jain") &&
-    /\b(onion|garlic|potato|carrot|beetroot)\b/i.test(text)
+    /\b(onion|garlic|potato|carrot|beetroot)\b/i.test(normalized)
   )
     return false;
   if (
     input.dietary.includes("no-alcohol") &&
-    /\b(wine|beer|vodka|whisky|champagne|cocktail|alcohol)\b/i.test(text)
+    /\b(wine|beer|vodka|whisky|champagne|cocktail|alcohol)\b/i.test(normalized)
   )
     return false;
   if (
     input.dietary.includes("nut-allergy") &&
-    /\b(nuts?|peanuts?|almonds?|cashews?)\b/i.test(text)
+    /\b(nuts?|peanuts?|almonds?|cashews?)\b/i.test(normalized)
   )
     return false;
-  return outputSafe(text);
+  return outputSafe(normalized);
 }

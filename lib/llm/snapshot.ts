@@ -73,6 +73,7 @@ export function compactPlanSnapshot(
       .map(({ id, category, status }) => ({ id, category, status })),
   };
 }
+/** Reconstruct bounded AI context only. Refinements must be merged into the full client plan. */
 export function hydratePlan(value: z.infer<typeof TransportPlanSchema>): Plan {
   if (!("snapshot" in value)) return value;
   const plan = createPlan(value.input);

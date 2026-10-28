@@ -4,16 +4,13 @@ An anonymous event planner for weddings, birthdays and community gatherings, wit
 
 Production: https://celebrate-ai-event-planner.vercel.app
 
-Current local hardening evidence is dated 28 October 2026; the latest recorded production timing is historical evidence from 25 October. The [hardening summary](../reports/submission-hardening-2026-10-28.json) records new local checks, while the [earlier release report](../reports/code-quality-revision.json) identifies its measured code, deployment and retained failures. The [requirements map](rubric-evidence.md) distinguishes official guidance from the owner's build specification.
+The latest local checks are recorded in [the final-attempt quality report](../reports/submission-quality-final-2026-10-28.json). Production verification for this revision is pending. Earlier reports remain dated evidence.
 
-## Local hardening verification — 28 October 2026
+## Final-attempt local verification — 28 October 2026
 
-- Vitest and coverage 4.1.12: 157/157 tests across 24 files passed; strict TypeScript passed.
-- Library coverage: statements 92.06%, branches 85.33%, functions 93.00%, lines 94.08%; domain lines 98.17%. Scope remains `lib/**/*.ts`; whole-application coverage is not established.
-- [Offline evaluation](../reports/mock-hardening-2026-10-28.json): 46/46 cases passed, zero model calls.
-- Full dependency audit: zero findings, including development dependencies; this supersedes the historical five development-only advisories.
-- Regression categories: late AI updates after edits, undo revisions, dismissed proposals, bounded LZ decompression, SSE cleanup and feedback storage/hydration.
-- Lint, production build, bundle/secret checks and all 20 desktop/mobile browser checks passed. The same Vercel URL is deployed and health-checked; live timing and audit-recovery details are in the hardening summary. October 25 production timing does not verify this local revision.
+**245/245 tests across 33 files**, **22/22 desktop/mobile browser checks**, strict TypeScript, lint/formatting, production build and bundle/secret checks passed. The full dependency audit reports zero findings. Whole-application line coverage is **75.94%**, library line coverage **94.63%**, and domain line coverage **98.33%**. The strengthened offline evaluation passes **46/46 cases with zero model calls**.
+
+The inclusive coverage scope is app/components/lib/evals/middleware/public runtime JavaScript. Overall statements/branches/functions are 73.76%/69.50%/67.03%; only overall lines have a 75% gate. Library and domain gates still cover all four metrics.
 
 ## Run locally
 
@@ -115,7 +112,7 @@ The release procedure uses the codex/submission-evidence branch for measurement 
 
 ## Code quality revision — 25 October 2026
 
-These are recorded release results, not a fresh 28 October verification. The saved Challenge 5 submission URL returned PageNotFound during a signed-in browser check on 28 October; current eligibility, score and submission availability remain unverified.
+These are historical release results. A later successful signed-in inspection on 28 October confirmed the second submission scored 96.98/100, rank 53/51,556, with Code Quality 89 and Testing 99. Two of three attempts have been used. This supersedes the earlier PageNotFound observation; it does not establish a score for subsequent code changes.
 
 - First portal attempt: 96.64/100, rank 67/51,309 (top 0.13% at observation). Code Quality was 88; this revision addresses source-level findings rather than asserting an unmeasured new score.
 - Replaced evaluation double assertions with a validated dashboard summary contract. Invalid custom evaluation events are ignored.

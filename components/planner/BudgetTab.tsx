@@ -1,16 +1,12 @@
 "use client";
-import { useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 import { Undo2, Redo2, Sparkles, Lock, Unlock, Check } from "lucide-react";
-import type { Plan, Budget } from "@/lib/schemas";
-import { BudgetSchema } from "@/lib/schemas";
-import {
-  rebalance,
-  setContingency,
-  validateBudget,
-} from "@/lib/domain/budgetEngine";
+import type { Plan } from "@/lib/schemas";
+import { rebalance, setContingency } from "@/lib/domain/budgetEngine";
 import { usePlanStore } from "@/lib/store";
-import { compactPlanSnapshot } from "@/lib/llm/snapshot";
+import { useSectionRefinement } from "@/lib/hooks/useSectionRefinement";
+import type { PlanChange } from "@/lib/hooks/usePlanActions";
 const BudgetCharts = dynamic(() => import("@/components/budget/BudgetCharts"), {
   ssr: false,
   loading: () => (
@@ -19,17 +15,21 @@ const BudgetCharts = dynamic(() => import("@/components/budget/BudgetCharts"), {
     </p>
   ),
 });
-export function BudgetTab({
+type BudgetTabProps = {
+  plan: Plan;
+  readOnly: boolean;
+  onChange: PlanChange;
+  onNotice: (v: string) => void;
+};
+export function BudgetTab(props: BudgetTabProps) {
+  return <BudgetEditor key={`${props.plan.id}:${props.readOnly}`} {...props} />;
+}
+function BudgetEditor({
   plan: p,
   readOnly,
   onChange: change,
   onNotice,
-}: {
-  plan: Plan;
-  readOnly: boolean;
-  onChange: (v: Partial<Plan>) => void;
-  onNotice: (v: string) => void;
-}) {
+}: BudgetTabProps) {
   const money = (n: number) =>
     new Intl.NumberFormat("en-IN", {
       style: "currency",
@@ -39,57 +39,43 @@ export function BudgetTab({
   const undo = usePlanStore((s) => s.undo);
   const redo = usePlanStore((s) => s.redo);
   const history = usePlanStore((s) => s.history);
-  const [busy, setBusy] = useState(false);
-  const [preview, setPreview] = useState<Budget | null>(null);
+  const { busy, preview, request, accept, dismiss } = useSectionRefinement({
+    plan: p,
+    section: "budget",
+    readOnly,
+    onChange: change,
+    onNotice,
+  });
   const frame = useRef<number | undefined>(undefined);
+  useEffect(
+    () => () => {
+      if (frame.current !== undefined) cancelAnimationFrame(frame.current);
+      frame.current = undefined;
+    },
+    [],
+  );
   const adjust = (id: string, pct: number) => {
-    if (frame.current) cancelAnimationFrame(frame.current);
+    if (readOnly) return;
+    if (frame.current !== undefined) cancelAnimationFrame(frame.current);
     frame.current = requestAnimationFrame(() => {
+      frame.current = undefined;
+      const state = usePlanStore.getState();
+      const current = state.plans.find((plan) => plan.id === p.id);
+      if (!current || state.currentPlanId !== p.id) return;
       const r = rebalance(
-        p.budget.lines,
+        current.budget.lines,
         id,
         { pct },
-        p.budget.total - p.budget.contingencyAmount,
+        current.budget.total - current.budget.contingencyAmount,
       );
-      if (r.ok) change({ budget: { ...p.budget, lines: r.lines } });
+      if (r.ok)
+        change(
+          { budget: { ...current.budget, lines: r.lines } },
+          current.version,
+        );
       else onNotice(r.error);
     });
   };
-  async function optimize() {
-    setBusy(true);
-    try {
-      const response = await fetch("/api/plan/regenerate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          plan: compactPlanSnapshot(p),
-          section: "budget",
-          instructions:
-            "Optimize allocations around my priorities. Preserve locked amounts and exact total. Explain changes in per-line notes.",
-        }),
-      });
-      const data = await response.json();
-      if (!response.ok) throw Error(data.error);
-      const budget = BudgetSchema.parse(data.value);
-      if (validateBudget(budget).length)
-        throw Error("Suggestion could not preserve budget constraints.");
-      for (const line of p.budget.lines.filter((l) => l.locked))
-        if (
-          budget.lines.find((l) => l.category === line.category)
-            ?.allocatedAmount !== line.allocatedAmount
-        )
-          throw Error(
-            "Suggestion would change a locked category. Unlock it before regenerating.",
-          );
-      setPreview(budget);
-    } catch (error) {
-      onNotice(
-        error instanceof Error ? error.message : "Unable to optimize budget.",
-      );
-    } finally {
-      setBusy(false);
-    }
-  }
   return (
     <>
       <div className="row between">
@@ -121,7 +107,11 @@ export function BudgetTab({
             <button
               className="button secondary small"
               disabled={busy}
-              onClick={optimize}
+              onClick={() =>
+                void request(
+                  "Optimize allocations around my priorities. Preserve locked amounts and exact total. Explain changes in per-line notes.",
+                )
+              }
             >
               <Sparkles size={15} />
               {busy ? "Optimizing…" : "Ask AI to optimize"}
@@ -142,17 +132,13 @@ export function BudgetTab({
             <button
               className="button small"
               onClick={() => {
-                change({ budget: preview });
-                setPreview(null);
-                onNotice("Suggestion applied. Undo is available.");
+                if (accept())
+                  onNotice("Suggestion applied. Undo is available.");
               }}
             >
               <Check size={15} /> Accept suggestion
             </button>
-            <button
-              className="button secondary small"
-              onClick={() => setPreview(null)}
-            >
+            <button className="button secondary small" onClick={dismiss}>
               Keep current budget
             </button>
           </div>

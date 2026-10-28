@@ -115,7 +115,11 @@ it("discards a pending preview when the selected section changes", async () => {
   fireEvent.click(screen.getByText("Refine this timeline section"));
   fireEvent.click(screen.getByRole("button", { name: "Generate preview" }));
   view.rerender(<RegenerateSection {...props} section="vendors" />);
-  await act(async () => resolve(Response.json({ value: plan.timeline })));
+  await act(async () =>
+    resolve(
+      Response.json({ refinement: { section: "timeline", changes: [] } }),
+    ),
+  );
   await waitFor(() =>
     expect(
       screen.queryByText("Review the regenerated section"),
@@ -128,7 +132,9 @@ it("does not offer a previous section's completed preview in the next section", 
   const plan = createPlan(exampleInput());
   vi.stubGlobal(
     "fetch",
-    vi.fn(async () => Response.json({ value: plan.timeline })),
+    vi.fn(async () =>
+      Response.json({ refinement: { section: "timeline", changes: [] } }),
+    ),
   );
   const props = { plan, onChange: vi.fn(), onNotice: vi.fn() };
   const view = render(<RegenerateSection {...props} section="timeline" />);

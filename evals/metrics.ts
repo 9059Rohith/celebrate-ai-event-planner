@@ -1,4 +1,10 @@
-import { PlanSchema, type EvalCase, type Plan } from "@/lib/schemas";
+import {
+  PlanSchema,
+  TimelineSchema,
+  type EvalCase,
+  type Plan,
+} from "@/lib/schemas";
+import { dietaryViolations } from "./dietary";
 export type Check = { passed: boolean; rationale: string };
 const check = (passed: boolean, rationale: string): Check => ({
   passed,
@@ -57,9 +63,6 @@ export function evaluate(
   now = new Date(),
 ): Record<string, Check> {
   const text = outputText(plan);
-  const food = JSON.stringify(
-    plan.ideas.filter((i) => i.kind === "menu"),
-  ).toLowerCase();
   const budget = plan.budget;
   const total =
     budget.lines.reduce((s, l) => s + Math.round(l.allocatedAmount * 100), 0) +
@@ -78,48 +81,22 @@ export function evaluate(
   const today = now.toISOString().slice(0, 10);
   const horizon = (caseData.input.planningWeeks ?? 156) * 7;
   const timeline =
+    TimelineSchema.safeParse(plan.timeline).success &&
     graphValid(plan) &&
     plan.timeline.milestones.every(
       (m) =>
         m.dueOffsetDays <= 0 &&
         Math.abs(m.dueOffsetDays) <= horizon &&
-        (!m.dueDate || m.status === "done" || m.dueDate >= today),
+        (!m.dueDate ||
+          ((m.status === "done" || m.dueDate >= today) &&
+            (!plan.timeline.eventDate ||
+              plan.timeline.eventDate < today ||
+              m.dueDate <= plan.timeline.eventDate))),
     ) &&
     plan.timeline.dayOf.every((s) =>
       /^([01]\d|2[0-3]):[0-5]\d$/.test(s.startTime),
     );
-  const forbidden: string[] = [];
-  for (const diet of caseData.input.dietary) {
-    if (["vegan", "vegetarian", "jain"].includes(diet))
-      forbidden.push(
-        "chicken",
-        "beef",
-        "pork",
-        "fish",
-        "mutton",
-        "ribs",
-        "seafood",
-      );
-    if (diet === "vegan")
-      forbidden.push(
-        "paneer",
-        "ghee",
-        "dahi",
-        "ice cream",
-        "dairy",
-        "cheese",
-        "milk",
-        "butter",
-      );
-    if (diet === "jain") forbidden.push("onion", "garlic", "potato");
-    if (diet === "no-alcohol")
-      forbidden.push("wine", "beer", "cocktail", "whisky");
-    if (diet === "nut-allergy") forbidden.push("peanut", "cashew", "almond");
-    if (diet === "gluten-free") forbidden.push("wheat", "naan", "bread");
-  }
-  const violations = [...new Set(forbidden)].filter((w) =>
-    new RegExp(`\\b${w}\\b`, "i").test(food),
-  );
+  const violations = dietaryViolations(caseData.input, plan.ideas);
   const constraints = [
     ...(caseData.expectations.mustMention || []),
     ...(caseData.input.mustHaves || []),
@@ -167,7 +144,7 @@ export function evaluate(
       !violations.length,
       violations.length
         ? `Forbidden menu terms: ${violations.join(", ")}`
-        : "No forbidden menu terms detected; lexical check is conservative.",
+        : "No prohibited menu recommendations detected; lexical checks do not certify ingredients or handling.",
     ),
     constraintAdherence: check(
       !misses.length && !avoids.length && !warnings.length,

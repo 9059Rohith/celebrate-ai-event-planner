@@ -37,7 +37,7 @@ export const MilestoneSchema = z.strictObject({
   id: z.string(),
   title: z.string(),
   dueOffsetDays: z.number().int(), // negative = before event
-  dueDate: z.string().nullable().default(null),
+  dueDate: z.iso.date().nullable().default(null),
   category: z.string(),
   priority: MilestonePriorityEnum.default("should"),
   status: MilestoneStatusEnum.default("todo"),
@@ -51,10 +51,7 @@ export const ScheduleItemSchema = z.strictObject({
   startTime: z.string().regex(/^(?:[01]\d|2[0-3]):[0-5]\d$/),
   durationMin: z.number().int().positive().max(1440),
   day: z.number().int().min(1).max(5).optional(),
-  date: z
-    .string()
-    .regex(/^\d{4}-\d{2}-\d{2}$/)
-    .optional(),
+  date: z.iso.date().optional(),
   title: z.string(),
   owner: z.string().optional(),
   notes: z.string().default(""),
@@ -62,7 +59,7 @@ export const ScheduleItemSchema = z.strictObject({
 export type ScheduleItem = z.infer<typeof ScheduleItemSchema>;
 
 export const TimelineSchema = z.strictObject({
-  eventDate: z.string().nullable().default(null),
+  eventDate: z.iso.date().nullable().default(null),
   milestones: z.array(MilestoneSchema),
   dayOf: z.array(ScheduleItemSchema),
 });

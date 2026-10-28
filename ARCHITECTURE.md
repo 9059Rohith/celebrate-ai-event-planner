@@ -1,6 +1,6 @@
 # Architecture
 
-The 28 October local hardening adds regression-tested boundaries for late AI updates after edits, undo revisions, dismissed proposals, bounded LZ decompression, SSE cleanup and feedback storage/hydration. Vitest and coverage 4.1.12 passed 157 tests across 24 files; TypeScript and the 46-case offline evaluation passed with no model calls. The full dependency audit reported zero findings. Library line coverage is 94.08% and domain line coverage 98.17%. See the [hardening summary](reports/submission-hardening-2026-10-28.json). Lint, production build, bundle/secret checks and all 20 desktop/mobile browser checks passed. The same Vercel URL is deployed and health-checked; live timing and audit-recovery details are in the hardening summary; the production architecture measurements below describe the earlier release.
+**Final-attempt local verification — 28 October 2026:** **245/245 tests across 33 files**, **22/22 desktop/mobile browser checks**, strict TypeScript, lint/formatting, production build and bundle/secret checks passed. The full dependency audit reports zero findings. Whole-application line coverage is **75.94%**, library line coverage **94.63%**, and domain line coverage **98.33%**. The strengthened offline evaluation passes **46/46 cases with zero model calls**. See [the quality report](reports/submission-quality-final-2026-10-28.json). Production verification for this revision is pending; earlier performance reports remain historical evidence.
 
 The recorded 25 October release uses Next.js 15.5.28 App Router and React 19.3, TypeScript strict mode, Tailwind 4/PostCSS, Radix dialog, Zustand persistence, Zod schemas, lazy Recharts and the official OpenAI SDK. Release measurements below are dated evidence, not verification of later local changes.
 
@@ -41,6 +41,8 @@ The generic loading.tsx boundary is scoped to saved-plan routes. A production Li
 
 ## Client boundaries
 
+- `lib/llm/refinement.ts` defines strict, section-specific deltas. A compact AI snapshot supplies context; it never replaces the full stored section. Acceptance merges only permitted fields and retains custom tasks, completion state, saved ideas and untouched notes.
+- `lib/hooks/useSectionRefinement.ts` shares request cancellation and preview acceptance between budget optimization and section regeneration. Accepted changes must belong to the current plan and revision; `usePlanActions` validates again at the mutation boundary.
 - `lib/hooks/usePlanActions.ts` owns validated workspace mutations, history, sharing and navigation. `Workspace` renders those actions and lazy section views.
 - `lib/hooks/usePlannerChat.ts` owns chat persistence, cancellation, streaming and proposal decisions. `ChatTab` renders messages and review controls.
 - `lib/client/storage.ts` is the lightweight browser-storage adapter used by UI preferences. Plan schema migration lives in `lib/client/planStorage.ts` so the global header does not load the planning validation graph.

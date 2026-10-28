@@ -4,6 +4,7 @@ import { execFileSync } from "node:child_process";
 import { runEvaluation, type Options, type Run } from "./harness";
 import { goldenCases } from "./dataset";
 import { comparePrompts } from "./comparison";
+import { parseEvaluationRun, parseResume } from "./persistence";
 const args = process.argv.slice(2);
 const arg = (name: string, fallback: string) => {
   const index = args.findIndex(
@@ -66,20 +67,14 @@ async function main() {
   }
   const previous =
     args.includes("--resume") && existsSync(out)
-      ? (JSON.parse(readFileSync(out, "utf8")) as Run)
+      ? parseResume(JSON.parse(readFileSync(out, "utf8")), options)
       : undefined;
-  if (
-    previous &&
-    (previous.promptVersion !== options.promptVersion ||
-      previous.model !== (options.mock ? "none" : options.model))
-  )
-    throw new Error("Resume metadata mismatch. Use a separate output path.");
   const save = (run: Run) => writeFileSync(out, JSON.stringify(run, null, 2));
   const run = await runEvaluation(options, previous?.results, save);
   save(run);
   const baseline = arg("compare", "");
   if (baseline) {
-    const old = JSON.parse(readFileSync(baseline, "utf8")) as Run;
+    const old = parseEvaluationRun(JSON.parse(readFileSync(baseline, "utf8")));
     const comparison = {
       baseline: old.id,
       candidate: run.id,

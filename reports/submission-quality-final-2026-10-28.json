@@ -1,0 +1,171 @@
+{
+  "date": "2026-10-28",
+  "status": "Local verification complete; production verification pending",
+  "localCodeCommit": "8e6d9663359f640eba6adc3340d21d62d0a42b15",
+  "review": "Astra architecture, evaluation and assurance implementation with independent cross-review; regression tests observed failing before fixes",
+  "portalObservation": {
+    "score": 96.98,
+    "rank": 53,
+    "participants": 51556,
+    "attempt": 2,
+    "maximumAttempts": 3,
+    "categories": {
+      "codeQuality": 89,
+      "security": 99,
+      "efficiency": 100,
+      "testing": 99,
+      "accessibility": 99,
+      "alignment": 100
+    },
+    "finalAttemptSubmitted": false
+  },
+  "changes": [
+    "Strict section deltas preserve full user state, custom checklist items, saved ideas and untouched multiline notes",
+    "One owner- and revision-aware preview lifecycle prevents stale responses and delayed animation frames overwriting edits",
+    "Feasible budget allocations are fixed points for empty advice and unchanged contingency",
+    "Generation cache binds the model and complete prompt; prompt-local milestone IDs map to each plan safely",
+    "Real calendar dates, independent dietary mutation checks, typed resume configuration and code identity, complete judging and inconclusive pairwise disagreement",
+    "Accessible occasion selection, current-step semantics and keyboard focus; API idea safety normalizes Unicode and labels rejected provider output as fallback",
+    "Inclusive runtime coverage gate and production verifier that retains operational failures and refuses evidence overwrites"
+  ],
+  "tests": {
+    "passed": 245,
+    "failed": 0,
+    "files": 33,
+    "addedSincePreviousRelease": 88
+  },
+  "coverageScope": "app, components, lib, evals, middleware.ts and public runtime JavaScript; 75% overall line gate, library 80% and domain 90% across all four metrics",
+  "coverage": {
+    "overall": {
+      "lines": {
+        "total": 2885,
+        "covered": 2191,
+        "skipped": 0,
+        "pct": 75.94
+      },
+      "statements": {
+        "total": 3271,
+        "covered": 2413,
+        "skipped": 0,
+        "pct": 73.76
+      },
+      "functions": {
+        "total": 895,
+        "covered": 600,
+        "skipped": 0,
+        "pct": 67.03
+      },
+      "branches": {
+        "total": 2223,
+        "covered": 1545,
+        "skipped": 0,
+        "pct": 69.5
+      },
+      "branchesTrue": {
+        "total": 0,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 100
+      }
+    },
+    "library": {
+      "lines": {
+        "total": 1565,
+        "covered": 1481,
+        "pct": 94.63
+      },
+      "statements": {
+        "total": 1777,
+        "covered": 1642,
+        "pct": 92.4
+      },
+      "functions": {
+        "total": 356,
+        "covered": 335,
+        "pct": 94.1
+      },
+      "branches": {
+        "total": 1106,
+        "covered": 948,
+        "pct": 85.71
+      }
+    },
+    "domain": {
+      "lines": {
+        "total": 662,
+        "covered": 651,
+        "pct": 98.33
+      },
+      "statements": {
+        "total": 735,
+        "covered": 721,
+        "pct": 98.09
+      },
+      "functions": {
+        "total": 150,
+        "covered": 150,
+        "pct": 100
+      },
+      "branches": {
+        "total": 493,
+        "covered": 457,
+        "pct": 92.69
+      }
+    }
+  },
+  "browserTests": {
+    "passed": 22,
+    "failed": 0,
+    "projects": [
+      "desktop",
+      "mobile"
+    ],
+    "stats": {
+      "startTime": "2026-10-28T15:10:21.852Z",
+      "duration": 85215.83600000001,
+      "expected": 22,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  },
+  "offlineEvaluation": {
+    "passed": 46,
+    "total": 46,
+    "tokens": 0,
+    "costUsd": 0,
+    "report": "reports/mock-quality-final-2026-10-28.json",
+    "fullOriginalRun": "reports/mock-quality-final-2026-10-28.json.gz"
+  },
+  "checks": {
+    "typecheck": true,
+    "eslint": true,
+    "formatting": true,
+    "productionBuild": true,
+    "bundleBudget": true,
+    "browserBundleSecretPatterns": true
+  },
+  "bundle": {
+    "gzipBytes": 117623,
+    "budgetBytes": 122880,
+    "report": "reports/bundle.json"
+  },
+  "dependencyAudit": {
+    "runtimeAndDevelopmentVulnerabilities": 0
+  },
+  "hostedCI": {
+    "status": "Previously blocked before any steps by GitHub owner-account billing lock; new run pending publication"
+  },
+  "evidenceArchive": "reports/archived-evidence.json",
+  "limitations": [
+    "No new competition score is claimed",
+    "No additional paid runtime model calls or live judge/prompt A/B evaluation",
+    "The owner controls the final competition submission"
+  ],
+  "source": {
+    "files": 330,
+    "bytes": 9430462,
+    "secretPatternFiles": [],
+    "githubReportedSizeKiB": 3508
+  }
+}

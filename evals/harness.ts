@@ -2,8 +2,13 @@ import { createPlan } from "@/lib/domain/planner";
 
 import type { EventInput, Plan } from "@/lib/schemas";
 import { evaluate, metricNames, type Check } from "./metrics";
-import { goldenCases } from "./dataset";
 import { judgePlan, price, rubricKeys } from "./judge";
+import { isDeepStrictEqual } from "node:util";
+import {
+  evaluationConfiguration,
+  selectedCases,
+  type EvaluationConfiguration,
+} from "./persistence";
 export type Options = {
   suite: "all" | "deterministic" | "judge" | "adversarial";
   mock: boolean;
@@ -37,6 +42,7 @@ export type Run = {
   promptVersion: string;
   model: string;
   gitSha: string;
+  configuration?: EvaluationConfiguration;
   totalCases: number;
   passed: number;
   failed: number;
@@ -118,12 +124,17 @@ export function summarize(
     hallucinations: rates.hallucinationFree === 1,
     fallback: rates.fallbackValid === 1,
     latency: options.mock || percentile(0.95) <= 12000,
-    judge: !judged.length
-      ? options.mock ||
-        options.suite === "deterministic" ||
-        options.suite === "adversarial"
-      : Object.values(judgeMeans).every((v) => v >= 3.5) &&
-        Object.values(judgeMeans).reduce((a, b) => a + b, 0) / 7 >= 4,
+    judge:
+      options.mock ||
+      options.suite === "deterministic" ||
+      options.suite === "adversarial"
+        ? true
+        : results.length > 0 &&
+          judged.length === results.length &&
+          Object.values(judgeMeans).every((v) => v >= 3.5) &&
+          Object.values(judgeMeans).reduce((a, b) => a + b, 0) /
+            rubricKeys.length >=
+            4,
   };
   return {
     id: `${options.promptVersion}-${new Date(started).toISOString()}`,
@@ -134,6 +145,7 @@ export function summarize(
     promptVersion: options.promptVersion,
     model: options.mock ? "none" : options.model,
     gitSha: process.env.EVAL_GIT_SHA || "unknown",
+    configuration: evaluationConfiguration(options),
     totalCases: results.length,
     passed: results.filter((r) => r.passed).length,
     failed: results.filter((r) => !r.passed).length,
@@ -188,12 +200,19 @@ export async function runEvaluation(
       "Unknown model pricing: add a documented price before cost-capped live evaluation.",
     );
   const started = Date.now();
-  const tests = goldenCases()
-    .filter(
-      (c) => options.suite !== "adversarial" || c.tags.includes("adversarial"),
-    )
-    .slice(0, options.limit);
-  const results = [...previous.filter((r) => tests.some((t) => t.id === r.id))];
+  const tests = selectedCases(options);
+  const seen = new Set<string>();
+  for (const result of previous) {
+    if (seen.has(result.id))
+      throw new Error("Duplicate case ID in resume data.");
+    seen.add(result.id);
+    const test = tests.find((item) => item.id === result.id);
+    if (!test || !isDeepStrictEqual(result.input, test.input))
+      throw new Error(
+        "Resume case identity mismatch. Use a fresh output path.",
+      );
+  }
+  const results = [...previous];
   const queue = tests.filter((t) => !results.some((r) => r.id === t.id));
   let next = 0;
   let reserved = results.reduce(

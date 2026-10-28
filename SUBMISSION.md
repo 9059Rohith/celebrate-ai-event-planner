@@ -2,7 +2,7 @@
 
 Celebrate AI helps users organize weddings, birthdays and community events with editable budgets, dependent timelines, vendor checklists, personalized ideas and grounded chat proposals. A complete deterministic plan remains available when the AI provider is unavailable.
 
-**First submission result:** 96.64/100, with displayed rank **67 / 51,309** on 25 October 2026 (approximately the top **0.13%**). Code Quality 88; Security 99; Efficiency 100; Testing 98; Accessibility 99; Problem Statement Alignment 100. Future scores and final ranking depend on the evaluator.
+**Latest observed submission result:** 96.98/100, with displayed rank **53 / 51,556** on 28 October 2026 (approximately the top **0.103%**). Code Quality 89; Security 99; Efficiency 100; Testing 99; Accessibility 99; Problem Statement Alignment 100. Two of three attempts have been used. The first attempt scored 96.64/100. Future scores and final ranking depend on the evaluator.
 
 ## Submission links
 
@@ -12,15 +12,15 @@ Celebrate AI helps users organize weddings, birthdays and community events with 
 - Selected LinkedIn post: https://lnkd.in/p/g8c7TeDX (used at the owner’s explicit request)
 - CI workflow: https://github.com/9059Rohith/celebrate-ai-event-planner/actions/workflows/ci.yml
 
-## Local hardening evidence — 28 October 2026
+## Final-attempt verification — 28 October 2026
 
-Verified locally with Vitest and coverage 4.1.12: **157/157 tests across 24 files passed**, strict TypeScript passed, and the full `npm audit` reported **zero findings across runtime and development dependencies**. Library coverage is statements 92.06%, branches 85.33%, functions 93.00% and lines 94.08%; domain lines are 98.17%. Coverage remains scoped to `lib/**/*.ts`, not the whole application.
+**Final-attempt local verification — 28 October 2026:** **245/245 tests across 33 files**, **22/22 desktop/mobile browser checks**, strict TypeScript, lint/formatting, production build and bundle/secret checks passed. The full dependency audit reports zero findings. Whole-application line coverage is **75.94%**, library line coverage **94.63%**, and domain line coverage **98.33%**. The strengthened offline evaluation passes **46/46 cases with zero model calls**. See [the quality report](reports/submission-quality-final-2026-10-28.json). Production verification for this revision is pending; earlier performance reports remain historical evidence.
 
-The [fresh offline evaluation](reports/mock-hardening-2026-10-28.json) passed **46/46 cases with zero model calls**. Regression coverage addresses late AI updates after edits, undo revisions, dismissed proposals, bounded LZ decompression, SSE cleanup and feedback storage/hydration. See the [hardening summary](reports/submission-hardening-2026-10-28.json). Lint, production build, bundle/secret checks and all 20 desktop/mobile browser checks passed. The same Vercel URL is deployed and health-checked; live timing and audit-recovery details are in the hardening summary; the historical production results below must not be interpreted as verification of this revision.
+The revision preserves user data during AI refinement, fixes stale preview ownership and cache context, strengthens evaluation integrity, and adds accessible wizard transitions. Historical reports remain available; no score for this revision has been measured.
 
 ## Historical release readiness — 25 October 2026
 
-The release evidence below is from 25 October, summarized in [the revision report](reports/code-quality-revision.json), for published code commit `f40fd79211370879aaa978dc8a3305a2c310b71c` and deployment `dpl_HUyMGmZFQUVZaQqG8S1LvUFKgCAM`. It is not a verification of later local changes. On 28 October, the saved Challenge 5 submission URL returned PageNotFound in a signed-in browser; current eligibility, submission availability and score could not be verified. The first-attempt result above remains a dated observation.
+The release evidence below is from 25 October, summarized in [the revision report](reports/code-quality-revision.json), for published code commit `f40fd79211370879aaa978dc8a3305a2c310b71c` and deployment `dpl_HUyMGmZFQUVZaQqG8S1LvUFKgCAM`. It is not a verification of later local changes. The later successful signed-in inspection on 28 October confirmed the second-attempt result above and superseded an earlier PageNotFound observation.
 
 | Item | Verified status |
 | --- | --- |
@@ -30,7 +30,7 @@ The release evidence below is from 25 October, summarized in [the revision repor
 | Hosted CI result | Release run 40193415888 executed zero steps because GitHub reported an owner-account billing lock; hosted verification was not established |
 | Live app | Original Vercel alias was available in the recorded release checks |
 | Production GenAI | Server-only key configured; one uncached gpt-4o-mini generation returned a schema-valid hybrid plan on its first attempt. 2,038 tokens; estimated model cost $0.000702 |
-| Submission portal | Attempt 1 of 3 was observed submitted on 25 October. The 28 October check could not establish current portal state |
+| Submission portal | Attempt 1 of 3 was observed submitted on 25 October. The later 28 October inspection confirmed attempt 2 of 3 and score 96.98/100 |
 
 ## Historical release evidence — 25 October 2026
 
@@ -52,7 +52,7 @@ Historical 22 October mobile Lighthouse medians were performance 90/85 and LCP 1
 
 ## Requirements and evidence limits
 
-[The evidence map](docs/rubric-evidence.md) separates the official event guidance from the owner's detailed build specification. The public guidance contains conflicting wording about allowed AI tools and narrative deliverables; no detailed scoring weights were verified. Live judge scores, empirical prompt A/B results, independently human-labeled calibration anchors and whole-application coverage remain unestablished. The historical [readiness snapshot](reports/submission-readiness.json) predates attempt 1 and must not be read as the current portal state.
+[The evidence map](docs/rubric-evidence.md) separates the official event guidance from the owner's detailed build specification. The public guidance contains conflicting wording about allowed AI tools and narrative deliverables; no detailed scoring weights were verified. Live judge scores, empirical prompt A/B results, independently human-labeled calibration anchors remain unestablished. The historical [readiness snapshot](reports/submission-readiness.json) predates attempt 1 and must not be read as the current portal state.
 
 ## Reproduce and review
 

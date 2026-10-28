@@ -1,14 +1,14 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { Sparkles } from "lucide-react";
-import { PlanSchema, type Plan } from "@/lib/schemas";
-import { compactPlanSnapshot } from "@/lib/llm/snapshot";
-import { usePlanStore } from "@/lib/store";
+import type { Plan } from "@/lib/schemas";
+import type { PlanChange } from "@/lib/hooks/usePlanActions";
+import { useSectionRefinement } from "@/lib/hooks/useSectionRefinement";
 type Section = "timeline" | "vendors" | "ideas";
 type RegenerateSectionProps = {
   plan: Plan;
   section: Section;
-  onChange: (v: Partial<Plan>) => void;
+  onChange: PlanChange;
   onNotice: (v: string) => void;
 };
 export function RegenerateSection(props: RegenerateSectionProps) {
@@ -23,58 +23,12 @@ function SectionPreview({
   onNotice,
 }: RegenerateSectionProps) {
   const [instructions, setInstructions] = useState("");
-  const [busy, setBusy] = useState(false);
-  const [preview, setPreview] = useState<{
-    value: Plan[Section];
-    version: number;
-    stored: boolean;
-  } | null>(null);
-  const pending = useRef<AbortController | null>(null);
-  useEffect(
-    () => () => {
-      pending.current?.abort();
-      pending.current = null;
-    },
-    [],
-  );
-  async function request() {
-    if (pending.current) return;
-    const controller = new AbortController();
-    pending.current = controller;
-    const stored = usePlanStore.getState().plans.find((p) => p.id === plan.id);
-    const snapshot = stored ?? plan;
-    setBusy(true);
-    setPreview(null);
-    try {
-      const response = await fetch("/api/plan/regenerate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        signal: controller.signal,
-        body: JSON.stringify({
-          plan: compactPlanSnapshot(snapshot),
-          section,
-          instructions,
-        }),
-      });
-      const data = await response.json();
-      if (controller.signal.aborted || pending.current !== controller) return;
-      if (!response.ok) throw Error(data.error);
-      const value = PlanSchema.shape[section].parse(data.value);
-      setPreview({ value, version: snapshot.version, stored: !!stored });
-    } catch (error) {
-      if (controller.signal.aborted || pending.current !== controller) return;
-      onNotice(
-        error instanceof Error
-          ? error.message
-          : "Unable to regenerate. Please retry.",
-      );
-    } finally {
-      if (pending.current === controller) {
-        pending.current = null;
-        setBusy(false);
-      }
-    }
-  }
+  const { busy, preview, request, accept, dismiss } = useSectionRefinement({
+    plan,
+    section,
+    onChange,
+    onNotice,
+  });
   return (
     <details className="panel regenerate">
       <summary>Refine this {section} section</summary>
@@ -91,7 +45,7 @@ function SectionPreview({
       <button
         className="button secondary small"
         disabled={busy}
-        onClick={() => void request()}
+        onClick={() => void request(instructions)}
       >
         <Sparkles size={14} />
         {busy ? "Preparing a preview…" : "Generate preview"}
@@ -103,35 +57,12 @@ function SectionPreview({
             Your current section is kept until you accept. No AI key? The
             smart-template version is returned.
           </p>
-          <pre className="preview-json">
-            {JSON.stringify(preview.value, null, 2)}
-          </pre>
+          <pre className="preview-json">{JSON.stringify(preview, null, 2)}</pre>
           <div className="row">
-            <button
-              className="button small"
-              onClick={() => {
-                const current = usePlanStore
-                  .getState()
-                  .plans.find((p) => p.id === plan.id);
-                if (
-                  (preview.stored && !current) ||
-                  (current ?? plan).version !== preview.version
-                ) {
-                  onNotice(
-                    "Your plan changed while this preview was open. Request a fresh preview.",
-                  );
-                  return;
-                }
-                onChange({ [section]: preview.value });
-                setPreview(null);
-              }}
-            >
+            <button className="button small" onClick={accept}>
               Accept section
             </button>
-            <button
-              className="button secondary small"
-              onClick={() => setPreview(null)}
-            >
+            <button className="button secondary small" onClick={dismiss}>
               Keep current section
             </button>
           </div>

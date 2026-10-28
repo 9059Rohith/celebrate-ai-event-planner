@@ -59,10 +59,11 @@ function deferIdeas(plan: Plan) {
         resolve = done;
       }),
   );
-  const ideas = [
-    { ...plan.ideas[0], id: "regenerated-idea", title: "Fresh idea" },
-  ];
-  return () => resolve(Response.json({ value: ideas }));
+  const refinement = {
+    section: "ideas",
+    changes: [{ id: plan.ideas[0].id, title: "Fresh idea" }],
+  };
+  return () => resolve(Response.json({ refinement }));
 }
 
 describe("chat proposal lifecycle and revision safety", () => {

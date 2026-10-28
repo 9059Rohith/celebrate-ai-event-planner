@@ -68,6 +68,23 @@ describe("workspace plan actions", () => {
       expect.stringContaining("could not be validated"),
     );
   });
+  it("rejects a stale expected revision without recording history", () => {
+    const { plan, result } = setup();
+    act(() =>
+      usePlanStore.getState().updatePlan(plan.id, {
+        summary: { ...plan.summary, headline: "Newer edit" },
+      }),
+    );
+    let applied: boolean | undefined;
+    act(() => {
+      applied = result.current.change({ summary: plan.summary }, plan.version);
+    });
+    expect(applied).toBe(false);
+    expect(usePlanStore.getState().plans[0].summary.headline).toBe(
+      "Newer edit",
+    );
+    expect(usePlanStore.getState().history.past).toEqual([]);
+  });
   it("protects read-only plans while allowing import as a new local copy", () => {
     const { plan, result } = setup(true);
     act(() => {

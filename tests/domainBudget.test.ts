@@ -10,6 +10,26 @@ import {
 } from "@/lib/domain/budgetEngine";
 
 describe("budget invariant properties", () => {
+  it("keeps feasible allocations fixed for unchanged contingency and empty or zero advice", () => {
+    for (const eventType of ["wedding", "birthday", "community"] as const) {
+      const budget = createPlan(exampleInput(eventType)).budget;
+      budget.lines[0].locked = true;
+      const contingency = setContingency(budget, budget.contingencyPct);
+      expect(contingency).toEqual({ ok: true, budget });
+      for (const suggestions of [
+        [],
+        [{ category: budget.lines[1].category, deltaPct: 0 }],
+      ]) {
+        const result = applyAiSuggestion(
+          budget.lines,
+          suggestions,
+          budget.total - budget.contingencyAmount,
+        );
+        expect(result.ok).toBe(true);
+        if (result.ok) expect(result.lines).toEqual(budget.lines);
+      }
+    }
+  });
   it("keeps very small schema-valid budgets feasible with honest consolidation", () => {
     for (let totalBudget = 1; totalBudget < 1000; totalBudget++) {
       const result = allocate({ ...exampleInput(), totalBudget });

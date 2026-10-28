@@ -1,6 +1,6 @@
 "use client";
 import "@/app/wizard.css";
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect, useRef, Suspense } from "react";
 import dynamic from "next/dynamic";
 import { useSearchParams, useRouter } from "next/navigation";
 import { ArrowLeft, ArrowRight, Sparkles, Check } from "lucide-react";
@@ -57,6 +57,8 @@ function Wizard() {
     ),
   );
   const [step, setStep] = useState(0);
+  const stepHeading = useRef<HTMLHeadingElement>(null);
+  const previousStep = useRef(step);
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
   const add = usePlanStore((s) => s.addPlan);
@@ -64,6 +66,10 @@ function Wizard() {
     resolver: zodResolver(EventInputSchema),
     values: input,
   });
+  useEffect(() => {
+    if (previousStep.current !== step) stepHeading.current?.focus();
+    previousStep.current = step;
+  }, [step]);
   useEffect(() => {
     if (!params.get("type")) {
       try {
@@ -131,6 +137,7 @@ function Wizard() {
             <button
               key={name}
               disabled={i > step}
+              aria-current={i === step ? "step" : undefined}
               onClick={() => setStep(i)}
               className={i === step ? "active" : ""}
             >
@@ -156,7 +163,9 @@ function Wizard() {
           <div className="progress">
             <span style={{ width: `${(step + 1) * 20}%` }} />
           </div>
-          <h2>{steps[step]}</h2>
+          <h2 ref={stepHeading} tabIndex={-1}>
+            {steps[step]}
+          </h2>
           <form
             onSubmit={form.handleSubmit(
               () => {

@@ -4,6 +4,11 @@ import { useRouter } from "next/navigation";
 import { PlanSchema, type Plan } from "@/lib/schemas";
 import { usePlanStore } from "@/lib/store";
 
+export type PlanChange = (
+  updates: Partial<Plan>,
+  expectedVersion?: number,
+) => boolean | void;
+
 export function usePlanActions(
   plan: Plan,
   readOnly: boolean,
@@ -22,19 +27,30 @@ export function usePlanActions(
   useEffect(() => {
     if (!readOnly) setCurrent(plan.id);
   }, [plan.id, readOnly, setCurrent]);
-  const change = (updates: Partial<Plan>) => {
-    if (readOnly) return;
+  const change = (
+    updates: Partial<Plan>,
+    expectedVersion?: number,
+  ): boolean => {
+    if (readOnly) return false;
     try {
       const state = usePlanStore.getState();
       const latest = state.plans.find((x) => x.id === plan.id);
-      if (!latest || state.currentPlanId !== plan.id) return;
+      if (!latest || state.currentPlanId !== plan.id) return false;
+      if (expectedVersion !== undefined && latest.version !== expectedVersion) {
+        setNotice(
+          "Your plan changed. Request a fresh preview before applying it.",
+        );
+        return false;
+      }
       const next = PlanSchema.parse({ ...latest, ...updates });
       pushHistory(latest);
       update(plan.id, next);
+      return true;
     } catch {
       setNotice(
         "The change could not be validated. Your current plan was kept.",
       );
+      return false;
     }
   };
   async function share() {

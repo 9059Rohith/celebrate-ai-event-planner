@@ -8,6 +8,7 @@ import { promptMessages } from "@/lib/llm/prompts";
 import { cleanOutput } from "@/lib/llm/guardrails";
 import { applyAiSuggestion, validateBudget } from "@/lib/domain/budgetEngine";
 import { checkedBody, apiError } from "@/lib/security/request";
+import { createSectionRefinement } from "@/lib/llm/refinement";
 const Body = z
   .object({
     plan: TransportPlanSchema,
@@ -83,13 +84,12 @@ export async function POST(request: Request) {
                 budget.lines = next.lines;
               else suggestions = [];
             } else suggestions = [];
-            budget.lines = budget.lines.map((l) => ({
-              ...l,
-              notes: cleanOutput(
-                result.data.notes.find((n) => n.category === l.category)
-                  ?.notes || l.notes,
-              ),
-            }));
+            budget.lines = budget.lines.map((line) => {
+              const note = result.data.notes.find(
+                (n) => n.category === line.category,
+              );
+              return note ? { ...line, notes: cleanOutput(note.notes) } : line;
+            });
             meta = {
               source: "hybrid",
               promptVersion: "2026-10-v2",
@@ -100,7 +100,14 @@ export async function POST(request: Request) {
           if (request.signal.aborted) throw request.signal.reason;
         }
       return Response.json(
-        { section: "budget", value: budget, suggestions, meta },
+        {
+          refinement: createSectionRefinement("budget", plan, {
+            ...plan,
+            budget,
+          }),
+          suggestions,
+          meta,
+        },
         { headers: { "Cache-Control": "no-store" } },
       );
     }
@@ -111,8 +118,7 @@ export async function POST(request: Request) {
     });
     return Response.json(
       {
-        section: body.section,
-        value: updated[body.section],
+        refinement: createSectionRefinement(body.section, plan, updated),
         meta: updated.meta,
       },
       { headers: { "Cache-Control": "no-store" } },

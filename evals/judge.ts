@@ -19,8 +19,11 @@ const Scores = z.object({
   creativity: z.number().min(1).max(5),
   safety: z.number().min(1).max(5),
 });
-const Judgement = z.object({ scores: Scores, rationale: z.string() });
-export type Judgement = z.infer<typeof Judgement>;
+export const JudgementSchema = z.object({
+  scores: Scores,
+  rationale: z.string(),
+});
+export type Judgement = z.infer<typeof JudgementSchema>;
 export const anchors = [
   {
     example:
@@ -112,7 +115,7 @@ export async function judgePlan(
     );
     tokensIn += response.usage?.prompt_tokens || 0;
     tokensOut += response.usage?.completion_tokens || 0;
-    return Judgement.parse(
+    return JudgementSchema.parse(
       JSON.parse(response.choices[0]?.message.content || "{}"),
     );
   };
@@ -143,6 +146,7 @@ export async function pairwise(
   });
   const blind = (p: Plan) => ({
     summary: p.summary,
+    budget: p.budget,
     ideas: p.ideas,
     vendors: p.vendors,
     timeline: p.timeline,
@@ -182,14 +186,15 @@ export async function pairwise(
   const second = await compare(swapped ? a : b, swapped ? b : a);
   const canonical = (winner: string, swap: boolean) =>
     winner === "tie" ? "tie" : (winner === "A") !== swap ? "v1" : "v2";
+  const firstWinner = canonical(first.decision.winner, swapped);
+  const consistent =
+    firstWinner === canonical(second.decision.winner, !swapped);
   return {
     first,
     second,
     firstOrder: swapped ? ["v2", "v1"] : ["v1", "v2"],
-    consistent:
-      canonical(first.decision.winner, swapped) ===
-      canonical(second.decision.winner, !swapped),
-    winner: canonical(first.decision.winner, swapped),
+    consistent,
+    winner: consistent ? firstWinner : null,
     estimatedCostUsd: price(
       model,
       first.tokensIn + second.tokensIn,

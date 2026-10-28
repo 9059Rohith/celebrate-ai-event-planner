@@ -283,6 +283,25 @@ function distribute(current: BudgetLine[], total: number): RebalanceResult {
       ok: false,
       error: "Category bounds and locks cannot fit this allocation",
     };
+  // A feasible whole-unit allocation is already a fixed point. Re-apportioning
+  // its full weights above the minimums would move money on no-op requests.
+  if (
+    lines.reduce((sum, line) => sum + line.allocatedAmount, 0) === total &&
+    lines.every(
+      (line) =>
+        Number.isSafeInteger(line.allocatedAmount) &&
+        line.allocatedAmount >= bounds(line)[0] &&
+        line.allocatedAmount <= bounds(line)[1],
+    )
+  )
+    return {
+      ok: true,
+      lines: lines.map((line) => ({
+        ...line,
+        pct: total ? (line.allocatedAmount / total) * 100 : 0,
+      })),
+      warnings: [],
+    };
   const weights = new Map(
     free.map((l) => [l.id, Math.max(l.allocatedAmount, 1)]),
   );
@@ -383,7 +402,7 @@ export function applyAiSuggestion(
       const delta = suggestions
         .filter((s) => s.category === l.category)
         .reduce((n, s) => n + s.deltaPct, 0);
-      return l.locked
+      return l.locked || delta === 0
         ? l
         : {
             ...l,

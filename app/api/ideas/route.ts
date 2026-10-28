@@ -101,7 +101,7 @@ export async function POST(request: Request) {
         }));
     }
     ideas = ideas.filter((i) => ideasSafe(JSON.stringify(i), input));
-    let source: "ai" | "fallback" = "fallback";
+    const personalized = new Set<(typeof ideas)[number]>();
     if (getClient() && ideas.length) {
       try {
         if (await moderate(JSON.stringify(input), request.signal)) {
@@ -128,16 +128,16 @@ export async function POST(request: Request) {
           });
           ideas = ideas.map((idea, i) => {
             const next = result.data.ideas[i];
-            return next && ideasSafe(JSON.stringify(next), input)
-              ? {
-                  ...idea,
-                  title: cleanOutput(next.title),
-                  description: cleanOutput(next.description),
-                  whyItFits: cleanOutput(next.whyItFits),
-                }
-              : idea;
+            if (!next || !ideasSafe(JSON.stringify(next), input)) return idea;
+            const suggestion = {
+              ...idea,
+              title: cleanOutput(next.title),
+              description: cleanOutput(next.description),
+              whyItFits: cleanOutput(next.whyItFits),
+            };
+            personalized.add(suggestion);
+            return suggestion;
           });
-          source = "ai";
         }
       } catch {
         if (request.signal.aborted) throw request.signal.reason;
@@ -150,6 +150,9 @@ export async function POST(request: Request) {
       seen.add(title);
       return true;
     });
+    const source = ideas.some((idea) => personalized.has(idea))
+      ? "ai"
+      : "fallback";
     return Response.json(
       { ideas, source },
       { headers: { "Cache-Control": "no-store" } },

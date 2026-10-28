@@ -2,6 +2,7 @@
 import { ArrowRight, Wallet, Users, CalendarDays } from "lucide-react";
 import { useState } from "react";
 import type { Plan } from "@/lib/schemas";
+import { parseDate, planningDate } from "@/lib/domain/calendar";
 export function OverviewTab({
   plan: p,
   readOnly,
@@ -13,7 +14,20 @@ export function OverviewTab({
   onChange: (v: Partial<Plan>) => void;
   onTab: (t: string) => void;
 }) {
-  const [now] = useState(() => Date.now());
+  const [today] = useState(planningDate);
+  const days = p.timeline.eventDate
+    ? Math.round(
+        (parseDate(p.timeline.eventDate).getTime() -
+          parseDate(today).getTime()) /
+          86400000,
+      )
+    : null;
+  const countdown =
+    days === null
+      ? `${p.input.planningWeeks} weeks`
+      : days === 0
+        ? "Today"
+        : `${Math.abs(days)} day${Math.abs(days) === 1 ? "" : "s"}${days < 0 ? " ago" : ""}`;
   const money = (n: number) =>
     new Intl.NumberFormat("en-IN", {
       style: "currency",
@@ -71,11 +85,7 @@ export function OverviewTab({
         <div>
           <CalendarDays size={20} />
           <span>The countdown</span>
-          <strong>
-            {p.timeline.eventDate
-              ? `${Math.ceil((new Date(p.timeline.eventDate).getTime() - now) / 86400000)} days`
-              : `${p.input.planningWeeks} weeks`}
-          </strong>
+          <strong>{countdown}</strong>
           <small>One thoughtful step at a time</small>
         </div>
       </div>

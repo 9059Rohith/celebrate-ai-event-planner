@@ -4,7 +4,7 @@ import { PlanSchema, type Plan } from "@/lib/schemas";
 import { usePlanStore } from "@/lib/store";
 import { consumeSSE } from "@/lib/client/network";
 import { safeStorage } from "@/lib/client/storage";
-import { compactPlanSnapshot } from "@/lib/llm/snapshot";
+import { compactPlanSnapshot } from "@/lib/client/planSnapshot";
 import {
   applyPlanEnhancement,
   PlanEnhancementSchema,

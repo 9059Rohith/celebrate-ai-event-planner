@@ -62,11 +62,12 @@ function Placeholder() {
               const selected = event.target.files?.[0];
               if (!selected) return;
               if (selected.size > 262144) throw Error("File too large");
-              const [{ PlanSchema }, { usePlanStore }] = await Promise.all([
-                import("@/lib/schemas"),
-                import("@/lib/store"),
-              ]);
-              const plan = PlanSchema.parse(JSON.parse(await selected.text()));
+              const [{ parsePortablePlan }, { usePlanStore }] =
+                await Promise.all([
+                  import("@/lib/client/portablePlan"),
+                  import("@/lib/store"),
+                ]);
+              const plan = parsePortablePlan(JSON.parse(await selected.text()));
               usePlanStore
                 .getState()
                 .addPlan({ ...plan, id: crypto.randomUUID() });

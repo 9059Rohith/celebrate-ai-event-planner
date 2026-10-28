@@ -43,36 +43,8 @@ export const SnapshotSchema = z
   })
   .strict();
 export const TransportPlanSchema = z.union([PlanSchema, SnapshotSchema]);
-export function compactPlanSnapshot(
-  plan: Plan,
-): z.infer<typeof SnapshotSchema> {
-  return {
-    snapshot: true,
-    input: plan.input,
-    budget: {
-      ...plan.budget,
-      lines: plan.budget.lines.map((l) => ({
-        ...l,
-        notes: l.notes.slice(0, 200),
-      })),
-    },
-    milestones: plan.timeline.milestones
-      .slice(0, 50)
-      .map((m) => ({ ...m, notes: m.notes.slice(0, 120) })),
-    ideas: plan.ideas
-      .slice(0, 50)
-      .map(({ id, title, kind, tags, estCost }) => ({
-        id,
-        title,
-        kind,
-        tags,
-        estCost,
-      })),
-    vendors: plan.vendors
-      .slice(0, 50)
-      .map(({ id, category, status }) => ({ id, category, status })),
-  };
-}
+export type PlanSnapshot = z.infer<typeof SnapshotSchema>;
+export { compactPlanSnapshot } from "@/lib/client/planSnapshot";
 /** Reconstruct bounded AI context only. Refinements must be merged into the full client plan. */
 export function hydratePlan(value: z.infer<typeof TransportPlanSchema>): Plan {
   if (!("snapshot" in value)) return value;

@@ -8,7 +8,7 @@ import {
   toolArguments,
   type ToolProposal,
 } from "@/lib/llm/tools";
-import { compactPlanSnapshot } from "@/lib/llm/snapshot";
+import { compactPlanSnapshot } from "@/lib/client/planSnapshot";
 import { consumeSSE } from "@/lib/client/network";
 import { safeStorage, writeLocal } from "@/lib/client/storage";
 import { usePlanStore } from "@/lib/store";

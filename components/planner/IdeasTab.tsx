@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Heart, Sparkles } from "lucide-react";
 import { IdeaSchema, type Plan } from "@/lib/schemas";
-import { compactPlanSnapshot } from "@/lib/llm/snapshot";
+import { compactPlanSnapshot } from "@/lib/client/planSnapshot";
 import { usePlanStore } from "@/lib/store";
 type IdeasTabProps = {
   plan: Plan;

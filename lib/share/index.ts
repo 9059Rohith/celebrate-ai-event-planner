@@ -5,7 +5,8 @@
  */
 
 import LZString from "lz-string";
-import { PlanSchema, type Plan } from "@/lib/schemas";
+import type { Plan } from "@/lib/schemas";
+import { parsePortablePlan } from "@/lib/client/portablePlan";
 import { decompressBounded } from "./boundedDecompress";
 
 const MAX_COMPRESSED_SIZE = 64 * 1024; // 64KB max
@@ -56,8 +57,7 @@ export function decodePlan(encoded: string): Plan | null {
       return null;
     }
 
-    const validated = PlanSchema.safeParse(parsed);
-    return validated.success ? validated.data : null;
+    return parsePortablePlan(parsed);
   } catch {
     return null;
   }

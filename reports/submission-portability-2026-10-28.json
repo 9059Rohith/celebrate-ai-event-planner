@@ -1,0 +1,183 @@
+{
+  "date": "2026-10-28",
+  "status": "Local verification complete; publication and production verification pending",
+  "localCodeCommit": "ea3f123741a115d549735e0ac019616563ef97fa",
+  "portalStatus": {
+    "ownerReportedScore": 96.99,
+    "ownerReportedAdditionalAttempts": 2,
+    "independentlyVerified": false,
+    "ownerWillProvidePortalUpdates": true,
+    "submittedByAgent": false
+  },
+  "changes": [
+    "Separate pure browser transport from server reconstruction; remove fallback template data and two scripts from saved-plan initial load",
+    "Apply lightweight integrity validation at JSON import, fragment decoding and persisted-plan restoration; reject duplicate/blank row IDs and inconsistent whole-unit budgets without rejecting overdue plans",
+    "Use the shared India planning calendar for overview countdown, with today/past/singular labels",
+    "Extend actual rendered-HTML bundle gates to saved and shared pages"
+  ],
+  "review": "Independent Astra review; 46 existing public evaluation case outputs accepted by portable parser; browser snapshot transpiles with zero runtime imports",
+  "tests": {
+    "passed": 298,
+    "failed": 0,
+    "files": 42,
+    "addedSincePreviousRelease": 21
+  },
+  "testRunNote": "Initial concurrent coverage/build run had 297 passing tests and one CLI test timeout at its unchanged 5-second deadline. Full suite rerun without the production build passed; no assertions or timeouts weakened.",
+  "coverageScope": "app, components, lib, evals, middleware.ts and public runtime JavaScript; 80% overall line gate, library 80% and domain 90% across all four metrics",
+  "coverage": {
+    "overall": {
+      "lines": {
+        "total": 3005,
+        "covered": 2493,
+        "skipped": 0,
+        "pct": 82.96
+      },
+      "statements": {
+        "total": 3402,
+        "covered": 2747,
+        "skipped": 0,
+        "pct": 80.74
+      },
+      "functions": {
+        "total": 936,
+        "covered": 709,
+        "skipped": 0,
+        "pct": 75.74
+      },
+      "branches": {
+        "total": 2337,
+        "covered": 1786,
+        "skipped": 0,
+        "pct": 76.42
+      },
+      "branchesTrue": {
+        "total": 0,
+        "covered": 0,
+        "skipped": 0,
+        "pct": 100
+      }
+    },
+    "library": {
+      "lines": {
+        "total": 1705,
+        "covered": 1617,
+        "pct": 94.83
+      },
+      "statements": {
+        "total": 1934,
+        "covered": 1790,
+        "pct": 92.55
+      },
+      "functions": {
+        "total": 391,
+        "covered": 368,
+        "pct": 94.11
+      },
+      "branches": {
+        "total": 1213,
+        "covered": 1051,
+        "pct": 86.64
+      }
+    },
+    "domain": {
+      "lines": {
+        "total": 667,
+        "covered": 656,
+        "pct": 98.35
+      },
+      "statements": {
+        "total": 741,
+        "covered": 726,
+        "pct": 97.97
+      },
+      "functions": {
+        "total": 152,
+        "covered": 152,
+        "pct": 100
+      },
+      "branches": {
+        "total": 502,
+        "covered": 465,
+        "pct": 92.62
+      }
+    }
+  },
+  "browserTests": {
+    "passed": 26,
+    "failed": 0,
+    "projects": [
+      "desktop",
+      "mobile"
+    ],
+    "stats": {
+      "startTime": "2026-10-28T16:39:38.317Z",
+      "duration": 106651.40000000001,
+      "expected": 26,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    }
+  },
+  "offlineEvaluation": {
+    "passed": 46,
+    "total": 46,
+    "tokens": 0,
+    "costUsd": 0,
+    "report": "reports/mock-portability-2026-10-28.json",
+    "fullOriginalRun": "reports/mock-portability-2026-10-28.json.gz"
+  },
+  "checks": {
+    "typecheck": true,
+    "eslint": true,
+    "formatting": true,
+    "productionBuild": true,
+    "bundleBudget": true,
+    "browserBundleSecretPatterns": true
+  },
+  "bundle": {
+    "gzipBytes": 117650,
+    "budgetBytes": 122880,
+    "workspaceRoutes": [
+      {
+        "route": "/plan/bundle-audit",
+        "scriptCount": 15,
+        "gzipBytes": 166413,
+        "budgetBytes": 174080,
+        "passed": true
+      },
+      {
+        "route": "/shared",
+        "scriptCount": 16,
+        "gzipBytes": 165424,
+        "budgetBytes": 174080,
+        "passed": true
+      }
+    ],
+    "previousSavedGzipBytes": 182982,
+    "currentSavedGzipBytes": 166413,
+    "savedReductionBytes": 16569,
+    "savedScriptRequestsBefore": 17,
+    "savedScriptRequestsAfter": 15,
+    "report": "reports/bundle.json"
+  },
+  "dependencyAudit": {
+    "runtimeAndDevelopmentVulnerabilities": 0
+  },
+  "hostedCI": {
+    "status": "Previously blocked before checks by owner-account billing lock; latest publication run not yet checked"
+  },
+  "evidenceArchive": "reports/archived-evidence.json",
+  "limitations": [
+    "No competition score or rank predicted; owner controls resubmission",
+    "No paid runtime model calls or live judge evaluation",
+    "Browser storage reads that throw can still appear as missing plans; retained as a known follow-up finding"
+  ],
+  "sourceAudit": {
+    "files": 363,
+    "bytes": 9719148,
+    "limitBytes": 10000000,
+    "secretPatternMatches": [],
+    "passed": true
+  },
+  "browserTestRunNote": "Initial new import checks matched both the import notice and Next route announcer; locator narrowed to the import panel. An overlapping rerun was stopped. The final isolated full browser run passed all 26 checks."
+}

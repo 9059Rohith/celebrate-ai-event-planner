@@ -4,15 +4,15 @@ An anonymous event planner for weddings, birthdays and community gatherings, wit
 
 Production: https://celebrate-ai-event-planner.vercel.app
 
-The latest local checks are recorded in [the follow-up quality report](../reports/submission-followup-2026-10-28.json). Fresh production verification retained 60/68 loads below two seconds and 0 runtime/hydration errors; the strict timing gate failed. Earlier reports remain dated evidence.
+The latest local checks are recorded in [the follow-up quality report](../reports/submission-portability-2026-10-28.json). Production verification for this portability revision is pending. Earlier reports remain dated evidence.
 
 ## Follow-up local verification — 28 October 2026
 
-**277/277 tests across 39 files**, **24/24 desktop/mobile browser checks**, strict TypeScript, lint/formatting, production build and bundle/secret checks passed. The full dependency audit reports zero findings. Whole-application line coverage is **82.17%**, library line coverage **94.78%**, and domain line coverage **98.35%**. The strengthened offline evaluation passes **46/46 cases with zero model calls**.
+**298/298 tests across 42 files**, **26/26 desktop/mobile browser checks**, strict TypeScript, lint/formatting, production build and bundle/secret checks passed. The full dependency audit reports zero findings. Whole-application line coverage is **82.96%**, library line coverage **94.83%**, and domain line coverage **98.35%**. The strengthened offline evaluation passes **46/46 cases with zero model calls**.
 
-The inclusive coverage scope is app/components/lib/evals/middleware/public runtime JavaScript. Overall statements/branches/functions are 79.91%/75.88%/74.62%; only overall lines have an 80% gate. Library and domain gates still cover all four metrics.
+The inclusive coverage scope is app/components/lib/evals/middleware/public runtime JavaScript. Overall statements/branches/functions are 80.74%/76.42%/75.74%; only overall lines have an 80% gate. Library and domain gates still cover all four metrics.
 
-Production verification retained all **68 visits**: **60/68 loads below two seconds**, median **1.329 s**, p95 **2.428 s**, maximum **2.959 s**, maximum heading readiness **3.053 s**, and **0 runtime/hydration errors**. The strict two-second gate **failed**. Edge 156.0.4314.50, fresh desktop/iPhone 13 contexts, unthrottled network and verified CDN warmup; the release fingerprint stayed unchanged. No sample was retried or discarded. [Production audit](../reports/verification-followup-2026-10-28.json). The [previous release audit](../reports/verification-quality-final-2026-10-28.json) remains historical evidence.
+Production verification for this portability revision is pending. [Previous release evidence](../reports/verification-followup-2026-10-28.json) remains unchanged.
 
 ## Run locally
 

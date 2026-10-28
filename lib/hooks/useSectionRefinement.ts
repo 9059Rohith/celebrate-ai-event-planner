@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import type { Plan } from "@/lib/schemas";
-import { compactPlanSnapshot } from "@/lib/llm/snapshot";
+import { compactPlanSnapshot } from "@/lib/client/planSnapshot";
 import {
   applySectionRefinement,
   type RefinableSection,

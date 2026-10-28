@@ -90,16 +90,18 @@ Domain code owns money arithmetic and timeline dependencies. AI never silently a
 
 Implemented and verified locally:
 
+- Saved-plan initial JavaScript reduced from 182,982 to 166,413 gzip bytes with two fewer script requests; saved/shared entry routes now have enforced bundle budgets.
+- Shared links, imported JSON and persisted plans reject ambiguous row IDs and inconsistent monetary totals while preserving valid overdue plans and custom edits.
 - All three occasion flows, editing, persistence, exports and sharing.
 - Complete template fallback with visible source/provider status.
 - Validated AI generation, bounded repair, moderation and grounded chat tool boundaries.
 - Per-attempt token reservations, bounded rate-limit histories and environment ceilings.
 - Route hydration replay regression and stable shared-fragment hydration.
 - Automated WCAG checks in light/dark themes and narrow/wide layouts.
-- Unit/component/API suite: **277/277 passing** across 39 files (28 October 2026).
-- Desktop/mobile browser suite: **24/24 passing**.
+- Unit/component/API suite: **298/298 passing** across 42 files (28 October 2026).
+- Desktop/mobile browser suite: **26/26 passing**.
 - Offline deterministic evaluation: **46/46 passing**.
-- Whole-application line coverage: **82.17%**; library: **94.78%**; domain: **98.35%**.
+- Whole-application line coverage: **82.96%**; library: **94.83%**; domain: **98.35%**.
 - Typecheck, lint, production build, bundle budget and browser-JavaScript secret scan.
 - Public source, publicly viewable demo recording, submission notes and architecture/security/evaluation documentation.
 
@@ -110,9 +112,9 @@ Production verification and remaining external limits:
 - Without Upstash, rate/cache/token counters are per server process.
 - The 28 October full dependency audit reports zero vulnerabilities after updating Vitest and its coverage package to 4.1.12.
 
-The [follow-up quality report](reports/submission-followup-2026-10-28.json) records the latest local checks. AI refinement preserves full user state and rejects stale previews; evaluations bind dataset/model/code identity and reject incomplete judging. Wizard transitions expose selected states and move keyboard focus. Fresh production verification retained 60/68 loads below two seconds and 0 runtime/hydration errors; the strict timing gate failed.
+The [follow-up quality report](reports/submission-portability-2026-10-28.json) records the latest local checks. AI refinement preserves full user state and rejects stale previews; evaluations bind dataset/model/code identity and reject incomplete judging. Wizard transitions expose selected states and move keyboard focus. Production verification for this portability revision is pending.
 
-Production verification retained all **68 visits**: **60/68 loads below two seconds**, median **1.329 s**, p95 **2.428 s**, maximum **2.959 s**, maximum heading readiness **3.053 s**, and **0 runtime/hydration errors**. The strict two-second gate **failed**. Edge 156.0.4314.50, fresh desktop/iPhone 13 contexts, unthrottled network and verified CDN warmup; the release fingerprint stayed unchanged. No sample was retried or discarded. [Production audit](reports/verification-followup-2026-10-28.json). The [previous release audit](reports/verification-quality-final-2026-10-28.json) remains historical evidence.
+Production verification for this portability revision is pending. [Previous release evidence](reports/verification-followup-2026-10-28.json) remains unchanged.
 
 Historical 25 October timing: Edge 66/68 loads under two seconds (p95 1.44 s, max 2.34 s); bundled Chromium 63/68 with a maximum 26.14 s pre-request stall. Both runs had zero runtime/hydration errors. Those strict all-samples performance gates did not pass. [Retained evidence](reports/code-quality-revision.json) includes all outliers. Finite measurements do not guarantee every device/network loads within two seconds. The first-attempt standing is recorded above; no future score or final rank is guaranteed. See [SUBMISSION.md](SUBMISSION.md) for current evidence and limitations.
 
@@ -150,7 +152,7 @@ For deployment, set server-only variables in Vercel Production. See [.env.exampl
 
 ## Validation
 
-**Offline evaluation complete:** the 28 October `--mock` run passed **46/46 cases (100% case pass rate)**. Reproduce without an API key using `npm run eval -- --suite=all --mock --out=test-results/submission-mock.json`. This runs the real deterministic engine; it does not simulate measured live model quality. [Recorded evidence](reports/mock-followup-2026-10-28.json).
+**Offline evaluation complete:** the 28 October `--mock` run passed **46/46 cases (100% case pass rate)**. Reproduce without an API key using `npm run eval -- --suite=all --mock --out=test-results/submission-mock.json`. This runs the real deterministic engine; it does not simulate measured live model quality. [Recorded evidence](reports/mock-portability-2026-10-28.json).
 
 Type checking, lint and coverage:
 
@@ -175,7 +177,7 @@ Live evaluation, after configuring a key:
 npm run eval -- --suite=judge --limit=5 --max-usd=2
 ```
 
-Latest whole-application coverage: statements **79.91%**, branches **75.88%**, functions **74.62%**, lines **82.17%**. The default `npm run test:coverage` includes app, components, lib, evals, middleware and public runtime JavaScript, with a 80% overall line gate. Library coverage is 92.47% statements, 86.47% branches, 94.01% functions and 94.78% lines; domain lines are 98.35%. The library 80% and domain 90% gates remain enforced across all four metrics.
+Latest whole-application coverage: statements **80.74%**, branches **76.42%**, functions **75.74%**, lines **82.96%**. The default `npm run test:coverage` includes app, components, lib, evals, middleware and public runtime JavaScript, with a 80% overall line gate. Library coverage is 92.55% statements, 86.64% branches, 94.11% functions and 94.83% lines; domain lines are 98.35%. The library 80% and domain 90% gates remain enforced across all four metrics.
 
 The offline evaluation passes all 46 schema, budget, timeline, diet, constraint, safety, contact-heuristic and fallback checks. The v1 engine baseline passed 36/46. This compares engine revisions, not isolated LLM prompt quality.
 

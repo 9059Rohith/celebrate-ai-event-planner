@@ -1,8 +1,8 @@
 # Architecture
 
-**Follow-up local verification — 28 October 2026:** **277/277 tests across 39 files**, **24/24 desktop/mobile browser checks**, strict TypeScript, lint/formatting, production build and bundle/secret checks passed. The full dependency audit reports zero findings. Whole-application line coverage is **82.17%**, library line coverage **94.78%**, and domain line coverage **98.35%**. The strengthened offline evaluation passes **46/46 cases with zero model calls**. See [the quality report](reports/submission-followup-2026-10-28.json). Production verification for this follow-up is recorded below; its strict timing gate failed.
+**Follow-up local verification — 28 October 2026:** **298/298 tests across 42 files**, **26/26 desktop/mobile browser checks**, strict TypeScript, lint/formatting, production build and bundle/secret checks passed. The full dependency audit reports zero findings. Whole-application line coverage is **82.96%**, library line coverage **94.83%**, and domain line coverage **98.35%**. The strengthened offline evaluation passes **46/46 cases with zero model calls**. See [the quality report](reports/submission-portability-2026-10-28.json). Production verification for this portability revision is pending.
 
-Production verification retained all **68 visits**: **60/68 loads below two seconds**, median **1.329 s**, p95 **2.428 s**, maximum **2.959 s**, maximum heading readiness **3.053 s**, and **0 runtime/hydration errors**. The strict two-second gate **failed**. Edge 156.0.4314.50, fresh desktop/iPhone 13 contexts, unthrottled network and verified CDN warmup; the release fingerprint stayed unchanged. No sample was retried or discarded. [Production audit](reports/verification-followup-2026-10-28.json). The [previous release audit](reports/verification-quality-final-2026-10-28.json) remains historical evidence.
+Production verification for this portability revision is pending. [Previous release evidence](reports/verification-followup-2026-10-28.json) remains unchanged.
 
 The recorded 25 October release uses Next.js 15.5.28 App Router and React 19.3, TypeScript strict mode, Tailwind 4/PostCSS, Radix dialog, Zustand persistence, Zod schemas, lazy Recharts and the official OpenAI SDK. Release measurements below are dated evidence, not verification of later local changes.
 
@@ -57,3 +57,9 @@ The generic loading.tsx boundary is scoped to saved-plan routes. A production Li
 Budget warnings use the actual retained allocation in UI and chat. Calendar-only planning deadlines use Asia/Kolkata on every host; event clock times remain venue-local. `calendar.ts` owns date-only arithmetic and deadline clamping.
 
 Evaluation case details are bound to run identity. Only the initial recorded run can fetch static case evidence; missing live output stays explicitly unavailable.
+
+## Portable plans and browser transport
+
+`lib/client/planSnapshot.ts` uses only erased type imports; browser AI requests no longer import template reconstruction. `lib/llm/snapshot.ts` retains server schemas and hydration. Actual rendered home, saved and shared script bytes are budgeted by the bundle audit.
+
+`parsePortablePlan` validates row identity and core money consistency at file import, shared-fragment decoding and storage restoration. It preserves past due dates, custom tasks and recorded progress; date aging alone is not corruption. Repeated persisted plan IDs retain the first valid owner.

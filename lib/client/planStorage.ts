@@ -1,4 +1,5 @@
-import { PlanSchema, type Plan } from "@/lib/schemas";
+import type { Plan } from "@/lib/schemas";
+import { parsePortablePlan } from "./portablePlan";
 
 export function migratePlans(raw: unknown): {
   plans: Plan[];
@@ -6,10 +7,17 @@ export function migratePlans(raw: unknown): {
 } {
   const state =
     raw && typeof raw === "object" ? (raw as Record<string, unknown>) : {};
+  const seen = new Set<string>();
   const plans = Array.isArray(state.plans)
     ? state.plans.flatMap((value) => {
-        const result = PlanSchema.safeParse(value);
-        return result.success ? [result.data] : [];
+        try {
+          const plan = parsePortablePlan(value);
+          if (seen.has(plan.id)) return [];
+          seen.add(plan.id);
+          return [plan];
+        } catch {
+          return [];
+        }
       })
     : [];
   return {

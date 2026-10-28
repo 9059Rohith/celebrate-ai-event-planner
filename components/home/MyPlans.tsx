@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, CalendarDays, Trash2, Copy, Upload } from "lucide-react";
 import { useSyncExternalStore, useRef, useState } from "react";
 import { usePlanStore } from "@/lib/store";
-import { PlanSchema } from "@/lib/schemas";
+import { parsePortablePlan } from "@/lib/client/portablePlan";
 const subscribe = () => () => {};
 export default function MyPlans() {
   const ready = useSyncExternalStore(
@@ -40,7 +40,7 @@ export default function MyPlans() {
               const f = e.target.files?.[0];
               if (!f) return;
               if (f.size > 262144) throw Error("File too large");
-              const plan = PlanSchema.parse(JSON.parse(await f.text()));
+              const plan = parsePortablePlan(JSON.parse(await f.text()));
               add({ ...plan, id: crypto.randomUUID() });
               setError("");
             } catch {

@@ -57,6 +57,62 @@
       "originalBytes": 65952,
       "archiveBytes": 6191,
       "sha256": "1132ad4faf5e6b9807947503dc1afe60232836c61b2ff157399ee5cd79871bcf"
+    },
+    {
+      "original": "reports/full-load-before.json",
+      "archive": "reports/full-load-before.json.gz",
+      "originalBytes": 47374,
+      "archiveBytes": 3466,
+      "sha256": "726b34b4e73630d09f5986ca80a0886345be419b38b10482f8ac650b5230e670"
+    },
+    {
+      "original": "reports/full-load-after.json",
+      "archive": "reports/full-load-after.json.gz",
+      "originalBytes": 65581,
+      "archiveBytes": 6151,
+      "sha256": "afa8758853b38fb8f7c68b6dd0039e6ecc556e6b2c3c0ab09ac86a86c585932c"
+    },
+    {
+      "original": "reports/full-load-inline-css.json",
+      "archive": "reports/full-load-inline-css.json.gz",
+      "originalBytes": 60694,
+      "archiveBytes": 5523,
+      "sha256": "c1e04e8740143302f82baab689a1416404843c2cf1142a1a9e6ed18d64412174"
+    },
+    {
+      "original": "reports/full-load-route-boundary.json",
+      "archive": "reports/full-load-route-boundary.json.gz",
+      "originalBytes": 65825,
+      "archiveBytes": 6180,
+      "sha256": "b69169e27988a3fea58a0d5e4bbedcf5574f669fde81543aefa6fed089020e24"
+    },
+    {
+      "original": "reports/full-load-edge-postwarm.json",
+      "archive": "reports/full-load-edge-postwarm.json.gz",
+      "originalBytes": 65853,
+      "archiveBytes": 6221,
+      "sha256": "83408bdaf5bc0e1e5d523cd426760ad114eca623bedbdb7d2c2973c2324e999a"
+    },
+    {
+      "original": "reports/full-load-edge-verification.json",
+      "archive": "reports/full-load-edge-verification.json.gz",
+      "originalBytes": 65370,
+      "archiveBytes": 6038,
+      "sha256": "35cbbbb0e9f74dea235c1fa5dbacdbaf9add24b65ace4cb5db9ad583fecb3a93"
+    },
+    {
+      "original": "reports/full-load-hardening-2026-10-28.json",
+      "archive": "reports/full-load-hardening-2026-10-28.json.gz",
+      "originalBytes": 86485,
+      "archiveBytes": 7819,
+      "sha256": "7495987e07fad9369105e9856caf88420ded8768038100356343752d0e2069ea"
+    },
+    {
+      "original": "reports/full-load-quality-final-2026-10-28.json",
+      "archive": "reports/full-load-quality-final-2026-10-28.json.gz",
+      "originalBytes": 86379,
+      "archiveBytes": 7997,
+      "sha256": "b5581186718a9ddf4135561d78b0d04d206f4fc9164c63223aca5c7b97fe3716"
     }
   ]
 }

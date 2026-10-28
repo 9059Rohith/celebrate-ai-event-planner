@@ -2,7 +2,7 @@
 
 Celebrate AI helps users organize weddings, birthdays and community events with editable budgets, dependent timelines, vendor checklists, personalized ideas and grounded chat proposals. A complete deterministic plan remains available when the AI provider is unavailable.
 
-Production verification for this follow-up is pending. The [previous release audit](reports/verification-quality-final-2026-10-28.json) retained all 68 visits, 66 loads below two seconds and zero runtime/hydration errors; its strict timing gate failed.
+Production verification retained all **68 visits**: **60/68 loads below two seconds**, median **1.329 s**, p95 **2.428 s**, maximum **2.959 s**, maximum heading readiness **3.053 s**, and **0 runtime/hydration errors**. The strict two-second gate **failed**. Edge 156.0.4314.50, fresh desktop/iPhone 13 contexts, unthrottled network and verified CDN warmup; the release fingerprint stayed unchanged. No sample was retried or discarded. [Production audit](reports/verification-followup-2026-10-28.json). The [previous release audit](reports/verification-quality-final-2026-10-28.json) remains historical evidence.
 
 **Owner-reported current score:** 96.99/100, with two additional attempts available. The current categories, rank and attempt counter were not independently verified. Last directly observed result: 96.98/100, rank 53/51,556 on 28 October. The owner controls resubmission; no future score is guaranteed.
 
@@ -16,9 +16,13 @@ Production verification for this follow-up is pending. The [previous release aud
 
 ## Follow-up verification — 28 October 2026
 
-**Follow-up local verification — 28 October 2026:** **277/277 tests across 39 files**, **24/24 desktop/mobile browser checks**, strict TypeScript, lint/formatting, production build and bundle/secret checks passed. The full dependency audit reports zero findings. Whole-application line coverage is **82.17%**, library line coverage **94.78%**, and domain line coverage **98.35%**. The strengthened offline evaluation passes **46/46 cases with zero model calls**. See [the quality report](reports/submission-followup-2026-10-28.json). Production verification for this follow-up is pending.
+**Follow-up local verification — 28 October 2026:** **277/277 tests across 39 files**, **24/24 desktop/mobile browser checks**, strict TypeScript, lint/formatting, production build and bundle/secret checks passed. The full dependency audit reports zero findings. Whole-application line coverage is **82.17%**, library line coverage **94.78%**, and domain line coverage **98.35%**. The strengthened offline evaluation passes **46/46 cases with zero model calls**. See [the quality report](reports/submission-followup-2026-10-28.json). Production verification for this follow-up is recorded below; its strict timing gate failed.
 
 This follow-up fixes saved-plan retry data loss, stale evaluation evidence, budget warning consistency, calendar-boundary mismatches and aborted request-body cleanup. Historical reports remain available; no score for this revision has been measured.
+
+## Suggested resubmission change summary
+
+Fixed saved-plan AI retries so users review changes before accepting one undoable update; custom tasks, booking status, locked budgets, saved ideas and notes remain intact. Budget warnings now follow the actual allocation, and deadline calculations share one documented planning-day policy. Evaluation details stay attached to their actual run. Aborted request bodies release resources reliably. Added 32 regressions and desktop/mobile retry coverage: 277 tests, 24 browser checks and 46 offline cases pass. Whole-application line coverage rose from 75.94% to 82.17%, with an 80% gate. TypeScript, lint, build, bundle/secret checks and the full dependency audit pass locally. No additional paid model calls. See the dated follow-up report for production measurements and hosted CI limitations.
 
 ## Historical release readiness — 25 October 2026
 

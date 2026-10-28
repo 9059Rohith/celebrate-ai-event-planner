@@ -4,7 +4,7 @@ An anonymous event planner for weddings, birthdays and community gatherings, wit
 
 Production: https://celebrate-ai-event-planner.vercel.app
 
-The latest local checks are recorded in [the follow-up quality report](../reports/submission-followup-2026-10-28.json). The previous release recorded 66/68 loads below two seconds with zero runtime/hydration errors; this follow-up requires fresh production verification. Earlier reports remain dated evidence.
+The latest local checks are recorded in [the follow-up quality report](../reports/submission-followup-2026-10-28.json). Fresh production verification retained 60/68 loads below two seconds and 0 runtime/hydration errors; the strict timing gate failed. Earlier reports remain dated evidence.
 
 ## Follow-up local verification — 28 October 2026
 
@@ -12,7 +12,7 @@ The latest local checks are recorded in [the follow-up quality report](../report
 
 The inclusive coverage scope is app/components/lib/evals/middleware/public runtime JavaScript. Overall statements/branches/functions are 79.91%/75.88%/74.62%; only overall lines have an 80% gate. Library and domain gates still cover all four metrics.
 
-Production verification for this follow-up is pending. The [previous release audit](../reports/verification-quality-final-2026-10-28.json) retained all 68 visits, 66 loads below two seconds and zero runtime/hydration errors; its strict timing gate failed.
+Production verification retained all **68 visits**: **60/68 loads below two seconds**, median **1.329 s**, p95 **2.428 s**, maximum **2.959 s**, maximum heading readiness **3.053 s**, and **0 runtime/hydration errors**. The strict two-second gate **failed**. Edge 156.0.4314.50, fresh desktop/iPhone 13 contexts, unthrottled network and verified CDN warmup; the release fingerprint stayed unchanged. No sample was retried or discarded. [Production audit](../reports/verification-followup-2026-10-28.json). The [previous release audit](../reports/verification-quality-final-2026-10-28.json) remains historical evidence.
 
 ## Run locally
 

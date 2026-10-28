@@ -46,3 +46,9 @@ The production alias was subsequently replaced by a Git-triggered deployment (`d
 
 To use Edge explicitly, set `BROWSER_CHANNEL=msedge` before verification; the default remains bundled Chromium and every raw report records the browser/version. Set `PERF_PHASE` to name the report batch and `DEPLOYMENT_ID` to record the deployment returned by the release command. The combined result is saved as `reports/verification-<phase>.json`. A measured pass applies to the recorded browser/network/CDN conditions, not arbitrary network delays or every device.
 
+## 28 October follow-up release
+
+Deployment `dpl_3ekprzzDijsHMC9Sm1M7UeQRqnnE`, source `bf0ac16e2c5b2bcc5309b031c0833f85d8aee2ce`, retained 68 fresh-context visits in Edge 156.0.4314.50. There were zero runtime/hydration errors. 60/68 loads were below two seconds; median 1.329 s, p95 2.428 s, maximum load 2.959 s and maximum heading readiness 3.053 s. Eight loads and two additional heading-readiness samples exceeded the threshold. The strict gate failed; the previous release recorded 66/68 loads below two seconds under its own run conditions.
+
+Several traces show delayed request starts and static JS/CSS response waits. The data does not isolate browser scheduling, network and CDN contributions or prove a code regression. No sample was retried or discarded. The asset fingerprint stayed unchanged before and after the audit. [Full retained evidence](../reports/verification-followup-2026-10-28.json).
+

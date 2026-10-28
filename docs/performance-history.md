@@ -52,3 +52,9 @@ Deployment `dpl_3ekprzzDijsHMC9Sm1M7UeQRqnnE`, source `bf0ac16e2c5b2bcc5309b031c
 
 Several traces show delayed request starts and static JS/CSS response waits. The data does not isolate browser scheduling, network and CDN contributions or prove a code regression. No sample was retried or discarded. The asset fingerprint stayed unchanged before and after the audit. [Full retained evidence](../reports/verification-followup-2026-10-28.json).
 
+
+## 28 October portability and workspace bundle revision
+
+Source `5a53b1122facc6196a77bafb4427930c9cb3f8d5`, deployment `dpl_J5a7LdcWbbxVBDvUjuLigziN31Ab`. Saved-route initial modern JavaScript fell from 182,982 to 166,413 gzip bytes and from 17 to 15 scripts; shared route is 165,424 bytes. Both workspace routes pass the 174,080-byte build budget. These are actual rendered-HTML asset totals; they do not guarantee network latency.
+
+Production verification retained all **68 visits**: **62/68 loads below two seconds**, median **1.067 s**, p95 **2.495 s**, maximum **3.154 s**, maximum heading readiness **3.442 s**, and **0 runtime/hydration errors**. The strict two-second gate **failed**. Edge 156.0.4314.50, fresh desktop/iPhone 13 contexts, unthrottled network and verified CDN warmup; release fingerprint stayed unchanged. No sample was retried or discarded. [Retained production evidence](../reports/verification-portability-2026-10-28.json). The preceding release recorded 60/68 loads under two seconds; separate runs do not establish controlled causal timing improvement.

@@ -4,7 +4,7 @@ An anonymous event planner for weddings, birthdays and community gatherings, wit
 
 Production: https://celebrate-ai-event-planner.vercel.app
 
-The latest local checks are recorded in [the follow-up quality report](../reports/submission-portability-2026-10-28.json). Production verification for this portability revision is pending. Earlier reports remain dated evidence.
+The latest local checks are recorded in [the follow-up quality report](../reports/submission-portability-2026-10-28.json). Fresh production verification retained 62/68 loads below two seconds and 0 runtime/hydration errors; the strict timing gate failed. Earlier reports remain dated evidence.
 
 ## Follow-up local verification — 28 October 2026
 
@@ -12,7 +12,7 @@ The latest local checks are recorded in [the follow-up quality report](../report
 
 The inclusive coverage scope is app/components/lib/evals/middleware/public runtime JavaScript. Overall statements/branches/functions are 80.74%/76.42%/75.74%; only overall lines have an 80% gate. Library and domain gates still cover all four metrics.
 
-Production verification for this portability revision is pending. [Previous release evidence](../reports/verification-followup-2026-10-28.json) remains unchanged.
+Production verification retained all **68 visits**: **62/68 loads below two seconds**, median **1.067 s**, p95 **2.495 s**, maximum **3.154 s**, maximum heading readiness **3.442 s**, and **0 runtime/hydration errors**. The strict two-second gate **failed**. Edge 156.0.4314.50, fresh desktop/iPhone 13 contexts, unthrottled network and verified CDN warmup; release fingerprint stayed unchanged. No sample was retried or discarded. [Production audit](../reports/verification-portability-2026-10-28.json). [Previous release evidence](../reports/verification-followup-2026-10-28.json) remains historical.
 
 ## Run locally
 

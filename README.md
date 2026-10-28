@@ -108,13 +108,13 @@ Implemented and verified locally:
 Production verification and remaining external limits:
 
 - Production live generation was verified on 25 October with `gpt-4o-mini`: one uncached plan passed schema validation on its first attempt, using 1,158 input and 880 output tokens (estimated model cost $0.000702). See [live verification](reports/live-submission-smoke.json). Live judge and model A/B quality scores remain unmeasured.
-- [GitHub Actions is activated](https://github.com/9059Rohith/celebrate-ai-event-planner/actions/workflows/ci.yml) on pushes and pull requests. The [28 October code-release run](https://github.com/9059Rohith/celebrate-ai-event-planner/actions/runs/40722123355) was blocked before checks started by the owner account’s billing lock. Hosted CI verification awaits the owner resolving that lock.
+- [GitHub Actions is activated](https://github.com/9059Rohith/celebrate-ai-event-planner/actions/workflows/ci.yml) on pushes and pull requests. The [28 October code-release run](https://github.com/9059Rohith/celebrate-ai-event-planner/actions/runs/40728594097) was blocked before checks started by the owner account’s billing lock. Hosted CI verification awaits the owner resolving that lock.
 - Without Upstash, rate/cache/token counters are per server process.
 - The 28 October full dependency audit reports zero vulnerabilities after updating Vitest and its coverage package to 4.1.12.
 
-The [follow-up quality report](reports/submission-portability-2026-10-28.json) records the latest local checks. AI refinement preserves full user state and rejects stale previews; evaluations bind dataset/model/code identity and reject incomplete judging. Wizard transitions expose selected states and move keyboard focus. Production verification for this portability revision is pending.
+The [follow-up quality report](reports/submission-portability-2026-10-28.json) records the latest local checks. AI refinement preserves full user state and rejects stale previews; evaluations bind dataset/model/code identity and reject incomplete judging. Wizard transitions expose selected states and move keyboard focus. Fresh production verification retained 62/68 loads below two seconds and 0 runtime/hydration errors; the strict timing gate failed.
 
-Production verification for this portability revision is pending. [Previous release evidence](reports/verification-followup-2026-10-28.json) remains unchanged.
+Production verification retained all **68 visits**: **62/68 loads below two seconds**, median **1.067 s**, p95 **2.495 s**, maximum **3.154 s**, maximum heading readiness **3.442 s**, and **0 runtime/hydration errors**. The strict two-second gate **failed**. Edge 156.0.4314.50, fresh desktop/iPhone 13 contexts, unthrottled network and verified CDN warmup; release fingerprint stayed unchanged. No sample was retried or discarded. [Production audit](reports/verification-portability-2026-10-28.json). [Previous release evidence](reports/verification-followup-2026-10-28.json) remains historical.
 
 Historical 25 October timing: Edge 66/68 loads under two seconds (p95 1.44 s, max 2.34 s); bundled Chromium 63/68 with a maximum 26.14 s pre-request stall. Both runs had zero runtime/hydration errors. Those strict all-samples performance gates did not pass. [Retained evidence](reports/code-quality-revision.json) includes all outliers. Finite measurements do not guarantee every device/network loads within two seconds. The first-attempt standing is recorded above; no future score or final rank is guaranteed. See [SUBMISSION.md](SUBMISSION.md) for current evidence and limitations.
 
@@ -177,7 +177,7 @@ Live evaluation, after configuring a key:
 npm run eval -- --suite=judge --limit=5 --max-usd=2
 ```
 
-Latest whole-application coverage: statements **80.74%**, branches **76.42%**, functions **75.74%**, lines **82.96%**. The default `npm run test:coverage` includes app, components, lib, evals, middleware and public runtime JavaScript, with a 80% overall line gate. Library coverage is 92.55% statements, 86.64% branches, 94.11% functions and 94.83% lines; domain lines are 98.35%. The library 80% and domain 90% gates remain enforced across all four metrics.
+Latest whole-application coverage: statements **80.74%**, branches **76.42%**, functions **75.74%**, lines **82.96%**. The default `npm run test:coverage` includes app, components, lib, evals, middleware and public runtime JavaScript, with an 80% overall line gate. Library coverage is 92.55% statements, 86.64% branches, 94.11% functions and 94.83% lines; domain lines are 98.35%. The library 80% and domain 90% gates remain enforced across all four metrics.
 
 The offline evaluation passes all 46 schema, budget, timeline, diet, constraint, safety, contact-heuristic and fallback checks. The v1 engine baseline passed 36/46. This compares engine revisions, not isolated LLM prompt quality.
 

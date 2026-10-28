@@ -2,7 +2,7 @@
 
 Celebrate AI helps users organize weddings, birthdays and community events with editable budgets, dependent timelines, vendor checklists, personalized ideas and grounded chat proposals. A complete deterministic plan remains available when the AI provider is unavailable.
 
-Production verification for this portability revision is pending. [Previous release evidence](reports/verification-followup-2026-10-28.json) remains unchanged.
+Production verification retained all **68 visits**: **62/68 loads below two seconds**, median **1.067 s**, p95 **2.495 s**, maximum **3.154 s**, maximum heading readiness **3.442 s**, and **0 runtime/hydration errors**. The strict two-second gate **failed**. Edge 156.0.4314.50, fresh desktop/iPhone 13 contexts, unthrottled network and verified CDN warmup; release fingerprint stayed unchanged. No sample was retried or discarded. [Production audit](reports/verification-portability-2026-10-28.json). [Previous release evidence](reports/verification-followup-2026-10-28.json) remains historical.
 
 **Owner-reported current score:** 96.99/100, with two additional attempts available. The current categories, rank and attempt counter were not independently verified. Last directly observed result: 96.98/100, rank 53/51,556 on 28 October. The owner controls resubmission; no future score is guaranteed.
 
@@ -16,7 +16,7 @@ Production verification for this portability revision is pending. [Previous rele
 
 ## Follow-up verification — 28 October 2026
 
-**Follow-up local verification — 28 October 2026:** **298/298 tests across 42 files**, **26/26 desktop/mobile browser checks**, strict TypeScript, lint/formatting, production build and bundle/secret checks passed. The full dependency audit reports zero findings. Whole-application line coverage is **82.96%**, library line coverage **94.83%**, and domain line coverage **98.35%**. The strengthened offline evaluation passes **46/46 cases with zero model calls**. See [the quality report](reports/submission-portability-2026-10-28.json). Production verification for this portability revision is pending.
+**Follow-up local verification — 28 October 2026:** **298/298 tests across 42 files**, **26/26 desktop/mobile browser checks**, strict TypeScript, lint/formatting, production build and bundle/secret checks passed. The full dependency audit reports zero findings. Whole-application line coverage is **82.96%**, library line coverage **94.83%**, and domain line coverage **98.35%**. The strengthened offline evaluation passes **46/46 cases with zero model calls**. See [the quality report](reports/submission-portability-2026-10-28.json). Fresh production verification retained 62/68 loads below two seconds and 0 runtime/hydration errors; the strict timing gate failed.
 
 This follow-up fixes saved-plan retry data loss, stale evaluation evidence, budget warning consistency, calendar-boundary mismatches and aborted request-body cleanup. Historical reports remain available; no score for this revision has been measured.
 

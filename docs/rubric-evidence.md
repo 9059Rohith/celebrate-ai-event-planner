@@ -1,6 +1,6 @@
 # Requirements and evidence map
 
-Research and latest local verification date: **28 October 2026**. **298/298 tests across 42 files**, **26/26 desktop/mobile browser checks**, strict TypeScript, lint/formatting, production build and bundle/secret checks passed. The full dependency audit reports zero findings. Whole-application line coverage is **82.96%**, library line coverage **94.83%**, and domain line coverage **98.35%**. The strengthened offline evaluation passes **46/46 cases with zero model calls**. See [the follow-up quality report](../reports/submission-portability-2026-10-28.json). Production verification for this portability revision is pending. This document maps evidence and does not predict a score.
+Research and latest local verification date: **28 October 2026**. **298/298 tests across 42 files**, **26/26 desktop/mobile browser checks**, strict TypeScript, lint/formatting, production build and bundle/secret checks passed. The full dependency audit reports zero findings. Whole-application line coverage is **82.96%**, library line coverage **94.83%**, and domain line coverage **98.35%**. The strengthened offline evaluation passes **46/46 cases with zero model calls**. See [the follow-up quality report](../reports/submission-portability-2026-10-28.json). Fresh production verification retained 62/68 loads below two seconds and 0 runtime/hydration errors; the strict timing gate failed. This document maps evidence and does not predict a score.
 
 ## Official guidance and unresolved wording
 

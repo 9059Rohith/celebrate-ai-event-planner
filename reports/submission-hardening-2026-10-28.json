@@ -1,6 +1,6 @@
 {
   "date": "2026-10-28",
-  "status": "Local verification; production verification pending",
+  "status": "Deployed; all local and browser checks passed; live timing threshold met in68 retained samples; audit final identity request required recovery",
   "review": "Astra quality, security/accessibility and official-guidance research; Superpowers red-green regression workflow and independent integrated review",
   "changes": [
     "Abort and invalidate pending AI work when its plan or section loses ownership",
@@ -66,11 +66,51 @@
       "flaky": 0
     }
   },
-  "publishedCodeCommit": null,
-  "deployment": null,
-  "productionTiming": null,
+  "publishedCodeCommit": "a79430b475c3f687996f5e6456e710bdc9a0a375",
+  "deployment": {
+    "id": "dpl_6Tm2JBo3bicbATdftnZ11qzpEN4N",
+    "url": "https://celebrate-ai-event-planner.vercel.app",
+    "uniqueUrl": "https://celebrate-ai-event-planner-9rf82sv7h-rohiths-projects-5e14931b.vercel.app",
+    "ready": true,
+    "healthStatus": 200,
+    "aiConfigured": true
+  },
+  "productionTiming": {
+    "url": "https://celebrate-ai-event-planner.vercel.app",
+    "deploymentId": "dpl_6Tm2JBo3bicbATdftnZ11qzpEN4N",
+    "timestamp": "2026-10-28T13:08:18.396Z",
+    "conditions": "Fresh Edge browser contexts/caches; desktop and iPhone13 emulation; unthrottled network; explicitly warmed CDN. All68 original samples retained with no resampling.",
+    "browserChannel": "msedge",
+    "browserVersion": "156.0.4314.50",
+    "fingerprint": "3608554fefe0499cb4fc88e30e69d5843917b40f8b81896d6c66bcfa72422ef9",
+    "stableRelease": true,
+    "verifiedAssets": 27,
+    "samples": 68,
+    "underTwoSeconds": 68,
+    "medianLoadMs": 663.1999999880791,
+    "p95LoadMs": 1133.5,
+    "maxLoadMs": 1530.4000000059605,
+    "maxReadyMs": 1674.2000000029802,
+    "errors": [],
+    "outliers": [],
+    "sources": [
+      "reports/full-load-hardening-2026-10-28.json",
+      "reports/workspace-load-hardening-2026-10-28.json",
+      "reports/shared-hydration-hardening-2026-10-28.json"
+    ],
+    "navigationThresholdsPassed": true,
+    "originalVerificationExitCode": 1,
+    "originalVerificationPassed": false,
+    "postAuditCheck": {
+      "initialFailure": "Final inspectRelease fetch failed with ECONNRESET after all browser samples had completed.",
+      "recovery": "Separate identity requests confirmed the same fingerprint and27 assets. Browser samples were not repeated or removed.",
+      "recoveryTimestamp": "2026-10-28T13:08:18.397Z",
+      "recoveredFingerprint": "3608554fefe0499cb4fc88e30e69d5843917b40f8b81896d6c66bcfa72422ef9"
+    },
+    "report": "reports/verification-hardening-2026-10-28.json"
+  },
   "hostedCI": {
-    "lastCheckedRun": "https://github.com/9059Rohith/celebrate-ai-event-planner/actions/runs/40194067749",
+    "lastCheckedRun": "https://github.com/9059Rohith/celebrate-ai-event-planner/actions/runs/40692767379",
     "stepsExecuted": 0,
     "blockedReason": "The job was not started because your account is locked due to a billing issue."
   },
@@ -86,7 +126,14 @@
     "No future score or final rank is guaranteed",
     "No additional paid model calls in this revision; live judge, prompt A/B and human calibration remain unmeasured",
     "Hosted CI requires the repository owner to resolve the GitHub billing lock",
-    "Production timing must be checked after deployment; historical outliers are retained",
-    "Official public event guidance conflicts on required AI tools and narrative deliverables; no detailed scoring weights were verified"
-  ]
+    "Official public event guidance conflicts on required AI tools and narrative deliverables; no detailed scoring weights were verified",
+    "The timing wrapper exited1 after a final identity-fetch ECONNRESET; a separate matching-fingerprint check recovered identity verification. All68 navigation samples passed without retries. This is not a universal two-second guarantee."
+  ],
+  "sourceAudit": {
+    "bytesAtCheck": 9818104,
+    "filesAtCheck": 309,
+    "below10MB": true,
+    "secretPatternMatches": 0,
+    "scope": "Tracked and new non-ignored source files; targeted provider-token/private-key pattern scan"
+  }
 }

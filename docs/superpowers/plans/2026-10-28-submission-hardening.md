@@ -16,10 +16,10 @@
 - [x] Ideas/refinement lifecycle: demonstrate lost saved ideas, wrong-section previews and late completion; preserve current edits and bind/cancel requests by plan and section. Owner: parent.
 - [x] Stream resources: demonstrate pending reads on abort and uncancelled malformed streams; ensure cancellation and cleanup. Owner: parent.
 - [x] Shared-link decoding: reject oversized expansion before materializing it, preserving format compatibility and license attribution. Owner: Astra security reviewer.
-- [x] Feedback: prove scope reset, selected reason semantics and honest storage-failure status. Owner: Astra security reviewer; parent keys workspace context.
+- [x] Feedback: prove scope reset, selected reason semantics and honest storage-failure status. Owner: Astra security reviewer; component keys its own feedback scope.
 - [x] Documentation: distinguish official portal requirements from optional master-spec targets and reconcile stale measurements. Owner: Astra research reviewer.
 - [x] Independent review of integrated diffs; run typecheck, formatting/lint, coverage, offline evaluation, build, bundle/secret audit, desktop/mobile browser checks; investigate failures rather than hiding them.
-- [ ] Publish verified code and dated evidence to existing GitHub repository; deploy to existing Vercel project and verify production. Record hosted-CI and timing limitations separately.
+- [x] Publish verified code and dated evidence to existing GitHub repository; deploy to existing Vercel project and verify production. Record hosted-CI and timing limitations separately.
 
 ## Review focus
 
@@ -32,3 +32,7 @@
 ## Research limits
 
 The saved Hack2skill challenge URL returned Page Not Found on 28 October. The latest directly observed competition result remains 96.64/100 and rank67/51,309 on 25 October. No later score, current eligibility or final ranking is assumed.
+
+## Verified outcome
+
+Published code a79430b475c3f687996f5e6456e710bdc9a0a375; deployment dpl_6Tm2JBo3bicbATdftnZ11qzpEN4N. All157 tests,20 browser checks,46 offline cases, typecheck, lint, build and bundle checks passed. Full dependency audit zero. All68 retained production navigation samples below2s, no runtime/hydration errors; final identity-fetch interruption and separate matching-fingerprint recovery retained in reports. Hosted CI still blocked by account billing; no new competition score or submission.

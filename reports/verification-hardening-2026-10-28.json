@@ -1,0 +1,33 @@
+{
+  "url": "https://celebrate-ai-event-planner.vercel.app",
+  "deploymentId": "dpl_6Tm2JBo3bicbATdftnZ11qzpEN4N",
+  "timestamp": "2026-10-28T13:08:18.396Z",
+  "conditions": "Fresh Edge browser contexts/caches; desktop and iPhone13 emulation; unthrottled network; explicitly warmed CDN. All68 original samples retained with no resampling.",
+  "browserChannel": "msedge",
+  "browserVersion": "156.0.4314.50",
+  "fingerprint": "3608554fefe0499cb4fc88e30e69d5843917b40f8b81896d6c66bcfa72422ef9",
+  "stableRelease": true,
+  "verifiedAssets": 27,
+  "samples": 68,
+  "underTwoSeconds": 68,
+  "medianLoadMs": 663.1999999880791,
+  "p95LoadMs": 1133.5,
+  "maxLoadMs": 1530.4000000059605,
+  "maxReadyMs": 1674.2000000029802,
+  "errors": [],
+  "outliers": [],
+  "sources": [
+    "reports/full-load-hardening-2026-10-28.json",
+    "reports/workspace-load-hardening-2026-10-28.json",
+    "reports/shared-hydration-hardening-2026-10-28.json"
+  ],
+  "navigationThresholdsPassed": true,
+  "originalVerificationExitCode": 1,
+  "originalVerificationPassed": false,
+  "postAuditCheck": {
+    "initialFailure": "Final inspectRelease fetch failed with ECONNRESET after all browser samples had completed.",
+    "recovery": "Separate identity requests confirmed the same fingerprint and27 assets. Browser samples were not repeated or removed.",
+    "recoveryTimestamp": "2026-10-28T13:08:18.397Z",
+    "recoveredFingerprint": "3608554fefe0499cb4fc88e30e69d5843917b40f8b81896d6c66bcfa72422ef9"
+  }
+}

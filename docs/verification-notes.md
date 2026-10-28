@@ -13,7 +13,7 @@ Current local hardening evidence is dated 28 October 2026; the latest recorded p
 - [Offline evaluation](../reports/mock-hardening-2026-10-28.json): 46/46 cases passed, zero model calls.
 - Full dependency audit: zero findings, including development dependencies; this supersedes the historical five development-only advisories.
 - Regression categories: late AI updates after edits, undo revisions, dismissed proposals, bounded LZ decompression, SSE cleanup and feedback storage/hydration.
-- Lint, production build, bundle/secret checks and all 20 desktop/mobile browser checks passed. Production deployment verification is pending. October 25 production timing does not verify this local revision.
+- Lint, production build, bundle/secret checks and all 20 desktop/mobile browser checks passed. The same Vercel URL is deployed and health-checked; live timing and audit-recovery details are in the hardening summary. October 25 production timing does not verify this local revision.
 
 ## Run locally
 
